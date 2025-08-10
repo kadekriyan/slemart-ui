@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pembayaran - Sleman Mart</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#E57F39",
+              "primary-dark": "#C86A2B",
+              "primary-light": "#F29C5E",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+
+  <body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-40">
+      <div class="container mx-auto px-4">
+        <div class="flex items-center justify-between h-16">
+          <!-- Logo -->
+          <div class="flex items-center">
+            <a href="index.html" class="text-2xl font-bold text-primary"
+              >Sleman Mart</a
+            >
+          </div>
+
+          <!-- Breadcrumb -->
+          <nav class="hidden md:flex items-center space-x-2 text-sm">
+            <a href="index.html" class="text-gray-600 hover:text-primary"
+              >Beranda</a
+            >
+            <i class="fas fa-chevron-right text-gray-400 text-xs"></i>
+            <a href="cart.html" class="text-gray-600 hover:text-primary"
+              >Keranjang</a
+            >
+            <i class="fas fa-chevron-right text-gray-400 text-xs"></i>
+            <a href="checkout.html" class="text-gray-600 hover:text-primary"
+              >Checkout</a
+            >
+            <i class="fas fa-chevron-right text-gray-400 text-xs"></i>
+            <span class="text-primary font-medium">Pembayaran</span>
+          </nav>
+
+          <!-- Back to Checkout -->
+          <a href="checkout.html" class="text-gray-600 hover:text-primary">
+            <i class="fas fa-arrow-left mr-2"></i>Kembali
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 py-8">
+      <div class="max-w-4xl mx-auto">
+        <!-- Progress Steps -->
+        <div class="mb-8">
+          <div class="flex items-center justify-center">
+            <div class="flex items-center">
+              <div
+                class="step flex items-center justify-center w-10 h-10 bg-green-500 text-white rounded-full font-medium"
+              >
+                <i class="step-icon fas fa-check"></i>
+              </div>
+              <div class="hidden sm:block ml-3 mr-8">
+                <p class="text-sm font-medium text-green-600">Detail Pesanan</p>
+                <p class="text-xs text-gray-500">Alamat & Pengiriman</p>
+              </div>
+            </div>
+
+            <div class="w-16 h-1 bg-primary mx-4"></div>
+
+            <div class="flex items-center">
+              <div
+                class="step active flex items-center justify-center w-10 h-10 bg-primary text-white rounded-full font-medium"
+              >
+                <span class="step-number">2</span>
+              </div>
+              <div class="hidden sm:block ml-3 mr-8">
+                <p class="text-sm font-medium text-primary">Pembayaran</p>
+                <p class="text-xs text-gray-500">QRIS Payment</p>
+              </div>
+            </div>
+
+            <div class="w-16 h-1 bg-gray-200 mx-4"></div>
+
+            <div class="flex items-center">
+              <div
+                class="step flex items-center justify-center w-10 h-10 bg-gray-200 text-gray-500 rounded-full font-medium"
+              >
+                <span class="step-number">3</span>
+              </div>
+              <div class="hidden sm:block ml-3">
+                <p class="text-sm font-medium text-gray-500">Konfirmasi</p>
+                <p class="text-xs text-gray-400">Upload Bukti</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 2: Payment -->
+        <div class="bg-white rounded-lg shadow-md mb-6">
+          <div class="p-6 border-b border-gray-200">
+            <h3 class="text-lg font-bold text-gray-800">Pembayaran</h3>
+            <p class="text-sm text-gray-600">
+              Scan QRIS untuk menyelesaikan pembayaran
+            </p>
+          </div>
+
+          <div class="p-6">
+            <div class="text-center mb-6">
+              <!-- QR Code -->
+              <div
+                class="bg-white border-2 border-gray-200 rounded-lg p-8 inline-block mb-4"
+              >
+                <div
+                  class="w-64 h-64 bg-gray-100 flex items-center justify-center rounded-lg"
+                >
+                  <!-- QR Code Pattern -->
+                  <div class="grid grid-cols-8 gap-1">
+                    <div class="w-6 h-6 bg-black rounded-sm"></div>
+                    <div class="w-6 h-6 bg-black rounded-sm"></div>
+                    <div class="w-6 h-6 bg-black rounded-sm"></div>
+                    <div class="w-6 h-6 bg-white rounded-sm"></div>
+                    <div class="w-6 h-6 bg-white rounded-sm"></div>
+                    <div class="w-6 h-6 bg-black rounded-sm"></div>
+                    <div class="w-6 h-6 bg-black rounded-sm"></div>
+                    <div class="w-6 h-6 bg-black rounded-sm"></div>
+
+                    <div class="w-6 h-6 bg-black rounded-sm"></div>
+                    <div class="w-6 h-6 bg-white rounded-sm"></div>
+                    <div class="w-6 h-6 bg-white rounded-sm"></div>
+                    <div class="w-6 h-6 bg-black rounded-sm"></div>
+                    <div class="w-6 h-6 bg-black rounded-sm"></div>
+                    <div class="w-6 h-6 bg-white rounded-sm"></div>
+                    <div class="w-6 h-6 bg-white rounded-sm"></div>
+                    <div class="w-6 h-6 bg-black rounded-sm"></div>
+
+                    <div class="w-6 h-6 bg-black rounded-sm"></div>
+                    <div class="w-6 h-6 bg-white rounded-sm"></div>
+                    <div class="w-6 h-6 bg-black rounded-sm"></div>
+                    <div class="w-6 h-6 bg-black rounded-sm"></div>
+                    <div class="w-6 h-6 bg-black rounded-sm"></div>
+                    <div class="w-6 h-6 bg-black rounded-sm"></div>
+                    <div class="w-6 h-6 bg-white rounded-sm"></div>
+                    <div class="w-6 h-6 bg-black rounded-sm"></div>
+
+                    <div class="w-6 h-6 bg-white rounded-sm"></div>
+                    <div class="w-6 h-6 bg-black rounded-sm"></div>
+                    <div class="w-6 h-6 bg-black rounded-sm"></div>
+                    <div class="w-6 h-6 bg-white rounded-sm"></div>
+                    <div class="w-6 h-6 bg-white rounded-sm"></div>
+                    <div class="w-6 h-6 bg-black rounded-sm"></div>
+                    <div class="w-6 h-6 bg-black rounded-sm"></div>
+                    <div class="w-6 h-6 bg-white rounded-sm"></div>
+
+                    <div class="w-6 h-6 bg-white rounded-sm"></div>
+                    <div class="w-6 h-6 bg-black rounded-sm"></div>
+                    <div class="w-6 h-6 bg-white rounded-sm"></div>
+                    <div class="w-6 h-6 bg-black rounded-sm"></div>
+                    <div class="w-6 h-6 bg-black rounded-sm"></div>
+                    <div class="w-6 h-6 bg-white rounded-sm"></div>
+                    <div class="w-6 h-6 bg-black rounded-sm"></div>
+                    <div class="w-6 h-6 bg-white rounded-sm"></div>
+
+                    <div class="w-6 h-6 bg-black rounded-sm"></div>
+                    <div class="w-6 h-6 bg-black rounded-sm"></div>
+                    <div class="w-6 h-6 bg-black rounded-sm"></div>
+                    <div class="w-6 h-6 bg-white rounded-sm"></div>
+                    <div class="w-6 h-6 bg-white rounded-sm"></div>
+                    <div class="w-6 h-6 bg-black rounded-sm"></div>
+                    <div class="w-6 h-6 bg-black rounded-sm"></div>
+                    <div class="w-6 h-6 bg-black rounded-sm"></div>
+
+                    <div class="w-6 h-6 bg-black rounded-sm"></div>
+                    <div class="w-6 h-6 bg-white rounded-sm"></div>
+                    <div class="w-6 h-6 bg-white rounded-sm"></div>
+                    <div class="w-6 h-6 bg-black rounded-sm"></div>
+                    <div class="w-6 h-6 bg-black rounded-sm"></div>
+                    <div class="w-6 h-6 bg-white rounded-sm"></div>
+                    <div class="w-6 h-6 bg-white rounded-sm"></div>
+                    <div class="w-6 h-6 bg-black rounded-sm"></div>
+
+                    <div class="w-6 h-6 bg-black rounded-sm"></div>
+                    <div class="w-6 h-6 bg-black rounded-sm"></div>
+                    <div class="w-6 h-6 bg-black rounded-sm"></div>
+                    <div class="w-6 h-6 bg-white rounded-sm"></div>
+                    <div class="w-6 h-6 bg-white rounded-sm"></div>
+                    <div class="w-6 h-6 bg-black rounded-sm"></div>
+                    <div class="w-6 h-6 bg-black rounded-sm"></div>
+                    <div class="w-6 h-6 bg-black rounded-sm"></div>
+                  </div>
+                </div>
+              </div>
+
+              <h4 class="text-lg font-bold text-gray-800 mb-2">
+                Scan QRIS untuk Pembayaran
+              </h4>
+              <p class="text-gray-600 mb-4">
+                Total yang harus dibayar:
+                <span id="totalPayment" class="font-bold text-primary"
+                  >Rp 62.000</span
+                >
+              </p>
+
+              <!-- Payment Instructions -->
+              <div
+                class="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6 text-left"
+              >
+                <h5 class="font-bold text-blue-800 mb-2">Cara Pembayaran:</h5>
+                <ol class="text-sm text-blue-700 space-y-1">
+                  <li>1. Buka aplikasi mobile banking atau e-wallet Anda</li>
+                  <li>2. Pilih menu "Scan QR" atau "QRIS"</li>
+                  <li>3. Arahkan kamera ke QR code di atas</li>
+                  <li>4. Masukkan nominal sesuai total pembayaran</li>
+                  <li>5. Konfirmasi dan selesaikan pembayaran</li>
+                  <li>6. Simpan bukti pembayaran untuk konfirmasi</li>
+                </ol>
+              </div>
+
+              <!-- Payment Timer -->
+              <div
+                class="bg-orange-50 border border-orange-200 rounded-lg p-4 mb-6"
+              >
+                <div class="flex items-center justify-center">
+                  <i class="fas fa-clock text-orange-500 mr-2"></i>
+                  <span class="text-orange-700"
+                    >Selesaikan pembayaran dalam:
+                  </span>
+                  <span id="countdown" class="font-bold text-orange-800 ml-2"
+                    >14:59</span
+                  >
+                </div>
+              </div>
+
+              <button
+                onclick="confirmPayment()"
+                class="bg-green-600 text-white py-3 px-6 rounded-lg font-medium hover:bg-green-700 transition duration-300"
+              >
+                <i class="fas fa-check mr-2"></i>Sudah Bayar? Konfirmasi
+                Sekarang
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8 mt-16">
+      <div class="container mx-auto px-4">
+        <div class="text-center">
+          <h3 class="text-xl font-bold mb-2">Sleman Mart</h3>
+          <p class="text-gray-400">Platform UMKM Digital Kabupaten Sleman</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Initialize page
+      document.addEventListener("DOMContentLoaded", function () {
+        // Initialize payment timer
+        startPaymentTimer(15 * 60); // 15 minutes
+
+        // Load order data from localStorage
+        loadOrderData();
+      });
+
+      // Navigate to confirmation
+      function confirmPayment() {
+        // Store payment data in localStorage for next step
+        const paymentData = {
+          timestamp: new Date().toISOString(),
+          amount: getTotalAmount(),
+        };
+        localStorage.setItem("paymentData", JSON.stringify(paymentData));
+
+        // Redirect to confirmation page
+        window.location.href = "confirmation.html";
+      }
+
+      // Payment timer
+      function startPaymentTimer(duration) {
+        let timer = duration;
+        const countdownElement = document.getElementById("countdown");
+
+        const interval = setInterval(function () {
+          const minutes = Math.floor(timer / 60);
+          const seconds = timer % 60;
+
+          countdownElement.textContent =
+            (minutes < 10 ? "0" + minutes : minutes) +
+            ":" +
+            (seconds < 10 ? "0" + seconds : seconds);
+
+          if (--timer < 0) {
+            clearInterval(interval);
+            alert("Waktu pembayaran habis. Silakan buat pesanan baru.");
+            window.location.href = "cart.html";
+          }
+        }, 1000);
+      }
+
+      // Load order data from localStorage
+      function loadOrderData() {
+        // Load from localStorage or use default data
+        let orderData = localStorage.getItem("orderData");
+
+        if (orderData) {
+          orderData = JSON.parse(orderData);
+        } else {
+          // Default sample data if no order data found
+          orderData = {
+            store: "Warung Bu Sari",
+            items: [
+              {
+                name: "Gudeg Komplit",
+                price: 25000,
+                quantity: 2,
+                total: 50000,
+              },
+              {
+                name: "Es Teh Manis",
+                price: 5000,
+                quantity: 2,
+                total: 10000,
+              },
+            ],
+            subtotal: 60000,
+            shipping: 2000,
+            total: 62000,
+          };
+        }
+
+        document.getElementById("totalPayment").textContent =
+          "Rp " + orderData.total.toLocaleString("id-ID");
+      }
+
+      // Get total amount
+      function getTotalAmount() {
+        let orderData = localStorage.getItem("orderData");
+        if (orderData) {
+          return JSON.parse(orderData).total;
+        }
+        return 62000; // Default amount
+      }
+    </script>
+  </body>
+</html>
