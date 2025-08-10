@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sleman Mart - E-Commerce UMKM</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#E57F39",
+              "primary-dark": "#C86A2B",
+              "primary-light": "#F29C5E",
+            },
+          },
+        },
+      };
+    </script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-gray-50">
+    <!-- Top Bar -->
+    <div class="bg-gray-100 py-3">
+      <div class="container mx-auto px-4">
+        <div class="flex items-center justify-between text-sm">
+          <div class="flex items-center space-x-4">
+            <span class="text-gray-600">
+              <i class="fas fa-phone mr-1"></i>Hotline: (0274) 123-4567
+            </span>
+            <span class="text-gray-600">
+              <i class="fas fa-envelope mr-1"></i>info@slemanmart.com
+            </span>
+          </div>
+          <div class="flex items-center space-x-4">
+            <span class="text-gray-600"
+              >Dinas Koperasi dan UKM Kabupaten Sleman</span
+            >
+            <div class="flex space-x-2">
+              <a href="#" class="text-gray-600 hover:text-primary"
+                ><i class="fab fa-facebook"></i
+              ></a>
+              <a href="#" class="text-gray-600 hover:text-primary"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a href="#" class="text-gray-600 hover:text-primary"
+                ><i class="fab fa-whatsapp"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+      <div class="container mx-auto px-4">
+        <div class="flex items-center justify-between h-16">
+          <!-- Logo -->
+          <div class="flex items-center">
+            <div class="mr-4">
+              <img
+                src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiByeD0iOCIgZmlsbD0iI0U1N0YzOSIvPgo8cGF0aCBkPSJNMTIgMThIMjhWMjJIMTJWMThaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNMTIgMjRIMjRWMjhIMTJWMjRaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNMTIgMTJIMzJWMTZIMTJWMTJaIiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4K"
+                alt="Sleman Mart"
+                class="h-10 w-10"
+              />
+            </div>
+            <div>
+              <div class="text-xl font-bold text-gray-800">Pasar Sleman</div>
+              <div class="text-sm text-gray-600">
+                Platform Digital DISKOPUKM
+              </div>
+            </div>
+          </div>
+
+          <!-- Menu Layanan Informatif -->
+          <div class="hidden lg:block">
+            <div class="flex items-baseline space-x-6">
+              <a
+                href="directory.html"
+                class="text-gray-700 hover:text-primary px-3 py-2 text-sm font-medium border-b-2 border-transparent hover:border-primary transition duration-300"
+              >
+                <i class="fas fa-building mr-1"></i>Direktori UMKM
+              </a>
+              <a
+                href="exhibitions.html"
+                class="text-gray-700 hover:text-primary px-3 py-2 text-sm font-medium border-b-2 border-transparent hover:border-primary transition duration-300"
+              >
+                <i class="fas fa-calendar-alt mr-1"></i>Info Pameran
+              </a>
+              <a
+                href="training.html"
+                class="text-gray-700 hover:text-primary px-3 py-2 text-sm font-medium border-b-2 border-transparent hover:border-primary transition duration-300"
+              >
+                <i class="fas fa-graduation-cap mr-1"></i>Info Pelatihan
+              </a>
+              <a
+                href="literacy.html"
+                class="text-gray-700 hover:text-primary px-3 py-2 text-sm font-medium border-b-2 border-transparent hover:border-primary transition duration-300"
+              >
+                <i class="fas fa-book mr-1"></i>Literasi UMKM
+              </a>
+            </div>
+          </div>
+
+          <!-- Auth & Cart Buttons -->
+          <div class="flex items-center space-x-4">
+            <a
+              href="cart.html"
+              class="relative text-gray-500 hover:text-primary"
+            >
+              <i class="fas fa-shopping-cart text-xl"></i>
+              <span
+                id="cartCount"
+                class="absolute -top-2 -right-2 bg-primary text-white text-xs rounded-full h-5 w-5 flex items-center justify-center"
+                >0</span
+              >
+            </a>
+            <a
+              href="login.html"
+              class="bg-white text-primary border border-primary px-6 py-2 rounded-full hover:bg-primary hover:text-white transition duration-300 font-medium"
+            >
+              Masuk
+            </a>
+            <a
+              href="register.html"
+              class="bg-primary text-white px-6 py-2 rounded-full hover:bg-primary-dark transition duration-300 font-medium"
+            >
+              Daftar
+            </a>
+          </div>
+
+          <!-- Mobile Menu Button -->
+          <div class="lg:hidden">
+            <button
+              onclick="toggleMobileMenu()"
+              class="text-gray-700 hover:text-primary p-2"
+            >
+              <i class="fas fa-bars text-xl"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden lg:hidden border-t border-gray-200">
+          <div class="py-4 space-y-2">
+            <a
+              href="directory.html"
+              class="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+            >
+              <i class="fas fa-building mr-2"></i>Direktori UMKM
+            </a>
+            <a
+              href="exhibitions.html"
+              class="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+            >
+              <i class="fas fa-calendar-alt mr-2"></i>Info Pameran
+            </a>
+            <a
+              href="training.html"
+              class="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+            >
+              <i class="fas fa-graduation-cap mr-2"></i>Info Pelatihan
+            </a>
+            <a
+              href="literacy.html"
+              class="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+            >
+              <i class="fas fa-book mr-2"></i>Literasi UMKM
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Shopping Header Section -->
+    <section class="bg-gradient-to-r from-orange-50 to-white py-8 border-b">
+      <div class="container mx-auto px-4">
+        <div
+          class="flex flex-col md:flex-row items-center justify-between gap-6"
+        >
+          <!-- Search Bar -->
+          <div class="flex-1 max-w-2xl">
+            <div class="relative">
+              <div class="flex">
+                <input
+                  type="text"
+                  id="mainSearch"
+                  placeholder="Cari produk UMKM Sleman..."
+                  class="flex-1 px-6 py-3 text-base border-2 border-gray-300 rounded-l-full focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary focus:ring-opacity-20"
+                />
+                <button
+                  onclick="performSearch()"
+                  class="bg-primary text-white px-6 py-3 rounded-r-full hover:bg-primary-dark transition duration-300 font-semibold"
+                >
+                  <i class="fas fa-search"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Actions -->
+          <div class="flex items-center space-x-4">
+            <div class="text-center">
+              <div class="text-sm text-gray-600">Total Produk</div>
+              <div class="text-xl font-bold text-primary">1,250+</div>
+            </div>
+            <div class="text-center">
+              <div class="text-sm text-gray-600">UMKM Terdaftar</div>
+              <div class="text-xl font-bold text-primary">340+</div>
+            </div>
+            <a
+              href="products.html"
+              class="bg-primary text-white px-6 py-3 rounded-full font-semibold hover:bg-primary-dark transition duration-300"
+            >
+              <i class="fas fa-th-large mr-2"></i>Semua Produk
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Announcement Section -->
+    <section class="py-6 bg-blue-50 border-b">
+      <div class="container mx-auto px-4">
+        <div class="bg-gradient-to-r from-blue-100 to-blue-200 rounded-lg p-6">
+          <div class="flex items-center mb-3">
+            <i class="fas fa-bullhorn text-blue-600 text-xl mr-3"></i>
+            <h2 class="text-lg font-bold text-blue-800">Pengumuman Terkini</h2>
+          </div>
+          <div class="space-y-3">
+            <div class="bg-white rounded-lg p-4 shadow-sm">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-sm font-medium text-gray-600"
+                  >9 Agustus 2025</span
+                >
+                <span
+                  class="bg-red-100 text-red-800 text-xs px-2 py-1 rounded-full"
+                  >Penting</span
+                >
+              </div>
+              <p class="text-gray-800 font-medium mb-1">Pemeliharaan Sistem</p>
+              <p class="text-sm text-gray-600">
+                Sistem akan mengalami pemeliharaan pada tanggal 15 Agustus 2025
+                pukul 00:00 - 04:00 WIB. Mohon maaf atas ketidaknyamanannya.
+              </p>
+            </div>
+            <div class="bg-white rounded-lg p-4 shadow-sm">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-sm font-medium text-gray-600"
+                  >8 Agustus 2025</span
+                >
+                <span
+                  class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full"
+                  >Info</span
+                >
+              </div>
+              <p class="text-gray-800 font-medium mb-1">
+                Program Pelatihan Digital UMKM
+              </p>
+              <p class="text-sm text-gray-600">
+                Daftar sekarang untuk mengikuti pelatihan digital marketing
+                gratis untuk UMKM Sleman periode September 2025.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick Categories -->
+    <section class="py-8 bg-white border-b">
+      <div class="container mx-auto px-4">
+        <div class="flex items-center justify-between mb-6">
+          <h2 class="text-xl font-bold text-gray-800">Kategori Produk</h2>
+          <a
+            href="products.html"
+            class="text-primary hover:text-primary-dark text-sm font-medium"
+          >
+            Lihat Semua <i class="fas fa-arrow-right ml-1"></i>
+          </a>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-6 gap-4">
+          <a
+            href="products.html?category=makanan"
+            class="text-center group hover:transform hover:scale-105 transition duration-300 p-4 rounded-lg hover:bg-gray-50"
+          >
+            <div
+              class="bg-red-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:bg-red-200"
+            >
+              <i class="fas fa-utensils text-red-600 text-xl"></i>
+            </div>
+            <h3 class="font-medium text-gray-800 text-sm">Makanan & Minuman</h3>
+          </a>
+
+          <a
+            href="products.html?category=fashion"
+            class="text-center group hover:transform hover:scale-105 transition duration-300 p-4 rounded-lg hover:bg-gray-50"
+          >
+            <div
+              class="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:bg-purple-200"
+            >
+              <i class="fas fa-tshirt text-purple-600 text-xl"></i>
+            </div>
+            <h3 class="font-medium text-gray-800 text-sm">
+              Fashion & Aksesoris
+            </h3>
+          </a>
+
+          <a
+            href="products.html?category=kerajinan"
+            class="text-center group hover:transform hover:scale-105 transition duration-300 p-4 rounded-lg hover:bg-gray-50"
+          >
+            <div
+              class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:bg-green-200"
+            >
+              <i class="fas fa-hammer text-green-600 text-xl"></i>
+            </div>
+            <h3 class="font-medium text-gray-800 text-sm">Kerajinan Tangan</h3>
+          </a>
+
+          <a
+            href="products.html?category=kecantikan"
+            class="text-center group hover:transform hover:scale-105 transition duration-300 p-4 rounded-lg hover:bg-gray-50"
+          >
+            <div
+              class="bg-pink-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:bg-pink-200"
+            >
+              <i class="fas fa-spa text-pink-600 text-xl"></i>
+            </div>
+            <h3 class="font-medium text-gray-800 text-sm">
+              Kecantikan & Kesehatan
+            </h3>
+          </a>
+
+          <a
+            href="products.html?category=pertanian"
+            class="text-center group hover:transform hover:scale-105 transition duration-300 p-4 rounded-lg hover:bg-gray-50"
+          >
+            <div
+              class="bg-yellow-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:bg-yellow-200"
+            >
+              <i class="fas fa-seedling text-yellow-600 text-xl"></i>
+            </div>
+            <h3 class="font-medium text-gray-800 text-sm">Pertanian Organik</h3>
+          </a>
+
+          <a
+            href="products.html"
+            class="text-center group hover:transform hover:scale-105 transition duration-300 p-4 rounded-lg hover:bg-gray-50"
+          >
+            <div
+              class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:bg-blue-200"
+            >
+              <i class="fas fa-th-large text-blue-600 text-xl"></i>
+            </div>
+            <h3 class="font-medium text-gray-800 text-sm">Semua Kategori</h3>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div>
+            <h3 class="text-sm font-bold mb-4">Tentang Kami</h3>
+            <p class="text-gray-400 text-sm">
+              Sleman Mart adalah platform digital untuk mendukung UMKM di
+              Kabupaten Sleman.
+            </p>
+          </div>
+          <div>
+            <h3 class="text-sm font-bold mb-4">Kontak</h3>
+            <p class="text-gray-400 text-sm">Hotline: (0274) 123-4567</p>
+            <p class="text-gray-400 text-sm">Email: info@slemanmart.com</p>
+          </div>
+          <div>
+            <h3 class="text-sm font-bold mb-4">Ikuti Kami</h3>
+            <div class="flex space-x-4">
+              <a href="#" class="text-gray-400 hover:text-white"
+                ><i class="fab fa-facebook text-lg"></i
+              ></a>
+              <a href="#" class="text-gray-400 hover:text-white"
+                ><i class="fab fa-instagram text-lg"></i
+              ></a>
+              <a href="#" class="text-gray-400 hover:text-white"
+                ><i class="fab fa-whatsapp text-lg"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      let cartCount = 0;
+
+      // Toggle mobile menu
+      function toggleMobileMenu() {
+        const mobileMenu = document.getElementById("mobileMenu");
+        mobileMenu.classList.toggle("hidden");
+      }
+
+      // Search functionality
+      function performSearch() {
+        const searchTerm = document.getElementById("mainSearch").value;
+        if (searchTerm.trim()) {
+          window.location.href = `products.html?search=${encodeURIComponent(
+            searchTerm
+          )}`;
+        }
+      }
+
+      // Show search suggestions
+      document
+        .getElementById("mainSearch")
+        .addEventListener("focus", function () {
+          document
+            .getElementById("searchSuggestions")
+            .classList.remove("hidden");
+        });
+
+      // Hide search suggestions
+      document.addEventListener("click", function (e) {
+        if (
+          !e.target.closest("#mainSearch") &&
+          !e.target.closest("#searchSuggestions")
+        ) {
+          document.getElementById("searchSuggestions").classList.add("hidden");
+        }
+      });
+
+      // Search on Enter key
+      document
+        .getElementById("mainSearch")
+        .addEventListener("keypress", function (e) {
+          if (e.key === "Enter") {
+            performSearch();
+          }
+        });
+
+      // Add to cart from homepage
+      function addToCartFromHome(productId) {
+        cartCount++;
+        document.getElementById("cartCount").textContent = cartCount;
+
+        // Animation
+        const cartIcon =
+          document.querySelector(".fa-shopping-cart").parentElement;
+        cartIcon.classList.add("animate-bounce");
+        setTimeout(() => {
+          cartIcon.classList.remove("animate-bounce");
+        }, 500);
+
+        // Show success message
+        showMessage("Produk berhasil ditambahkan ke keranjang!", "success");
+      }
+
+      // Open WhatsApp admin
+      function openWhatsAppAdmin() {
+        const phoneNumber = "6282122706318"; // Format: country code + number without +
+        const message =
+          "Halo Admin Pasar Sleman, saya ingin bertanya tentang...";
+        const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
+          message
+        )}`;
+        window.open(whatsappUrl, "_blank");
+      }
+
+      // Show message function
+      function showMessage(message, type) {
+        const messageDiv = document.createElement("div");
+        messageDiv.className = `fixed top-4 right-4 p-4 rounded-md shadow-lg z-50 ${
+          type === "success"
+            ? "bg-green-500 text-white"
+            : "bg-red-500 text-white"
+        }`;
+        messageDiv.textContent = message;
+
+        document.body.appendChild(messageDiv);
+
+        setTimeout(() => {
+          messageDiv.remove();
+        }, 3000);
+      }
+
+      // Initialize page
+      document.addEventListener("DOMContentLoaded", function () {
+        // Load cart count from localStorage
+        const savedCartCount = localStorage.getItem("cartCount") || "0";
+        cartCount = parseInt(savedCartCount);
+        document.getElementById("cartCount").textContent = cartCount;
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Keranjang Belanja - Sleman Mart</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#E57F39",
+              "primary-dark": "#C86A2B",
+              "primary-light": "#F29C5E",
+            },
+          },
+        },
+      };
+    </script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-md">
+      <div class="container mx-auto px-4 py-4">
+        <div class="flex items-center justify-between">
+          <h1 class="text-lg sm:text-2xl font-bold text-gray-800">
+            Keranjang Belanja
+          </h1>
+          <div class="flex items-center space-x-2 sm:space-x-4">
+            <a
+              href="products.html"
+              class="text-primary hover:text-primary-dark text-sm sm:text-base"
+            >
+              <i class="fas fa-arrow-left mr-1"></i>
+              <span class="hidden sm:inline">Kembali Belanja</span>
+              <span class="sm:hidden">Belanja</span>
+            </a>
+            <a
+              href="index.html"
+              class="text-primary hover:text-primary-dark text-sm sm:text-base"
+            >
+              <i class="fas fa-home mr-1"></i>
+              <span class="hidden sm:inline">Beranda</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Cart Content -->
+    <section class="py-8">
+      <div class="container mx-auto px-4">
+        <!-- Store 1: Toko Cemilan Sleman -->
+        <div class="bg-white rounded-lg shadow-md mb-6">
+          <!-- Store Header -->
+          <div
+            class="bg-gray-50 px-4 sm:px-6 py-4 border-b flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-2 sm:space-y-0"
+          >
+            <div class="flex items-center">
+              <input
+                type="checkbox"
+                id="store1"
+                class="mr-3 w-4 h-4 text-primary bg-gray-100 border-gray-300 rounded focus:ring-primary"
+                checked
+              />
+              <div
+                class="bg-primary rounded-full w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center mr-3"
+              >
+                <i class="fas fa-store text-white text-sm sm:text-base"></i>
+              </div>
+              <div>
+                <h3 class="font-bold text-gray-800 text-sm sm:text-base">
+                  Toko Cemilan Sleman
+                </h3>
+                <p class="text-xs sm:text-sm text-gray-600">
+                  Jl. Magelang KM 5, Sleman
+                </p>
+              </div>
+            </div>
+            <div
+              class="flex items-center text-xs sm:text-sm text-gray-600 ml-auto sm:ml-0"
+            >
+              <i class="fas fa-truck mr-1"></i>
+              <span>Ongkir: Rp 10.000</span>
+            </div>
+          </div>
+
+          <!-- Store Items -->
+          <div class="p-4 sm:p-6">
+            <!-- Item 1 -->
+            <div
+              class="flex flex-col sm:flex-row sm:items-center sm:justify-between py-4 border-b border-gray-100 space-y-4 sm:space-y-0"
+            >
+              <div class="flex items-start sm:items-center">
+                <input
+                  type="checkbox"
+                  class="mr-3 sm:mr-4 w-4 h-4 text-primary bg-gray-100 border-gray-300 rounded focus:ring-primary mt-1 sm:mt-0"
+                  checked
+                />
+                <div
+                  class="bg-gray-200 rounded w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center mr-3 sm:mr-4 flex-shrink-0"
+                >
+                  <i class="fas fa-image text-gray-400"></i>
+                </div>
+                <div class="flex-1 min-w-0">
+                  <h4 class="font-bold text-gray-800 text-sm sm:text-base">
+                    Keripik Tempe Original
+                  </h4>
+                  <p class="text-xs sm:text-sm text-gray-600">
+                    Varian: Original
+                  </p>
+                  <p class="text-primary font-bold text-sm sm:text-base">
+                    Rp 15.000
+                  </p>
+                </div>
+              </div>
+              <div
+                class="flex items-center justify-between sm:justify-end space-x-3 sm:space-x-4"
+              >
+                <div class="flex items-center border border-gray-300 rounded">
+                  <button
+                    class="px-2 sm:px-3 py-1 text-gray-600 hover:bg-gray-100"
+                  >
+                    <i class="fas fa-minus text-xs sm:text-sm"></i>
+                  </button>
+                  <span class="px-3 sm:px-4 py-1 text-center text-sm">2</span>
+                  <button
+                    class="px-2 sm:px-3 py-1 text-gray-600 hover:bg-gray-100"
+                  >
+                    <i class="fas fa-plus text-xs sm:text-sm"></i>
+                  </button>
+                </div>
+                <div class="text-right">
+                  <p class="font-bold text-gray-800 text-sm sm:text-base">
+                    Rp 30.000
+                  </p>
+                </div>
+                <button class="text-red-500 hover:text-red-700">
+                  <i class="fas fa-trash text-sm"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div
+              class="flex flex-col sm:flex-row sm:items-center sm:justify-between py-4 border-b border-gray-100 space-y-4 sm:space-y-0"
+            >
+              <div class="flex items-start sm:items-center">
+                <input
+                  type="checkbox"
+                  class="mr-3 sm:mr-4 w-4 h-4 text-primary bg-gray-100 border-gray-300 rounded focus:ring-primary mt-1 sm:mt-0"
+                  checked
+                />
+                <div
+                  class="bg-gray-200 rounded w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center mr-3 sm:mr-4 flex-shrink-0"
+                >
+                  <i class="fas fa-image text-gray-400"></i>
+                </div>
+                <div class="flex-1 min-w-0">
+                  <h4 class="font-bold text-gray-800 text-sm sm:text-base">
+                    Kerupuk Tahu Krispy
+                  </h4>
+                  <p class="text-xs sm:text-sm text-gray-600">
+                    Varian: Original
+                  </p>
+                  <p class="text-primary font-bold text-sm sm:text-base">
+                    Rp 12.000
+                  </p>
+                </div>
+              </div>
+              <div
+                class="flex items-center justify-between sm:justify-end space-x-3 sm:space-x-4"
+              >
+                <div class="flex items-center border border-gray-300 rounded">
+                  <button
+                    class="px-2 sm:px-3 py-1 text-gray-600 hover:bg-gray-100"
+                  >
+                    <i class="fas fa-minus text-xs sm:text-sm"></i>
+                  </button>
+                  <span class="px-3 sm:px-4 py-1 text-center text-sm">1</span>
+                  <button
+                    class="px-2 sm:px-3 py-1 text-gray-600 hover:bg-gray-100"
+                  >
+                    <i class="fas fa-plus text-xs sm:text-sm"></i>
+                  </button>
+                </div>
+                <div class="text-right">
+                  <p class="font-bold text-gray-800 text-sm sm:text-base">
+                    Rp 12.000
+                  </p>
+                </div>
+                <button class="text-red-500 hover:text-red-700">
+                  <i class="fas fa-trash text-sm"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Store Subtotal -->
+            <div
+              class="flex flex-col sm:flex-row sm:justify-between sm:items-center pt-4 space-y-3 sm:space-y-0"
+            >
+              <div
+                class="flex flex-col sm:flex-row sm:items-center sm:space-x-4 space-y-1 sm:space-y-0"
+              >
+                <span class="text-xs sm:text-sm text-gray-600"
+                  >Subtotal Produk: Rp 42.000</span
+                >
+                <span class="text-xs sm:text-sm text-gray-600"
+                  >Ongkir: Rp 10.000</span
+                >
+              </div>
+              <div class="text-left sm:text-right">
+                <p class="text-base sm:text-lg font-bold text-gray-800">
+                  Total: Rp 52.000
+                </p>
+                <button
+                  class="bg-primary text-white px-4 sm:px-6 py-2 rounded-lg hover:bg-primary-dark transition duration-300 mt-2 text-sm sm:text-base w-full sm:w-auto"
+                >
+                  <i class="fas fa-shopping-cart mr-2"></i>Checkout Toko Ini
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Store 2: Batik Sleman Asri -->
+        <div class="bg-white rounded-lg shadow-md mb-6">
+          <!-- Store Header -->
+          <div
+            class="bg-gray-50 px-4 sm:px-6 py-4 border-b flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-2 sm:space-y-0"
+          >
+            <div class="flex items-center">
+              <input
+                type="checkbox"
+                id="store2"
+                class="mr-3 w-4 h-4 text-primary bg-gray-100 border-gray-300 rounded focus:ring-primary"
+              />
+              <div
+                class="bg-primary rounded-full w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center mr-3"
+              >
+                <i class="fas fa-store text-white text-sm sm:text-base"></i>
+              </div>
+              <div>
+                <h3 class="font-bold text-gray-800 text-sm sm:text-base">
+                  Batik Sleman Asri
+                </h3>
+                <p class="text-xs sm:text-sm text-gray-600">
+                  Jl. Kaliurang KM 7, Sleman
+                </p>
+              </div>
+            </div>
+            <div
+              class="flex items-center text-xs sm:text-sm text-gray-600 ml-auto sm:ml-0"
+            >
+              <i class="fas fa-truck mr-1"></i>
+              <span>Ongkir: Rp 12.000</span>
+            </div>
+          </div>
+
+          <!-- Store Items -->
+          <div class="p-4 sm:p-6">
+            <!-- Item 1 -->
+            <div
+              class="flex flex-col sm:flex-row sm:items-center sm:justify-between py-4 border-b border-gray-100 space-y-4 sm:space-y-0"
+            >
+              <div class="flex items-start sm:items-center">
+                <input
+                  type="checkbox"
+                  class="mr-3 sm:mr-4 w-4 h-4 text-primary bg-gray-100 border-gray-300 rounded focus:ring-primary mt-1 sm:mt-0"
+                />
+                <div
+                  class="bg-gray-200 rounded w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center mr-3 sm:mr-4 flex-shrink-0"
+                >
+                  <i class="fas fa-image text-gray-400"></i>
+                </div>
+                <div class="flex-1 min-w-0">
+                  <h4 class="font-bold text-gray-800 text-sm sm:text-base">
+                    Batik Jumputan
+                  </h4>
+                  <p class="text-xs sm:text-sm text-gray-600">
+                    Varian: Motif A, Size: L
+                  </p>
+                  <p class="text-primary font-bold text-sm sm:text-base">
+                    Rp 125.000
+                  </p>
+                </div>
+              </div>
+              <div
+                class="flex items-center justify-between sm:justify-end space-x-3 sm:space-x-4"
+              >
+                <div class="flex items-center border border-gray-300 rounded">
+                  <button
+                    class="px-2 sm:px-3 py-1 text-gray-600 hover:bg-gray-100"
+                  >
+                    <i class="fas fa-minus text-xs sm:text-sm"></i>
+                  </button>
+                  <span class="px-3 sm:px-4 py-1 text-center text-sm">1</span>
+                  <button
+                    class="px-2 sm:px-3 py-1 text-gray-600 hover:bg-gray-100"
+                  >
+                    <i class="fas fa-plus text-xs sm:text-sm"></i>
+                  </button>
+                </div>
+                <div class="text-right">
+                  <p class="font-bold text-gray-800 text-sm sm:text-base">
+                    Rp 125.000
+                  </p>
+                </div>
+                <button class="text-red-500 hover:text-red-700">
+                  <i class="fas fa-trash text-sm"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Store Subtotal -->
+            <div
+              class="flex flex-col sm:flex-row sm:justify-between sm:items-center pt-4 space-y-3 sm:space-y-0"
+            >
+              <div
+                class="flex flex-col sm:flex-row sm:items-center sm:space-x-4 space-y-1 sm:space-y-0"
+              >
+                <span class="text-xs sm:text-sm text-gray-600"
+                  >Subtotal Produk: Rp 125.000</span
+                >
+                <span class="text-xs sm:text-sm text-gray-600"
+                  >Ongkir: Rp 12.000</span
+                >
+              </div>
+              <div class="text-left sm:text-right">
+                <p class="text-base sm:text-lg font-bold text-gray-800">
+                  Total: Rp 137.000
+                </p>
+                <button
+                  class="bg-primary text-white px-4 sm:px-6 py-2 rounded-lg hover:bg-primary-dark transition duration-300 mt-2 text-sm sm:text-base w-full sm:w-auto"
+                >
+                  <i class="fas fa-shopping-cart mr-2"></i>Checkout Toko Ini
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Store 3: Natural Sleman Care -->
+        <div class="bg-white rounded-lg shadow-md mb-6">
+          <!-- Store Header -->
+          <div
+            class="bg-gray-50 px-4 sm:px-6 py-4 border-b flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-2 sm:space-y-0"
+          >
+            <div class="flex items-center">
+              <input
+                type="checkbox"
+                id="store3"
+                class="mr-3 w-4 h-4 text-primary bg-gray-100 border-gray-300 rounded focus:ring-primary"
+                checked
+              />
+              <div
+                class="bg-primary rounded-full w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center mr-3"
+              >
+                <i class="fas fa-store text-white text-sm sm:text-base"></i>
+              </div>
+              <div>
+                <h3 class="font-bold text-gray-800 text-sm sm:text-base">
+                  Natural Sleman Care
+                </h3>
+                <p class="text-xs sm:text-sm text-gray-600">
+                  Jl. Palagan Tentara Pelajar, Sleman
+                </p>
+              </div>
+            </div>
+            <div
+              class="flex items-center text-xs sm:text-sm text-gray-600 ml-auto sm:ml-0"
+            >
+              <i class="fas fa-truck mr-1"></i>
+              <span>Ongkir: Rp 8.000</span>
+            </div>
+          </div>
+
+          <!-- Store Items -->
+          <div class="p-4 sm:p-6">
+            <!-- Item 1 -->
+            <div
+              class="flex flex-col sm:flex-row sm:items-center sm:justify-between py-4 border-b border-gray-100 space-y-4 sm:space-y-0"
+            >
+              <div class="flex items-start sm:items-center">
+                <input
+                  type="checkbox"
+                  class="mr-3 sm:mr-4 w-4 h-4 text-primary bg-gray-100 border-gray-300 rounded focus:ring-primary mt-1 sm:mt-0"
+                  checked
+                />
+                <div
+                  class="bg-gray-200 rounded w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center mr-3 sm:mr-4 flex-shrink-0"
+                >
+                  <i class="fas fa-image text-gray-400"></i>
+                </div>
+                <div class="flex-1 min-w-0">
+                  <h4 class="font-bold text-gray-800 text-sm sm:text-base">
+                    Sabun Herbal Alami
+                  </h4>
+                  <p class="text-xs sm:text-sm text-gray-600">
+                    Varian: Bengkoang
+                  </p>
+                  <p class="text-primary font-bold text-sm sm:text-base">
+                    Rp 18.000
+                  </p>
+                </div>
+              </div>
+              <div
+                class="flex items-center justify-between sm:justify-end space-x-3 sm:space-x-4"
+              >
+                <div class="flex items-center border border-gray-300 rounded">
+                  <button
+                    class="px-2 sm:px-3 py-1 text-gray-600 hover:bg-gray-100"
+                  >
+                    <i class="fas fa-minus text-xs sm:text-sm"></i>
+                  </button>
+                  <span class="px-3 sm:px-4 py-1 text-center text-sm">3</span>
+                  <button
+                    class="px-2 sm:px-3 py-1 text-gray-600 hover:bg-gray-100"
+                  >
+                    <i class="fas fa-plus text-xs sm:text-sm"></i>
+                  </button>
+                </div>
+                <div class="text-right">
+                  <p class="font-bold text-gray-800 text-sm sm:text-base">
+                    Rp 54.000
+                  </p>
+                </div>
+                <button class="text-red-500 hover:text-red-700">
+                  <i class="fas fa-trash text-sm"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Store Subtotal -->
+            <div
+              class="flex flex-col sm:flex-row sm:justify-between sm:items-center pt-4 space-y-3 sm:space-y-0"
+            >
+              <div
+                class="flex flex-col sm:flex-row sm:items-center sm:space-x-4 space-y-1 sm:space-y-0"
+              >
+                <span class="text-xs sm:text-sm text-gray-600"
+                  >Subtotal Produk: Rp 54.000</span
+                >
+                <span class="text-xs sm:text-sm text-gray-600"
+                  >Ongkir: Rp 8.000</span
+                >
+              </div>
+              <div class="text-left sm:text-right">
+                <p class="text-base sm:text-lg font-bold text-gray-800">
+                  Total: Rp 62.000
+                </p>
+                <button
+                  class="bg-primary text-white px-4 sm:px-6 py-2 rounded-lg hover:bg-primary-dark transition duration-300 mt-2 text-sm sm:text-base w-full sm:w-auto"
+                  onclick="window.location.href='checkout.html'"
+                >
+                  <i class="fas fa-shopping-cart mr-2"></i>Checkout Toko Ini
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cart Summary -->
+        <div class="bg-white rounded-lg shadow-md p-4 sm:p-6">
+          <div
+            class="flex flex-col sm:flex-row sm:justify-between sm:items-center space-y-4 sm:space-y-0"
+          >
+            <div>
+              <p class="text-gray-600 text-sm sm:text-base">
+                Total Item Terpilih: 6 produk dari 2 toko
+              </p>
+              <p class="text-xs sm:text-sm text-orange-600 mt-1">
+                <i class="fas fa-info-circle mr-1"></i>
+                Checkout dilakukan per toko untuk memastikan pengiriman yang
+                optimal
+              </p>
+            </div>
+            <div class="text-left sm:text-right">
+              <p class="text-lg sm:text-2xl font-bold text-gray-800">
+                Total Keranjang
+              </p>
+              <p class="text-2xl sm:text-3xl font-bold text-primary">
+                Rp 114.000
+              </p>
+              <p class="text-xs sm:text-sm text-gray-500">
+                *Belum termasuk ongkir
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8 sm:py-12 mt-8 sm:mt-16">
+      <div class="container mx-auto px-4">
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8"
+        >
+          <div>
+            <h3 class="text-lg sm:text-xl font-bold mb-4">Sleman Mart</h3>
+            <p class="text-gray-300 text-sm sm:text-base">
+              Platform e-commerce untuk UMKM di Sleman yang mendukung produk
+              lokal berkualitas.
+            </p>
+          </div>
+          <div>
+            <h4 class="font-semibold mb-4 text-sm sm:text-base">Link Cepat</h4>
+            <ul class="space-y-2">
+              <li>
+                <a
+                  href="products.html"
+                  class="text-gray-300 hover:text-primary text-sm sm:text-base"
+                  >Produk</a
+                >
+              </li>
+              <li>
+                <a
+                  href="categories.html"
+                  class="text-gray-300 hover:text-primary text-sm sm:text-base"
+                  >Kategori</a
+                >
+              </li>
+              <li>
+                <a
+                  href="sellers.html"
+                  class="text-gray-300 hover:text-primary text-sm sm:text-base"
+                  >Penjual</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-semibold mb-4 text-sm sm:text-base">Bantuan</h4>
+            <ul class="space-y-2">
+              <li>
+                <a
+                  href="help.html"
+                  class="text-gray-300 hover:text-primary text-sm sm:text-base"
+                  >Pusat Bantuan</a
+                >
+              </li>
+              <li>
+                <a
+                  href="contact.html"
+                  class="text-gray-300 hover:text-primary text-sm sm:text-base"
+                  >Kontak</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-semibold mb-4 text-sm sm:text-base">
+              Hubungi Kami
+            </h4>
+            <p class="text-gray-300 mb-2 text-sm sm:text-base">
+              Email: info@slemanmart.com
+            </p>
+            <p class="text-gray-300 mb-4 text-sm sm:text-base">
+              Telepon: (0274) 123-4567
+            </p>
+          </div>
+        </div>
+        <div
+          class="border-t border-gray-700 mt-6 sm:mt-8 pt-6 sm:pt-8 text-center text-gray-300"
+        >
+          <p class="text-xs sm:text-sm">
+            &copy; 2025 Sleman Mart. Semua hak cipta dilindungi.
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

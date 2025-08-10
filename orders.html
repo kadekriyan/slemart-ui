@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pesanan Saya - Sleman Mart</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#E57F39",
+              "primary-dark": "#C86A2B",
+              "primary-light": "#F29C5E",
+            },
+          },
+        },
+      };
+    </script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+      <div class="container mx-auto px-4">
+        <div class="flex items-center justify-between h-16">
+          <div class="flex items-center">
+            <div class="text-xl sm:text-2xl font-bold text-primary">
+              <i class="fas fa-store mr-2"></i
+              ><a href="index.html">Sleman Mart</a>
+            </div>
+          </div>
+
+          <div class="hidden md:block">
+            <div class="ml-10 flex items-baseline space-x-4">
+              <a
+                href="index.html"
+                class="text-gray-500 hover:text-primary px-3 py-2 rounded-md text-sm font-medium"
+                >Beranda</a
+              >
+              <a
+                href="products.html"
+                class="text-gray-500 hover:text-primary px-3 py-2 rounded-md text-sm font-medium"
+                >Produk</a
+              >
+              <a
+                href="categories.html"
+                class="text-gray-500 hover:text-primary px-3 py-2 rounded-md text-sm font-medium"
+                >Kategori</a
+              >
+            </div>
+          </div>
+
+          <div class="flex items-center space-x-2 sm:space-x-4">
+            <a
+              href="cart.html"
+              class="relative text-gray-500 hover:text-primary"
+            >
+              <i class="fas fa-shopping-cart text-lg sm:text-xl"></i>
+              <span
+                class="absolute -top-2 -right-2 bg-primary text-white text-xs rounded-full h-5 w-5 flex items-center justify-center"
+                >0</span
+              >
+            </a>
+            <a
+              href="dashboard.html"
+              class="bg-primary text-white px-2 sm:px-4 py-2 rounded-md hover:bg-primary-dark transition duration-300 text-sm sm:text-base"
+            >
+              <span class="hidden sm:inline">Dashboard</span>
+              <i class="fas fa-user sm:hidden"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container mx-auto px-4 py-4 sm:py-8">
+      <!-- Breadcrumb -->
+      <nav class="mb-4 sm:mb-6">
+        <ol
+          class="flex items-center space-x-2 text-xs sm:text-sm text-gray-500 overflow-x-auto whitespace-nowrap"
+        >
+          <li>
+            <a href="index.html" class="hover:text-primary flex-shrink-0"
+              >Beranda</a
+            >
+          </li>
+          <li><i class="fas fa-chevron-right text-xs flex-shrink-0"></i></li>
+          <li>
+            <a href="dashboard.html" class="hover:text-primary flex-shrink-0"
+              >Dashboard</a
+            >
+          </li>
+          <li><i class="fas fa-chevron-right text-xs flex-shrink-0"></i></li>
+          <li class="text-gray-900 truncate">Pesanan Saya</li>
+        </ol>
+      </nav>
+
+      <!-- Page Header -->
+      <div class="mb-6 sm:mb-8">
+        <h1 class="text-2xl sm:text-3xl font-bold text-gray-800 mb-2">
+          Pesanan Saya
+        </h1>
+        <p class="text-sm sm:text-base text-gray-600">
+          Kelola dan lacak semua pesanan Anda
+        </p>
+      </div>
+
+      <div class="grid lg:grid-cols-4 gap-4 sm:gap-8">
+        <!-- Order Filters -->
+        <div class="lg:col-span-1">
+          <div class="bg-white rounded-lg shadow-md p-4 sm:p-6">
+            <h3 class="text-base sm:text-lg font-semibold mb-4">
+              Filter Pesanan
+            </h3>
+
+            <!-- Status Filter -->
+            <div class="mb-4 sm:mb-6">
+              <label class="block text-sm font-medium text-gray-700 mb-2"
+                >Status Pesanan</label
+              >
+              <select
+                id="statusFilter"
+                class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+              >
+                <option value="">Semua Status</option>
+                <option value="pending">Menunggu Konfirmasi</option>
+                <option value="processing">Diproses</option>
+                <option value="packed">Dikemas</option>
+                <option value="shipped">Dikirim</option>
+                <option value="completed">Selesai</option>
+                <option value="cancelled">Dibatalkan</option>
+              </select>
+            </div>
+
+            <!-- Date Range -->
+            <div class="mb-4 sm:mb-6">
+              <label class="block text-sm font-medium text-gray-700 mb-2"
+                >Periode</label
+              >
+              <div class="space-y-2">
+                <input
+                  type="date"
+                  id="startDate"
+                  class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                />
+                <input
+                  type="date"
+                  id="endDate"
+                  class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                />
+              </div>
+            </div>
+
+            <!-- Search -->
+            <div class="mb-6">
+              <label class="block text-sm font-medium text-gray-700 mb-2"
+                >Cari Pesanan</label
+              >
+              <input
+                type="text"
+                id="searchOrder"
+                placeholder="Nomor pesanan atau nama produk"
+                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+              />
+            </div>
+
+            <button
+              onclick="applyFilters()"
+              class="w-full bg-primary text-white py-2 px-4 rounded-md hover:bg-primary-dark transition duration-300"
+            >
+              <i class="fas fa-filter mr-2"></i>Terapkan Filter
+            </button>
+          </div>
+        </div>
+
+        <!-- Orders List -->
+        <div class="lg:col-span-3">
+          <!-- Order Status Tabs -->
+          <div class="bg-white rounded-lg shadow-md mb-4 sm:mb-6">
+            <div class="border-b border-gray-200">
+              <nav
+                class="flex space-x-2 sm:space-x-8 px-4 sm:px-6 overflow-x-auto"
+                aria-label="Tabs"
+              >
+                <button
+                  onclick="filterByStatus('')"
+                  class="tab-button border-b-2 border-primary text-primary py-3 sm:py-4 px-1 text-xs sm:text-sm font-medium whitespace-nowrap"
+                >
+                  Semua
+                  <span
+                    class="hidden sm:inline bg-primary text-white px-2 py-1 rounded-full text-xs ml-2"
+                    >12</span
+                  >
+                </button>
+                <button
+                  onclick="filterByStatus('pending')"
+                  class="tab-button border-b-2 border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 py-3 sm:py-4 px-1 text-xs sm:text-sm font-medium whitespace-nowrap"
+                >
+                  Menunggu
+                  <span
+                    class="hidden sm:inline bg-gray-200 text-gray-700 px-2 py-1 rounded-full text-xs ml-2"
+                    >2</span
+                  >
+                </button>
+                <button
+                  onclick="filterByStatus('processing')"
+                  class="tab-button border-b-2 border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 py-3 sm:py-4 px-1 text-xs sm:text-sm font-medium whitespace-nowrap"
+                >
+                  Diproses
+                  <span
+                    class="hidden sm:inline bg-gray-200 text-gray-700 px-2 py-1 rounded-full text-xs ml-2"
+                    >1</span
+                  >
+                </button>
+                <button
+                  onclick="filterByStatus('shipped')"
+                  class="tab-button border-b-2 border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 py-3 sm:py-4 px-1 text-xs sm:text-sm font-medium whitespace-nowrap"
+                >
+                  Dikirim
+                  <span
+                    class="hidden sm:inline bg-gray-200 text-gray-700 px-2 py-1 rounded-full text-xs ml-2"
+                    >3</span
+                  >
+                </button>
+                <button
+                  onclick="filterByStatus('completed')"
+                  class="tab-button border-b-2 border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 py-3 sm:py-4 px-1 text-xs sm:text-sm font-medium whitespace-nowrap"
+                >
+                  Selesai
+                  <span
+                    class="hidden sm:inline bg-gray-200 text-gray-700 px-2 py-1 rounded-full text-xs ml-2"
+                    >6</span
+                  >
+                </button>
+              </nav>
+            </div>
+          </div>
+
+          <!-- Orders Container -->
+          <div id="ordersContainer" class="space-y-3 sm:space-y-4">
+            <!-- Orders will be populated by JavaScript -->
+          </div>
+
+          <!-- Empty State -->
+          <div
+            id="emptyOrders"
+            class="hidden bg-white rounded-lg shadow-md p-8 sm:p-12 text-center"
+          >
+            <i
+              class="fas fa-shopping-bag text-4xl sm:text-6xl text-gray-300 mb-4"
+            ></i>
+            <h3 class="text-lg sm:text-xl font-semibold text-gray-600 mb-2">
+              Belum Ada Pesanan
+            </h3>
+            <p class="text-sm sm:text-base text-gray-500 mb-6">
+              Anda belum memiliki pesanan dengan filter yang dipilih
+            </p>
+            <a
+              href="products.html"
+              class="bg-primary text-white px-4 sm:px-6 py-3 rounded-md hover:bg-primary-dark transition duration-300 text-sm sm:text-base"
+            >
+              <i class="fas fa-shopping-bag mr-2"></i>Mulai Belanja
+            </a>
+          </div>
+
+          <!-- Load More -->
+          <div class="text-center mt-6 sm:mt-8">
+            <button
+              onclick="loadMoreOrders()"
+              class="bg-gray-200 text-gray-700 px-4 sm:px-6 py-3 rounded-md hover:bg-gray-300 transition duration-300 text-sm sm:text-base"
+            >
+              <i class="fas fa-plus mr-2"></i>Muat Lebih Banyak
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Order Detail Modal -->
+    <div
+      id="orderModal"
+      class="fixed inset-0 bg-black bg-opacity-50 hidden z-50"
+    >
+      <div class="flex items-center justify-center min-h-screen p-4">
+        <div
+          class="bg-white rounded-lg w-full max-w-2xl max-h-screen overflow-y-auto"
+        >
+          <div id="modalContent" class="p-4 sm:p-6">
+            <!-- Modal content will be populated by JavaScript -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Review Modal -->
+    <div
+      id="reviewModal"
+      class="fixed inset-0 bg-black bg-opacity-50 hidden z-50"
+    >
+      <div class="flex items-center justify-center min-h-screen p-4">
+        <div class="bg-white rounded-lg max-w-md w-full mx-4">
+          <div class="p-4 sm:p-6">
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="text-base sm:text-lg font-semibold">Beri Ulasan</h3>
+              <button
+                onclick="closeReviewModal()"
+                class="text-gray-500 hover:text-gray-700"
+              >
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+
+            <form id="reviewForm">
+              <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700 mb-2"
+                  >Rating</label
+                >
+                <div class="flex space-x-1">
+                  <i
+                    class="fas fa-star text-gray-300 text-xl sm:text-2xl cursor-pointer rating-star"
+                    data-rating="1"
+                  ></i>
+                  <i
+                    class="fas fa-star text-gray-300 text-xl sm:text-2xl cursor-pointer rating-star"
+                    data-rating="2"
+                  ></i>
+                  <i
+                    class="fas fa-star text-gray-300 text-xl sm:text-2xl cursor-pointer rating-star"
+                    data-rating="3"
+                  ></i>
+                  <i
+                    class="fas fa-star text-gray-300 text-xl sm:text-2xl cursor-pointer rating-star"
+                    data-rating="4"
+                  ></i>
+                  <i
+                    class="fas fa-star text-gray-300 text-xl sm:text-2xl cursor-pointer rating-star"
+                    data-rating="5"
+                  ></i>
+                </div>
+              </div>
+
+              <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700 mb-2"
+                  >Komentar</label
+                >
+                <textarea
+                  id="reviewComment"
+                  rows="4"
+                  class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                  placeholder="Bagikan pengalaman Anda tentang produk ini..."
+                ></textarea>
+              </div>
+
+              <div class="mb-6">
+                <label class="block text-sm font-medium text-gray-700 mb-2"
+                  >Foto/Video (Opsional)</label
+                >
+                <div
+                  class="border-2 border-dashed border-gray-300 rounded-lg p-4 text-center"
+                >
+                  <input
+                    type="file"
+                    id="reviewMedia"
+                    accept="image/*,video/*"
+                    multiple
+                    class="hidden"
+                  />
+                  <label for="reviewMedia" class="cursor-pointer">
+                    <i
+                      class="fas fa-camera text-xl sm:text-2xl text-gray-400 mb-2"
+                    ></i>
+                    <p class="text-sm text-gray-600">
+                      Klik untuk upload foto/video
+                    </p>
+                    <p class="text-xs text-gray-500">
+                      Max 5 file, 10MB per file
+                    </p>
+                  </label>
+                </div>
+              </div>
+
+              <div
+                class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-3"
+              >
+                <button
+                  type="button"
+                  onclick="closeReviewModal()"
+                  class="flex-1 bg-gray-200 text-gray-700 py-2 px-4 rounded-md hover:bg-gray-300 text-sm sm:text-base"
+                >
+                  Batal
+                </button>
+                <button
+                  type="submit"
+                  class="flex-1 bg-primary text-white py-2 px-4 rounded-md hover:bg-primary-dark text-sm sm:text-base"
+                >
+                  Kirim Ulasan
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12 mt-16">
+      <div class="container mx-auto px-4">
+        <div class="grid md:grid-cols-4 gap-8">
+          <div>
+            <h3 class="text-xl font-bold mb-4">Sleman Mart</h3>
+            <p class="text-gray-300">
+              Platform e-commerce untuk UMKM di Sleman yang mendukung produk
+              lokal berkualitas.
+            </p>
+          </div>
+          <div>
+            <h4 class="font-semibold mb-4">Link Cepat</h4>
+            <ul class="space-y-2">
+              <li>
+                <a href="products.html" class="text-gray-300 hover:text-primary"
+                  >Produk</a
+                >
+              </li>
+              <li>
+                <a
+                  href="categories.html"
+                  class="text-gray-300 hover:text-primary"
+                  >Kategori</a
+                >
+              </li>
+              <li>
+                <a href="sellers.html" class="text-gray-300 hover:text-primary"
+                  >Penjual</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-semibold mb-4">Bantuan</h4>
+            <ul class="space-y-2">
+              <li>
+                <a href="help.html" class="text-gray-300 hover:text-primary"
+                  >Pusat Bantuan</a
+                >
+              </li>
+              <li>
+                <a href="contact.html" class="text-gray-300 hover:text-primary"
+                  >Kontak</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-semibold mb-4">Hubungi Kami</h4>
+            <p class="text-gray-300 mb-2">Email: info@slemanmart.com</p>
+            <p class="text-gray-300 mb-4">Telepon: (0274) 123-4567</p>
+          </div>
+        </div>
+        <div
+          class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-300"
+        >
+          <p>&copy; 2025 Sleman Mart. Semua hak cipta dilindungi.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      let currentFilter = "";
+      let selectedRating = 0;
+      let currentReviewOrderId = null;
+
+      // Sample orders data
+      const orders = [
+        {
+          id: "SLM240001",
+          date: "2025-01-15",
+          status: "shipped",
+          statusText: "Dikirim",
+          statusClass: "bg-blue-100 text-blue-800",
+          items: [
+            {
+              name: "Keripik Tempe Original",
+              seller: "Toko Cemilan Sleman",
+              price: 15000,
+              quantity: 2,
+              image: "placeholder",
+            },
+          ],
+          shipping: {
+            address: "Jl. Kaliurang KM 5, Sleman",
+            cost: 10000,
+          },
+          total: 40000,
+          trackingNumber: "JNE123456789",
+        },
+        {
+          id: "SLM239998",
+          date: "2025-01-10",
+          status: "completed",
+          statusText: "Selesai",
+          statusClass: "bg-green-100 text-green-800",
+          items: [
+            {
+              name: "Batik Jumputan",
+              seller: "Batik Sleman Asri",
+              price: 125000,
+              quantity: 1,
+              image: "placeholder",
+            },
+          ],
+          shipping: {
+            address: "Jl. Magelang KM 3, Sleman",
+            cost: 15000,
+          },
+          total: 140000,
+          canReview: true,
+        },
+        {
+          id: "SLM239995",
+          date: "2025-01-08",
+          status: "processing",
+          statusText: "Diproses",
+          statusClass: "bg-yellow-100 text-yellow-800",
+          items: [
+            {
+              name: "Gula Aren Organik",
+              seller: "Aren Murni Sleman",
+              price: 25000,
+              quantity: 3,
+              image: "placeholder",
+            },
+          ],
+          shipping: {
+            address: "Jl. Solo KM 10, Sleman",
+            cost: 10000,
+          },
+          total: 85000,
+        },
+        {
+          id: "SLM239990",
+          date: "2025-01-05",
+          status: "pending",
+          statusText: "Menunggu Konfirmasi",
+          statusClass: "bg-gray-100 text-gray-800",
+          items: [
+            {
+              name: "Madu Hutan Murni",
+              seller: "Madu Asli Sleman",
+              price: 85000,
+              quantity: 1,
+              image: "placeholder",
+            },
+            {
+              name: "Dodol Nangka",
+              seller: "Dodol Tradisional",
+              price: 18000,
+              quantity: 2,
+              image: "placeholder",
+            },
+          ],
+          shipping: {
+            address: "Jl. Godean KM 7, Sleman",
+            cost: 12000,
+          },
+          total: 133000,
+        },
+      ];
+
+      function formatPrice(price) {
+        return new Intl.NumberFormat("id-ID", {
+          style: "currency",
+          currency: "IDR",
+          minimumFractionDigits: 0,
+        }).format(price);
+      }
+
+      function formatDate(dateString) {
+        return new Date(dateString).toLocaleDateString("id-ID", {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        });
+      }
+
+      function renderOrders(ordersToRender = orders) {
+        const container = document.getElementById("ordersContainer");
+        const emptyState = document.getElementById("emptyOrders");
+
+        if (ordersToRender.length === 0) {
+          container.innerHTML = "";
+          emptyState.classList.remove("hidden");
+          return;
+        }
+
+        emptyState.classList.add("hidden");
+        container.innerHTML = "";
+
+        ordersToRender.forEach((order) => {
+          const orderCard = createOrderCard(order);
+          container.appendChild(orderCard);
+        });
+      }
+
+      function createOrderCard(order) {
+        const card = document.createElement("div");
+        card.className = "bg-white rounded-lg shadow-md overflow-hidden";
+
+        const totalItems = order.items.reduce(
+          (sum, item) => sum + item.quantity,
+          0
+        );
+
+        card.innerHTML = `
+                <div class="p-4 sm:p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <div>
+                            <h3 class="font-semibold text-gray-800 text-sm sm:text-base">#${
+                              order.id
+                            }</h3>
+                            <p class="text-xs sm:text-sm text-gray-600">${formatDate(
+                              order.date
+                            )}</p>
+                        </div>
+                        <span class="${
+                          order.statusClass
+                        } px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-medium">
+                            ${order.statusText}
+                        </span>
+                    </div>
+
+                    <div class="space-y-3 mb-4">
+                        ${order.items
+                          .map(
+                            (item) => `
+                            <div class="flex items-center space-x-3">
+                                <div class="bg-gray-300 w-10 h-10 sm:w-12 sm:h-12 rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-image text-gray-500 text-xs sm:text-sm"></i>
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    <h4 class="font-medium text-gray-800 text-xs sm:text-sm truncate">${
+                                      item.name
+                                    }</h4>
+                                    <p class="text-xs text-gray-600 truncate">${
+                                      item.seller
+                                    }</p>
+                                    <p class="text-xs sm:text-sm text-primary font-medium">${formatPrice(
+                                      item.price
+                                    )} x ${item.quantity}</p>
+                                </div>
+                            </div>
+                        `
+                          )
+                          .join("")}
+                    </div>
+
+                    <div class="bg-gray-50 rounded-lg p-2 sm:p-3 mb-4">
+                        <div class="flex justify-between text-xs sm:text-sm">
+                            <span class="text-gray-600">${totalItems} item • ${
+          order.statusText
+        }</span>
+                            <span class="font-semibold text-gray-800">Total: ${formatPrice(
+                              order.total
+                            )}</span>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between space-y-2 sm:space-y-0">
+                        <div class="flex flex-wrap gap-2 w-full sm:w-auto">
+                            <button onclick="viewOrderDetail('${
+                              order.id
+                            }')" class="bg-gray-200 text-gray-700 px-3 sm:px-4 py-2 rounded-md hover:bg-gray-300 text-xs sm:text-sm flex items-center">
+                                <i class="fas fa-eye mr-1 text-xs"></i>Detail
+                            </button>
+                            
+                            ${
+                              order.status === "shipped"
+                                ? `
+                                <button onclick="trackOrder('${order.id}')" class="bg-blue-500 text-white px-3 sm:px-4 py-2 rounded-md hover:bg-blue-600 text-xs sm:text-sm flex items-center">
+                                    <i class="fas fa-truck mr-1 text-xs"></i>Lacak
+                                </button>
+                            `
+                                : ""
+                            }
+                            
+                            ${
+                              order.canReview
+                                ? `
+                                <button onclick="openReviewModal('${order.id}')" class="bg-primary text-white px-3 sm:px-4 py-2 rounded-md hover:bg-primary-dark text-xs sm:text-sm flex items-center">
+                                    <i class="fas fa-star mr-1 text-xs"></i>Ulasan
+                                </button>
+                            `
+                                : ""
+                            }
+                            
+                            ${
+                              order.status === "pending"
+                                ? `
+                                <button onclick="cancelOrder('${order.id}')" class="bg-red-500 text-white px-3 sm:px-4 py-2 rounded-md hover:bg-red-600 text-xs sm:text-sm flex items-center">
+                                    <i class="fas fa-times mr-1 text-xs"></i>Batal
+                                </button>
+                            `
+                                : ""
+                            }
+                        </div>
+                        
+                        <div class="flex-shrink-0 w-full sm:w-auto mt-2 sm:mt-0">
+                            ${
+                              order.status === "completed" && !order.canReview
+                                ? `
+                                <span class="text-green-600 text-xs sm:text-sm">
+                                    <i class="fas fa-check mr-1"></i>Sudah direview
+                                </span>
+                            `
+                                : ""
+                            }
+                            
+                            ${
+                              order.status === "shipped"
+                                ? `
+                                <button onclick="confirmReceived('${order.id}')" class="bg-green-500 text-white px-3 sm:px-4 py-2 rounded-md hover:bg-green-600 text-xs sm:text-sm flex items-center w-full sm:w-auto justify-center">
+                                    <i class="fas fa-check mr-1 text-xs"></i>Terima
+                                </button>
+                            `
+                                : ""
+                            }
+                        </div>
+                    </div>
+                </div>
+            `;
+
+        return card;
+      }
+
+      function filterByStatus(status) {
+        currentFilter = status;
+
+        // Update tab appearance
+        document.querySelectorAll(".tab-button").forEach((btn) => {
+          btn.className =
+            "tab-button border-b-2 border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 py-4 px-1 text-sm font-medium";
+        });
+
+        event.target.className =
+          "tab-button border-b-2 border-primary text-primary py-4 px-1 text-sm font-medium";
+
+        applyFilters();
+      }
+
+      function applyFilters() {
+        const statusFilter =
+          document.getElementById("statusFilter").value || currentFilter;
+        const searchTerm = document
+          .getElementById("searchOrder")
+          .value.toLowerCase();
+        const startDate = document.getElementById("startDate").value;
+        const endDate = document.getElementById("endDate").value;
+
+        let filteredOrders = orders.filter((order) => {
+          const matchesStatus = !statusFilter || order.status === statusFilter;
+          const matchesSearch =
+            !searchTerm ||
+            order.id.toLowerCase().includes(searchTerm) ||
+            order.items.some((item) =>
+              item.name.toLowerCase().includes(searchTerm)
+            );
+          const matchesDateRange =
+            (!startDate || order.date >= startDate) &&
+            (!endDate || order.date <= endDate);
+
+          return matchesStatus && matchesSearch && matchesDateRange;
+        });
+
+        renderOrders(filteredOrders);
+      }
+
+      function viewOrderDetail(orderId) {
+        const order = orders.find((o) => o.id === orderId);
+        if (!order) return;
+
+        const modal = document.getElementById("orderModal");
+        const modalContent = document.getElementById("modalContent");
+
+        modalContent.innerHTML = `
+                <div class="relative">
+                    <button onclick="closeOrderModal()" class="absolute top-2 right-2 sm:top-4 sm:right-4 text-gray-500 hover:text-gray-700 z-10 p-2">
+                        <i class="fas fa-times text-lg sm:text-2xl"></i>
+                    </button>
+                    
+                    <div class="p-4 sm:p-6 border-b border-gray-200">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <h2 class="text-lg sm:text-2xl font-bold">#${
+                                  order.id
+                                }</h2>
+                                <p class="text-sm sm:text-base text-gray-600">${formatDate(
+                                  order.date
+                                )}</p>
+                            </div>
+                            <span class="${
+                              order.statusClass
+                            } px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-medium">
+                                ${order.statusText}
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="p-4 sm:p-6">
+                        <h3 class="font-semibold mb-4 text-sm sm:text-base">Item Pesanan</h3>
+                        <div class="space-y-4 mb-6">
+                            ${order.items
+                              .map(
+                                (item) => `
+                                <div class="flex items-center space-x-3 sm:space-x-4 p-3 sm:p-4 bg-gray-50 rounded-lg">
+                                    <div class="bg-gray-300 w-12 h-12 sm:w-16 sm:h-16 rounded-lg flex items-center justify-center flex-shrink-0">
+                                        <i class="fas fa-image text-gray-500 text-sm sm:text-xl"></i>
+                                    </div>
+                                    <div class="flex-1 min-w-0">
+                                        <h4 class="font-medium text-sm sm:text-base truncate">${
+                                          item.name
+                                        }</h4>
+                                        <p class="text-xs sm:text-sm text-gray-600 truncate">${
+                                          item.seller
+                                        }</p>
+                                        <div class="flex items-center justify-between mt-2">
+                                            <span class="text-primary font-bold text-sm sm:text-base">${formatPrice(
+                                              item.price
+                                            )}</span>
+                                            <span class="text-gray-600 text-xs sm:text-sm">x${
+                                              item.quantity
+                                            }</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            `
+                              )
+                              .join("")}
+                        </div>
+                        
+                        <h3 class="font-semibold mb-4 text-sm sm:text-base">Alamat Pengiriman</h3>
+                        <div class="bg-gray-50 rounded-lg p-3 sm:p-4 mb-6">
+                            <p class="text-gray-800 text-sm sm:text-base">${
+                              order.shipping.address
+                            }</p>
+                        </div>
+                        
+                        <h3 class="font-semibold mb-4 text-sm sm:text-base">Ringkasan Pembayaran</h3>
+                        <div class="space-y-2 text-sm sm:text-base">
+                            <div class="flex justify-between">
+                                <span>Subtotal</span>
+                                <span>${formatPrice(
+                                  order.total - order.shipping.cost
+                                )}</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Ongkos Kirim</span>
+                                <span>${formatPrice(order.shipping.cost)}</span>
+                            </div>
+                            <hr class="my-2">
+                            <div class="flex justify-between font-semibold text-base sm:text-lg">
+                                <span>Total</span>
+                                <span class="text-primary">${formatPrice(
+                                  order.total
+                                )}</span>
+                            </div>
+                        </div>
+                        
+                        ${
+                          order.trackingNumber
+                            ? `
+                            <div class="mt-6 p-3 sm:p-4 bg-blue-50 rounded-lg">
+                                <h4 class="font-medium text-blue-800 mb-2 text-sm sm:text-base">Nomor Resi</h4>
+                                <p class="font-mono text-blue-600 text-sm sm:text-base break-all">${order.trackingNumber}</p>
+                            </div>
+                        `
+                            : ""
+                        }
+                    </div>
+                </div>
+            `;
+
+        modal.classList.remove("hidden");
+      }
+
+      function trackOrder(orderId) {
+        const order = orders.find((o) => o.id === orderId);
+        if (order && order.trackingNumber) {
+          showMessage(
+            `Melacak paket dengan resi: ${order.trackingNumber}`,
+            "success"
+          );
+          // In real app, this would redirect to tracking page
+        }
+      }
+
+      function confirmReceived(orderId) {
+        if (confirm("Apakah Anda sudah menerima pesanan ini?")) {
+          const orderIndex = orders.findIndex((o) => o.id === orderId);
+          if (orderIndex !== -1) {
+            orders[orderIndex].status = "completed";
+            orders[orderIndex].statusText = "Selesai";
+            orders[orderIndex].statusClass = "bg-green-100 text-green-800";
+            orders[orderIndex].canReview = true;
+            renderOrders(orders);
+            showMessage("Pesanan berhasil dikonfirmasi diterima!", "success");
+          }
+        }
+      }
+
+      function cancelOrder(orderId) {
+        if (confirm("Apakah Anda yakin ingin membatalkan pesanan ini?")) {
+          const orderIndex = orders.findIndex((o) => o.id === orderId);
+          if (orderIndex !== -1) {
+            orders[orderIndex].status = "cancelled";
+            orders[orderIndex].statusText = "Dibatalkan";
+            orders[orderIndex].statusClass = "bg-red-100 text-red-800";
+            renderOrders(orders);
+            showMessage("Pesanan berhasil dibatalkan!", "success");
+          }
+        }
+      }
+
+      function openReviewModal(orderId) {
+        currentReviewOrderId = orderId;
+        document.getElementById("reviewModal").classList.remove("hidden");
+      }
+
+      function closeOrderModal() {
+        document.getElementById("orderModal").classList.add("hidden");
+      }
+
+      function closeReviewModal() {
+        document.getElementById("reviewModal").classList.add("hidden");
+        selectedRating = 0;
+        document.querySelectorAll(".rating-star").forEach((star) => {
+          star.className =
+            "fas fa-star text-gray-300 text-2xl cursor-pointer rating-star";
+        });
+        document.getElementById("reviewComment").value = "";
+        document.getElementById("reviewMedia").value = "";
+      }
+
+      function loadMoreOrders() {
+        showMessage("Semua pesanan sudah dimuat!", "success");
+      }
+
+      function showMessage(message, type) {
+        const messageDiv = document.createElement("div");
+        messageDiv.className = `fixed top-4 right-4 p-4 rounded-md shadow-lg z-50 ${
+          type === "success"
+            ? "bg-green-500 text-white"
+            : "bg-red-500 text-white"
+        }`;
+        messageDiv.textContent = message;
+
+        document.body.appendChild(messageDiv);
+
+        setTimeout(() => {
+          messageDiv.remove();
+        }, 3000);
+      }
+
+      // Initialize
+      document.addEventListener("DOMContentLoaded", function () {
+        renderOrders();
+
+        // Rating stars interaction
+        document.querySelectorAll(".rating-star").forEach((star) => {
+          star.addEventListener("click", function () {
+            selectedRating = parseInt(this.dataset.rating);
+
+            document.querySelectorAll(".rating-star").forEach((s, index) => {
+              if (index < selectedRating) {
+                s.className =
+                  "fas fa-star text-yellow-400 text-2xl cursor-pointer rating-star";
+              } else {
+                s.className =
+                  "fas fa-star text-gray-300 text-2xl cursor-pointer rating-star";
+              }
+            });
+          });
+        });
+
+        // Review form submission
+        document
+          .getElementById("reviewForm")
+          .addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            if (selectedRating === 0) {
+              showMessage("Harap pilih rating terlebih dahulu!", "error");
+              return;
+            }
+
+            const comment = document.getElementById("reviewComment").value;
+            if (!comment.trim()) {
+              showMessage("Harap tulis komentar!", "error");
+              return;
+            }
+
+            // Simulate review submission
+            showMessage(
+              "Ulasan berhasil dikirim! Terima kasih atas feedback Anda.",
+              "success"
+            );
+
+            // Update order status
+            const orderIndex = orders.findIndex(
+              (o) => o.id === currentReviewOrderId
+            );
+            if (orderIndex !== -1) {
+              orders[orderIndex].canReview = false;
+              renderOrders(orders);
+            }
+
+            closeReviewModal();
+          });
+
+        // Filter event listeners
+        document
+          .getElementById("statusFilter")
+          .addEventListener("change", applyFilters);
+        document
+          .getElementById("searchOrder")
+          .addEventListener("input", applyFilters);
+        document
+          .getElementById("startDate")
+          .addEventListener("change", applyFilters);
+        document
+          .getElementById("endDate")
+          .addEventListener("change", applyFilters);
+      });
+
+      // Close modals when clicking outside
+      document
+        .getElementById("orderModal")
+        .addEventListener("click", function (e) {
+          if (e.target === this) {
+            closeOrderModal();
+          }
+        });
+
+      document
+        .getElementById("reviewModal")
+        .addEventListener("click", function (e) {
+          if (e.target === this) {
+            closeReviewModal();
+          }
+        });
+    </script>
+  </body>
+</html>

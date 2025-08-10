@@ -1,0 +1,1230 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Produk - Sleman Mart</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#E57F39",
+              "primary-dark": "#C86A2B",
+              "primary-light": "#F29C5E",
+            },
+          },
+        },
+      };
+    </script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-md">
+      <div class="container mx-auto px-4 py-4">
+        <div class="flex items-center justify-between">
+          <h1 class="text-lg sm:text-2xl font-bold text-gray-800">
+            Produk UMKM Sleman
+          </h1>
+          <div class="flex items-center space-x-3 sm:space-x-4">
+            <!-- Cart Button -->
+            <a
+              href="cart.html"
+              class="relative text-primary hover:text-primary-dark transition duration-300"
+            >
+              <i class="fas fa-shopping-cart text-lg sm:text-xl"></i>
+              <span
+                class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center"
+                >3</span
+              >
+            </a>
+
+            <!-- Profile Dropdown -->
+            <div class="relative group">
+              <button
+                class="flex items-center text-primary hover:text-primary-dark transition duration-300"
+              >
+                <i
+                  class="fas fa-user-circle text-lg sm:text-xl mr-1 sm:mr-2"
+                ></i>
+                <span class="hidden sm:inline text-sm sm:text-base"
+                  >Profile</span
+                >
+                <i class="fas fa-chevron-down text-xs ml-1"></i>
+              </button>
+
+              <!-- Dropdown Menu -->
+              <div
+                class="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50"
+              >
+                <div class="py-2">
+                  <a
+                    href="orders.html"
+                    class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100 transition duration-200"
+                  >
+                    <i class="fas fa-box mr-3 text-gray-500"></i>
+                    <span>Pesanan Saya</span>
+                  </a>
+                  <a
+                    href="profile.html"
+                    class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100 transition duration-200"
+                  >
+                    <i class="fas fa-user mr-3 text-gray-500"></i>
+                    <span>Edit Profile</span>
+                  </a>
+                  <a
+                    href="favorites.html"
+                    class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100 transition duration-200"
+                  >
+                    <i class="fas fa-heart mr-3 text-gray-500"></i>
+                    <span>Favorit</span>
+                  </a>
+                  <hr class="my-2" />
+                  <a
+                    href="index.html"
+                    class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100 transition duration-200"
+                  >
+                    <i class="fas fa-home mr-3 text-gray-500"></i>
+                    <span>Beranda</span>
+                  </a>
+                  <a
+                    href="login.html"
+                    class="flex items-center px-4 py-2 text-red-600 hover:bg-red-50 transition duration-200"
+                  >
+                    <i class="fas fa-sign-out-alt mr-3"></i>
+                    <span>Keluar</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Search Bar - Top Section -->
+    <section class="py-3 bg-white border-b">
+      <div class="container mx-auto px-4">
+        <div class="flex items-center gap-3">
+          <!-- Search Bar -->
+          <div class="flex-1">
+            <div class="relative">
+              <input
+                type="text"
+                placeholder="Cari produk..."
+                class="w-full pl-10 pr-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary"
+              />
+              <i
+                class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
+              ></i>
+            </div>
+          </div>
+
+          <!-- Filter Icon -->
+          <button
+            id="filterBtn"
+            class="p-2 sm:p-3 border border-gray-300 rounded-lg hover:bg-gray-50 transition duration-300"
+          >
+            <i class="fas fa-filter text-gray-600"></i>
+          </button>
+
+          <!-- Sort Icon -->
+          <button
+            id="sortBtn"
+            class="p-2 sm:p-3 border border-gray-300 rounded-lg hover:bg-gray-50 transition duration-300"
+          >
+            <i class="fas fa-sort-amount-down text-gray-600"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="py-4 sm:py-6 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-4 sm:mb-6">
+          <h2 class="text-base sm:text-lg font-bold text-gray-800 mb-1 sm:mb-2">
+            Layanan Kami
+          </h2>
+          <p class="text-xs sm:text-sm text-gray-600">
+            Jelajahi berbagai layanan dan fasilitas yang tersedia di Sleman Mart
+          </p>
+        </div>
+
+        <div
+          class="grid grid-cols-4 sm:grid-cols-3 lg:grid-cols-5 gap-2 sm:gap-4"
+        >
+          <!-- Pasar Sleman -->
+          <a
+            href="products.html"
+            class="flex flex-col items-center p-2 sm:p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition duration-300 group"
+          >
+            <div
+              class="bg-orange-100 rounded-full w-8 h-8 sm:w-12 sm:h-12 lg:w-16 lg:h-16 flex items-center justify-center mb-1 sm:mb-3 group-hover:bg-primary-light transition duration-300"
+            >
+              <i
+                class="fas fa-shopping-basket text-primary text-sm sm:text-lg lg:text-2xl"
+              ></i>
+            </div>
+            <h3
+              class="text-xs sm:text-sm font-semibold text-gray-800 text-center leading-tight"
+            >
+              Pasar Sleman
+            </h3>
+          </a>
+
+          <!-- Direktori UMKM -->
+          <a
+            href="directory.html"
+            class="flex flex-col items-center p-2 sm:p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition duration-300 group"
+          >
+            <div
+              class="bg-orange-100 rounded-full w-8 h-8 sm:w-12 sm:h-12 lg:w-16 lg:h-16 flex items-center justify-center mb-1 sm:mb-3 group-hover:bg-primary-light transition duration-300"
+            >
+              <i
+                class="fas fa-store text-primary text-sm sm:text-lg lg:text-2xl"
+              ></i>
+            </div>
+            <h3
+              class="text-xs sm:text-sm font-semibold text-gray-800 text-center leading-tight"
+            >
+              Direktori UMKM
+            </h3>
+          </a>
+
+          <!-- Info Pemasaran -->
+          <a
+            href="marketing.html"
+            class="flex flex-col items-center p-2 sm:p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition duration-300 group"
+          >
+            <div
+              class="bg-orange-100 rounded-full w-8 h-8 sm:w-12 sm:h-12 lg:w-16 lg:h-16 flex items-center justify-center mb-1 sm:mb-3 group-hover:bg-primary-light transition duration-300"
+            >
+              <i
+                class="fas fa-bullhorn text-primary text-sm sm:text-lg lg:text-2xl"
+              ></i>
+            </div>
+            <h3
+              class="text-xs sm:text-sm font-semibold text-gray-800 text-center leading-tight"
+            >
+              Info Pemasaran
+            </h3>
+          </a>
+
+          <!-- Info Pelatihan -->
+          <a
+            href="training.html"
+            class="flex flex-col items-center p-2 sm:p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition duration-300 group"
+          >
+            <div
+              class="bg-orange-100 rounded-full w-8 h-8 sm:w-12 sm:h-12 lg:w-16 lg:h-16 flex items-center justify-center mb-1 sm:mb-3 group-hover:bg-primary-light transition duration-300"
+            >
+              <i
+                class="fas fa-graduation-cap text-primary text-sm sm:text-lg lg:text-2xl"
+              ></i>
+            </div>
+            <h3
+              class="text-xs sm:text-sm font-semibold text-gray-800 text-center leading-tight"
+            >
+              Info Pelatihan
+            </h3>
+          </a>
+
+          <!-- Literasi UMKM - Hidden on mobile untuk 4 kolom -->
+          <a
+            href="literacy.html"
+            class="hidden sm:flex flex-col items-center p-2 sm:p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition duration-300 group"
+          >
+            <div
+              class="bg-orange-100 rounded-full w-8 h-8 sm:w-12 sm:h-12 lg:w-16 lg:h-16 flex items-center justify-center mb-1 sm:mb-3 group-hover:bg-primary-light transition duration-300"
+            >
+              <i
+                class="fas fa-book-open text-primary text-sm sm:text-lg lg:text-2xl"
+              ></i>
+            </div>
+            <h3
+              class="text-xs sm:text-sm font-semibold text-gray-800 text-center leading-tight"
+            >
+              Literasi UMKM
+            </h3>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="py-4 sm:py-6 bg-white border-b">
+      <div class="container mx-auto px-4">
+        <div class="flex items-center justify-between mb-4">
+          <h2 class="text-base sm:text-lg font-bold text-gray-800">
+            Kategori Pilihan
+          </h2>
+        </div>
+
+        <div
+          class="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-4"
+        >
+          <!-- Kuliner Siap Saji -->
+          <a
+            href="?category=kuliner-siap-saji"
+            class="flex flex-col items-center p-3 sm:p-4 bg-orange-50 hover:bg-orange-100 rounded-lg border border-orange-200 hover:border-primary transition duration-300 group"
+          >
+            <div
+              class="bg-primary rounded-lg w-10 h-8 sm:w-12 sm:h-10 flex items-center justify-center mb-2"
+            >
+              <i class="fas fa-utensils text-white text-sm sm:text-base"></i>
+            </div>
+            <h3
+              class="text-xs sm:text-sm font-medium text-gray-800 text-center leading-tight"
+            >
+              Kuliner Siap Saji
+            </h3>
+          </a>
+
+          <!-- Kue dan Cemilan -->
+          <a
+            href="?category=kue-cemilan"
+            class="flex flex-col items-center p-3 sm:p-4 bg-orange-50 hover:bg-orange-100 rounded-lg border border-orange-200 hover:border-primary transition duration-300 group"
+          >
+            <div
+              class="bg-primary rounded-lg w-10 h-8 sm:w-12 sm:h-10 flex items-center justify-center mb-2"
+            >
+              <i class="fas fa-cookie-bite text-white text-sm sm:text-base"></i>
+            </div>
+            <h3
+              class="text-xs sm:text-sm font-medium text-gray-800 text-center leading-tight"
+            >
+              Kue dan Cemilan
+            </h3>
+          </a>
+
+          <!-- Jasa Layanan -->
+          <a
+            href="?category=jasa-layanan"
+            class="flex flex-col items-center p-3 sm:p-4 bg-orange-50 hover:bg-orange-100 rounded-lg border border-orange-200 hover:border-primary transition duration-300 group"
+          >
+            <div
+              class="bg-primary rounded-lg w-10 h-8 sm:w-12 sm:h-10 flex items-center justify-center mb-2"
+            >
+              <i class="fas fa-handshake text-white text-sm sm:text-base"></i>
+            </div>
+            <h3
+              class="text-xs sm:text-sm font-medium text-gray-800 text-center leading-tight"
+            >
+              Jasa Layanan
+            </h3>
+          </a>
+
+          <!-- Fashion dan Aksesoris -->
+          <a
+            href="?category=fashion-aksesoris"
+            class="flex flex-col items-center p-3 sm:p-4 bg-orange-50 hover:bg-orange-100 rounded-lg border border-orange-200 hover:border-primary transition duration-300 group"
+          >
+            <div
+              class="bg-primary rounded-lg w-10 h-8 sm:w-12 sm:h-10 flex items-center justify-center mb-2"
+            >
+              <i class="fas fa-tshirt text-white text-sm sm:text-base"></i>
+            </div>
+            <h3
+              class="text-xs sm:text-sm font-medium text-gray-800 text-center leading-tight"
+            >
+              Fashion dan Aksesoris
+            </h3>
+          </a>
+
+          <!-- Olahan Kemasan dan Frozen -->
+          <a
+            href="?category=olahan-kemasan-frozen"
+            class="flex flex-col items-center p-3 sm:p-4 bg-orange-50 hover:bg-orange-100 rounded-lg border border-orange-200 hover:border-primary transition duration-300 group"
+          >
+            <div
+              class="bg-primary rounded-lg w-10 h-8 sm:w-12 sm:h-10 flex items-center justify-center mb-2"
+            >
+              <i class="fas fa-snowflake text-white text-sm sm:text-base"></i>
+            </div>
+            <h3
+              class="text-xs sm:text-sm font-medium text-gray-800 text-center leading-tight"
+            >
+              Olahan Kemasan dan Frozen
+            </h3>
+          </a>
+
+          <!-- Olahan Kemasan dan Frozen (Duplicate) -->
+          <a
+            href="?category=olahan-kemasan-frozen-2"
+            class="flex flex-col items-center p-3 sm:p-4 bg-orange-50 hover:bg-orange-100 rounded-lg border border-orange-200 hover:border-primary transition duration-300 group"
+          >
+            <div
+              class="bg-primary rounded-lg w-10 h-8 sm:w-12 sm:h-10 flex items-center justify-center mb-2"
+            >
+              <i class="fas fa-box text-white text-sm sm:text-base"></i>
+            </div>
+            <h3
+              class="text-xs sm:text-sm font-medium text-gray-800 text-center leading-tight"
+            >
+              Olahan Kemasan dan Frozen
+            </h3>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Products Grid -->
+    <section class="py-8">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <!-- Product Card 1 -->
+          <a href="product-detail.html" class="block h-full">
+            <div
+              class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300 group h-full flex flex-col"
+            >
+              <div
+                class="bg-gray-300 h-40 md:h-48 flex items-center justify-center relative"
+              >
+                <i class="fas fa-image text-gray-500 text-2xl md:text-3xl"></i>
+              </div>
+              <div class="p-4 flex flex-col flex-1">
+                <div class="flex items-center justify-between mb-2">
+                  <span
+                    class="bg-orange-100 text-orange-800 text-xs px-2 py-1 rounded-full"
+                    >Makanan</span
+                  >
+                  <div class="flex items-center text-yellow-400">
+                    <i class="fas fa-star text-xs"></i>
+                    <span class="text-gray-600 text-xs ml-1">4.5</span>
+                  </div>
+                </div>
+                <h3
+                  class="font-bold text-gray-800 mb-1 text-sm md:text-base group-hover:text-primary"
+                >
+                  Keripik Tempe Original asam pdas paling mahal
+                </h3>
+                <p class="text-xs text-gray-600 mb-1">Toko Cemilan Sleman</p>
+                <p class="text-xs text-gray-500 mb-3">
+                  Jl. Magelang KM 5, Sleman
+                </p>
+                <div class="flex items-center justify-between mt-auto">
+                  <div>
+                    <span class="text-primary font-bold text-sm md:text-lg"
+                      >Rp 15.000</span
+                    >
+                    <p class="text-xs text-gray-500">Stok: 25</p>
+                  </div>
+                  <button
+                    class="bg-primary text-white p-2 rounded-lg hover:bg-primary-dark transition duration-300"
+                    onclick="event.preventDefault(); event.stopPropagation();"
+                  >
+                    <i class="fas fa-shopping-cart text-sm"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </a>
+
+          <!-- Product Card 2 -->
+          <div
+            class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300 group h-full flex flex-col"
+          >
+            <div
+              class="bg-gray-300 h-40 md:h-48 flex items-center justify-center relative"
+            >
+              <i class="fas fa-image text-gray-500 text-2xl md:text-3xl"></i>
+            </div>
+            <div class="p-4 flex flex-col flex-1">
+              <div class="flex items-center justify-between mb-2">
+                <span
+                  class="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded-full"
+                  >Fashion</span
+                >
+                <div class="flex items-center text-yellow-400">
+                  <i class="fas fa-star text-xs"></i>
+                  <span class="text-gray-600 text-xs ml-1">4.8</span>
+                </div>
+              </div>
+              <h3
+                class="font-bold text-gray-800 mb-1 text-sm md:text-base group-hover:text-primary"
+              >
+                Batik Jumputan
+              </h3>
+              <p class="text-xs text-gray-600 mb-1">Batik Sleman Asri</p>
+              <p class="text-xs text-gray-500 mb-3">
+                Jl. Kaliurang KM 7, Sleman
+              </p>
+              <div class="flex items-center justify-between mt-auto">
+                <div>
+                  <span class="text-primary font-bold text-sm md:text-lg"
+                    >Rp 125.000</span
+                  >
+                  <p class="text-xs text-gray-500">Stok: 12</p>
+                </div>
+                <button
+                  class="bg-primary text-white p-2 rounded-lg hover:bg-primary-dark transition duration-300"
+                >
+                  <i class="fas fa-shopping-cart text-sm"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product Card 3 -->
+          <div
+            class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300 group h-full flex flex-col"
+          >
+            <div
+              class="bg-gray-300 h-40 md:h-48 flex items-center justify-center relative"
+            >
+              <i class="fas fa-image text-gray-500 text-2xl md:text-3xl"></i>
+            </div>
+            <div class="p-4 flex flex-col flex-1">
+              <div class="flex items-center justify-between mb-2">
+                <span
+                  class="bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded-full"
+                  >Organik</span
+                >
+                <div class="flex items-center text-yellow-400">
+                  <i class="fas fa-star text-xs"></i>
+                  <span class="text-gray-600 text-xs ml-1">4.7</span>
+                </div>
+              </div>
+              <h3
+                class="font-bold text-gray-800 mb-1 text-sm md:text-base group-hover:text-primary"
+              >
+                Gula Aren Organik
+              </h3>
+              <p class="text-xs text-gray-600 mb-1">Aren Murni Sleman</p>
+              <p class="text-xs text-gray-500 mb-3">
+                Desa Purwobinangun, Sleman
+              </p>
+              <div class="flex items-center justify-between mt-auto">
+                <div>
+                  <span class="text-primary font-bold text-sm md:text-lg"
+                    >Rp 28.000</span
+                  >
+                  <p class="text-xs text-gray-500">Stok: 35</p>
+                </div>
+                <button
+                  class="bg-primary text-white p-2 rounded-lg hover:bg-primary-dark transition duration-300"
+                >
+                  <i class="fas fa-shopping-cart text-sm"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product Card 4 -->
+          <div
+            class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300 group h-full flex flex-col"
+          >
+            <div
+              class="bg-gray-300 h-40 md:h-48 flex items-center justify-center relative"
+            >
+              <i class="fas fa-image text-gray-500 text-2xl md:text-3xl"></i>
+            </div>
+            <div class="p-4 flex flex-col flex-1">
+              <div class="flex items-center justify-between mb-2">
+                <span
+                  class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full"
+                  >Kerajinan</span
+                >
+                <div class="flex items-center text-yellow-400">
+                  <i class="fas fa-star text-xs"></i>
+                  <span class="text-gray-600 text-xs ml-1">4.9</span>
+                </div>
+              </div>
+              <h3
+                class="font-bold text-gray-800 mb-1 text-sm md:text-base group-hover:text-primary"
+              >
+                Tas Rajut Handmade
+              </h3>
+              <p class="text-xs text-gray-600 mb-1">Craft Sleman Studio</p>
+              <p class="text-xs text-gray-500 mb-3">Jl. Seturan Raya, Sleman</p>
+              <div class="flex items-center justify-between mt-auto">
+                <div>
+                  <span class="text-primary font-bold text-sm md:text-lg"
+                    >Rp 85.000</span
+                  >
+                  <p class="text-xs text-gray-500">Stok: 15</p>
+                </div>
+                <button
+                  class="bg-primary text-white p-2 rounded-lg hover:bg-primary-dark transition duration-300"
+                >
+                  <i class="fas fa-shopping-cart text-sm"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product Card 5 -->
+          <div
+            class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300 group h-full flex flex-col"
+          >
+            <div
+              class="bg-gray-300 h-40 md:h-48 flex items-center justify-center relative"
+            >
+              <i class="fas fa-image text-gray-500 text-2xl md:text-3xl"></i>
+            </div>
+            <div class="p-4 flex flex-col flex-1">
+              <div class="flex items-center justify-between mb-2">
+                <span
+                  class="bg-pink-100 text-pink-800 text-xs px-2 py-1 rounded-full"
+                  >Kecantikan</span
+                >
+                <div class="flex items-center text-yellow-400">
+                  <i class="fas fa-star text-xs"></i>
+                  <span class="text-gray-600 text-xs ml-1">4.6</span>
+                </div>
+              </div>
+              <h3
+                class="font-bold text-gray-800 mb-1 text-sm md:text-base group-hover:text-primary"
+              >
+                Sabun Herbal Alami
+              </h3>
+              <p class="text-xs text-gray-600 mb-1">Natural Sleman Care</p>
+              <p class="text-xs text-gray-500 mb-3">
+                Jl. Palagan Tentara Pelajar, Sleman
+              </p>
+              <div class="flex items-center justify-between mt-auto">
+                <div>
+                  <span class="text-primary font-bold text-sm md:text-lg"
+                    >Rp 18.000</span
+                  >
+                  <p class="text-xs text-gray-500">Stok: 42</p>
+                </div>
+                <button
+                  class="bg-primary text-white p-2 rounded-lg hover:bg-primary-dark transition duration-300"
+                >
+                  <i class="fas fa-shopping-cart text-sm"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product Card 6 -->
+          <div
+            class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300 group h-full flex flex-col"
+          >
+            <div
+              class="bg-gray-300 h-40 md:h-48 flex items-center justify-center relative"
+            >
+              <i class="fas fa-image text-gray-500 text-2xl md:text-3xl"></i>
+            </div>
+            <div class="p-4 flex flex-col flex-1">
+              <div class="flex items-center justify-between mb-2">
+                <span
+                  class="bg-red-100 text-red-800 text-xs px-2 py-1 rounded-full"
+                  >Makanan</span
+                >
+                <div class="flex items-center text-yellow-400">
+                  <i class="fas fa-star text-xs"></i>
+                  <span class="text-gray-600 text-xs ml-1">4.4</span>
+                </div>
+              </div>
+              <h3
+                class="font-bold text-gray-800 mb-1 text-sm md:text-base group-hover:text-primary"
+              >
+                Dodol Nangka Premium
+              </h3>
+              <p class="text-xs text-gray-600 mb-1">Dodol Sleman Manis</p>
+              <p class="text-xs text-gray-500 mb-3">Jl. Godean KM 3, Sleman</p>
+              <div class="flex items-center justify-between mt-auto">
+                <div>
+                  <span class="text-primary font-bold text-sm md:text-lg"
+                    >Rp 22.000</span
+                  >
+                  <p class="text-xs text-gray-500">Stok: 28</p>
+                </div>
+                <button
+                  class="bg-primary text-white p-2 rounded-lg hover:bg-primary-dark transition duration-300"
+                >
+                  <i class="fas fa-shopping-cart text-sm"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product Card 7 -->
+          <div
+            class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300 group h-full flex flex-col"
+          >
+            <div
+              class="bg-gray-300 h-40 md:h-48 flex items-center justify-center relative"
+            >
+              <i class="fas fa-image text-gray-500 text-2xl md:text-3xl"></i>
+            </div>
+            <div class="p-4 flex flex-col flex-1">
+              <div class="flex items-center justify-between mb-2">
+                <span
+                  class="bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded-full"
+                  >Organik</span
+                >
+                <div class="flex items-center text-yellow-400">
+                  <i class="fas fa-star text-xs"></i>
+                  <span class="text-gray-600 text-xs ml-1">4.8</span>
+                </div>
+              </div>
+              <h3
+                class="font-bold text-gray-800 mb-1 text-sm md:text-base group-hover:text-primary"
+              >
+                Minyak VCO Murni
+              </h3>
+              <p class="text-xs text-gray-600 mb-1">Virgin Coconut Sleman</p>
+              <p class="text-xs text-gray-500 mb-3">
+                Desa Condongcatur, Sleman
+              </p>
+              <div class="flex items-center justify-between mt-auto">
+                <div>
+                  <span class="text-primary font-bold text-sm md:text-lg"
+                    >Rp 35.000</span
+                  >
+                  <p class="text-xs text-gray-500">Stok: 19</p>
+                </div>
+                <button
+                  class="bg-primary text-white p-2 rounded-lg hover:bg-primary-dark transition duration-300"
+                >
+                  <i class="fas fa-shopping-cart text-sm"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product Card 8 -->
+          <div
+            class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300 group h-full flex flex-col"
+          >
+            <div
+              class="bg-gray-300 h-40 md:h-48 flex items-center justify-center relative"
+            >
+              <i class="fas fa-image text-gray-500 text-2xl md:text-3xl"></i>
+            </div>
+            <div class="p-4 flex flex-col flex-1">
+              <div class="flex items-center justify-between mb-2">
+                <span
+                  class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full"
+                  >Kerajinan</span
+                >
+                <div class="flex items-center text-yellow-400">
+                  <i class="fas fa-star text-xs"></i>
+                  <span class="text-gray-600 text-xs ml-1">4.5</span>
+                </div>
+              </div>
+              <h3
+                class="font-bold text-gray-800 mb-1 text-sm md:text-base group-hover:text-primary"
+              >
+                Anyaman Bambu Hias
+              </h3>
+              <p class="text-xs text-gray-600 mb-1">Kerajinan Bambu Sleman</p>
+              <p class="text-xs text-gray-500 mb-3">Jl. Tajem KM 2, Sleman</p>
+              <div class="flex items-center justify-between mt-auto">
+                <div>
+                  <span class="text-primary font-bold text-sm md:text-lg"
+                    >Rp 45.000</span
+                  >
+                  <p class="text-xs text-gray-500">Stok: 8</p>
+                </div>
+                <button
+                  class="bg-primary text-white p-2 rounded-lg hover:bg-primary-dark transition duration-300"
+                >
+                  <i class="fas fa-shopping-cart text-sm"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pagination -->
+        <div class="flex justify-center mt-8">
+          <div class="flex items-center space-x-2">
+            <button
+              class="px-4 py-2 border border-gray-300 rounded-lg text-gray-600 hover:bg-gray-50"
+            >
+              <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="px-4 py-2 bg-primary text-white rounded-lg">
+              1
+            </button>
+            <button
+              class="px-4 py-2 border border-gray-300 rounded-lg text-gray-600 hover:bg-gray-50"
+            >
+              2
+            </button>
+            <button
+              class="px-4 py-2 border border-gray-300 rounded-lg text-gray-600 hover:bg-gray-50"
+            >
+              3
+            </button>
+            <button
+              class="px-4 py-2 border border-gray-300 rounded-lg text-gray-600 hover:bg-gray-50"
+            >
+              <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- UMKM Partners Section -->
+    <section class="py-12 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-8">
+          <h2 class="text-xl font-bold text-gray-800 mb-2">
+            Toko UMKM Partner Kami
+          </h2>
+          <p class="text-gray-600">
+            Bergabunglah dengan ratusan UMKM yang telah mempercayai platform
+            kami
+          </p>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <!-- UMKM Store Card 1 -->
+          <div
+            class="bg-gray-50 rounded-lg p-6 text-center hover:shadow-lg transition duration-300"
+          >
+            <div
+              class="bg-primary rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4"
+            >
+              <i class="fas fa-store text-white text-xl"></i>
+            </div>
+            <h3 class="font-bold text-gray-800 mb-2">Toko Cemilan Sleman</h3>
+            <p class="text-sm text-gray-600 mb-2">Makanan & Minuman</p>
+            <p class="text-xs text-gray-500">Jl. Magelang KM 5</p>
+            <div class="flex items-center justify-center mt-3">
+              <div class="flex items-center text-yellow-400 mr-2">
+                <i class="fas fa-star text-xs"></i>
+                <span class="text-gray-600 text-xs ml-1">4.5</span>
+              </div>
+              <span class="text-xs text-gray-500">25 Produk</span>
+            </div>
+          </div>
+
+          <!-- UMKM Store Card 2 -->
+          <div
+            class="bg-gray-50 rounded-lg p-6 text-center hover:shadow-lg transition duration-300"
+          >
+            <div
+              class="bg-primary rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4"
+            >
+              <i class="fas fa-store text-white text-xl"></i>
+            </div>
+            <h3 class="font-bold text-gray-800 mb-2">Batik Sleman Asri</h3>
+            <p class="text-sm text-gray-600 mb-2">Fashion & Aksesoris</p>
+            <p class="text-xs text-gray-500">Jl. Kaliurang KM 7</p>
+            <div class="flex items-center justify-center mt-3">
+              <div class="flex items-center text-yellow-400 mr-2">
+                <i class="fas fa-star text-xs"></i>
+                <span class="text-gray-600 text-xs ml-1">4.8</span>
+              </div>
+              <span class="text-xs text-gray-500">18 Produk</span>
+            </div>
+          </div>
+
+          <!-- UMKM Store Card 3 -->
+          <div
+            class="bg-gray-50 rounded-lg p-6 text-center hover:shadow-lg transition duration-300"
+          >
+            <div
+              class="bg-primary rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4"
+            >
+              <i class="fas fa-store text-white text-xl"></i>
+            </div>
+            <h3 class="font-bold text-gray-800 mb-2">Craft Sleman Studio</h3>
+            <p class="text-sm text-gray-600 mb-2">Kerajinan Tangan</p>
+            <p class="text-xs text-gray-500">Jl. Seturan Raya</p>
+            <div class="flex items-center justify-center mt-3">
+              <div class="flex items-center text-yellow-400 mr-2">
+                <i class="fas fa-star text-xs"></i>
+                <span class="text-gray-600 text-xs ml-1">4.9</span>
+              </div>
+              <span class="text-xs text-gray-500">32 Produk</span>
+            </div>
+          </div>
+
+          <!-- UMKM Store Card 4 -->
+          <div
+            class="bg-gray-50 rounded-lg p-6 text-center hover:shadow-lg transition duration-300"
+          >
+            <div
+              class="bg-primary rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4"
+            >
+              <i class="fas fa-store text-white text-xl"></i>
+            </div>
+            <h3 class="font-bold text-gray-800 mb-2">Natural Sleman Care</h3>
+            <p class="text-sm text-gray-600 mb-2">Kecantikan & Kesehatan</p>
+            <p class="text-xs text-gray-500">Jl. Palagan Tentara Pelajar</p>
+            <div class="flex items-center justify-center mt-3">
+              <div class="flex items-center text-yellow-400 mr-2">
+                <i class="fas fa-star text-xs"></i>
+                <span class="text-gray-600 text-xs ml-1">4.6</span>
+              </div>
+              <span class="text-xs text-gray-500">15 Produk</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mt-8">
+          <a
+            href="directory.html"
+            class="bg-primary text-white px-6 py-3 rounded-full font-medium hover:bg-primary-dark transition duration-300"
+          >
+            <i class="fas fa-building mr-2"></i>Lihat Semua Toko UMKM
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12 mt-16">
+      <div class="container mx-auto px-4">
+        <div class="grid md:grid-cols-4 gap-8">
+          <div>
+            <h3 class="text-xl font-bold mb-4">Sleman Mart</h3>
+            <p class="text-gray-300">
+              Platform e-commerce untuk UMKM di Sleman yang mendukung produk
+              lokal berkualitas.
+            </p>
+          </div>
+          <div>
+            <h4 class="font-semibold mb-4">Link Cepat</h4>
+            <ul class="space-y-2">
+              <li>
+                <a href="products.html" class="text-gray-300 hover:text-primary"
+                  >Produk</a
+                >
+              </li>
+              <li>
+                <a
+                  href="categories.html"
+                  class="text-gray-300 hover:text-primary"
+                  >Kategori</a
+                >
+              </li>
+              <li>
+                <a href="sellers.html" class="text-gray-300 hover:text-primary"
+                  >Penjual</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-semibold mb-4">Bantuan</h4>
+            <ul class="space-y-2">
+              <li>
+                <a href="help.html" class="text-gray-300 hover:text-primary"
+                  >Pusat Bantuan</a
+                >
+              </li>
+              <li>
+                <a href="contact.html" class="text-gray-300 hover:text-primary"
+                  >Kontak</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-semibold mb-4">Hubungi Kami</h4>
+            <p class="text-gray-300 mb-2">Email: info@slemanmart.com</p>
+            <p class="text-gray-300 mb-4">Telepon: (0274) 123-4567</p>
+          </div>
+        </div>
+        <div
+          class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-300"
+        >
+          <p>&copy; 2025 Sleman Mart. Semua hak cipta dilindungi.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Filter Modal -->
+    <div
+      id="filterModal"
+      class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-end sm:items-center justify-center hidden"
+    >
+      <div
+        class="bg-white rounded-t-lg sm:rounded-lg w-full sm:max-w-md max-h-[80vh] overflow-y-auto"
+      >
+        <div class="p-4 border-b border-gray-200">
+          <div class="flex items-center justify-between">
+            <h3 class="text-lg font-semibold text-gray-800">Filter Produk</h3>
+            <button
+              onclick="closeFilterModal()"
+              class="text-gray-500 hover:text-gray-700"
+            >
+              <i class="fas fa-times text-xl"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="p-4 space-y-4">
+          <!-- Category Filter -->
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2"
+              >Kategori</label
+            >
+            <div class="space-y-2">
+              <label class="flex items-center">
+                <input
+                  type="checkbox"
+                  class="rounded border-gray-300 text-primary focus:ring-primary"
+                />
+                <span class="ml-2 text-sm text-gray-700">Semua Kategori</span>
+              </label>
+              <label class="flex items-center">
+                <input
+                  type="checkbox"
+                  class="rounded border-gray-300 text-primary focus:ring-primary"
+                />
+                <span class="ml-2 text-sm text-gray-700"
+                  >Makanan & Minuman</span
+                >
+              </label>
+              <label class="flex items-center">
+                <input
+                  type="checkbox"
+                  class="rounded border-gray-300 text-primary focus:ring-primary"
+                />
+                <span class="ml-2 text-sm text-gray-700"
+                  >Fashion & Aksesoris</span
+                >
+              </label>
+              <label class="flex items-center">
+                <input
+                  type="checkbox"
+                  class="rounded border-gray-300 text-primary focus:ring-primary"
+                />
+                <span class="ml-2 text-sm text-gray-700">Kerajinan Tangan</span>
+              </label>
+              <label class="flex items-center">
+                <input
+                  type="checkbox"
+                  class="rounded border-gray-300 text-primary focus:ring-primary"
+                />
+                <span class="ml-2 text-sm text-gray-700"
+                  >Kecantikan & Kesehatan</span
+                >
+              </label>
+              <label class="flex items-center">
+                <input
+                  type="checkbox"
+                  class="rounded border-gray-300 text-primary focus:ring-primary"
+                />
+                <span class="ml-2 text-sm text-gray-700"
+                  >Pertanian Organik</span
+                >
+              </label>
+            </div>
+          </div>
+
+          <!-- Price Range -->
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2"
+              >Rentang Harga</label
+            >
+            <div class="flex items-center space-x-2">
+              <input
+                type="number"
+                placeholder="Min"
+                class="flex-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary text-sm"
+              />
+              <span class="text-gray-500">-</span>
+              <input
+                type="number"
+                placeholder="Max"
+                class="flex-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary text-sm"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="p-4 border-t border-gray-200">
+          <div class="flex space-x-3">
+            <button
+              onclick="resetFilter()"
+              class="flex-1 bg-gray-200 text-gray-700 py-2 px-4 rounded-md hover:bg-gray-300 transition duration-300"
+            >
+              Reset
+            </button>
+            <button
+              onclick="applyFilter()"
+              class="flex-1 bg-primary text-white py-2 px-4 rounded-md hover:bg-primary-dark transition duration-300"
+            >
+              Terapkan
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sort Modal -->
+    <div
+      id="sortModal"
+      class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-end sm:items-center justify-center hidden"
+    >
+      <div class="bg-white rounded-t-lg sm:rounded-lg w-full sm:max-w-sm">
+        <div class="p-4 border-b border-gray-200">
+          <div class="flex items-center justify-between">
+            <h3 class="text-lg font-semibold text-gray-800">Urutkan Produk</h3>
+            <button
+              onclick="closeSortModal()"
+              class="text-gray-500 hover:text-gray-700"
+            >
+              <i class="fas fa-times text-xl"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="p-4">
+          <div class="space-y-3">
+            <label class="flex items-center">
+              <input
+                type="radio"
+                name="sort"
+                value="popular"
+                class="border-gray-300 text-primary focus:ring-primary"
+              />
+              <span class="ml-3 text-sm text-gray-700">Terpopuler</span>
+            </label>
+            <label class="flex items-center">
+              <input
+                type="radio"
+                name="sort"
+                value="newest"
+                class="border-gray-300 text-primary focus:ring-primary"
+              />
+              <span class="ml-3 text-sm text-gray-700">Terbaru</span>
+            </label>
+            <label class="flex items-center">
+              <input
+                type="radio"
+                name="sort"
+                value="price-low"
+                class="border-gray-300 text-primary focus:ring-primary"
+              />
+              <span class="ml-3 text-sm text-gray-700">Harga Terendah</span>
+            </label>
+            <label class="flex items-center">
+              <input
+                type="radio"
+                name="sort"
+                value="price-high"
+                class="border-gray-300 text-primary focus:ring-primary"
+              />
+              <span class="ml-3 text-sm text-gray-700">Harga Tertinggi</span>
+            </label>
+            <label class="flex items-center">
+              <input
+                type="radio"
+                name="sort"
+                value="rating"
+                class="border-gray-300 text-primary focus:ring-primary"
+              />
+              <span class="ml-3 text-sm text-gray-700">Rating Tertinggi</span>
+            </label>
+            <label class="flex items-center">
+              <input
+                type="radio"
+                name="sort"
+                value="name"
+                class="border-gray-300 text-primary focus:ring-primary"
+              />
+              <span class="ml-3 text-sm text-gray-700">Nama A-Z</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="p-4 border-t border-gray-200">
+          <button
+            onclick="applySorting()"
+            class="w-full bg-primary text-white py-2 px-4 rounded-md hover:bg-primary-dark transition duration-300"
+          >
+            Terapkan
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Filter Modal Functions
+      function openFilterModal() {
+        document.getElementById("filterModal").classList.remove("hidden");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeFilterModal() {
+        document.getElementById("filterModal").classList.add("hidden");
+        document.body.style.overflow = "auto";
+      }
+
+      function resetFilter() {
+        // Reset all filter checkboxes and inputs
+        document
+          .querySelectorAll('#filterModal input[type="checkbox"]')
+          .forEach((checkbox) => {
+            checkbox.checked = false;
+          });
+        document
+          .querySelectorAll('#filterModal input[type="number"]')
+          .forEach((input) => {
+            input.value = "";
+          });
+      }
+
+      function applyFilter() {
+        // Apply filter logic here
+        console.log("Filter applied");
+        closeFilterModal();
+      }
+
+      // Sort Modal Functions
+      function openSortModal() {
+        document.getElementById("sortModal").classList.remove("hidden");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeSortModal() {
+        document.getElementById("sortModal").classList.add("hidden");
+        document.body.style.overflow = "auto";
+      }
+
+      function applySorting() {
+        const selectedSort = document.querySelector(
+          'input[name="sort"]:checked'
+        );
+        if (selectedSort) {
+          console.log("Sort applied:", selectedSort.value);
+          // Apply sorting logic here
+        }
+        closeSortModal();
+      }
+
+      // Event Listeners
+      document
+        .getElementById("filterBtn")
+        .addEventListener("click", openFilterModal);
+      document
+        .getElementById("sortBtn")
+        .addEventListener("click", openSortModal);
+
+      // Close modals when clicking outside
+      document
+        .getElementById("filterModal")
+        .addEventListener("click", function (e) {
+          if (e.target === this) {
+            closeFilterModal();
+          }
+        });
+
+      document
+        .getElementById("sortModal")
+        .addEventListener("click", function (e) {
+          if (e.target === this) {
+            closeSortModal();
+          }
+        });
+    </script>
+  </body>
+</html>

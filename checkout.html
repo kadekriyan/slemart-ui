@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Checkout - Sleman Mart</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#E57F39",
+              "primary-dark": "#C86A2B",
+              "primary-light": "#F29C5E",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+
+  <body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-40">
+      <div class="container mx-auto px-4">
+        <div class="flex items-center justify-between h-16">
+          <!-- Logo -->
+          <div class="flex items-center">
+            <a href="index.html" class="text-2xl font-bold text-primary"
+              >Sleman Mart</a
+            >
+          </div>
+
+          <!-- Breadcrumb -->
+          <nav class="hidden md:flex items-center space-x-2 text-sm">
+            <a href="index.html" class="text-gray-600 hover:text-primary"
+              >Beranda</a
+            >
+            <i class="fas fa-chevron-right text-gray-400 text-xs"></i>
+            <a href="cart.html" class="text-gray-600 hover:text-primary"
+              >Keranjang</a
+            >
+            <i class="fas fa-chevron-right text-gray-400 text-xs"></i>
+            <span class="text-primary font-medium">Checkout</span>
+          </nav>
+
+          <!-- Back to Cart -->
+          <a href="cart.html" class="text-gray-600 hover:text-primary">
+            <i class="fas fa-arrow-left mr-2"></i>Kembali
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 py-8">
+      <div class="max-w-4xl mx-auto">
+        <!-- Progress Steps -->
+        <div class="mb-8">
+          <div class="flex items-center justify-center">
+            <div class="flex items-center">
+              <div
+                class="step active flex items-center justify-center w-10 h-10 bg-primary text-white rounded-full font-medium"
+              >
+                <span class="step-number">1</span>
+                <i class="step-icon fas fa-check hidden"></i>
+              </div>
+              <div class="hidden sm:block ml-3 mr-8">
+                <p class="text-sm font-medium text-primary">Detail Pesanan</p>
+                <p class="text-xs text-gray-500">Alamat & Pengiriman</p>
+              </div>
+            </div>
+
+            <div class="w-16 h-1 bg-gray-200 mx-4"></div>
+
+            <div class="flex items-center">
+              <div
+                class="step flex items-center justify-center w-10 h-10 bg-gray-200 text-gray-500 rounded-full font-medium"
+              >
+                <span class="step-number">2</span>
+                <i class="step-icon fas fa-check hidden"></i>
+              </div>
+              <div class="hidden sm:block ml-3 mr-8">
+                <p class="text-sm font-medium text-gray-500">Pembayaran</p>
+                <p class="text-xs text-gray-400">QRIS Payment</p>
+              </div>
+            </div>
+
+            <div class="w-16 h-1 bg-gray-200 mx-4"></div>
+
+            <div class="flex items-center">
+              <div
+                class="step flex items-center justify-center w-10 h-10 bg-gray-200 text-gray-500 rounded-full font-medium"
+              >
+                <span class="step-number">3</span>
+                <i class="step-icon fas fa-check hidden"></i>
+              </div>
+              <div class="hidden sm:block ml-3">
+                <p class="text-sm font-medium text-gray-500">Konfirmasi</p>
+                <p class="text-xs text-gray-400">Upload Bukti</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 1: Order Details -->
+        <div id="orderSection" class="bg-white rounded-lg shadow-md mb-6">
+          <div class="p-6 border-b border-gray-200">
+            <h3 class="text-lg font-bold text-gray-800">Detail Pesanan</h3>
+            <p class="text-sm text-gray-600">Lengkapi informasi pengiriman</p>
+          </div>
+
+          <div class="p-6">
+            <!-- Store Info -->
+            <div
+              class="bg-primary-light bg-opacity-20 border border-primary-light rounded-lg p-4 mb-6"
+            >
+              <div class="flex items-center">
+                <i class="fas fa-store text-primary text-xl mr-3"></i>
+                <div>
+                  <h4 class="font-bold text-gray-800">Warung Bu Sari</h4>
+                  <p class="text-sm text-gray-600">
+                    Jl. Kaliurang KM 10, Sleman
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Order Items -->
+            <div class="mb-6">
+              <h4 class="font-bold text-gray-800 mb-4">Item Pesanan</h4>
+              <div class="space-y-4">
+                <div class="flex items-center bg-gray-50 rounded-lg p-4">
+                  <div
+                    class="w-16 h-16 bg-gray-200 rounded-lg flex items-center justify-center mr-4"
+                  >
+                    <i class="fas fa-image text-gray-400"></i>
+                  </div>
+                  <div class="flex-1">
+                    <h5 class="font-medium text-gray-800">Gudeg Komplit</h5>
+                    <p class="text-sm text-gray-600">
+                      Dengan ayam, telur, dan krecek
+                    </p>
+                    <p class="text-sm text-primary font-bold mt-1">
+                      Rp 25.000 x 2
+                    </p>
+                  </div>
+                  <div class="text-right">
+                    <p class="font-bold text-gray-800">Rp 50.000</p>
+                  </div>
+                </div>
+
+                <div class="flex items-center bg-gray-50 rounded-lg p-4">
+                  <div
+                    class="w-16 h-16 bg-gray-200 rounded-lg flex items-center justify-center mr-4"
+                  >
+                    <i class="fas fa-image text-gray-400"></i>
+                  </div>
+                  <div class="flex-1">
+                    <h5 class="font-medium text-gray-800">Es Teh Manis</h5>
+                    <p class="text-sm text-gray-600">Minuman segar</p>
+                    <p class="text-sm text-primary font-bold mt-1">
+                      Rp 5.000 x 2
+                    </p>
+                  </div>
+                  <div class="text-right">
+                    <p class="font-bold text-gray-800">Rp 10.000</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Order Summary -->
+              <div class="border-t border-gray-200 pt-4 mt-4">
+                <div class="flex justify-between items-center mb-2">
+                  <span class="text-gray-600">Subtotal</span>
+                  <span class="font-medium">Rp 60.000</span>
+                </div>
+                <div class="flex justify-between items-center mb-2">
+                  <span class="text-gray-600">Ongkos Kirim</span>
+                  <span class="font-medium">Rp 2.000</span>
+                </div>
+                <div
+                  class="flex justify-between items-center text-lg font-bold border-t border-gray-200 pt-2"
+                >
+                  <span>Total</span>
+                  <span class="text-primary">Rp 62.000</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Shipping Address -->
+            <div class="grid md:grid-cols-2 gap-4 mb-6">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2"
+                  >Nama Penerima *</label
+                >
+                <input
+                  type="text"
+                  id="recipientName"
+                  class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:border-primary"
+                  placeholder="Nama lengkap penerima"
+                  required
+                />
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2"
+                  >Nomor Telepon *</label
+                >
+                <input
+                  type="tel"
+                  id="recipientPhone"
+                  class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:border-primary"
+                  placeholder="08xxxxxxxxxx"
+                  required
+                />
+              </div>
+              <div class="md:col-span-2">
+                <label class="block text-sm font-medium text-gray-700 mb-2"
+                  >Alamat Lengkap *</label
+                >
+                <textarea
+                  id="fullAddress"
+                  rows="3"
+                  class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:border-primary"
+                  placeholder="Jalan, nomor rumah, RT/RW, kelurahan, kecamatan"
+                  required
+                ></textarea>
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2"
+                  >Kota/Kabupaten *</label
+                >
+                <select
+                  id="citySelect"
+                  class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:border-primary"
+                  required
+                >
+                  <option value="">Pilih kota/kabupaten</option>
+                  <option value="sleman">Sleman</option>
+                  <option value="yogyakarta">Yogyakarta</option>
+                  <option value="bantul">Bantul</option>
+                  <option value="gunungkidul">Gunung Kidul</option>
+                  <option value="kulonprogo">Kulon Progo</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2"
+                  >Kode Pos</label
+                >
+                <input
+                  type="text"
+                  id="postalCode"
+                  class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:border-primary"
+                  placeholder="55xxx"
+                />
+              </div>
+            </div>
+
+            <!-- Notes -->
+            <div class="mb-6">
+              <label class="block text-sm font-medium text-gray-700 mb-2"
+                >Catatan untuk Penjual (Opsional)</label
+              >
+              <textarea
+                id="notes"
+                rows="3"
+                class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:border-primary"
+                placeholder="Contoh: Kirim sore hari, jangan gunakan kantong plastik hitam"
+              ></textarea>
+            </div>
+
+            <button
+              onclick="proceedToPayment()"
+              class="w-full bg-primary text-white py-3 px-6 rounded-lg font-medium hover:bg-primary-dark transition duration-300"
+            >
+              <i class="fas fa-credit-card mr-2"></i>Lanjut ke Pembayaran
+            </button>
+          </div>
+        </div>
+
+        <!-- Step 2: Payment -->
+        <div
+          id="paymentSection"
+          class="bg-white rounded-lg shadow-md mb-6 hidden"
+        >
+          <div class="p-6 border-b border-gray-200">
+            <h3 class="text-lg font-bold text-gray-800">Pembayaran</h3>
+            <p class="text-sm text-gray-600">
+              Scan QRIS untuk menyelesaikan pembayaran
+            </p>
+          </div>
+
+          <div class="p-6">
+            <div class="text-center mb-6">
+              <!-- QR Code -->
+              <div
+                class="bg-white border-2 border-gray-200 rounded-lg p-8 inline-block mb-4"
+              >
+                <div
+                  class="w-64 h-64 bg-gray-100 flex items-center justify-center rounded-lg"
+                >
+                  <!-- QR Code Pattern -->
+                  <div class="grid grid-cols-8 gap-1">
+                    <div class="w-6 h-6 bg-black rounded-sm"></div>
+                    <div class="w-6 h-6 bg-black rounded-sm"></div>
+                    <div class="w-6 h-6 bg-black rounded-sm"></div>
+                    <div class="w-6 h-6 bg-white rounded-sm"></div>
+                    <div class="w-6 h-6 bg-white rounded-sm"></div>
+                    <div class="w-6 h-6 bg-black rounded-sm"></div>
+                    <div class="w-6 h-6 bg-black rounded-sm"></div>
+                    <div class="w-6 h-6 bg-black rounded-sm"></div>
+
+                    <div class="w-6 h-6 bg-black rounded-sm"></div>
+                    <div class="w-6 h-6 bg-white rounded-sm"></div>
+                    <div class="w-6 h-6 bg-white rounded-sm"></div>
+                    <div class="w-6 h-6 bg-black rounded-sm"></div>
+                    <div class="w-6 h-6 bg-black rounded-sm"></div>
+                    <div class="w-6 h-6 bg-white rounded-sm"></div>
+                    <div class="w-6 h-6 bg-white rounded-sm"></div>
+                    <div class="w-6 h-6 bg-black rounded-sm"></div>
+
+                    <div class="w-6 h-6 bg-black rounded-sm"></div>
+                    <div class="w-6 h-6 bg-white rounded-sm"></div>
+                    <div class="w-6 h-6 bg-black rounded-sm"></div>
+                    <div class="w-6 h-6 bg-black rounded-sm"></div>
+                    <div class="w-6 h-6 bg-black rounded-sm"></div>
+                    <div class="w-6 h-6 bg-black rounded-sm"></div>
+                    <div class="w-6 h-6 bg-white rounded-sm"></div>
+                    <div class="w-6 h-6 bg-black rounded-sm"></div>
+
+                    <div class="w-6 h-6 bg-white rounded-sm"></div>
+                    <div class="w-6 h-6 bg-black rounded-sm"></div>
+                    <div class="w-6 h-6 bg-black rounded-sm"></div>
+                    <div class="w-6 h-6 bg-white rounded-sm"></div>
+                    <div class="w-6 h-6 bg-white rounded-sm"></div>
+                    <div class="w-6 h-6 bg-black rounded-sm"></div>
+                    <div class="w-6 h-6 bg-black rounded-sm"></div>
+                    <div class="w-6 h-6 bg-white rounded-sm"></div>
+
+                    <div class="w-6 h-6 bg-white rounded-sm"></div>
+                    <div class="w-6 h-6 bg-black rounded-sm"></div>
+                    <div class="w-6 h-6 bg-white rounded-sm"></div>
+                    <div class="w-6 h-6 bg-black rounded-sm"></div>
+                    <div class="w-6 h-6 bg-black rounded-sm"></div>
+                    <div class="w-6 h-6 bg-white rounded-sm"></div>
+                    <div class="w-6 h-6 bg-black rounded-sm"></div>
+                    <div class="w-6 h-6 bg-white rounded-sm"></div>
+
+                    <div class="w-6 h-6 bg-black rounded-sm"></div>
+                    <div class="w-6 h-6 bg-black rounded-sm"></div>
+                    <div class="w-6 h-6 bg-black rounded-sm"></div>
+                    <div class="w-6 h-6 bg-white rounded-sm"></div>
+                    <div class="w-6 h-6 bg-white rounded-sm"></div>
+                    <div class="w-6 h-6 bg-black rounded-sm"></div>
+                    <div class="w-6 h-6 bg-black rounded-sm"></div>
+                    <div class="w-6 h-6 bg-black rounded-sm"></div>
+
+                    <div class="w-6 h-6 bg-black rounded-sm"></div>
+                    <div class="w-6 h-6 bg-white rounded-sm"></div>
+                    <div class="w-6 h-6 bg-white rounded-sm"></div>
+                    <div class="w-6 h-6 bg-black rounded-sm"></div>
+                    <div class="w-6 h-6 bg-black rounded-sm"></div>
+                    <div class="w-6 h-6 bg-white rounded-sm"></div>
+                    <div class="w-6 h-6 bg-white rounded-sm"></div>
+                    <div class="w-6 h-6 bg-black rounded-sm"></div>
+
+                    <div class="w-6 h-6 bg-black rounded-sm"></div>
+                    <div class="w-6 h-6 bg-black rounded-sm"></div>
+                    <div class="w-6 h-6 bg-black rounded-sm"></div>
+                    <div class="w-6 h-6 bg-white rounded-sm"></div>
+                    <div class="w-6 h-6 bg-white rounded-sm"></div>
+                    <div class="w-6 h-6 bg-black rounded-sm"></div>
+                    <div class="w-6 h-6 bg-black rounded-sm"></div>
+                    <div class="w-6 h-6 bg-black rounded-sm"></div>
+                  </div>
+                </div>
+              </div>
+
+              <h4 class="text-lg font-bold text-gray-800 mb-2">
+                Scan QRIS untuk Pembayaran
+              </h4>
+              <p class="text-gray-600 mb-4">
+                Total yang harus dibayar:
+                <span id="totalPayment" class="font-bold text-primary"
+                  >Rp 62.000</span
+                >
+              </p>
+
+              <!-- Payment Instructions -->
+              <div
+                class="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6 text-left"
+              >
+                <h5 class="font-bold text-blue-800 mb-2">Cara Pembayaran:</h5>
+                <ol class="text-sm text-blue-700 space-y-1">
+                  <li>1. Buka aplikasi mobile banking atau e-wallet Anda</li>
+                  <li>2. Pilih menu "Scan QR" atau "QRIS"</li>
+                  <li>3. Arahkan kamera ke QR code di atas</li>
+                  <li>4. Masukkan nominal sesuai total pembayaran</li>
+                  <li>5. Konfirmasi dan selesaikan pembayaran</li>
+                  <li>6. Simpan bukti pembayaran untuk konfirmasi</li>
+                </ol>
+              </div>
+
+              <!-- Payment Timer -->
+              <div
+                class="bg-orange-50 border border-orange-200 rounded-lg p-4 mb-6"
+              >
+                <div class="flex items-center justify-center">
+                  <i class="fas fa-clock text-orange-500 mr-2"></i>
+                  <span class="text-orange-700"
+                    >Selesaikan pembayaran dalam:
+                  </span>
+                  <span id="countdown" class="font-bold text-orange-800 ml-2"
+                    >14:59</span
+                  >
+                </div>
+              </div>
+
+              <button
+                onclick="confirmPayment()"
+                class="bg-green-600 text-white py-3 px-6 rounded-lg font-medium hover:bg-green-700 transition duration-300"
+              >
+                <i class="fas fa-check mr-2"></i>Sudah Bayar? Konfirmasi
+                Sekarang
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 3: Payment Confirmation -->
+        <div
+          id="confirmationSection"
+          class="bg-white rounded-lg shadow-md mb-6 hidden"
+        >
+          <div class="p-6 border-b border-gray-200">
+            <h3 class="text-lg font-bold text-gray-800">
+              Konfirmasi Pembayaran
+            </h3>
+            <p class="text-sm text-gray-600">
+              Upload bukti pembayaran untuk menyelesaikan pesanan
+            </p>
+          </div>
+
+          <div class="p-6">
+            <form id="confirmationForm" enctype="multipart/form-data">
+              <!-- Payment Proof Upload -->
+              <div class="mb-6">
+                <label class="block text-sm font-medium text-gray-700 mb-2"
+                  >Bukti Pembayaran *</label
+                >
+                <div
+                  class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-primary transition duration-300"
+                >
+                  <input
+                    type="file"
+                    id="paymentProof"
+                    accept="image/*"
+                    class="hidden"
+                    onchange="handleFileUpload(this)"
+                    required
+                  />
+                  <div
+                    id="uploadArea"
+                    class="cursor-pointer"
+                    onclick="document.getElementById('paymentProof').click()"
+                  >
+                    <i
+                      class="fas fa-cloud-upload-alt text-4xl text-gray-400 mb-2"
+                    ></i>
+                    <p class="text-gray-600 mb-2">
+                      Klik untuk upload bukti pembayaran
+                    </p>
+                    <p class="text-sm text-gray-500">
+                      Format: JPG, PNG, PDF (Max 5MB)
+                    </p>
+                  </div>
+                  <div id="filePreview" class="hidden">
+                    <img
+                      id="previewImage"
+                      class="max-w-full h-32 object-contain mx-auto mb-2 rounded"
+                    />
+                    <p id="fileName" class="text-sm text-gray-600"></p>
+                    <button
+                      type="button"
+                      onclick="removeFile()"
+                      class="text-red-500 hover:text-red-700 text-sm mt-2"
+                    >
+                      <i class="fas fa-trash mr-1"></i>Hapus
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Payment Details -->
+              <div class="grid md:grid-cols-2 gap-4 mb-6">
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-2"
+                    >Nama Pengirim *</label
+                  >
+                  <input
+                    type="text"
+                    id="senderName"
+                    class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:border-primary"
+                    placeholder="Nama sesuai rekening/e-wallet"
+                    required
+                  />
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-2"
+                    >Nominal yang Dibayar *</label
+                  >
+                  <input
+                    type="number"
+                    id="paidAmount"
+                    class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:border-primary"
+                    placeholder="62000"
+                    required
+                  />
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-2"
+                    >Metode Pembayaran *</label
+                  >
+                  <select
+                    id="paymentMethod"
+                    class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:border-primary"
+                    required
+                  >
+                    <option value="">Pilih metode pembayaran</option>
+                    <option value="dana">DANA</option>
+                    <option value="gopay">GoPay</option>
+                    <option value="ovo">OVO</option>
+                    <option value="linkaja">LinkAja</option>
+                    <option value="shopeepay">ShopeePay</option>
+                    <option value="bca">BCA Mobile</option>
+                    <option value="mandiri">Mandiri Online</option>
+                    <option value="bni">BNI Mobile Banking</option>
+                    <option value="bri">BRI Mobile</option>
+                    <option value="other">Lainnya</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-2"
+                    >Tanggal & Waktu Pembayaran *</label
+                  >
+                  <input
+                    type="datetime-local"
+                    id="paymentDateTime"
+                    class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:border-primary"
+                    required
+                  />
+                </div>
+              </div>
+
+              <!-- Additional Notes -->
+              <div class="mb-6">
+                <label class="block text-sm font-medium text-gray-700 mb-2"
+                  >Catatan Tambahan (Opsional)</label
+                >
+                <textarea
+                  id="additionalNotes"
+                  rows="3"
+                  class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:border-primary"
+                  placeholder="Catatan tambahan terkait pembayaran"
+                ></textarea>
+              </div>
+
+              <!-- Terms Agreement -->
+              <div class="mb-6">
+                <label class="flex items-start">
+                  <input
+                    type="checkbox"
+                    id="termsAgreement"
+                    class="mt-1 w-4 h-4 text-primary bg-gray-100 border-gray-300 rounded focus:ring-primary"
+                    required
+                  />
+                  <span class="ml-2 text-sm text-gray-700">
+                    Saya menyatakan bahwa informasi yang saya berikan adalah
+                    benar dan akurat. Saya memahami bahwa pembayaran akan
+                    diverifikasi oleh penjual sebelum pesanan diproses.
+                    <a href="#" class="text-primary hover:text-primary-dark"
+                      >Syarat & Ketentuan</a
+                    >
+                  </span>
+                </label>
+              </div>
+
+              <button
+                type="submit"
+                class="w-full bg-primary text-white py-3 px-6 rounded-lg font-medium hover:bg-primary-dark transition duration-300"
+              >
+                <i class="fas fa-paper-plane mr-2"></i>Kirim Konfirmasi
+                Pembayaran
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Success Message -->
+        <div
+          id="successMessage"
+          class="bg-white rounded-lg shadow-md p-6 text-center hidden"
+        >
+          <div class="mb-6">
+            <div
+              class="bg-green-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4"
+            >
+              <i class="fas fa-check-circle text-green-600 text-4xl"></i>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-800 mb-2">
+              Pesanan Berhasil Dibuat!
+            </h3>
+            <p class="text-gray-600 mb-4">
+              Terima kasih atas pesanan Anda. Konfirmasi pembayaran telah
+              dikirim ke penjual.
+            </p>
+            <div class="bg-gray-50 rounded-lg p-4 mb-6">
+              <p class="text-sm text-gray-600 mb-2">Nomor Pesanan:</p>
+              <p id="orderNumber" class="text-lg font-bold text-primary">
+                #SLM-2025-001
+              </p>
+            </div>
+          </div>
+
+          <div class="space-y-3">
+            <button
+              onclick="window.location.href='order-status.html'"
+              class="w-full bg-primary text-white py-3 px-6 rounded-lg font-medium hover:bg-primary-dark transition duration-300"
+            >
+              <i class="fas fa-eye mr-2"></i>Lacak Pesanan
+            </button>
+            <button
+              onclick="window.location.href='products.html'"
+              class="w-full border border-primary text-primary py-3 px-6 rounded-lg font-medium hover:bg-primary hover:text-white transition duration-300"
+            >
+              <i class="fas fa-shopping-bag mr-2"></i>Belanja Lagi
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8 mt-16">
+      <div class="container mx-auto px-4">
+        <div class="text-center">
+          <h3 class="text-xl font-bold mb-2">Sleman Mart</h3>
+          <p class="text-gray-400">Platform UMKM Digital Kabupaten Sleman</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Initialize page
+      document.addEventListener("DOMContentLoaded", function () {
+        // Set current date/time for payment
+        const now = new Date();
+        const localDateTime = now.toISOString().slice(0, 16);
+        document.getElementById("paymentDateTime").value = localDateTime;
+
+        // Initialize payment timer
+        startPaymentTimer(15 * 60); // 15 minutes
+
+        // Load order data from localStorage
+        loadOrderData();
+      });
+
+      // Step navigation
+      function showStep(step) {
+        // Hide all sections
+        document.getElementById("orderSection").classList.add("hidden");
+        document.getElementById("paymentSection").classList.add("hidden");
+        document.getElementById("confirmationSection").classList.add("hidden");
+        document.getElementById("successMessage").classList.add("hidden");
+
+        // Update step indicators
+        document.querySelectorAll(".step").forEach((s) => {
+          s.classList.remove("active");
+          s.classList.add("bg-gray-200", "text-gray-500");
+          s.classList.remove("bg-primary", "text-white");
+          s.querySelector(".step-number").classList.remove("hidden");
+          s.querySelector(".step-icon").classList.add("hidden");
+        });
+
+        // Show selected section and activate steps
+        const steps = document.querySelectorAll(".step");
+        for (let i = 0; i < step; i++) {
+          if (i < step - 1) {
+            // Completed step
+            steps[i].classList.add("bg-green-500", "text-white");
+            steps[i].classList.remove("bg-gray-200", "text-gray-500");
+            steps[i].querySelector(".step-number").classList.add("hidden");
+            steps[i].querySelector(".step-icon").classList.remove("hidden");
+          } else {
+            // Active step
+            steps[i].classList.add("active", "bg-primary", "text-white");
+            steps[i].classList.remove("bg-gray-200", "text-gray-500");
+          }
+        }
+
+        switch (step) {
+          case 1:
+            document.getElementById("orderSection").classList.remove("hidden");
+            break;
+          case 2:
+            document
+              .getElementById("paymentSection")
+              .classList.remove("hidden");
+            break;
+          case 3:
+            document
+              .getElementById("confirmationSection")
+              .classList.remove("hidden");
+            break;
+        }
+      }
+
+      // Navigate to payment
+      function proceedToPayment() {
+        // Validate shipping form
+        const requiredFields = [
+          "recipientName",
+          "recipientPhone",
+          "fullAddress",
+          "citySelect",
+        ];
+        let isValid = true;
+
+        requiredFields.forEach((field) => {
+          const input = document.getElementById(field);
+          if (!input.value.trim()) {
+            input.classList.add("border-red-500");
+            isValid = false;
+          } else {
+            input.classList.remove("border-red-500");
+          }
+        });
+
+        if (!isValid) {
+          alert("Mohon lengkapi semua data pengiriman yang wajib diisi.");
+          return;
+        }
+
+        showStep(2);
+      }
+
+      // Confirm payment
+      function confirmPayment() {
+        showStep(3);
+      }
+
+      // Payment timer
+      function startPaymentTimer(duration) {
+        let timer = duration;
+        const countdownElement = document.getElementById("countdown");
+
+        const interval = setInterval(function () {
+          const minutes = Math.floor(timer / 60);
+          const seconds = timer % 60;
+
+          countdownElement.textContent =
+            (minutes < 10 ? "0" + minutes : minutes) +
+            ":" +
+            (seconds < 10 ? "0" + seconds : seconds);
+
+          if (--timer < 0) {
+            clearInterval(interval);
+            alert("Waktu pembayaran habis. Silakan buat pesanan baru.");
+            window.location.href = "cart.html";
+          }
+        }, 1000);
+      }
+
+      // File upload handling
+      function handleFileUpload(input) {
+        const file = input.files[0];
+        const maxSize = 5 * 1024 * 1024; // 5MB
+
+        if (file) {
+          if (file.size > maxSize) {
+            alert("Ukuran file terlalu besar. Maksimal 5MB.");
+            input.value = "";
+            return;
+          }
+
+          const allowedTypes = [
+            "image/jpeg",
+            "image/jpg",
+            "image/png",
+            "application/pdf",
+          ];
+          if (!allowedTypes.includes(file.type)) {
+            alert("Format file tidak didukung. Gunakan JPG, PNG, atau PDF.");
+            input.value = "";
+            return;
+          }
+
+          // Show preview
+          const reader = new FileReader();
+          reader.onload = function (e) {
+            document.getElementById("uploadArea").classList.add("hidden");
+            document.getElementById("filePreview").classList.remove("hidden");
+
+            if (file.type.startsWith("image/")) {
+              document.getElementById("previewImage").src = e.target.result;
+              document
+                .getElementById("previewImage")
+                .classList.remove("hidden");
+            } else {
+              document.getElementById("previewImage").classList.add("hidden");
+            }
+
+            document.getElementById("fileName").textContent = file.name;
+          };
+          reader.readAsDataURL(file);
+        }
+      }
+
+      // Remove uploaded file
+      function removeFile() {
+        document.getElementById("paymentProof").value = "";
+        document.getElementById("uploadArea").classList.remove("hidden");
+        document.getElementById("filePreview").classList.add("hidden");
+      }
+
+      // Handle confirmation form submission
+      document
+        .getElementById("confirmationForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          // Validate form
+          const requiredFields = [
+            "paymentProof",
+            "senderName",
+            "paidAmount",
+            "paymentMethod",
+            "paymentDateTime",
+          ];
+          let isValid = true;
+
+          requiredFields.forEach((field) => {
+            const input = document.getElementById(field);
+            if (!input.value) {
+              input.classList.add("border-red-500");
+              isValid = false;
+            } else {
+              input.classList.remove("border-red-500");
+            }
+          });
+
+          if (!document.getElementById("termsAgreement").checked) {
+            alert("Mohon setujui syarat dan ketentuan.");
+            return;
+          }
+
+          if (!isValid) {
+            alert("Mohon lengkapi semua data yang diperlukan.");
+            return;
+          }
+
+          // Simulate order submission
+          const orderNumber =
+            "SLM-" +
+            new Date().getFullYear() +
+            "-" +
+            String(Math.floor(Math.random() * 1000)).padStart(3, "0");
+          document.getElementById("orderNumber").textContent =
+            "#" + orderNumber;
+
+          // Show success message
+          document
+            .getElementById("confirmationSection")
+            .classList.add("hidden");
+          document.getElementById("successMessage").classList.remove("hidden");
+
+          // Update step indicator to show completion
+          const steps = document.querySelectorAll(".step");
+          steps.forEach((step, index) => {
+            step.classList.add("bg-green-500", "text-white");
+            step.classList.remove(
+              "bg-gray-200",
+              "text-gray-500",
+              "bg-primary",
+              "active"
+            );
+            step.querySelector(".step-number").classList.add("hidden");
+            step.querySelector(".step-icon").classList.remove("hidden");
+          });
+
+          // Clear cart data
+          localStorage.removeItem("cartData");
+        });
+
+      // Load order data from cart
+      function loadOrderData() {
+        // This would typically load from localStorage or URL parameters
+        const sampleData = {
+          store: "Warung Bu Sari",
+          items: [
+            {
+              name: "Gudeg Komplit",
+              price: 25000,
+              quantity: 2,
+              total: 50000,
+            },
+            {
+              name: "Es Teh Manis",
+              price: 5000,
+              quantity: 2,
+              total: 10000,
+            },
+          ],
+          subtotal: 60000,
+          shipping: 2000,
+          total: 62000,
+        };
+
+        document.getElementById("totalPayment").textContent =
+          "Rp " + sampleData.total.toLocaleString("id-ID");
+      }
+    </script>
+  </body>
+</html>

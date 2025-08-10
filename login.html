@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Masuk - Sleman Mart</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#E57F39",
+              "primary-dark": "#C86A2B",
+              "primary-light": "#F29C5E",
+            },
+          },
+        },
+      };
+    </script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-gray-50 min-h-screen flex items-center justify-center">
+    <div class="max-w-md w-full bg-white rounded-lg shadow-md p-8">
+      <div class="text-center mb-8">
+        <div class="text-3xl font-bold text-primary mb-2">
+          <i class="fas fa-store mr-2"></i>Sleman Mart
+        </div>
+        <h2 class="text-2xl font-semibold text-gray-800">
+          Selamat Datang Kembali
+        </h2>
+        <p class="text-gray-600 mt-2">
+          Masuk ke akun Anda untuk melanjutkan belanja
+        </p>
+      </div>
+
+      <form id="loginForm" class="space-y-6">
+        <!-- Email or Phone -->
+        <div>
+          <label
+            for="emailOrPhone"
+            class="block text-sm font-medium text-gray-700 mb-2"
+          >
+            <i class="fas fa-user mr-2"></i>Email atau Nomor HP
+          </label>
+          <input
+            type="text"
+            id="emailOrPhone"
+            name="emailOrPhone"
+            required
+            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+            placeholder="contoh@email.com atau 08xxxxxxxxxx"
+          />
+        </div>
+
+        <!-- Password -->
+        <div>
+          <label
+            for="password"
+            class="block text-sm font-medium text-gray-700 mb-2"
+          >
+            <i class="fas fa-lock mr-2"></i>Password
+          </label>
+          <div class="relative">
+            <input
+              type="password"
+              id="password"
+              name="password"
+              required
+              class="w-full px-3 py-2 pr-10 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+              placeholder="Masukkan password"
+            />
+            <button
+              type="button"
+              onclick="togglePassword()"
+              class="absolute inset-y-0 right-0 pr-3 flex items-center"
+            >
+              <i
+                id="togglePasswordIcon"
+                class="fas fa-eye-slash text-gray-400"
+              ></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Remember Me & Forgot Password -->
+        <div class="flex items-center justify-between">
+          <label class="flex items-center">
+            <input
+              type="checkbox"
+              id="remember"
+              name="remember"
+              class="rounded border-gray-300 text-primary focus:ring-primary"
+            />
+            <span class="ml-2 text-sm text-gray-700">Ingat saya</span>
+          </label>
+          <a
+            href="reset-password.html"
+            class="text-sm text-primary hover:underline"
+          >
+            Lupa password?
+          </a>
+        </div>
+
+        <!-- Submit Button -->
+        <button
+          type="submit"
+          class="w-full bg-primary text-white py-3 px-4 rounded-md hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 transition duration-300"
+        >
+          <i class="fas fa-sign-in-alt mr-2"></i>Masuk
+        </button>
+      </form>
+
+      <!-- Social Login -->
+      <div class="mt-6">
+        <div class="relative">
+          <div class="absolute inset-0 flex items-center">
+            <div class="w-full border-t border-gray-300"></div>
+          </div>
+          <div class="relative flex justify-center text-sm">
+            <span class="px-2 bg-white text-gray-500">Atau masuk dengan</span>
+          </div>
+        </div>
+
+        <div class="mt-6 grid grid-cols-2 gap-3">
+          <button
+            class="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
+          >
+            <i class="fab fa-google text-red-500 mr-2"></i>Google
+          </button>
+          <button
+            class="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
+          >
+            <i class="fab fa-facebook text-blue-500 mr-2"></i>Facebook
+          </button>
+        </div>
+      </div>
+
+      <!-- Register Link -->
+      <div class="mt-6 text-center">
+        <p class="text-sm text-gray-600">
+          Belum punya akun?
+          <a
+            href="register.html"
+            class="font-medium text-primary hover:underline"
+            >Daftar sekarang</a
+          >
+        </p>
+      </div>
+
+      <!-- Back to Home -->
+      <div class="mt-4 text-center">
+        <a href="index.html" class="text-sm text-gray-500 hover:text-primary">
+          <i class="fas fa-arrow-left mr-1"></i>Kembali ke Beranda
+        </a>
+      </div>
+    </div>
+
+    <script>
+      function togglePassword() {
+        const input = document.getElementById("password");
+        const icon = document.getElementById("togglePasswordIcon");
+
+        if (input.type === "password") {
+          input.type = "text";
+          icon.classList.remove("fa-eye-slash");
+          icon.classList.add("fa-eye");
+        } else {
+          input.type = "password";
+          icon.classList.remove("fa-eye");
+          icon.classList.add("fa-eye-slash");
+        }
+      }
+
+      // Form Validation and Submission
+      document
+        .getElementById("loginForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const emailOrPhone = document.getElementById("emailOrPhone").value;
+          const password = document.getElementById("password").value;
+
+          // Simple validation
+          if (!emailOrPhone || !password) {
+            alert("Harap isi semua field!");
+            return;
+          }
+
+          // Simulate login success
+          alert("Login berhasil! Selamat datang di Sleman Mart.");
+          localStorage.setItem("isLoggedIn", "true");
+          localStorage.setItem("userEmail", emailOrPhone);
+          window.location.href = "dashboard.html";
+        });
+    </script>
+  </body>
+</html>
