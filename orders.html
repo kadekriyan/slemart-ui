@@ -35,26 +35,6 @@
             </div>
           </div>
 
-          <div class="hidden md:block">
-            <div class="ml-10 flex items-baseline space-x-4">
-              <a
-                href="index.html"
-                class="text-gray-500 hover:text-primary px-3 py-2 rounded-md text-sm font-medium"
-                >Beranda</a
-              >
-              <a
-                href="products.html"
-                class="text-gray-500 hover:text-primary px-3 py-2 rounded-md text-sm font-medium"
-                >Produk</a
-              >
-              <a
-                href="categories.html"
-                class="text-gray-500 hover:text-primary px-3 py-2 rounded-md text-sm font-medium"
-                >Kategori</a
-              >
-            </div>
-          </div>
-
           <div class="flex items-center space-x-2 sm:space-x-4">
             <a
               href="cart.html"
@@ -66,13 +46,58 @@
                 >0</span
               >
             </a>
-            <a
-              href="dashboard.html"
-              class="bg-primary text-white px-2 sm:px-4 py-2 rounded-md hover:bg-primary-dark transition duration-300 text-sm sm:text-base"
-            >
-              <span class="hidden sm:inline">Dashboard</span>
-              <i class="fas fa-user sm:hidden"></i>
-            </a>
+
+            <!-- Profile Dropdown -->
+            <div class="relative group">
+              <button
+                class="flex items-center text-primary hover:text-primary-dark transition duration-300"
+              >
+                <i
+                  class="fas fa-user-circle text-lg sm:text-xl mr-1 sm:mr-2"
+                ></i>
+                <span class="hidden sm:inline text-sm sm:text-base"
+                  >Kadek Riyan</span
+                >
+                <i class="fas fa-chevron-down text-xs ml-1"></i>
+              </button>
+
+              <!-- Dropdown Menu -->
+              <div
+                class="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50"
+              >
+                <div class="py-2">
+                  <a
+                    href="products.html"
+                    class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100 transition duration-200"
+                  >
+                    <i class="fas fa-home mr-3 text-gray-500"></i>
+                    <span>Beranda</span>
+                  </a>
+                  <a
+                    href="profile.html"
+                    class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100 transition duration-200"
+                  >
+                    <i class="fas fa-user mr-3 text-gray-500"></i>
+                    <span>Profil</span>
+                  </a>
+                  <a
+                    href="orders.html"
+                    class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100 transition duration-200"
+                  >
+                    <i class="fas fa-box mr-3 text-gray-500"></i>
+                    <span>Pesanan Saya</span>
+                  </a>
+                  <hr class="my-2" />
+                  <a
+                    href="index.html"
+                    class="flex items-center px-4 py-2 text-red-600 hover:bg-red-50 transition duration-200"
+                  >
+                    <i class="fas fa-sign-out-alt mr-3"></i>
+                    <span>Keluar</span>
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -91,8 +116,8 @@
           </li>
           <li><i class="fas fa-chevron-right text-xs flex-shrink-0"></i></li>
           <li>
-            <a href="dashboard.html" class="hover:text-primary flex-shrink-0"
-              >Dashboard</a
+            <a href="profile.html" class="hover:text-primary flex-shrink-0"
+              >Profile</a
             >
           </li>
           <li><i class="fas fa-chevron-right text-xs flex-shrink-0"></i></li>

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alamat Saya - Sleman Mart</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script
+      src="https://kit.fontawesome.com/a076d05399.js"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#E57F39",
+              "primary-dark": "#C86A2B",
+              "primary-light": "#F29C5E",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+      <div class="container mx-auto px-4">
+        <div class="flex items-center justify-between h-16">
+          <!-- Back Button & Title -->
+          <div class="flex items-center space-x-4">
+            <button
+              onclick="window.location.href='profile.html'"
+              class="text-gray-600 hover:text-primary transition-colors"
+            >
+              <i class="fas fa-arrow-left text-xl"></i>
+            </button>
+            <h1 class="text-xl font-bold text-gray-800">Alamat Saya</h1>
+          </div>
+
+          <!-- Add Address Button -->
+          <button
+            onclick="window.location.href='address-add.html'"
+            class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-dark transition-colors"
+          >
+            <i class="fas fa-plus mr-2"></i>Tambah
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-6">
+      <div class="bg-white rounded-lg shadow-md">
+        <div class="p-6 border-b border-gray-200">
+          <h2 class="text-xl font-bold text-gray-800">
+            <i class="fas fa-map-marker-alt mr-2 text-primary"></i>Daftar Alamat
+          </h2>
+          <p class="text-gray-600 text-sm mt-1">
+            Kelola alamat pengiriman Anda
+          </p>
+        </div>
+
+        <!-- Address List -->
+        <div id="addressesList" class="divide-y divide-gray-200">
+          <!-- Addresses will be loaded here -->
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8 mt-16">
+      <div class="container mx-auto px-4">
+        <div class="text-center">
+          <h3 class="text-xl font-bold mb-2">Sleman Mart</h3>
+          <p class="text-gray-400">Platform UMKM Digital Kabupaten Sleman</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Initialize page
+      document.addEventListener("DOMContentLoaded", function () {
+        loadAddresses();
+      });
+
+      // Load addresses
+      function loadAddresses() {
+        const addresses = JSON.parse(
+          localStorage.getItem("userAddresses") || "[]"
+        );
+        const addressesList = document.getElementById("addressesList");
+
+        if (addresses.length === 0) {
+          addressesList.innerHTML = `
+            <div class="p-8 text-center text-gray-500">
+              <i class="fas fa-map-marker-alt text-4xl mb-4 text-gray-300"></i>
+              <h3 class="text-lg font-medium mb-2">Belum ada alamat</h3>
+              <p class="text-sm mb-4">Tambah alamat untuk memudahkan pengiriman</p>
+              <button
+                onclick="window.location.href='address-add.html'"
+                class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-dark transition-colors"
+              >
+                <i class="fas fa-plus mr-2"></i>Tambah Alamat Pertama
+              </button>
+            </div>
+          `;
+          return;
+        }
+
+        addressesList.innerHTML = addresses
+          .map(
+            (address) => `
+          <div class="p-4">
+            <div class="flex items-start justify-between">
+              <div class="flex-1">
+                <div class="flex items-center space-x-2 mb-2">
+                  <span class="text-sm font-medium text-gray-800">${
+                    address.recipientName
+                  }</span>
+                  ${
+                    address.isDefault
+                      ? '<span class="bg-primary text-white px-2 py-1 rounded-full text-xs">Utama</span>'
+                      : ""
+                  }
+                  ${
+                    address.label
+                      ? `<span class="bg-gray-100 text-gray-700 px-2 py-1 rounded-full text-xs">${address.label}</span>`
+                      : ""
+                  }
+                </div>
+                <p class="text-gray-600 text-sm mb-1">
+                  <i class="fas fa-phone mr-2"></i>${address.phone}
+                </p>
+                <p class="text-gray-700 text-sm leading-relaxed mb-1">
+                  <i class="fas fa-map-marker-alt mr-2"></i>${
+                    address.fullAddress
+                  }
+                </p>
+                <p class="text-gray-500 text-sm">
+                  <i class="fas fa-envelope mr-2"></i>${address.district}, ${
+              address.city
+            } ${address.postalCode}
+                </p>
+              </div>
+              <div class="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-2 ml-4">
+                <button
+                  onclick="editAddress('${address.id}')"
+                  class="text-primary hover:text-primary-dark p-2 hover:bg-primary-light hover:bg-opacity-20 rounded-lg transition-colors"
+                  title="Edit"
+                >
+                  <i class="fas fa-edit"></i>
+                </button>
+                <button
+                  onclick="deleteAddress('${address.id}')"
+                  class="text-red-500 hover:text-red-700 p-2 hover:bg-red-50 rounded-lg transition-colors"
+                  title="Hapus"
+                >
+                  <i class="fas fa-trash"></i>
+                </button>
+                ${
+                  !address.isDefault
+                    ? `
+                  <button
+                    onclick="setDefaultAddress('${address.id}')"
+                    class="text-yellow-500 hover:text-yellow-700 p-2 hover:bg-yellow-50 rounded-lg transition-colors"
+                    title="Jadikan Utama"
+                  >
+                    <i class="fas fa-star"></i>
+                  </button>
+                `
+                    : ""
+                }
+              </div>
+            </div>
+          </div>
+        `
+          )
+          .join("");
+      }
+
+      function editAddress(addressId) {
+        window.location.href = `address-add.html?edit=${addressId}`;
+      }
+
+      function deleteAddress(addressId) {
+        if (confirm("Apakah Anda yakin ingin menghapus alamat ini?")) {
+          let addresses = JSON.parse(
+            localStorage.getItem("userAddresses") || "[]"
+          );
+          addresses = addresses.filter((addr) => addr.id !== addressId);
+          localStorage.setItem("userAddresses", JSON.stringify(addresses));
+          loadAddresses();
+        }
+      }
+
+      function setDefaultAddress(addressId) {
+        let addresses = JSON.parse(
+          localStorage.getItem("userAddresses") || "[]"
+        );
+        addresses = addresses.map((addr) => ({
+          ...addr,
+          isDefault: addr.id === addressId,
+        }));
+        localStorage.setItem("userAddresses", JSON.stringify(addresses));
+        loadAddresses();
+      }
+    </script>
+  </body>
+</html>

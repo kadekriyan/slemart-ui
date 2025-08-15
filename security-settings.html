@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Keamanan Akun - Sleman Mart</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script
+      src="https://kit.fontawesome.com/a076d05399.js"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#E57F39",
+              "primary-dark": "#C86A2B",
+              "primary-light": "#F29C5E",
+            },
+          },
+        },
+      };
+    </script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+      <div class="container mx-auto px-4">
+        <div class="flex items-center justify-between h-16">
+          <!-- Back Button & Title -->
+          <div class="flex items-center space-x-4">
+            <button
+              onclick="window.location.href='profile.html'"
+              class="text-gray-600 hover:text-primary transition-colors"
+            >
+              <i class="fas fa-arrow-left text-xl"></i>
+            </button>
+            <h1 class="text-xl font-bold text-gray-800">Keamanan Akun</h1>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-6 space-y-6">
+      <!-- Change Password -->
+      <div class="bg-white rounded-lg shadow-md p-6">
+        <h2 class="text-xl font-bold text-gray-800 mb-6">
+          <i class="fas fa-key mr-2 text-primary"></i>Ubah Password
+        </h2>
+
+        <form id="passwordForm" class="space-y-6">
+          <!-- Current Password -->
+          <div>
+            <label
+              for="currentPassword"
+              class="block text-sm font-medium text-gray-700 mb-2"
+            >
+              Password Saat Ini *
+            </label>
+            <div class="relative">
+              <input
+                type="password"
+                id="currentPassword"
+                name="currentPassword"
+                class="w-full border border-gray-300 rounded-lg px-3 py-2 pr-10 focus:ring-primary focus:border-primary"
+                placeholder="Masukkan password saat ini"
+                required
+              />
+              <button
+                type="button"
+                onclick="togglePassword('currentPassword')"
+                class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+              >
+                <i class="fas fa-eye"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- New Password -->
+          <div>
+            <label
+              for="newPassword"
+              class="block text-sm font-medium text-gray-700 mb-2"
+            >
+              Password Baru *
+            </label>
+            <div class="relative">
+              <input
+                type="password"
+                id="newPassword"
+                name="newPassword"
+                class="w-full border border-gray-300 rounded-lg px-3 py-2 pr-10 focus:ring-primary focus:border-primary"
+                placeholder="Masukkan password baru"
+                required
+              />
+              <button
+                type="button"
+                onclick="togglePassword('newPassword')"
+                class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+              >
+                <i class="fas fa-eye"></i>
+              </button>
+            </div>
+            <div class="mt-2">
+              <div class="text-xs text-gray-500 mb-1">
+                Password harus minimal 8 karakter dengan kombinasi huruf, angka
+                dan simbol
+              </div>
+            </div>
+          </div>
+
+          <!-- Confirm Password -->
+          <div>
+            <label
+              for="confirmPassword"
+              class="block text-sm font-medium text-gray-700 mb-2"
+            >
+              Konfirmasi Password Baru *
+            </label>
+            <div class="relative">
+              <input
+                type="password"
+                id="confirmPassword"
+                name="confirmPassword"
+                class="w-full border border-gray-300 rounded-lg px-3 py-2 pr-10 focus:ring-primary focus:border-primary"
+                placeholder="Ulangi password baru"
+                required
+              />
+              <button
+                type="button"
+                onclick="togglePassword('confirmPassword')"
+                class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+              >
+                <i class="fas fa-eye"></i>
+              </button>
+            </div>
+            <div id="passwordMatch" class="text-xs mt-1 hidden">
+              <i class="fas fa-times-circle text-red-500 mr-1"></i>
+              <span class="text-red-500">Password tidak sama</span>
+            </div>
+          </div>
+
+          <button
+            type="submit"
+            class="w-full bg-primary text-white py-3 px-4 rounded-lg font-medium hover:bg-primary-dark transition-colors"
+          >
+            <i class="fas fa-key mr-2"></i>Ubah Password
+          </button>
+        </form>
+      </div>
+    </main>
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8 mt-16">
+      <div class="container mx-auto px-4">
+        <div class="text-center">
+          <h3 class="text-xl font-bold mb-2">Sleman Mart</h3>
+          <p class="text-gray-400">Platform UMKM Digital Kabupaten Sleman</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Initialize page
+      document.addEventListener("DOMContentLoaded", function () {
+        setupEventListeners();
+      });
+
+      // Setup event listeners
+      function setupEventListeners() {
+        // Password form
+        document
+          .getElementById("passwordForm")
+          .addEventListener("submit", function (e) {
+            e.preventDefault();
+            changePassword();
+          });
+
+        // Password strength checker
+        document
+          .getElementById("newPassword")
+          .addEventListener("input", function (e) {
+            checkPasswordStrength(e.target.value);
+          });
+
+        // Password confirmation checker
+        document
+          .getElementById("confirmPassword")
+          .addEventListener("input", function (e) {
+            checkPasswordMatch();
+          });
+
+        // Delete confirmation input
+        document
+          .getElementById("deleteConfirmation")
+          .addEventListener("input", function (e) {
+            const confirmBtn = document.getElementById("confirmDeleteBtn");
+            if (e.target.value === "HAPUS AKUN") {
+              confirmBtn.disabled = false;
+              confirmBtn.classList.remove("opacity-50");
+            } else {
+              confirmBtn.disabled = true;
+              confirmBtn.classList.add("opacity-50");
+            }
+          });
+      }
+
+      // Password toggle
+      function togglePassword(inputId) {
+        const input = document.getElementById(inputId);
+        const icon = input.nextElementSibling.querySelector("i");
+
+        if (input.type === "password") {
+          input.type = "text";
+          icon.classList.replace("fa-eye", "fa-eye-slash");
+        } else {
+          input.type = "password";
+          icon.classList.replace("fa-eye-slash", "fa-eye");
+        }
+      }
+
+      // Password strength checker
+      function checkPasswordStrength(password) {
+        const strengthBar = document.querySelector("#passwordStrength div");
+        const strengthText = document.getElementById("passwordStrengthText");
+        let strength = 0;
+        let color = "";
+        let text = "";
+
+        if (password.length >= 8) strength++;
+        if (/[A-Z]/.test(password)) strength++;
+        if (/[a-z]/.test(password)) strength++;
+        if (/\d/.test(password)) strength++;
+        if (/[^A-Za-z0-9]/.test(password)) strength++;
+
+        switch (strength) {
+          case 0:
+          case 1:
+            color = "bg-red-500";
+            text = "Lemah";
+            break;
+          case 2:
+          case 3:
+            color = "bg-yellow-500";
+            text = "Sedang";
+            break;
+          case 4:
+          case 5:
+            color = "bg-green-500";
+            text = "Kuat";
+            break;
+        }
+
+        strengthBar.className = `h-full transition-all duration-300 ${color}`;
+        strengthBar.style.width = `${(strength / 5) * 100}%`;
+        strengthText.textContent = text;
+        strengthText.className = `text-xs mt-1 ${color.replace(
+          "bg-",
+          "text-"
+        )}`;
+      }
+
+      // Password match checker
+      function checkPasswordMatch() {
+        const newPassword = document.getElementById("newPassword").value;
+        const confirmPassword =
+          document.getElementById("confirmPassword").value;
+        const matchIndicator = document.getElementById("passwordMatch");
+
+        if (confirmPassword && newPassword !== confirmPassword) {
+          matchIndicator.classList.remove("hidden");
+          matchIndicator.innerHTML =
+            '<i class="fas fa-times-circle text-red-500 mr-1"></i><span class="text-red-500">Password tidak sama</span>';
+        } else if (confirmPassword && newPassword === confirmPassword) {
+          matchIndicator.classList.remove("hidden");
+          matchIndicator.innerHTML =
+            '<i class="fas fa-check-circle text-green-500 mr-1"></i><span class="text-green-500">Password sama</span>';
+        } else {
+          matchIndicator.classList.add("hidden");
+        }
+      }
+
+      // Change password
+      function changePassword() {
+        const currentPassword =
+          document.getElementById("currentPassword").value;
+        const newPassword = document.getElementById("newPassword").value;
+        const confirmPassword =
+          document.getElementById("confirmPassword").value;
+
+        if (newPassword !== confirmPassword) {
+          alert("Password baru dan konfirmasi password tidak sama!");
+          return;
+        }
+
+        if (newPassword.length < 8) {
+          alert("Password minimal 8 karakter!");
+          return;
+        }
+
+        // Simulate password change
+        alert("Password berhasil diubah!");
+        document.getElementById("passwordForm").reset();
+      }
+
+      // Logout all devices
+      function logoutAllDevices() {
+        if (
+          confirm(
+            "Apakah Anda yakin ingin keluar dari semua perangkat? Anda perlu login ulang."
+          )
+        ) {
+          alert("Berhasil keluar dari semua perangkat!");
+        }
+      }
+
+      // Download user data
+      function downloadUserData() {
+        const userData = {
+          profile: JSON.parse(localStorage.getItem("userData") || "{}"),
+          addresses: JSON.parse(localStorage.getItem("userAddresses") || "[]"),
+          orders: JSON.parse(localStorage.getItem("orders") || "[]"),
+        };
+
+        const dataStr = JSON.stringify(userData, null, 2);
+        const dataUri =
+          "data:application/json;charset=utf-8," + encodeURIComponent(dataStr);
+
+        const exportFileDefaultName = "sleman-mart-data.json";
+        const linkElement = document.createElement("a");
+        linkElement.setAttribute("href", dataUri);
+        linkElement.setAttribute("download", exportFileDefaultName);
+        linkElement.click();
+
+        alert("Data pribadi berhasil diunduh!");
+      }
+
+      // Delete account modal
+      function showDeleteAccountModal() {
+        document
+          .getElementById("deleteAccountModal")
+          .classList.remove("hidden");
+      }
+
+      function closeDeleteAccountModal() {
+        document.getElementById("deleteAccountModal").classList.add("hidden");
+        document.getElementById("deleteConfirmation").value = "";
+        document.getElementById("confirmDeleteBtn").disabled = true;
+      }
+
+      function confirmDeleteAccount() {
+        // Clear all data
+        localStorage.clear();
+        alert("Akun berhasil dihapus. Anda akan diarahkan ke halaman utama.");
+        window.location.href = "index.html";
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pengaturan Profile - Sleman Mart</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#E57F39",
+              "primary-dark": "#C86A2B",
+              "primary-light": "#F29C5E",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+      <div class="container mx-auto px-4">
+        <div class="flex items-center justify-between h-16">
+          <!-- Back Button & Title -->
+          <div class="flex items-center space-x-4">
+            <button
+              onclick="window.location.href='profile.html'"
+              class="text-gray-600 hover:text-primary transition-colors"
+            >
+              <i class="fas fa-arrow-left text-xl"></i>
+            </button>
+            <h1 class="text-xl font-bold text-gray-800">Pengaturan</h1>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-6">
+      <div class="bg-white rounded-lg shadow-md">
+        <div class="p-6 border-b border-gray-200">
+          <h2 class="text-xl font-bold text-gray-800">
+            <i class="fas fa-cog mr-2 text-primary"></i>Pengaturan Akun
+          </h2>
+          <p class="text-gray-600 text-sm mt-1">Kelola informasi dan keamanan akun Anda</p>
+        </div>
+
+        <div class="divide-y divide-gray-200">
+          <a
+            href="profile-edit.html"
+            class="flex items-center justify-between p-6 hover:bg-gray-50 transition-colors"
+          >
+            <div class="flex items-center">
+              <div class="w-12 h-12 bg-primary-light bg-opacity-20 rounded-lg flex items-center justify-center mr-4">
+                <i class="fas fa-user-edit text-primary"></i>
+              </div>
+              <div>
+                <h3 class="font-medium text-gray-800">Edit Profile</h3>
+                <p class="text-sm text-gray-600">Ubah informasi personal Anda</p>
+              </div>
+            </div>
+            <i class="fas fa-chevron-right text-gray-400"></i>
+          </a>
+
+          <a
+            href="address-list.html"
+            class="flex items-center justify-between p-6 hover:bg-gray-50 transition-colors"
+          >
+            <div class="flex items-center">
+              <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
+                <i class="fas fa-map-marker-alt text-blue-600"></i>
+              </div>
+              <div>
+                <h3 class="font-medium text-gray-800">Alamat Saya</h3>
+                <p class="text-sm text-gray-600">Kelola alamat pengiriman</p>
+              </div>
+            </div>
+            <i class="fas fa-chevron-right text-gray-400"></i>
+          </a>
+
+          <a
+            href="security-settings.html"
+            class="flex items-center justify-between p-6 hover:bg-gray-50 transition-colors"
+          >
+            <div class="flex items-center">
+              <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mr-4">
+                <i class="fas fa-shield-alt text-red-600"></i>
+              </div>
+              <div>
+                <h3 class="font-medium text-gray-800">Keamanan</h3>
+                <p class="text-sm text-gray-600">Password dan pengaturan keamanan</p>
+              </div>
+            </div>
+            <i class="fas fa-chevron-right text-gray-400"></i>
+          </a>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8 mt-16">
+      <div class="container mx-auto px-4">
+        <div class="text-center">
+          <h3 class="text-xl font-bold mb-2">Sleman Mart</h3>
+          <p class="text-gray-400">Platform UMKM Digital Kabupaten Sleman</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Redirect based on hash
+      document.addEventListener('DOMContentLoaded', function() {
+        const hash = window.location.hash;
+        if (hash === '#addresses') {
+          window.location.href = 'address-list.html';
+        } else if (hash === '#security') {
+          window.location.href = 'security-settings.html';
+        }
+      });
+    </script>
+  </body>
+</html>
+                class="hidden"
+                onchange="handlePhotoUpload(event)"
+              />
+              <p class="text-gray-500 text-sm mt-2">
+                Klik untuk mengganti foto profile
+              </p>
+            </div>
+
+            <!-- Full Name -->
+            <div>
+              <label
+                for="fullName"
+                class="block text-sm font-medium text-gray-700 mb-2"
+              >
+                Nama Lengkap *
+              </label>
+              <input
+                type="text"
+                id="fullName"
+                name="fullName"
+                value="Ahmad Santoso"
+                class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-primary focus:border-primary"
+                required
+              />
+            </div>
+
+            <!-- Email -->
+            <div>
+              <label
+                for="email"
+                class="block text-sm font-medium text-gray-700 mb-2"
+              >
+                Email *
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                value="ahmad.santoso@email.com"
+                class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-primary focus:border-primary"
+                required
+              />
+            </div>
+
+            <!-- Phone Number -->
+            <div>
+              <label
+                for="phone"
+                class="block text-sm font-medium text-gray-700 mb-2"
+              >
+                Nomor Telepon
+              </label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                value="+62 812-3456-7890"
+                class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-primary focus:border-primary"
+              />
+            </div>
+
+            <button
+              type="submit"
+              class="w-full bg-primary text-white py-3 px-4 rounded-lg font-medium hover:bg-primary-dark transition-colors"
+            >
+              <i class="fas fa-save mr-2"></i>Simpan Profile
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Addresses Tab Content -->
+      <div id="addressesContent" class="tab-content hidden">
+        <div class="bg-white rounded-lg shadow-md">
+          <div class="p-6 border-b border-gray-200">
+            <div class="flex items-center justify-between">
+              <h2 class="text-xl font-bold text-gray-800">
+                <i class="fas fa-map-marker-alt mr-2 text-primary"></i>Alamat
+                Saya
+              </h2>
+              <button
+                onclick="showAddAddressModal()"
+                class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-dark transition-colors"
+              >
+                <i class="fas fa-plus mr-2"></i>Tambah Alamat
+              </button>
+            </div>
+          </div>
+
+          <!-- Address List -->
+          <div id="addressesList" class="divide-y divide-gray-200">
+            <!-- Addresses will be loaded here -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Security Tab Content -->
+      <div id="securityContent" class="tab-content hidden">
+        <div class="bg-white rounded-lg shadow-md p-6">
+          <h2 class="text-xl font-bold text-gray-800 mb-6">
+            <i class="fas fa-shield-alt mr-2 text-primary"></i>Keamanan Akun
+          </h2>
+
+          <form id="securityForm" class="space-y-6">
+            <!-- Current Password -->
+            <div>
+              <label
+                for="currentPassword"
+                class="block text-sm font-medium text-gray-700 mb-2"
+              >
+                Password Saat Ini *
+              </label>
+              <div class="relative">
+                <input
+                  type="password"
+                  id="currentPassword"
+                  name="currentPassword"
+                  class="w-full border border-gray-300 rounded-lg px-3 py-2 pr-10 focus:ring-primary focus:border-primary"
+                  required
+                />
+                <button
+                  type="button"
+                  onclick="togglePassword('currentPassword')"
+                  class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                >
+                  <i class="fas fa-eye"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- New Password -->
+            <div>
+              <label
+                for="newPassword"
+                class="block text-sm font-medium text-gray-700 mb-2"
+              >
+                Password Baru *
+              </label>
+              <div class="relative">
+                <input
+                  type="password"
+                  id="newPassword"
+                  name="newPassword"
+                  class="w-full border border-gray-300 rounded-lg px-3 py-2 pr-10 focus:ring-primary focus:border-primary"
+                  required
+                />
+                <button
+                  type="button"
+                  onclick="togglePassword('newPassword')"
+                  class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                >
+                  <i class="fas fa-eye"></i>
+                </button>
+              </div>
+              <div class="mt-2">
+                <div class="text-xs text-gray-500">
+                  Password harus minimal 8 karakter dengan kombinasi huruf dan
+                  angka
+                </div>
+                <div id="passwordStrength" class="mt-1 h-1 bg-gray-200 rounded">
+                  <div class="h-full rounded transition-all duration-300"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Confirm Password -->
+            <div>
+              <label
+                for="confirmPassword"
+                class="block text-sm font-medium text-gray-700 mb-2"
+              >
+                Konfirmasi Password Baru *
+              </label>
+              <div class="relative">
+                <input
+                  type="password"
+                  id="confirmPassword"
+                  name="confirmPassword"
+                  class="w-full border border-gray-300 rounded-lg px-3 py-2 pr-10 focus:ring-primary focus:border-primary"
+                  required
+                />
+                <button
+                  type="button"
+                  onclick="togglePassword('confirmPassword')"
+                  class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                >
+                  <i class="fas fa-eye"></i>
+                </button>
+              </div>
+            </div>
+
+            <button
+              type="submit"
+              class="w-full bg-primary text-white py-3 px-4 rounded-lg font-medium hover:bg-primary-dark transition-colors"
+            >
+              <i class="fas fa-key mr-2"></i>Ubah Password
+            </button>
+          </form>
+        </div>
+      </div>
+    </main>
+
+    <!-- Add Address Modal -->
+    <div
+      id="addressModal"
+      class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4"
+    >
+      <div
+        class="bg-white rounded-lg max-w-md w-full max-h-screen overflow-y-auto"
+      >
+        <div class="p-6">
+          <div class="flex items-center justify-between mb-4">
+            <h3 id="modalTitle" class="text-lg font-bold text-gray-800">
+              Tambah Alamat Baru
+            </h3>
+            <button
+              onclick="closeAddressModal()"
+              class="text-gray-400 hover:text-gray-600"
+            >
+              <i class="fas fa-times text-xl"></i>
+            </button>
+          </div>
+
+          <form id="addressForm" class="space-y-4">
+            <input type="hidden" id="addressId" name="addressId" />
+
+            <!-- Recipient Name -->
+            <div>
+              <label
+                for="recipientName"
+                class="block text-sm font-medium text-gray-700 mb-1"
+              >
+                Nama Penerima *
+              </label>
+              <input
+                type="text"
+                id="recipientName"
+                name="recipientName"
+                class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-primary focus:border-primary"
+                required
+              />
+            </div>
+
+            <!-- Phone Number -->
+            <div>
+              <label
+                for="recipientPhone"
+                class="block text-sm font-medium text-gray-700 mb-1"
+              >
+                Nomor Telepon Penerima *
+              </label>
+              <input
+                type="tel"
+                id="recipientPhone"
+                name="recipientPhone"
+                class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-primary focus:border-primary"
+                required
+              />
+            </div>
+
+            <!-- Full Address -->
+            <div>
+              <label
+                for="fullAddress"
+                class="block text-sm font-medium text-gray-700 mb-1"
+              >
+                Alamat Lengkap *
+              </label>
+              <textarea
+                id="fullAddress"
+                name="fullAddress"
+                rows="3"
+                class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-primary focus:border-primary"
+                placeholder="Masukkan alamat lengkap termasuk RT/RW, Kelurahan, Kecamatan"
+                required
+              ></textarea>
+            </div>
+
+            <!-- Postal Code -->
+            <div>
+              <label
+                for="postalCode"
+                class="block text-sm font-medium text-gray-700 mb-1"
+              >
+                Kode Pos *
+              </label>
+              <input
+                type="text"
+                id="postalCode"
+                name="postalCode"
+                class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-primary focus:border-primary"
+                required
+              />
+            </div>
+
+            <!-- Address Label
+            <div>
+              <label
+                for="addressLabel"
+                class="block text-sm font-medium text-gray-700 mb-1"
+              >
+                Label Alamat
+              </label>
+              <div class="flex space-x-2 mb-2">
+                <button
+                  type="button"
+                  onclick="setAddressLabel('Rumah')"
+                  class="px-3 py-1 border border-gray-300 rounded-lg text-sm hover:bg-gray-50"
+                >
+                  Rumah
+                </button>
+                <button
+                  type="button"
+                  onclick="setAddressLabel('Kantor')"
+                  class="px-3 py-1 border border-gray-300 rounded-lg text-sm hover:bg-gray-50"
+                >
+                  Kantor
+                </button>
+                <button
+                  type="button"
+                  onclick="setAddressLabel('Lainnya')"
+                  class="px-3 py-1 border border-gray-300 rounded-lg text-sm hover:bg-gray-50"
+                >
+                  Lainnya
+                </button>
+              </div>
+              <input
+                type="text"
+                id="addressLabel"
+                name="addressLabel"
+                class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-primary focus:border-primary"
+                placeholder="Masukkan label alamat"
+              />
+            </div> -->
+
+            <!-- Set as Default -->
+            <div class="flex items-center">
+              <input
+                type="checkbox"
+                id="isDefault"
+                name="isDefault"
+                class="text-primary focus:ring-primary border-gray-300 rounded"
+              />
+              <label for="isDefault" class="ml-2 text-sm text-gray-700">
+                Jadikan alamat utama
+              </label>
+            </div>
+
+            <div class="flex space-x-3 pt-4">
+              <button
+                type="button"
+                onclick="closeAddressModal()"
+                class="flex-1 border border-gray-300 text-gray-700 py-2 px-4 rounded-lg font-medium hover:bg-gray-50 transition-colors"
+              >
+                Batal
+              </button>
+              <button
+                type="submit"
+                class="flex-1 bg-primary text-white py-2 px-4 rounded-lg font-medium hover:bg-primary-dark transition-colors"
+              >
+                Simpan
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8 mt-16">
+      <div class="container mx-auto px-4">
+        <div class="text-center">
+          <h3 class="text-xl font-bold mb-2">Sleman Mart</h3>
+          <p class="text-gray-400">Platform UMKM Digital Kabupaten Sleman</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Global variables
+      let currentEditingAddressId = null;
+
+      // Initialize page
+      document.addEventListener("DOMContentLoaded", function () {
+        loadUserData();
+        loadAddresses();
+        setupEventListeners();
+
+        // Check for hash navigation
+        const hash = window.location.hash;
+        if (hash === "#addresses") {
+          switchTab("addresses");
+        } else if (hash === "#security") {
+          switchTab("security");
+        }
+      });
+
+      // Tab switching functionality
+      function switchTab(tabName) {
+        // Hide all tab contents
+        document.querySelectorAll(".tab-content").forEach((content) => {
+          content.classList.add("hidden");
+        });
+
+        // Remove active styles from all tabs
+        document.querySelectorAll("nav button").forEach((tab) => {
+          tab.classList.remove("text-primary", "border-primary", "bg-blue-50");
+          tab.classList.add("text-gray-500", "border-transparent");
+        });
+
+        // Show selected tab content
+        document.getElementById(tabName + "Content").classList.remove("hidden");
+
+        // Add active styles to selected tab
+        const activeTab = document.getElementById(tabName + "Tab");
+        activeTab.classList.add("text-primary", "border-primary", "bg-blue-50");
+        activeTab.classList.remove("text-gray-500", "border-transparent");
+
+        // Update URL hash
+        window.history.replaceState(null, null, `#${tabName}`);
+      }
+
+      // Load user data
+      function loadUserData() {
+        const userData = JSON.parse(localStorage.getItem("userData") || "{}");
+
+        if (userData.name) {
+          document.getElementById("fullName").value = userData.name;
+        }
+        if (userData.email) {
+          document.getElementById("email").value = userData.email;
+        }
+        if (userData.phone) {
+          document.getElementById("phone").value = userData.phone;
+        }
+        if (userData.birthDate) {
+          document.getElementById("birthDate").value = userData.birthDate;
+        }
+        if (userData.gender) {
+          document.querySelector(
+            `input[name="gender"][value="${userData.gender}"]`
+          ).checked = true;
+        }
+        if (userData.photo) {
+          document.getElementById("currentProfilePhoto").src = userData.photo;
+        }
+      }
+
+      // Handle photo upload
+      function handlePhotoUpload(event) {
+        const file = event.target.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = function (e) {
+            document.getElementById("currentProfilePhoto").src =
+              e.target.result;
+          };
+          reader.readAsDataURL(file);
+        }
+      }
+
+      // Save all changes
+      function saveAllChanges() {
+        const profileForm = document.getElementById("profileForm");
+        const formData = new FormData(profileForm);
+
+        const userData = {
+          name: formData.get("fullName"),
+          email: formData.get("email"),
+          phone: formData.get("phone"),
+          birthDate: formData.get("birthDate"),
+          gender: formData.get("gender"),
+          photo: document.getElementById("currentProfilePhoto").src,
+        };
+
+        localStorage.setItem("userData", JSON.stringify(userData));
+
+        // Show success message
+        alert("Profile berhasil disimpan!");
+      }
+
+      // Load addresses
+      function loadAddresses() {
+        const addresses = JSON.parse(
+          localStorage.getItem("userAddresses") || "[]"
+        );
+        const addressesList = document.getElementById("addressesList");
+
+        if (addresses.length === 0) {
+          addressesList.innerHTML = `
+            <div class="p-6 text-center text-gray-500">
+              <i class="fas fa-map-marker-alt text-4xl mb-2"></i>
+              <p>Belum ada alamat yang disimpan</p>
+              <p class="text-sm">Tambah alamat untuk memudahkan pengiriman</p>
+            </div>
+          `;
+          return;
+        }
+
+        addressesList.innerHTML = addresses
+          .map(
+            (address) => `
+          <div class="p-4">
+            <div class="flex items-start justify-between">
+              <div class="flex-1">
+                <div class="flex items-center space-x-2 mb-2">
+                  <span class="text-sm font-medium text-gray-800">${
+                    address.recipientName
+                  }</span>
+                  ${
+                    address.isDefault
+                      ? '<span class="bg-primary text-white px-2 py-1 rounded-full text-xs">Utama</span>'
+                      : ""
+                  }
+                  ${
+                    address.label
+                      ? `<span class="bg-gray-100 text-gray-700 px-2 py-1 rounded-full text-xs">${address.label}</span>`
+                      : ""
+                  }
+                </div>
+                <p class="text-gray-600 text-sm mb-1">${address.phone}</p>
+                <p class="text-gray-700 text-sm leading-relaxed">${
+                  address.fullAddress
+                }</p>
+                <p class="text-gray-500 text-sm">${address.postalCode}</p>
+              </div>
+              <div class="flex items-center space-x-2 ml-4">
+                <button
+                  onclick="editAddress('${address.id}')"
+                  class="text-primary hover:text-primary-dark"
+                  title="Edit"
+                >
+                  <i class="fas fa-edit"></i>
+                </button>
+                <button
+                  onclick="deleteAddress('${address.id}')"
+                  class="text-red-500 hover:text-red-700"
+                  title="Hapus"
+                >
+                  <i class="fas fa-trash"></i>
+                </button>
+                ${
+                  !address.isDefault
+                    ? `
+                  <button
+                    onclick="setDefaultAddress('${address.id}')"
+                    class="text-gray-500 hover:text-gray-700"
+                    title="Jadikan Utama"
+                  >
+                    <i class="fas fa-star"></i>
+                  </button>
+                `
+                    : ""
+                }
+              </div>
+            </div>
+          </div>
+        `
+          )
+          .join("");
+      }
+
+      // Address modal functions
+      function showAddAddressModal() {
+        currentEditingAddressId = null;
+        document.getElementById("modalTitle").textContent =
+          "Tambah Alamat Baru";
+        document.getElementById("addressForm").reset();
+        document.getElementById("addressModal").classList.remove("hidden");
+      }
+
+      function closeAddressModal() {
+        document.getElementById("addressModal").classList.add("hidden");
+        currentEditingAddressId = null;
+      }
+
+      function setAddressLabel(label) {
+        document.getElementById("addressLabel").value = label;
+      }
+
+      function editAddress(addressId) {
+        const addresses = JSON.parse(
+          localStorage.getItem("userAddresses") || "[]"
+        );
+        const address = addresses.find((addr) => addr.id === addressId);
+
+        if (address) {
+          currentEditingAddressId = addressId;
+          document.getElementById("modalTitle").textContent = "Edit Alamat";
+          document.getElementById("addressId").value = address.id;
+          document.getElementById("recipientName").value =
+            address.recipientName;
+          document.getElementById("recipientPhone").value = address.phone;
+          document.getElementById("fullAddress").value = address.fullAddress;
+          document.getElementById("postalCode").value = address.postalCode;
+          document.getElementById("addressLabel").value = address.label || "";
+          document.getElementById("isDefault").checked = address.isDefault;
+          document.getElementById("addressModal").classList.remove("hidden");
+        }
+      }
+
+      function deleteAddress(addressId) {
+        if (confirm("Apakah Anda yakin ingin menghapus alamat ini?")) {
+          let addresses = JSON.parse(
+            localStorage.getItem("userAddresses") || "[]"
+          );
+          addresses = addresses.filter((addr) => addr.id !== addressId);
+          localStorage.setItem("userAddresses", JSON.stringify(addresses));
+          loadAddresses();
+        }
+      }
+
+      function setDefaultAddress(addressId) {
+        let addresses = JSON.parse(
+          localStorage.getItem("userAddresses") || "[]"
+        );
+        addresses = addresses.map((addr) => ({
+          ...addr,
+          isDefault: addr.id === addressId,
+        }));
+        localStorage.setItem("userAddresses", JSON.stringify(addresses));
+        loadAddresses();
+      }
+
+      // Setup event listeners
+      function setupEventListeners() {
+        // Profile form
+        document
+          .getElementById("profileForm")
+          .addEventListener("submit", function (e) {
+            e.preventDefault();
+            saveAllChanges();
+          });
+
+        // Address form
+        document
+          .getElementById("addressForm")
+          .addEventListener("submit", function (e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+
+            const addressData = {
+              id: currentEditingAddressId || "addr_" + Date.now(),
+              recipientName: formData.get("recipientName"),
+              phone: formData.get("recipientPhone"),
+              fullAddress: formData.get("fullAddress"),
+              postalCode: formData.get("postalCode"),
+              label: formData.get("addressLabel"),
+              isDefault: formData.get("isDefault") === "on",
+            };
+
+            let addresses = JSON.parse(
+              localStorage.getItem("userAddresses") || "[]"
+            );
+
+            if (addressData.isDefault) {
+              addresses = addresses.map((addr) => ({
+                ...addr,
+                isDefault: false,
+              }));
+            }
+
+            if (currentEditingAddressId) {
+              const index = addresses.findIndex(
+                (addr) => addr.id === currentEditingAddressId
+              );
+              addresses[index] = addressData;
+            } else {
+              addresses.unshift(addressData);
+            }
+
+            localStorage.setItem("userAddresses", JSON.stringify(addresses));
+            loadAddresses();
+            closeAddressModal();
+          });
+
+        // Security form
+        document
+          .getElementById("securityForm")
+          .addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const newPassword = document.getElementById("newPassword").value;
+            const confirmPassword =
+              document.getElementById("confirmPassword").value;
+
+            if (newPassword !== confirmPassword) {
+              alert("Password baru dan konfirmasi password tidak sama!");
+              return;
+            }
+
+            if (newPassword.length < 8) {
+              alert("Password minimal 8 karakter!");
+              return;
+            }
+
+            // Simulate password change
+            alert("Password berhasil diubah!");
+            this.reset();
+          });
+
+        // Password strength checker
+        document
+          .getElementById("newPassword")
+          .addEventListener("input", function (e) {
+            checkPasswordStrength(e.target.value);
+          });
+      }
+
+      // Password toggle
+      function togglePassword(inputId) {
+        const input = document.getElementById(inputId);
+        const icon = input.nextElementSibling.querySelector("i");
+
+        if (input.type === "password") {
+          input.type = "text";
+          icon.classList.replace("fa-eye", "fa-eye-slash");
+        } else {
+          input.type = "password";
+          icon.classList.replace("fa-eye-slash", "fa-eye");
+        }
+      }
+
+      // Password strength checker
+      function checkPasswordStrength(password) {
+        const strengthBar = document.querySelector("#passwordStrength div");
+        let strength = 0;
+        let color = "";
+
+        if (password.length >= 8) strength++;
+        if (/[A-Z]/.test(password)) strength++;
+        if (/[a-z]/.test(password)) strength++;
+        if (/\d/.test(password)) strength++;
+        if (/[^A-Za-z0-9]/.test(password)) strength++;
+
+        switch (strength) {
+          case 0:
+          case 1:
+            color = "bg-red-500";
+            break;
+          case 2:
+          case 3:
+            color = "bg-yellow-500";
+            break;
+          case 4:
+          case 5:
+            color = "bg-green-500";
+            break;
+        }
+
+        strengthBar.className = `h-full rounded transition-all duration-300 ${color}`;
+        strengthBar.style.width = `${(strength / 5) * 100}%`;
+      }
+
+      // 2FA toggle
+      function toggle2FA() {
+        // This is a placeholder for 2FA functionality
+        alert("Fitur autentikasi dua faktor akan segera tersedia!");
+      }
+    </script>
+  </body>
+</html>

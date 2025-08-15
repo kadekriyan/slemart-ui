@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Profile - Sleman Mart</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script
+      src="https://kit.fontawesome.com/a076d05399.js"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#E57F39",
+              "primary-dark": "#C86A2B",
+              "primary-light": "#F29C5E",
+            },
+          },
+        },
+      };
+    </script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+      <div class="container mx-auto px-4">
+        <div class="flex items-center justify-between h-16">
+          <!-- Back Button & Title -->
+          <div class="flex items-center space-x-4">
+            <button
+              onclick="window.location.href='profile.html'"
+              class="text-gray-600 hover:text-primary transition-colors"
+            >
+              <i class="fas fa-arrow-left text-xl"></i>
+            </button>
+            <h1 class="text-xl font-bold text-gray-800">Edit Profile</h1>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-6">
+      <div class="bg-white rounded-lg shadow-md p-6">
+        <h2 class="text-xl font-bold text-gray-800 mb-6">
+          <i class="fas fa-user-edit mr-2 text-primary"></i>Informasi Personal
+        </h2>
+
+        <form id="profileForm" class="space-y-6">
+          <!-- Profile Photo -->
+          <div class="flex flex-col items-center mb-6">
+            <div class="relative">
+              <img
+                id="currentProfilePhoto"
+                src="https://via.placeholder.com/120x120/E57F39/FFFFFF?text=User"
+                alt="Profile"
+                class="w-24 h-24 rounded-full border-4 border-gray-200 object-cover"
+              />
+              <button
+                type="button"
+                onclick="document.getElementById('photoInput').click()"
+                class="absolute bottom-0 right-0 bg-primary text-white p-2 rounded-full hover:bg-primary-dark transition-colors"
+              >
+                <i class="fas fa-camera text-sm"></i>
+              </button>
+            </div>
+            <input
+              type="file"
+              id="photoInput"
+              accept="image/*"
+              class="hidden"
+              onchange="handlePhotoUpload(event)"
+            />
+            <p class="text-gray-500 text-sm mt-2">
+              Klik untuk mengganti foto profile
+            </p>
+          </div>
+
+          <!-- Full Name -->
+          <div>
+            <label
+              for="fullName"
+              class="block text-sm font-medium text-gray-700 mb-2"
+            >
+              Nama Lengkap *
+            </label>
+            <input
+              type="text"
+              id="fullName"
+              name="fullName"
+              value="Ahmad Santoso"
+              class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-primary focus:border-primary"
+              required
+            />
+          </div>
+
+          <!-- Email -->
+          <div>
+            <label
+              for="email"
+              class="block text-sm font-medium text-gray-700 mb-2"
+            >
+              Email *
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value="ahmad.santoso@email.com"
+              class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-primary focus:border-primary"
+              required
+            />
+          </div>
+
+          <!-- Phone Number -->
+          <div>
+            <label
+              for="phone"
+              class="block text-sm font-medium text-gray-700 mb-2"
+            >
+              Nomor Telepon
+            </label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              value="+62 812-3456-7890"
+              class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-primary focus:border-primary"
+            />
+          </div>
+
+          <!-- Birth Date -->
+          <!-- <div>
+            <label
+              for="birthDate"
+              class="block text-sm font-medium text-gray-700 mb-2"
+            >
+              Tanggal Lahir
+            </label>
+            <input
+              type="date"
+              id="birthDate"
+              name="birthDate"
+              value="1990-01-15"
+              class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-primary focus:border-primary"
+            />
+          </div> -->
+
+          <!-- Gender -->
+          <!-- <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">
+              Jenis Kelamin
+            </label>
+            <div class="flex space-x-4">
+              <label class="flex items-center">
+                <input
+                  type="radio"
+                  name="gender"
+                  value="male"
+                  checked
+                  class="text-primary focus:ring-primary"
+                />
+                <span class="ml-2 text-gray-700">Laki-laki</span>
+              </label>
+              <label class="flex items-center">
+                <input
+                  type="radio"
+                  name="gender"
+                  value="female"
+                  class="text-primary focus:ring-primary"
+                />
+                <span class="ml-2 text-gray-700">Perempuan</span>
+              </label>
+            </div>
+          </div> -->
+
+          <button
+            type="submit"
+            class="w-full bg-primary text-white py-3 px-4 rounded-lg font-medium hover:bg-primary-dark transition-colors"
+          >
+            <i class="fas fa-save mr-2"></i>Simpan Profile
+          </button>
+        </form>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8 mt-16">
+      <div class="container mx-auto px-4">
+        <div class="text-center">
+          <h3 class="text-xl font-bold mb-2">Sleman Mart</h3>
+          <p class="text-gray-400">Platform UMKM Digital Kabupaten Sleman</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Initialize page
+      document.addEventListener("DOMContentLoaded", function () {
+        loadUserData();
+        setupEventListeners();
+      });
+
+      // Load user data
+      function loadUserData() {
+        const userData = JSON.parse(localStorage.getItem("userData") || "{}");
+
+        if (userData.name) {
+          document.getElementById("fullName").value = userData.name;
+        }
+        if (userData.email) {
+          document.getElementById("email").value = userData.email;
+        }
+        if (userData.phone) {
+          document.getElementById("phone").value = userData.phone;
+        }
+        if (userData.birthDate) {
+          document.getElementById("birthDate").value = userData.birthDate;
+        }
+        if (userData.gender) {
+          document.querySelector(
+            `input[name="gender"][value="${userData.gender}"]`
+          ).checked = true;
+        }
+        if (userData.photo) {
+          document.getElementById("currentProfilePhoto").src = userData.photo;
+        }
+      }
+
+      // Handle photo upload
+      function handlePhotoUpload(event) {
+        const file = event.target.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = function (e) {
+            document.getElementById("currentProfilePhoto").src =
+              e.target.result;
+          };
+          reader.readAsDataURL(file);
+        }
+      }
+
+      // Save profile
+      function saveProfile() {
+        const formData = new FormData(document.getElementById("profileForm"));
+
+        const userData = {
+          name: formData.get("fullName"),
+          email: formData.get("email"),
+          phone: formData.get("phone"),
+          birthDate: formData.get("birthDate"),
+          gender: formData.get("gender"),
+          photo: document.getElementById("currentProfilePhoto").src,
+        };
+
+        localStorage.setItem("userData", JSON.stringify(userData));
+
+        // Show success message and redirect
+        alert("Profile berhasil disimpan!");
+        window.location.href = "profile.html";
+      }
+
+      // Setup event listeners
+      function setupEventListeners() {
+        // Profile form
+        document
+          .getElementById("profileForm")
+          .addEventListener("submit", function (e) {
+            e.preventDefault();
+            saveProfile();
+          });
+      }
+    </script>
+  </body>
+</html>
