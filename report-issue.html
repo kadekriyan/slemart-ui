@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Laporkan Masalah - Sleman Mart</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#E57F39",
+              "primary-dark": "#D96B28",
+            },
+          },
+        },
+      };
+    </script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-gray-50 min-h-screen">
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-40">
+      <div class="container mx-auto px-4 py-3">
+        <div class="flex items-center justify-between">
+          <!-- Logo -->
+          <div class="flex items-center space-x-2">
+            <i class="fas fa-store text-2xl text-primary"></i>
+            <a href="products.html" class="text-2xl font-bold text-primary"
+              >Sleman Mart</a
+            >
+          </div>
+
+          <!-- Navigation -->
+          <nav class="hidden md:flex space-x-6">
+            <a href="products.html" class="text-gray-600 hover:text-primary"
+              >Produk</a
+            >
+            <a href="orders.html" class="text-gray-600 hover:text-primary"
+              >Pesanan</a
+            >
+            <a href="cart.html" class="text-gray-600 hover:text-primary"
+              >Keranjang</a
+            >
+          </nav>
+
+          <!-- User Profile -->
+          <div class="flex items-center space-x-4">
+            <!-- Profile Dropdown -->
+            <div class="relative group">
+              <button
+                class="flex items-center space-x-2 text-gray-700 hover:text-primary transition duration-200"
+              >
+                <div
+                  class="w-8 h-8 bg-primary rounded-full flex items-center justify-center"
+                >
+                  <i class="fas fa-user text-white text-sm"></i>
+                </div>
+                <span class="font-medium">John Doe</span>
+                <i class="fas fa-chevron-down text-xs"></i>
+              </button>
+
+              <div
+                class="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50"
+              >
+                <div class="py-2">
+                  <a
+                    href="products.html"
+                    class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100 transition duration-200"
+                  >
+                    <i class="fas fa-home mr-3 text-gray-500"></i>
+                    <span>Beranda</span>
+                  </a>
+                  <a
+                    href="profile.html"
+                    class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100 transition duration-200"
+                  >
+                    <i class="fas fa-user mr-3 text-gray-500"></i>
+                    <span>Profil</span>
+                  </a>
+                  <a
+                    href="orders.html"
+                    class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100 transition duration-200"
+                  >
+                    <i class="fas fa-box mr-3 text-gray-500"></i>
+                    <span>Pesanan Saya</span>
+                  </a>
+                  <a
+                    href="report-status.html"
+                    class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100 transition duration-200"
+                  >
+                    <i
+                      class="fas fa-exclamation-triangle mr-3 text-gray-500"
+                    ></i>
+                    <span>Laporan Masalah</span>
+                  </a>
+                  <hr class="my-2" />
+                  <a
+                    href="index.html"
+                    class="flex items-center px-4 py-2 text-red-600 hover:bg-red-50 transition duration-200"
+                  >
+                    <i class="fas fa-sign-out-alt mr-3"></i>
+                    <span>Keluar</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+      <!-- Breadcrumb -->
+      <nav class="flex mb-6" aria-label="Breadcrumb">
+        <ol class="inline-flex items-center space-x-1 md:space-x-3">
+          <li class="inline-flex items-center">
+            <a
+              href="products.html"
+              class="text-gray-700 hover:text-primary flex items-center"
+            >
+              <i class="fas fa-home mr-2"></i>
+              Beranda
+            </a>
+          </li>
+          <li>
+            <div class="flex items-center">
+              <i class="fas fa-chevron-right text-gray-400 mx-2"></i>
+              <span class="text-primary font-medium">Laporkan Masalah</span>
+            </div>
+          </li>
+        </ol>
+      </nav>
+
+      <!-- Page Header -->
+      <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+        <div class="flex items-center space-x-4 mb-4">
+          <div
+            class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center"
+          >
+            <i class="fas fa-exclamation-triangle text-red-600 text-xl"></i>
+          </div>
+          <div>
+            <h1 class="text-2xl font-bold text-gray-800">Laporkan Masalah</h1>
+            <p class="text-gray-600">
+              Laporkan masalah yang Anda alami agar kami dapat membantu
+              menyelesaikannya
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <!-- Report Form -->
+        <div class="lg:col-span-2">
+          <div class="bg-white rounded-lg shadow-md p-6">
+            <h2 class="text-xl font-semibold text-gray-800 mb-6">
+              Form Laporan Masalah
+            </h2>
+
+            <form id="reportForm" class="space-y-6">
+              <!-- Issue Category -->
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">
+                  Kategori Masalah <span class="text-red-500">*</span>
+                </label>
+                <select
+                  id="issueCategory"
+                  name="issueCategory"
+                  required
+                  class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                >
+                  <option value="">Pilih kategori masalah</option>
+                  <option value="order">Masalah Pesanan</option>
+                  <option value="payment">Masalah Pembayaran</option>
+                  <option value="product">Masalah Produk</option>
+                  <option value="delivery">Masalah Pengiriman</option>
+                  <option value="account">Masalah Akun</option>
+                  <option value="website">Masalah Website/Aplikasi</option>
+                  <option value="other">Lainnya</option>
+                </select>
+              </div>
+
+              <!-- Order Number (if applicable) -->
+              <div id="orderNumberField" class="hidden">
+                <label class="block text-sm font-medium text-gray-700 mb-2">
+                  Nomor Pesanan (jika terkait pesanan)
+                </label>
+                <input
+                  type="text"
+                  id="orderNumber"
+                  name="orderNumber"
+                  placeholder="Contoh: ORD-2024-001234"
+                  class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                />
+              </div>
+
+              <!-- Issue Title -->
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">
+                  Judul Masalah <span class="text-red-500">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="issueTitle"
+                  name="issueTitle"
+                  required
+                  maxlength="100"
+                  placeholder="Jelaskan masalah dalam satu kalimat singkat"
+                  class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                />
+                <div class="text-right text-sm text-gray-500 mt-1">
+                  <span id="titleCount">0</span>/100 karakter
+                </div>
+              </div>
+
+              <!-- Issue Description -->
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">
+                  Deskripsi Masalah <span class="text-red-500">*</span>
+                </label>
+                <textarea
+                  id="issueDescription"
+                  name="issueDescription"
+                  required
+                  rows="6"
+                  maxlength="1000"
+                  placeholder="Jelaskan masalah secara detail, termasuk langkah-langkah yang menyebabkan masalah, kapan masalah terjadi, dan dampaknya"
+                  class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent resize-vertical"
+                ></textarea>
+                <div class="text-right text-sm text-gray-500 mt-1">
+                  <span id="descCount">0</span>/1000 karakter
+                </div>
+              </div>
+
+              <!-- File Upload -->
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">
+                  Lampiran (opsional)
+                </label>
+                <div
+                  class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-primary transition duration-200"
+                >
+                  <input
+                    type="file"
+                    id="attachments"
+                    name="attachments"
+                    multiple
+                    accept="image/*,.pdf,.doc,.docx"
+                    class="hidden"
+                  />
+                  <label for="attachments" class="cursor-pointer">
+                    <i
+                      class="fas fa-cloud-upload-alt text-3xl text-gray-400 mb-2"
+                    ></i>
+                    <p class="text-gray-600">
+                      Klik untuk upload file atau drag & drop
+                    </p>
+                    <p class="text-sm text-gray-500 mt-1">
+                      Format yang didukung: JPG, PNG, PDF, DOC, DOCX (Maks. 5MB
+                      per file)
+                    </p>
+                  </label>
+                </div>
+                <div id="fileList" class="mt-3 space-y-2"></div>
+              </div>
+
+              <!-- Submit Button -->
+              <div class="flex space-x-4">
+                <button
+                  type="button"
+                  onclick="window.history.back()"
+                  class="flex-1 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition duration-300"
+                >
+                  Batal
+                </button>
+                <button
+                  type="submit"
+                  class="flex-1 bg-primary text-white py-3 px-6 rounded-lg hover:bg-primary-dark transition duration-300 font-semibold"
+                >
+                  <i class="fas fa-paper-plane mr-2"></i>
+                  Kirim Laporan
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8 mt-12">
+      <div class="container mx-auto px-4">
+        <div class="text-center">
+          <p>&copy; 2024 Sleman Mart. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Success Modal -->
+    <div
+      id="successModal"
+      class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50"
+    >
+      <div class="bg-white rounded-lg p-6 max-w-md mx-4">
+        <div class="text-center">
+          <div
+            class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4"
+          >
+            <i class="fas fa-check text-green-600 text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-2">
+            Laporan Berhasil Dikirim!
+          </h3>
+          <p class="text-gray-600 mb-4">
+            Terima kasih atas laporan Anda. Tim kami akan meninjau dan
+            menghubungi Anda segera.
+          </p>
+          <div class="bg-gray-50 rounded-lg p-3 mb-4">
+            <div class="text-sm text-gray-600">
+              <strong>Nomor Tiket:</strong>
+              <span id="ticketNumber" class="text-primary font-mono"
+                >#RPT-2024-001234</span
+              >
+            </div>
+          </div>
+          <button
+            onclick="closeSuccessModal()"
+            class="w-full bg-primary text-white py-2 px-4 rounded-lg hover:bg-primary-dark transition duration-300"
+          >
+            Tutup
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Character counters
+      document
+        .getElementById("issueTitle")
+        .addEventListener("input", function () {
+          document.getElementById("titleCount").textContent = this.value.length;
+        });
+
+      document
+        .getElementById("issueDescription")
+        .addEventListener("input", function () {
+          document.getElementById("descCount").textContent = this.value.length;
+        });
+
+      // Show/hide order number field based on category
+      document
+        .getElementById("issueCategory")
+        .addEventListener("change", function () {
+          const orderField = document.getElementById("orderNumberField");
+          if (
+            this.value === "order" ||
+            this.value === "payment" ||
+            this.value === "delivery"
+          ) {
+            orderField.classList.remove("hidden");
+          } else {
+            orderField.classList.add("hidden");
+          }
+        });
+
+      // File upload handling
+      document
+        .getElementById("attachments")
+        .addEventListener("change", function () {
+          const fileList = document.getElementById("fileList");
+          fileList.innerHTML = "";
+
+          Array.from(this.files).forEach((file, index) => {
+            const fileItem = document.createElement("div");
+            fileItem.className =
+              "flex items-center justify-between p-3 bg-gray-50 rounded-lg";
+            fileItem.innerHTML = `
+            <div class="flex items-center space-x-3">
+              <i class="fas fa-file text-gray-500"></i>
+              <div>
+                <div class="text-sm font-medium text-gray-800">${
+                  file.name
+                }</div>
+                <div class="text-xs text-gray-500">${(
+                  file.size /
+                  1024 /
+                  1024
+                ).toFixed(2)} MB</div>
+              </div>
+            </div>
+            <button type="button" onclick="removeFile(${index})" class="text-red-600 hover:text-red-800">
+              <i class="fas fa-times"></i>
+            </button>
+          `;
+            fileList.appendChild(fileItem);
+          });
+        });
+
+      // Remove file function
+      function removeFile(index) {
+        const input = document.getElementById("attachments");
+        const files = Array.from(input.files);
+        files.splice(index, 1);
+
+        const newFileList = new DataTransfer();
+        files.forEach((file) => newFileList.items.add(file));
+        input.files = newFileList.files;
+
+        // Trigger change event to update display
+        input.dispatchEvent(new Event("change"));
+      }
+
+      // Form submission
+      document
+        .getElementById("reportForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          // Show loading state
+          const submitBtn = this.querySelector('button[type="submit"]');
+          const originalText = submitBtn.innerHTML;
+          submitBtn.innerHTML =
+            '<i class="fas fa-spinner fa-spin mr-2"></i>Mengirim...';
+          submitBtn.disabled = true;
+
+          // Simulate API call
+          setTimeout(() => {
+            // Generate random ticket number
+            const ticketNumber =
+              "#RPT-2024-" + Math.random().toString().substr(2, 6);
+            document.getElementById("ticketNumber").textContent = ticketNumber;
+
+            // Show success modal
+            document.getElementById("successModal").classList.remove("hidden");
+            document.getElementById("successModal").classList.add("flex");
+
+            // Reset form
+            this.reset();
+            document.getElementById("fileList").innerHTML = "";
+            document.getElementById("titleCount").textContent = "0";
+            document.getElementById("descCount").textContent = "0";
+            document.getElementById("orderNumberField").classList.add("hidden");
+
+            // Reset button
+            submitBtn.innerHTML = originalText;
+            submitBtn.disabled = false;
+          }, 2000);
+        });
+
+      // Close success modal
+      function closeSuccessModal() {
+        document.getElementById("successModal").classList.add("hidden");
+        document.getElementById("successModal").classList.remove("flex");
+        window.location.href = "products.html";
+      }
+
+      // Drag and drop functionality
+      const dropZone = document.querySelector(
+        '[for="attachments"]'
+      ).parentElement;
+
+      dropZone.addEventListener("dragover", function (e) {
+        e.preventDefault();
+        this.classList.add("border-primary", "bg-blue-50");
+      });
+
+      dropZone.addEventListener("dragleave", function (e) {
+        e.preventDefault();
+        this.classList.remove("border-primary", "bg-blue-50");
+      });
+
+      dropZone.addEventListener("drop", function (e) {
+        e.preventDefault();
+        this.classList.remove("border-primary", "bg-blue-50");
+
+        const files = Array.from(e.dataTransfer.files);
+        const input = document.getElementById("attachments");
+        const dataTransfer = new DataTransfer();
+
+        files.forEach((file) => dataTransfer.items.add(file));
+        input.files = dataTransfer.files;
+        input.dispatchEvent(new Event("change"));
+      });
+    </script>
+  </body>
+</html>
