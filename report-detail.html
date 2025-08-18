@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Detail Laporan - Sleman Mart</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#E57F39",
+              "primary-dark": "#D96B28",
+            },
+          },
+        },
+      };
+    </script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-gray-50 min-h-screen">
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-40">
+      <div class="container mx-auto px-4 py-3">
+        <div class="flex items-center justify-between">
+          <!-- Logo -->
+          <div class="flex items-center space-x-2">
+            <i class="fas fa-store text-2xl text-primary"></i>
+            <a href="products.html" class="text-2xl font-bold text-primary"
+              >Sleman Mart</a
+            >
+          </div>
+
+          <!-- Navigation -->
+          <nav class="hidden md:flex space-x-6">
+            <a href="products.html" class="text-gray-600 hover:text-primary"
+              >Produk</a
+            >
+            <a href="orders.html" class="text-gray-600 hover:text-primary"
+              >Pesanan</a
+            >
+            <a href="cart.html" class="text-gray-600 hover:text-primary"
+              >Keranjang</a
+            >
+          </nav>
+
+          <!-- User Profile -->
+          <div class="flex items-center space-x-4">
+            <!-- Profile Dropdown -->
+            <div class="relative group">
+              <button
+                class="flex items-center space-x-2 text-gray-700 hover:text-primary transition duration-200"
+              >
+                <div
+                  class="w-8 h-8 bg-primary rounded-full flex items-center justify-center"
+                >
+                  <i class="fas fa-user text-white text-sm"></i>
+                </div>
+                <span class="font-medium">John Doe</span>
+                <i class="fas fa-chevron-down text-xs"></i>
+              </button>
+
+              <div
+                class="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50"
+              >
+                <div class="py-2">
+                  <a
+                    href="products.html"
+                    class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100 transition duration-200"
+                  >
+                    <i class="fas fa-home mr-3 text-gray-500"></i>
+                    <span>Beranda</span>
+                  </a>
+                  <a
+                    href="profile.html"
+                    class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100 transition duration-200"
+                  >
+                    <i class="fas fa-user mr-3 text-gray-500"></i>
+                    <span>Profil</span>
+                  </a>
+                  <a
+                    href="orders.html"
+                    class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100 transition duration-200"
+                  >
+                    <i class="fas fa-box mr-3 text-gray-500"></i>
+                    <span>Pesanan Saya</span>
+                  </a>
+                  <a
+                    href="report-status.html"
+                    class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100 transition duration-200"
+                  >
+                    <i
+                      class="fas fa-exclamation-triangle mr-3 text-gray-500"
+                    ></i>
+                    <span>Laporan Masalah</span>
+                  </a>
+                  <hr class="my-2" />
+                  <a
+                    href="index.html"
+                    class="flex items-center px-4 py-2 text-red-600 hover:bg-red-50 transition duration-200"
+                  >
+                    <i class="fas fa-sign-out-alt mr-3"></i>
+                    <span>Keluar</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+      <!-- Breadcrumb -->
+      <nav class="flex mb-6" aria-label="Breadcrumb">
+        <ol class="inline-flex items-center space-x-1 md:space-x-3">
+          <li class="inline-flex items-center">
+            <a
+              href="products.html"
+              class="text-gray-700 hover:text-primary flex items-center"
+            >
+              <i class="fas fa-home mr-2"></i>
+              Beranda
+            </a>
+          </li>
+          <li>
+            <div class="flex items-center">
+              <i class="fas fa-chevron-right text-gray-400 mx-2"></i>
+              <a
+                href="report-status.html"
+                class="text-gray-700 hover:text-primary"
+                >Laporan Masalah</a
+              >
+            </div>
+          </li>
+          <li>
+            <div class="flex items-center">
+              <i class="fas fa-chevron-right text-gray-400 mx-2"></i>
+              <span class="text-primary font-medium">Detail Laporan</span>
+            </div>
+          </li>
+        </ol>
+      </nav>
+
+      <!-- Back Button -->
+      <div class="mb-6">
+        <a
+          href="report-status.html"
+          class="inline-flex items-center px-4 py-2 text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition duration-300"
+        >
+          <i class="fas fa-arrow-left mr-2"></i>
+          Kembali ke Daftar Laporan
+        </a>
+      </div>
+
+      <!-- Report Header -->
+      <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+        <div
+          class="flex flex-col md:flex-row md:items-center md:justify-between space-y-4 md:space-y-0"
+        >
+          <div>
+            <div class="flex items-center space-x-3 mb-2">
+              <span class="text-lg font-mono text-gray-600"
+                >#RPT-2024-001234</span
+              >
+              <span
+                class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-yellow-100 text-yellow-800"
+              >
+                Sedang Diproses
+              </span>
+            </div>
+            <h1 class="text-2xl font-bold text-gray-800 mb-2">
+              Produk tidak sesuai dengan deskripsi
+            </h1>
+            <p class="text-gray-600">
+              Kategori: Masalah Produk • Dibuat: 15 Agu 2024, 14:30
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <!-- Main Content -->
+        <div class="lg:col-span-2 space-y-6">
+          <!-- Report Description -->
+          <div class="bg-white rounded-lg shadow-md p-6">
+            <h2 class="text-xl font-semibold text-gray-800 mb-4">
+              Deskripsi Masalah
+            </h2>
+            <div class="prose max-w-none">
+              <p class="text-gray-700 leading-relaxed">
+                Saya memesan produk smartphone dengan spesifikasi 8GB RAM, namun
+                yang diterima hanya 4GB RAM. Selain itu, warna produk juga
+                berbeda dari yang saya pilih saat pemesanan. Produk yang saya
+                pesan berwarna hitam, tetapi yang diterima berwarna putih. Hal
+                ini sangat mengecewakan karena spesifikasi dan warna adalah
+                faktor penting dalam keputusan pembelian saya.
+              </p>
+            </div>
+
+            <!-- Attachments -->
+            <div class="mt-6 pt-6 border-t border-gray-200">
+              <h3 class="text-lg font-semibold text-gray-800 mb-3">Lampiran</h3>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div
+                  class="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg"
+                >
+                  <i class="fas fa-image text-blue-600 text-xl"></i>
+                  <div class="flex-1 min-w-0">
+                    <div class="text-sm font-medium text-gray-800 truncate">
+                      foto_produk_diterima.jpg
+                    </div>
+                    <div class="text-xs text-gray-500">2.3 MB</div>
+                  </div>
+                  <a href="#" class="text-primary hover:text-primary-dark">
+                    <i class="fas fa-download"></i>
+                  </a>
+                </div>
+                <div
+                  class="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg"
+                >
+                  <i class="fas fa-file-pdf text-red-600 text-xl"></i>
+                  <div class="flex-1 min-w-0">
+                    <div class="text-sm font-medium text-gray-800 truncate">
+                      bukti_pemesanan.pdf
+                    </div>
+                    <div class="text-xs text-gray-500">1.8 MB</div>
+                  </div>
+                  <a href="#" class="text-primary hover:text-primary-dark">
+                    <i class="fas fa-download"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Conversation Thread -->
+          <div class="bg-white rounded-lg shadow-md p-6">
+            <h2 class="text-xl font-semibold text-gray-800 mb-6">Percakapan</h2>
+
+            <div class="space-y-6">
+              <!-- Customer Message -->
+              <div class="flex space-x-4">
+                <div class="flex-shrink-0">
+                  <div
+                    class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center"
+                  >
+                    <i class="fas fa-user text-blue-600"></i>
+                  </div>
+                </div>
+                <div class="flex-1">
+                  <div class="flex items-center space-x-2 mb-2">
+                    <span class="font-medium text-gray-800"
+                      >John Doe (Anda)</span
+                    >
+                    <span class="text-sm text-gray-500"
+                      >15 Agu 2024, 14:30</span
+                    >
+                  </div>
+                  <div class="bg-blue-50 rounded-lg p-4">
+                    <p class="text-gray-700">
+                      Laporan masalah telah dibuat. Mohon bantuannya untuk
+                      menyelesaikan masalah ini.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Admin Reply 1 -->
+              <div class="flex space-x-4">
+                <div class="flex-shrink-0">
+                  <div
+                    class="w-10 h-10 bg-primary rounded-full flex items-center justify-center"
+                  >
+                    <i class="fas fa-headset text-white"></i>
+                  </div>
+                </div>
+                <div class="flex-1">
+                  <div class="flex items-center space-x-2 mb-2">
+                    <span class="font-medium text-gray-800"
+                      >Ahmad (Tim Support)</span
+                    >
+                    <span class="text-sm text-gray-500"
+                      >15 Agu 2024, 15:45</span
+                    >
+                  </div>
+                  <div class="bg-gray-50 rounded-lg p-4">
+                    <p class="text-gray-700">
+                      Halo John, terima kasih atas laporannya. Kami akan segera
+                      menindaklanjuti masalah ini. Tim kami sedang mengecek stok
+                      produk yang sesuai dengan pesanan Anda. Mohon menunggu
+                      update selanjutnya dalam 1x24 jam.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Admin Reply 2 -->
+              <div class="flex space-x-4">
+                <div class="flex-shrink-0">
+                  <div
+                    class="w-10 h-10 bg-primary rounded-full flex items-center justify-center"
+                  >
+                    <i class="fas fa-headset text-white"></i>
+                  </div>
+                </div>
+                <div class="flex-1">
+                  <div class="flex items-center space-x-2 mb-2">
+                    <span class="font-medium text-gray-800"
+                      >Ahmad (Tim Support)</span
+                    >
+                    <span class="text-sm text-gray-500"
+                      >16 Agu 2024, 09:15</span
+                    >
+                  </div>
+                  <div class="bg-gray-50 rounded-lg p-4">
+                    <p class="text-gray-700 mb-3">
+                      Update: Kami sudah mengkonfirmasi ketersediaan produk yang
+                      sesuai dengan pesanan Anda (Smartphone 8GB RAM warna
+                      hitam). Kami akan mengirimkan produk pengganti dalam 2-3
+                      hari kerja.
+                    </p>
+                    <p class="text-gray-700">
+                      Untuk produk yang salah kirim, silakan simpan terlebih
+                      dahulu. Tim kurir kami akan mengambilnya bersamaan dengan
+                      pengiriman produk yang benar. Mohon maaf atas
+                      ketidaknyamanan ini.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Customer Reply -->
+              <div class="flex space-x-4">
+                <div class="flex-shrink-0">
+                  <div
+                    class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center"
+                  >
+                    <i class="fas fa-user text-blue-600"></i>
+                  </div>
+                </div>
+                <div class="flex-1">
+                  <div class="flex items-center space-x-2 mb-2">
+                    <span class="font-medium text-gray-800"
+                      >John Doe (Anda)</span
+                    >
+                    <span class="text-sm text-gray-500"
+                      >16 Agu 2024, 10:30</span
+                    >
+                  </div>
+                  <div class="bg-blue-50 rounded-lg p-4">
+                    <p class="text-gray-700">
+                      Terima kasih atas update-nya. Saya akan menunggu produk
+                      pengganti. Apakah ada nomor resi untuk tracking pengiriman
+                      produk yang benar?
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Reply Form -->
+            <div class="mt-8 pt-6 border-t border-gray-200">
+              <h3 class="text-lg font-semibold text-gray-800 mb-4">
+                Balas Pesan
+              </h3>
+              <form class="space-y-4">
+                <textarea
+                  rows="4"
+                  placeholder="Tulis balasan Anda..."
+                  class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent resize-vertical"
+                ></textarea>
+                <div class="flex items-center space-x-4">
+                  <button
+                    type="submit"
+                    class="px-6 py-2 bg-primary text-white rounded-lg hover:bg-primary-dark transition duration-300"
+                  >
+                    <i class="fas fa-paper-plane mr-2"></i>
+                    Kirim Balasan
+                  </button>
+                  <label class="flex items-center text-gray-700 cursor-pointer">
+                    <input
+                      type="file"
+                      multiple
+                      accept="image/*,.pdf,.doc,.docx"
+                      class="hidden"
+                    />
+                    <i class="fas fa-paperclip mr-2 text-gray-500"></i>
+                    Lampirkan File
+                  </label>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="space-y-6">
+          <!-- Report Info -->
+          <div class="bg-white rounded-lg shadow-md p-6">
+            <h3 class="text-lg font-semibold text-gray-800 mb-4">
+              Informasi Laporan
+            </h3>
+            <div class="space-y-3 text-sm">
+              <div class="flex justify-between">
+                <span class="text-gray-500">Nomor Tiket:</span>
+                <span class="font-medium">#RPT-2024-001234</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-gray-500">Status:</span>
+                <span
+                  class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800"
+                >
+                  Sedang Diproses
+                </span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-gray-500">Kategori:</span>
+                <span class="font-medium">Masalah Produk</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-gray-500">Dibuat:</span>
+                <span class="font-medium">15 Agu 2024, 14:30</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-gray-500">Update Terakhir:</span>
+                <span class="font-medium">16 Agu 2024, 10:30</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact Support -->
+          <div class="bg-white rounded-lg shadow-md p-6">
+            <h3 class="text-lg font-semibold text-gray-800 mb-4">
+              Kontak Support
+            </h3>
+            <div class="space-y-3">
+              <div class="flex items-center space-x-3">
+                <i class="fas fa-phone text-green-600"></i>
+                <div>
+                  <div class="font-medium text-gray-800">Customer Service</div>
+                  <div class="text-sm text-gray-600">+62 274 123-4567</div>
+                </div>
+              </div>
+              <div class="flex items-center space-x-3">
+                <i class="fab fa-whatsapp text-green-600"></i>
+                <div>
+                  <div class="font-medium text-gray-800">WhatsApp</div>
+                  <div class="text-sm text-gray-600">+62 812-3456-7890</div>
+                </div>
+              </div>
+              <div class="flex items-center space-x-3">
+                <i class="fas fa-envelope text-blue-600"></i>
+                <div>
+                  <div class="font-medium text-gray-800">Email</div>
+                  <div class="text-sm text-gray-600">
+                    support@slemanmart.com
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8 mt-12">
+      <div class="container mx-auto px-4">
+        <div class="text-center">
+          <p>&copy; 2024 Sleman Mart. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Get ticket number from URL parameters
+      const urlParams = new URLSearchParams(window.location.search);
+      const ticketNumber = urlParams.get("ticket");
+
+      if (ticketNumber) {
+        // Update page content based on ticket number
+        console.log("Viewing ticket:", ticketNumber);
+      }
+
+      // Handle reply form submission
+      document.querySelector("form").addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const textarea = this.querySelector("textarea");
+        const message = textarea.value.trim();
+
+        if (message) {
+          // Here you would normally send the message to the server
+          alert("Balasan Anda telah dikirim!");
+          textarea.value = "";
+        }
+      });
+
+      // Handle file attachment
+      document
+        .querySelector('input[type="file"]')
+        .addEventListener("change", function () {
+          if (this.files.length > 0) {
+            alert(`${this.files.length} file terpilih untuk dilampirkan`);
+          }
+        });
+    </script>
+  </body>
+</html>
