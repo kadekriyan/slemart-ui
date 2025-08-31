@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Detail Pelatihan - Sleman Mart</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#E57F39",
+              "primary-dark": "#C86A2B",
+              "primary-light": "#F29C5E",
+            },
+          },
+        },
+      };
+    </script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-md">
+      <div class="container mx-auto px-4 py-4">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center space-x-2">
+            <i class="fas fa-graduation-cap text-2xl text-primary"></i>
+            <a href="products.html" class="text-2xl font-bold text-primary">
+              Sleman Mart
+            </a>
+          </div>
+
+          <nav class="hidden md:flex space-x-6">
+            <a href="products.html" class="text-gray-600 hover:text-primary"
+              >Produk</a
+            >
+            <a href="orders.html" class="text-gray-600 hover:text-primary"
+              >Pesanan</a
+            >
+            <a href="cart.html" class="text-gray-600 hover:text-primary"
+              >Keranjang</a
+            >
+          </nav>
+
+          <div class="flex items-center space-x-4">
+            <!-- Cart Button -->
+            <a
+              href="cart.html"
+              class="relative text-primary hover:text-primary-dark transition duration-300"
+            >
+              <i class="fas fa-shopping-cart text-xl"></i>
+              <span
+                class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center"
+                >3</span
+              >
+            </a>
+
+            <!-- Profile Dropdown -->
+            <div class="relative group">
+              <button
+                class="flex items-center space-x-2 text-gray-700 hover:text-primary transition duration-200"
+              >
+                <div
+                  class="w-8 h-8 bg-primary rounded-full flex items-center justify-center"
+                >
+                  <i class="fas fa-user text-white text-sm"></i>
+                </div>
+                <span class="font-medium">Kadek Riyan</span>
+                <i class="fas fa-chevron-down text-xs"></i>
+              </button>
+
+              <div
+                class="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50"
+              >
+                <div class="py-2">
+                  <a
+                    href="products.html"
+                    class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100 transition duration-200"
+                  >
+                    <i class="fas fa-home mr-3 text-gray-500"></i>
+                    <span>Beranda</span>
+                  </a>
+                  <a
+                    href="profile.html"
+                    class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100 transition duration-200"
+                  >
+                    <i class="fas fa-user mr-3 text-gray-500"></i>
+                    <span>Profil</span>
+                  </a>
+                  <a
+                    href="orders.html"
+                    class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100 transition duration-200"
+                  >
+                    <i class="fas fa-box mr-3 text-gray-500"></i>
+                    <span>Pesanan Saya</span>
+                  </a>
+                  <a
+                    href="report-status.html"
+                    class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100 transition duration-200"
+                  >
+                    <i
+                      class="fas fa-exclamation-triangle mr-3 text-gray-500"
+                    ></i>
+                    <span>Laporan Masalah</span>
+                  </a>
+                  <hr class="my-2" />
+                  <a
+                    href="index.html"
+                    class="flex items-center px-4 py-2 text-red-600 hover:bg-red-50 transition duration-200"
+                  >
+                    <i class="fas fa-sign-out-alt mr-3"></i>
+                    <span>Keluar</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <nav class="bg-white border-b py-3">
+      <div class="container mx-auto px-4">
+        <ol class="flex items-center space-x-2 text-sm">
+          <li>
+            <a href="products.html" class="text-gray-600 hover:text-primary">
+              <i class="fas fa-home mr-1"></i>Beranda
+            </a>
+          </li>
+          <li class="text-gray-400">/</li>
+          <li>
+            <a href="training.html" class="text-gray-600 hover:text-primary"
+              >Info Pelatihan</a
+            >
+          </li>
+          <li class="text-gray-400">/</li>
+          <li class="text-primary font-medium">Detail Pelatihan</li>
+        </ol>
+      </div>
+    </nav>
+
+    <!-- Training Detail Content -->
+    <section class="py-8 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <article
+          class="max-w-4xl mx-auto bg-white rounded-lg shadow-md overflow-hidden"
+        >
+          <!-- Training Header -->
+          <header class="p-8 pb-0">
+            <div class="flex items-center space-x-4 mb-6">
+              <span class="text-gray-500">15-17 September 2025</span>
+            </div>
+            <h1
+              id="trainingTitle"
+              class="text-3xl font-bold text-gray-800 mb-6"
+            >
+              Pelatihan Digital Marketing untuk UMKM
+            </h1>
+            <div
+              class="h-64 bg-gradient-to-br from-blue-500 to-blue-600 relative rounded-lg overflow-hidden mb-6"
+            >
+              <img
+                id="trainingImage"
+                src="https://via.placeholder.com/800x400/3B82F6/FFFFFF?text=Digital+Marketing+Training"
+                alt="Training Image"
+                class="w-full h-full object-cover"
+              />
+            </div>
+          </header>
+
+          <!-- Training Description -->
+          <div class="px-8">
+            <p
+              id="trainingDescription"
+              class="text-gray-600 text-lg leading-relaxed mb-8"
+            >
+              Pelajari strategi pemasaran digital dari dasar hingga mahir. Mulai
+              dari social media marketing hingga Google Ads untuk meningkatkan
+              visibilitas dan penjualan produk UMKM Anda.
+            </p>
+
+            <!-- Training Info Grid -->
+            <div class="bg-gray-50 rounded-lg p-6 mb-8">
+              <h2 class="text-2xl font-bold text-gray-800 mb-6">
+                Informasi Pelatihan
+              </h2>
+              <div class="grid md:grid-cols-2 gap-6">
+                <div class="space-y-4">
+                  <div class="flex items-center">
+                    <i class="fas fa-calendar text-primary mr-3"></i>
+                    <div>
+                      <span class="text-sm text-gray-500">Tanggal</span>
+                      <p id="trainingDate" class="font-semibold">
+                        15-17 September 2025
+                      </p>
+                    </div>
+                  </div>
+                  <div class="flex items-center">
+                    <i class="fas fa-clock text-primary mr-3"></i>
+                    <div>
+                      <span class="text-sm text-gray-500">Waktu</span>
+                      <p id="trainingTime" class="font-semibold">
+                        09:00 - 16:00 WIB
+                      </p>
+                    </div>
+                  </div>
+                  <div class="flex items-center">
+                    <i class="fas fa-map-marker-alt text-primary mr-3"></i>
+                    <div>
+                      <span class="text-sm text-gray-500">Lokasi</span>
+                      <p id="trainingLocation" class="font-semibold">
+                        Balai Desa Tridadi, Sleman
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="space-y-4">
+                  <div class="flex items-center">
+                    <i class="fas fa-certificate text-primary mr-3"></i>
+                    <div>
+                      <span class="text-sm text-gray-500">Sertifikat</span>
+                      <p class="font-semibold">Tersedia</p>
+                    </div>
+                  </div>
+                  <div class="flex items-center">
+                    <i class="fas fa-language text-primary mr-3"></i>
+                    <div>
+                      <span class="text-sm text-gray-500">Bahasa</span>
+                      <p class="font-semibold">Bahasa Indonesia</p>
+                    </div>
+                  </div>
+                  <div class="flex items-center">
+                    <i class="fas fa-users text-primary mr-3"></i>
+                    <div>
+                      <span class="text-sm text-gray-500">Kapasitas</span>
+                      <p class="font-semibold">30 Peserta</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Training Content -->
+            <div id="trainingContent" class="mb-8">
+              <h3 class="text-xl font-bold text-gray-800 mb-4">
+                Materi Pelatihan
+              </h3>
+              <div class="space-y-4 mb-8">
+                <div class="border-l-4 border-primary pl-4">
+                  <h4 class="font-semibold text-gray-800">
+                    Hari 1: Pengenalan Digital Marketing
+                  </h4>
+                  <ul class="text-gray-600 mt-2 space-y-1">
+                    <li>• Konsep dasar digital marketing</li>
+                    <li>• Perbedaan digital vs traditional marketing</li>
+                    <li>• Platform digital marketing utama</li>
+                    <li>• Strategi pemilihan platform yang tepat</li>
+                  </ul>
+                </div>
+                <div class="border-l-4 border-primary pl-4">
+                  <h4 class="font-semibold text-gray-800">
+                    Hari 2: Social Media Marketing
+                  </h4>
+                  <ul class="text-gray-600 mt-2 space-y-1">
+                    <li>• Setup dan optimasi profil bisnis</li>
+                    <li>• Content planning dan scheduling</li>
+                    <li>• Engagement strategies</li>
+                    <li>• Analisa performa konten</li>
+                  </ul>
+                </div>
+                <div class="border-l-4 border-primary pl-4">
+                  <h4 class="font-semibold text-gray-800">
+                    Hari 3: Google Ads & Analytics
+                  </h4>
+                  <ul class="text-gray-600 mt-2 space-y-1">
+                    <li>• Pembuatan campaign Google Ads</li>
+                    <li>• Keyword research dan targeting</li>
+                    <li>• Setup Google Analytics</li>
+                    <li>• Measuring ROI dan conversion</li>
+                  </ul>
+                </div>
+              </div>
+
+              <h3 class="text-xl font-bold text-gray-800 mb-4">
+                Target Peserta
+              </h3>
+              <ul class="text-gray-600 space-y-2 mb-8">
+                <li>
+                  • Pemilik UMKM yang ingin mengembangkan bisnis secara digital
+                </li>
+                <li>
+                  • Pelaku usaha yang belum familiar dengan digital marketing
+                </li>
+                <li>• UMKM yang ingin meningkatkan penjualan online</li>
+                <li>• Entrepreneur yang ingin memulai bisnis digital</li>
+              </ul>
+
+              <h3 class="text-xl font-bold text-gray-800 mb-4">Fasilitas</h3>
+              <div class="grid md:grid-cols-2 gap-4 mb-8">
+                <ul class="text-gray-600 space-y-2">
+                  <li>• Modul pembelajaran lengkap</li>
+                  <li>• Sertifikat keikutsertaan</li>
+                  <li>• Konsultasi gratis 1 bulan</li>
+                </ul>
+                <ul class="text-gray-600 space-y-2">
+                  <li>• Template dan tools siap pakai</li>
+                  <li>• Makan siang selama pelatihan</li>
+                  <li>• Akses ke komunitas alumni</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Instructor -->
+            <!-- <div class="bg-gray-50 rounded-lg p-6 mb-8">
+              <h2 class="text-2xl font-bold text-gray-800 mb-6">Instruktur</h2>
+              <div class="flex items-start space-x-4">
+                <div
+                  class="w-20 h-20 bg-gray-300 rounded-full flex items-center justify-center"
+                >
+                  <i class="fas fa-user text-2xl text-gray-600"></i>
+                </div>
+                <div class="flex-1">
+                  <h3 class="text-xl font-bold text-gray-800">
+                    Dr. Ahmad Santoso
+                  </h3>
+                  <p class="text-primary font-medium mb-2">
+                    Digital Marketing Specialist
+                  </p>
+                  <p class="text-gray-600 mb-4">
+                    Praktisi digital marketing dengan pengalaman 10+ tahun.
+                    Telah membantu ratusan UMKM mengembangkan bisnis melalui
+                    strategi digital marketing yang efektif.
+                  </p>
+                  <div
+                    class="flex items-center space-x-4 text-sm text-gray-500"
+                  >
+                    <span
+                      ><i class="fas fa-briefcase mr-1"></i>10+ tahun
+                      pengalaman</span
+                    >
+                    <span
+                      ><i class="fas fa-users mr-1"></i>500+ UMKM telah
+                      terbantu</span
+                    >
+                    <span><i class="fas fa-star mr-1"></i>4.9/5 rating</span>
+                  </div>
+                </div>
+              </div>
+            </div> -->
+
+            <!-- Contact Info -->
+            <!-- <div class="bg-primary bg-opacity-10 rounded-lg p-6 mb-8">
+              <h3 class="text-lg font-bold text-gray-800 mb-4">
+                Informasi Kontak
+              </h3>
+              <div class="grid md:grid-cols-3 gap-4">
+                <div class="flex items-center">
+                  <i class="fas fa-phone text-primary mr-3"></i>
+                  <span class="text-gray-600">(0274) 123-4567</span>
+                </div>
+                <div class="flex items-center">
+                  <i class="fas fa-envelope text-primary mr-3"></i>
+                  <span class="text-gray-600">pelatihan@slemanmart.com</span>
+                </div>
+                <div class="flex items-center">
+                  <i class="fab fa-whatsapp text-primary mr-3"></i>
+                  <span class="text-gray-600">+62 812-3456-7890</span>
+                </div>
+              </div>
+            </div> -->
+
+            <!-- Share Buttons -->
+            <div class="border-t pt-6 pb-6">
+              <h3 class="text-lg font-bold text-gray-800 mb-4">
+                Bagikan Pelatihan Ini
+              </h3>
+              <div class="flex flex-wrap gap-3">
+                <button
+                  class="flex items-center bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition duration-300"
+                >
+                  <i class="fab fa-facebook-f mr-2"></i>Facebook
+                </button>
+                <!-- <button
+                  class="flex items-center bg-blue-400 text-white px-4 py-2 rounded-lg hover:bg-blue-500 transition duration-300"
+                >
+                  <i class="fab fa-twitter mr-2"></i>Twitter
+                </button> -->
+                <button
+                  class="flex items-center bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition duration-300"
+                >
+                  <i class="fab fa-whatsapp mr-2"></i>WhatsApp
+                </button>
+                <!-- <button
+                  class="flex items-center bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition duration-300"
+                >
+                  <i class="fas fa-envelope mr-2"></i>Email
+                </button> -->
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+      <div class="container mx-auto px-4">
+        <div class="grid md:grid-cols-4 gap-8">
+          <div>
+            <h3 class="text-xl font-bold mb-4">Sleman Mart</h3>
+            <p class="text-gray-300">
+              Platform e-commerce untuk UMKM di Sleman yang mendukung produk
+              lokal berkualitas.
+            </p>
+          </div>
+          <div>
+            <h4 class="font-semibold mb-4">Link Cepat</h4>
+            <ul class="space-y-2">
+              <li>
+                <a href="products.html" class="text-gray-300 hover:text-white"
+                  >Produk</a
+                >
+              </li>
+              <li>
+                <a href="marketing.html" class="text-gray-300 hover:text-white"
+                  >Info Pemasaran</a
+                >
+              </li>
+              <li>
+                <a href="training.html" class="text-gray-300 hover:text-white"
+                  >Info Pelatihan</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-semibold mb-4">Bantuan</h4>
+            <ul class="space-y-2">
+              <li>
+                <a href="#" class="text-gray-300 hover:text-white">FAQ</a>
+              </li>
+              <li>
+                <a
+                  href="report-issue.html"
+                  class="text-gray-300 hover:text-white"
+                  >Laporkan Masalah</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-semibold mb-4">Hubungi Kami</h4>
+            <p class="text-gray-300 mb-2">Email: info@slemanmart.com</p>
+            <p class="text-gray-300 mb-4">Telepon: (0274) 123-4567</p>
+          </div>
+        </div>
+        <div
+          class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-300"
+        >
+          <p>&copy; 2025 Sleman Mart. Semua hak cipta dilindungi.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Sample training data
+      const trainings = {
+        1: {
+          title: "Pelatihan Digital Marketing untuk UMKM",
+          description:
+            "Pelajari strategi pemasaran digital dari dasar hingga mahir. Mulai dari social media marketing hingga Google Ads untuk meningkatkan visibilitas dan penjualan produk UMKM Anda.",
+          category: "Digital Marketing",
+          categoryClass: "bg-blue-100 text-blue-800",
+          date: "15-17 September 2025",
+          time: "09:00 - 16:00 WIB",
+          location: "Balai Desa Tridadi, Sleman",
+          image:
+            "https://via.placeholder.com/800x400/3B82F6/FFFFFF?text=Digital+Marketing+Training",
+          content: `
+            <h3 class="text-xl font-bold text-gray-800 mb-4">Materi Pelatihan</h3>
+            <div class="space-y-4 mb-8">
+              <div class="border-l-4 border-primary pl-4">
+                <h4 class="font-semibold text-gray-800">Hari 1: Pengenalan Digital Marketing</h4>
+                <ul class="text-gray-600 mt-2 space-y-1">
+                  <li>• Konsep dasar digital marketing</li>
+                  <li>• Perbedaan digital vs traditional marketing</li>
+                  <li>• Platform digital marketing utama</li>
+                  <li>• Strategi pemilihan platform yang tepat</li>
+                </ul>
+              </div>
+              <div class="border-l-4 border-primary pl-4">
+                <h4 class="font-semibold text-gray-800">Hari 2: Social Media Marketing</h4>
+                <ul class="text-gray-600 mt-2 space-y-1">
+                  <li>• Setup dan optimasi profil bisnis</li>
+                  <li>• Content planning dan scheduling</li>
+                  <li>• Engagement strategies</li>
+                  <li>• Analisa performa konten</li>
+                </ul>
+              </div>
+              <div class="border-l-4 border-primary pl-4">
+                <h4 class="font-semibold text-gray-800">Hari 3: Google Ads & Analytics</h4>
+                <ul class="text-gray-600 mt-2 space-y-1">
+                  <li>• Pembuatan campaign Google Ads</li>
+                  <li>• Keyword research dan targeting</li>
+                  <li>• Setup Google Analytics</li>
+                  <li>• Measuring ROI dan conversion</li>
+                </ul>
+              </div>
+            </div>
+          `,
+        },
+        2: {
+          title: "Manajemen Keuangan UMKM",
+          description:
+            "Belajar mengelola keuangan bisnis dengan baik, dari pembukuan sederhana hingga analisis laporan keuangan untuk mengoptimalkan profitabilitas usaha.",
+          category: "Keuangan",
+          categoryClass: "bg-green-100 text-green-800",
+          date: "22-24 September 2025",
+          time: "09:00 - 16:00 WIB",
+          location: "Kantor Kecamatan Sleman",
+          image:
+            "https://via.placeholder.com/800x400/10B981/FFFFFF?text=Financial+Management",
+          content: `
+            <h3 class="text-xl font-bold text-gray-800 mb-4">Materi Pelatihan</h3>
+            <div class="space-y-4 mb-8">
+              <div class="border-l-4 border-primary pl-4">
+                <h4 class="font-semibold text-gray-800">Hari 1: Dasar-dasar Pembukuan</h4>
+                <ul class="text-gray-600 mt-2 space-y-1">
+                  <li>• Pengenalan akuntansi untuk UMKM</li>
+                  <li>• Pencatatan transaksi harian</li>
+                  <li>• Pemisahan keuangan pribadi dan bisnis</li>
+                  <li>• Tools pembukuan sederhana</li>
+                </ul>
+              </div>
+              <div class="border-l-4 border-primary pl-4">
+                <h4 class="font-semibold text-gray-800">Hari 2: Laporan Keuangan</h4>
+                <ul class="text-gray-600 mt-2 space-y-1">
+                  <li>• Membuat laporan laba rugi</li>
+                  <li>• Laporan arus kas</li>
+                  <li>• Neraca sederhana</li>
+                  <li>• Analisis kinerja keuangan</li>
+                </ul>
+              </div>
+              <div class="border-l-4 border-primary pl-4">
+                <h4 class="font-semibold text-gray-800">Hari 3: Perencanaan & Analisis</h4>
+                <ul class="text-gray-600 mt-2 space-y-1">
+                  <li>• Budgeting dan forecasting</li>
+                  <li>• Break even analysis</li>
+                  <li>• Strategi pricing</li>
+                  <li>• Akses permodalan</li>
+                </ul>
+              </div>
+            </div>
+          `,
+        },
+      };
+
+      // Get training ID from URL
+      const urlParams = new URLSearchParams(window.location.search);
+      const trainingId = urlParams.get("id") || "1";
+
+      // Load training data
+      const training = trainings[trainingId] || trainings["1"];
+
+      // Update page content
+      document.getElementById("trainingTitle").textContent = training.title;
+      document.getElementById("trainingDescription").textContent =
+        training.description;
+      document.getElementById("categoryBadge").textContent = training.category;
+      document.getElementById(
+        "categoryBadge"
+      ).className = `text-sm px-4 py-2 rounded-full ${training.categoryClass}`;
+      document.getElementById("trainingDate").textContent = training.date;
+      document.getElementById("trainingTime").textContent = training.time;
+      document.getElementById("trainingLocation").textContent =
+        training.location;
+      document.getElementById("trainingImage").src = training.image;
+      document.getElementById("trainingContent").innerHTML =
+        training.content +
+        document
+          .getElementById("trainingContent")
+          .innerHTML.split("</div>")
+          .slice(-2)
+          .join("</div>");
+    </script>
+  </body>
+</html>
