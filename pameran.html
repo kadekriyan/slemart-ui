@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Info Pameran - Sleman Mart</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#E57F39",
+              "primary-dark": "#C86A2B",
+              "primary-light": "#F29C5E",
+            },
+          },
+        },
+      };
+    </script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      .line-clamp-3 {
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-md">
+      <div class="container mx-auto px-4 py-4">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center space-x-2">
+            <i class="fas fa-bullhorn text-2xl text-primary"></i>
+            <a href="products.html" class="text-2xl font-bold text-primary">
+              Sleman Mart
+            </a>
+          </div>
+
+          <nav class="hidden md:flex space-x-6">
+            <a href="products.html" class="text-gray-600 hover:text-primary"
+              >Produk</a
+            >
+            <a href="orders.html" class="text-gray-600 hover:text-primary"
+              >Pesanan</a
+            >
+            <a href="cart.html" class="text-gray-600 hover:text-primary"
+              >Keranjang</a
+            >
+          </nav>
+
+          <div class="flex items-center space-x-4">
+            <!-- Cart Button -->
+            <a
+              href="cart.html"
+              class="relative text-primary hover:text-primary-dark transition duration-300"
+            >
+              <i class="fas fa-shopping-cart text-xl"></i>
+              <span
+                class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center"
+                >3</span
+              >
+            </a>
+
+            <!-- Profile Dropdown -->
+            <div class="relative group">
+              <button
+                class="flex items-center space-x-2 text-gray-700 hover:text-primary transition duration-200"
+              >
+                <div
+                  class="w-8 h-8 bg-primary rounded-full flex items-center justify-center"
+                >
+                  <i class="fas fa-user text-white text-sm"></i>
+                </div>
+                <span class="font-medium">Kadek Riyan</span>
+                <i class="fas fa-chevron-down text-xs"></i>
+              </button>
+
+              <div
+                class="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50"
+              >
+                <div class="py-2">
+                  <a
+                    href="products.html"
+                    class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100 transition duration-200"
+                  >
+                    <i class="fas fa-home mr-3 text-gray-500"></i>
+                    <span>Beranda</span>
+                  </a>
+                  <a
+                    href="profile.html"
+                    class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100 transition duration-200"
+                  >
+                    <i class="fas fa-user mr-3 text-gray-500"></i>
+                    <span>Profil</span>
+                  </a>
+                  <a
+                    href="orders.html"
+                    class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100 transition duration-200"
+                  >
+                    <i class="fas fa-box mr-3 text-gray-500"></i>
+                    <span>Pesanan Saya</span>
+                  </a>
+                  <a
+                    href="report-status.html"
+                    class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100 transition duration-200"
+                  >
+                    <i
+                      class="fas fa-exclamation-triangle mr-3 text-gray-500"
+                    ></i>
+                    <span>Laporan Masalah</span>
+                  </a>
+                  <hr class="my-2" />
+                  <a
+                    href="index.html"
+                    class="flex items-center px-4 py-2 text-red-600 hover:bg-red-50 transition duration-200"
+                  >
+                    <i class="fas fa-sign-out-alt mr-3"></i>
+                    <span>Keluar</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <nav class="bg-white border-b py-3">
+      <div class="container mx-auto px-4">
+        <ol class="flex items-center space-x-2 text-sm">
+          <li>
+            <a href="products.html" class="text-gray-600 hover:text-primary">
+              <i class="fas fa-home mr-1"></i>Beranda
+            </a>
+          </li>
+          <li class="text-gray-400">/</li>
+          <li class="text-primary font-medium">Info Pameran</li>
+        </ol>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section
+      class="py-12 bg-gradient-to-r from-primary to-primary-dark text-white"
+    >
+      <div class="container mx-auto px-4 text-center">
+        <div class="mb-8">
+          <i class="fas fa-calendar-alt text-6xl mb-4"></i>
+          <h1 class="text-4xl font-bold mb-4">Info Pameran UMKM</h1>
+          <p class="text-xl text-primary-light max-w-2xl mx-auto">
+            Ikuti berbagai pameran dan expo UMKM untuk memamerkan produk,
+            memperluas jaringan, dan meningkatkan penjualan bisnis Anda
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="py-6 bg-white border-b">
+      <div class="container mx-auto px-4">
+        <div
+          class="flex flex-col md:flex-row md:items-center md:justify-between space-y-4 md:space-y-0"
+        >
+          <!-- <div class="flex items-center space-x-4">
+            <span class="text-gray-700 font-medium">Filter:</span>
+            <select
+              class="border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
+            >
+              <option>Semua Kategori</option>
+              <option>Pameran Produk</option>
+              <option>Expo UMKM</option>
+              <option>Festival Kuliner</option>
+              <option>Bazar Kerajinan</option>
+              <option>Pameran Digital</option>
+            </select>
+          </div> -->
+          <div class="flex items-center space-x-4">
+            <span class="text-gray-700 font-medium">Urutkan:</span>
+            <select
+              class="border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
+            >
+              <option>Terbaru</option>
+              <!-- <option>Terpopuler</option> -->
+              <option>A-Z</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Exhibition Info Grid -->
+    <section class="py-8">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Exhibition 1 -->
+          <article
+            class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300"
+          >
+            <div class="h-48 bg-gradient-to-br from-primary-light to-primary">
+              <img
+                src="https://via.placeholder.com/400x300/E57F39/FFFFFF?text=Expo+UMKM+Sleman"
+                alt="Expo UMKM Sleman 2025"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <div class="p-6">
+              <div class="flex items-center justify-between mb-3">
+                <!-- <span
+                  class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full"
+                >
+                  Expo UMKM
+                </span> -->
+                <span class="text-gray-500 text-sm">15-17 Sept 2025</span>
+              </div>
+              <h3
+                class="text-xl font-bold text-gray-800 mb-3 hover:text-primary cursor-pointer"
+              >
+                Expo UMKM Sleman 2025: Bangkit Bersama
+              </h3>
+              <p class="text-gray-600 mb-4 line-clamp-3">
+                Pameran terbesar UMKM se-Kabupaten Sleman dengan 200+ booth dari
+                berbagai sektor. Kesempatan emas untuk memamerkan produk dan
+                memperluas jaringan bisnis.
+              </p>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center text-sm text-gray-500">
+                  <i class="fas fa-map-marker-alt mr-2"></i>
+                  <span>JEC Yogyakarta</span>
+                </div>
+                <a
+                  href="marketing-detail.html?id=1"
+                  class="text-primary hover:text-primary-dark font-medium"
+                >
+                  Baca Selengkapnya →
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Exhibition 2 -->
+          <article
+            class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300"
+          >
+            <div class="h-48 bg-gradient-to-br from-green-400 to-green-600">
+              <img
+                src="https://via.placeholder.com/400x300/10B981/FFFFFF?text=Festival+Kuliner"
+                alt="Festival Kuliner Nusantara"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <div class="p-6">
+              <div class="flex items-center justify-between mb-3">
+                <!-- <span
+                  class="bg-green-100 text-green-800 text-xs px-3 py-1 rounded-full"
+                >
+                  Festival Kuliner
+                </span> -->
+                <span class="text-gray-500 text-sm">22-24 Sept 2025</span>
+              </div>
+              <h3
+                class="text-xl font-bold text-gray-800 mb-3 hover:text-primary cursor-pointer"
+              >
+                Festival Kuliner Nusantara Sleman 2025
+              </h3>
+              <p class="text-gray-600 mb-4 line-clamp-3">
+                Festival kuliner terbesar dengan 150+ tenant makanan dan minuman
+                khas Nusantara. Promosikan kuliner UMKM Anda kepada ribuan
+                pengunjung.
+              </p>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center text-sm text-gray-500">
+                  <i class="fas fa-map-marker-alt mr-2"></i>
+                  <span>Alun-alun Sleman</span>
+                </div>
+                <a
+                  href="marketing-detail.html?id=2"
+                  class="text-primary hover:text-primary-dark font-medium"
+                >
+                  Baca Selengkapnya →
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Exhibition 3 -->
+          <article
+            class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300"
+          >
+            <div class="h-48 bg-gradient-to-br from-purple-400 to-purple-600">
+              <img
+                src="https://via.placeholder.com/400x300/8B5CF6/FFFFFF?text=Bazar+Kerajinan"
+                alt="Bazar Kerajinan Tradisional"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <div class="p-6">
+              <div class="flex items-center justify-between mb-3">
+                <!-- <span
+                  class="bg-purple-100 text-purple-800 text-xs px-3 py-1 rounded-full"
+                >
+                  Bazar Kerajinan
+                </span> -->
+                <span class="text-gray-500 text-sm">29 Sept - 1 Okt 2025</span>
+              </div>
+              <h3
+                class="text-xl font-bold text-gray-800 mb-3 hover:text-primary cursor-pointer"
+              >
+                Bazar Kerajinan Tradisional Indonesia
+              </h3>
+              <p class="text-gray-600 mb-4 line-clamp-3">
+                Pameran khusus produk kerajinan tradisional dan modern.
+                Kesempatan untuk memperkenalkan karya seni dan kerajinan UMKM
+                kepada wisatawan dan kolektor.
+              </p>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center text-sm text-gray-500">
+                  <i class="fas fa-map-marker-alt mr-2"></i>
+                  <span>Malioboro Mall</span>
+                </div>
+                <a
+                  href="marketing-detail.html?id=3"
+                  class="text-primary hover:text-primary-dark font-medium"
+                >
+                  Baca Selengkapnya →
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Exhibition 4 -->
+          <article
+            class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300"
+          >
+            <div class="h-48 bg-gradient-to-br from-red-400 to-red-600">
+              <img
+                src="https://via.placeholder.com/400x300/EF4444/FFFFFF?text=Pameran+Digital"
+                alt="Digital Expo"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <div class="p-6">
+              <div class="flex items-center justify-between mb-3">
+                <!-- <span
+                  class="bg-red-100 text-red-800 text-xs px-3 py-1 rounded-full"
+                >
+                  Pameran Digital
+                </span> -->
+                <span class="text-gray-500 text-sm">6-8 Okt 2025</span>
+              </div>
+              <h3
+                class="text-xl font-bold text-gray-800 mb-3 hover:text-primary cursor-pointer"
+              >
+                Digital Expo UMKM: Era Transformasi Digital
+              </h3>
+              <p class="text-gray-600 mb-4 line-clamp-3">
+                Pameran virtual dan hybrid untuk UMKM yang ingin go digital.
+                Menampilkan inovasi teknologi, e-commerce, dan solusi digital
+                untuk bisnis modern.
+              </p>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center text-sm text-gray-500">
+                  <i class="fas fa-map-marker-alt mr-2"></i>
+                  <span>Online & UGM</span>
+                </div>
+                <a
+                  href="marketing-detail.html?id=4"
+                  class="text-primary hover:text-primary-dark font-medium"
+                >
+                  Baca Selengkapnya →
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Exhibition 5 -->
+          <article
+            class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300"
+          >
+            <div class="h-48 bg-gradient-to-br from-yellow-400 to-yellow-600">
+              <img
+                src="https://via.placeholder.com/400x300/FCD34D/FFFFFF?text=Pameran+Produk+Lokal"
+                alt="Pameran Produk Lokal"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <div class="p-6">
+              <div class="flex items-center justify-between mb-3">
+                <!-- <span
+                  class="bg-yellow-100 text-yellow-800 text-xs px-3 py-1 rounded-full"
+                >
+                  Produk Lokal
+                </span> -->
+                <span class="text-gray-500 text-sm">13-15 Okt 2025</span>
+              </div>
+              <h3
+                class="text-xl font-bold text-gray-800 mb-3 hover:text-primary cursor-pointer"
+              >
+                Pameran Produk Unggulan Sleman
+              </h3>
+              <p class="text-gray-600 mb-4 line-clamp-3">
+                Showcase produk-produk unggulan dari berbagai kecamatan di
+                Sleman. Dari makanan khas hingga kerajinan tangan yang menjadi
+                kebanggaan daerah.
+              </p>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center text-sm text-gray-500">
+                  <i class="fas fa-map-marker-alt mr-2"></i>
+                  <span>Gedung Pemda Sleman</span>
+                </div>
+                <a
+                  href="marketing-detail.html?id=5"
+                  class="text-primary hover:text-primary-dark font-medium"
+                >
+                  Baca Selengkapnya →
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Exhibition 6 -->
+          <article
+            class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300"
+          >
+            <div class="h-48 bg-gradient-to-br from-indigo-400 to-indigo-600">
+              <img
+                src="https://via.placeholder.com/400x300/6366F1/FFFFFF?text=Expo+Koperasi"
+                alt="Expo Koperasi"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <div class="p-6">
+              <div class="flex items-center justify-between mb-3">
+                <!-- <span
+                  class="bg-indigo-100 text-indigo-800 text-xs px-3 py-1 rounded-full"
+                >
+                  Expo Koperasi
+                </span> -->
+                <span class="text-gray-500 text-sm">20-22 Okt 2025</span>
+              </div>
+              <h3
+                class="text-xl font-bold text-gray-800 mb-3 hover:text-primary cursor-pointer"
+              >
+                Expo Koperasi dan UMKM DIY 2025
+              </h3>
+              <p class="text-gray-600 mb-4 line-clamp-3">
+                Pameran koperasi dan UMKM se-DIY dengan fokus pada kerjasama,
+                networking, dan pengembangan ekonomi kerakyatan yang
+                berkelanjutan.
+              </p>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center text-sm text-gray-500">
+                  <i class="fas fa-map-marker-alt mr-2"></i>
+                  <span>Taman Pintar</span>
+                </div>
+                <a
+                  href="marketing-detail.html?id=6"
+                  class="text-primary hover:text-primary-dark font-medium"
+                >
+                  Baca Selengkapnya →
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- Pagination -->
+        <div class="flex justify-center mt-12">
+          <div class="flex items-center space-x-2">
+            <button
+              class="px-4 py-2 border border-gray-300 rounded-lg text-gray-600 hover:bg-gray-50"
+            >
+              <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="px-4 py-2 bg-primary text-white rounded-lg">
+              1
+            </button>
+            <button
+              class="px-4 py-2 border border-gray-300 rounded-lg text-gray-600 hover:bg-gray-50"
+            >
+              2
+            </button>
+            <button
+              class="px-4 py-2 border border-gray-300 rounded-lg text-gray-600 hover:bg-gray-50"
+            >
+              3
+            </button>
+            <button
+              class="px-4 py-2 border border-gray-300 rounded-lg text-gray-600 hover:bg-gray-50"
+            >
+              <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <!-- <section class="py-12 bg-primary text-white">
+      <div class="container mx-auto px-4 text-center">
+        <h2 class="text-3xl font-bold mb-4">Jangan Lewatkan Pameran Terbaru</h2>
+        <p class="text-primary-light mb-8 max-w-2xl mx-auto">
+          Berlangganan newsletter kami untuk mendapatkan informasi pameran
+          terbaru dan kesempatan berpartisipasi dalam berbagai expo UMKM
+          langsung di email Anda.
+        </p>
+        <div class="max-w-md mx-auto flex">
+          <input
+            type="email"
+            placeholder="Masukkan email Anda"
+            class="flex-1 px-4 py-3 rounded-l-lg text-gray-800 focus:outline-none"
+          />
+          <button
+            class="bg-primary-dark px-6 py-3 rounded-r-lg hover:bg-primary-light transition duration-300"
+          >
+            <i class="fas fa-paper-plane"></i>
+          </button>
+        </div>
+      </div>
+    </section> -->
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12 mt-16">
+      <div class="container mx-auto px-4">
+        <div class="grid md:grid-cols-4 gap-8">
+          <div>
+            <h3 class="text-xl font-bold mb-4">Sleman Mart</h3>
+            <p class="text-gray-300">
+              Platform e-commerce untuk UMKM di Sleman yang mendukung produk
+              lokal berkualitas.
+            </p>
+          </div>
+          <div>
+            <h4 class="font-semibold mb-4">Link Cepat</h4>
+            <ul class="space-y-2">
+              <li>
+                <a href="products.html" class="text-gray-300 hover:text-white"
+                  >Produk</a
+                >
+              </li>
+              <li>
+                <a href="marketing.html" class="text-gray-300 hover:text-white"
+                  >Info Pameran</a
+                >
+              </li>
+              <li>
+                <a href="training.html" class="text-gray-300 hover:text-white"
+                  >Info Pelatihan</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-semibold mb-4">Bantuan</h4>
+            <ul class="space-y-2">
+              <li>
+                <a href="#" class="text-gray-300 hover:text-white">FAQ</a>
+              </li>
+              <li>
+                <a
+                  href="report-issue.html"
+                  class="text-gray-300 hover:text-white"
+                  >Laporkan Masalah</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-semibold mb-4">Hubungi Kami</h4>
+            <p class="text-gray-300 mb-2">Email: info@slemanmart.com</p>
+            <p class="text-gray-300 mb-4">Telepon: (0274) 123-4567</p>
+          </div>
+        </div>
+        <div
+          class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-300"
+        >
+          <p>&copy; 2025 Sleman Mart. Semua hak cipta dilindungi.</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

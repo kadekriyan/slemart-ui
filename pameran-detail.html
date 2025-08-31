@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Strategi Digital Marketing untuk UMKM - Sleman Mart</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#E57F39",
+              "primary-dark": "#C86A2B",
+              "primary-light": "#F29C5E",
+            },
+          },
+        },
+      };
+    </script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-md">
+      <div class="container mx-auto px-4 py-4">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center space-x-2">
+            <i class="fas fa-bullhorn text-2xl text-primary"></i>
+            <a href="products.html" class="text-2xl font-bold text-primary">
+              Sleman Mart
+            </a>
+          </div>
+
+          <nav class="hidden md:flex space-x-6">
+            <a href="products.html" class="text-gray-600 hover:text-primary">Produk</a>
+            <a href="orders.html" class="text-gray-600 hover:text-primary">Pesanan</a>
+            <a href="cart.html" class="text-gray-600 hover:text-primary">Keranjang</a>
+          </nav>
+
+          <div class="flex items-center space-x-4">
+            <!-- Cart Button -->
+            <a
+              href="cart.html"
+              class="relative text-primary hover:text-primary-dark transition duration-300"
+            >
+              <i class="fas fa-shopping-cart text-xl"></i>
+              <span
+                class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center"
+                >3</span
+              >
+            </a>
+
+            <!-- Profile Dropdown -->
+            <div class="relative group">
+              <button
+                class="flex items-center space-x-2 text-gray-700 hover:text-primary transition duration-200"
+              >
+                <div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
+                  <i class="fas fa-user text-white text-sm"></i>
+                </div>
+                <span class="font-medium">Kadek Riyan</span>
+                <i class="fas fa-chevron-down text-xs"></i>
+              </button>
+              
+              <div
+                class="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50"
+              >
+                <div class="py-2">
+                  <a
+                    href="products.html"
+                    class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100 transition duration-200"
+                  >
+                    <i class="fas fa-home mr-3 text-gray-500"></i>
+                    <span>Beranda</span>
+                  </a>
+                  <a
+                    href="profile.html"
+                    class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100 transition duration-200"
+                  >
+                    <i class="fas fa-user mr-3 text-gray-500"></i>
+                    <span>Profil</span>
+                  </a>
+                  <a
+                    href="orders.html"
+                    class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100 transition duration-200"
+                  >
+                    <i class="fas fa-box mr-3 text-gray-500"></i>
+                    <span>Pesanan Saya</span>
+                  </a>
+                  <a
+                    href="report-status.html"
+                    class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100 transition duration-200"
+                  >
+                    <i class="fas fa-exclamation-triangle mr-3 text-gray-500"></i>
+                    <span>Laporan Masalah</span>
+                  </a>
+                  <hr class="my-2" />
+                  <a
+                    href="index.html"
+                    class="flex items-center px-4 py-2 text-red-600 hover:bg-red-50 transition duration-200"
+                  >
+                    <i class="fas fa-sign-out-alt mr-3"></i>
+                    <span>Keluar</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <nav class="bg-white border-b py-3">
+      <div class="container mx-auto px-4">
+        <ol class="flex items-center space-x-2 text-sm">
+          <li>
+            <a href="products.html" class="text-gray-600 hover:text-primary">
+              <i class="fas fa-home mr-1"></i>Beranda
+            </a>
+          </li>
+          <li class="text-gray-400">/</li>
+          <li>
+            <a href="marketing.html" class="text-gray-600 hover:text-primary">Info Pemasaran</a>
+          </li>
+          <li class="text-gray-400">/</li>
+          <li class="text-primary font-medium">Strategi Digital Marketing</li>
+        </ol>
+      </div>
+    </nav>
+
+    <!-- Article Content -->
+    <section class="py-8 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <article class="max-w-4xl mx-auto bg-white rounded-lg shadow-md overflow-hidden">
+          <!-- Article Header -->
+          <header class="p-8 pb-0">
+            <div class="flex items-center space-x-4 mb-6">
+              <!-- <span class="bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full">
+                Strategi Pemasaran
+              </span> -->
+              <span class="text-gray-500">2 hari lalu</span>
+              <!-- <div class="flex items-center text-gray-500">
+                <i class="fas fa-eye mr-2"></i>
+                <span>1.2k views</span>
+              </div> -->
+            </div>
+            
+            <h1 class="text-4xl font-bold text-gray-800 mb-4">
+              Strategi Digital Marketing untuk UMKM di Era Modern
+            </h1>
+            
+            <p class="text-xl text-gray-600 mb-6">
+              Pelajari cara menggunakan platform digital untuk meningkatkan penjualan dan 
+              memperluas jangkauan pasar UMKM Anda dengan strategi yang terbukti efektif.
+            </p>
+
+            <!-- Featured Image -->
+            <div class="mb-8">
+              <img
+                src="https://via.placeholder.com/800x400/E57F39/FFFFFF?text=Digital+Marketing+Strategy"
+                alt="Digital Marketing Strategy"
+                class="w-full h-64 md:h-96 object-cover rounded-lg"
+              />
+            </div>
+          </header>
+
+          <!-- Article Body -->
+          <div class="px-8 pb-8">
+            <div class="prose prose-lg max-w-none">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">Mengapa Digital Marketing Penting?</h2>
+            <p class="text-gray-700 mb-6">
+              Di era digital saat ini, hampir semua orang menggunakan internet untuk mencari informasi, 
+              berbelanja, dan berinteraksi. UMKM yang tidak memanfaatkan digital marketing akan 
+              tertinggal dari kompetitor yang sudah lebih dulu mengadopsi strategi digital.
+            </p>
+
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">Strategi Digital Marketing untuk UMKM</h2>
+            
+            <h3 class="text-xl font-semibold text-gray-800 mb-3">1. Optimasi Media Sosial</h3>
+            <p class="text-gray-700 mb-4">
+              Media sosial seperti Instagram, Facebook, dan TikTok adalah platform yang sangat efektif 
+              untuk mempromosikan produk UMKM. Pastikan konten yang Anda posting menarik, konsisten, 
+              dan sesuai dengan target audience.
+            </p>
+            <ul class="list-disc list-inside text-gray-700 mb-6 space-y-2">
+              <li>Posting konten secara konsisten (minimal 3-5 kali seminggu)</li>
+              <li>Gunakan foto produk berkualitas tinggi</li>
+              <li>Manfaatkan fitur Stories dan Reels untuk engagement yang lebih tinggi</li>
+              <li>Berinteraksi aktif dengan followers melalui komentar dan DM</li>
+            </ul>
+
+            <h3 class="text-xl font-semibold text-gray-800 mb-3">2. Search Engine Optimization (SEO)</h3>
+            <p class="text-gray-700 mb-4">
+              SEO membantu website atau toko online Anda muncul di hasil pencarian Google. 
+              Ini sangat penting karena mayoritas konsumen mencari produk melalui mesin pencari.
+            </p>
+            <ul class="list-disc list-inside text-gray-700 mb-6 space-y-2">
+              <li>Riset kata kunci yang relevan dengan produk Anda</li>
+              <li>Optimasi deskripsi produk dengan kata kunci yang tepat</li>
+              <li>Pastikan website loading dengan cepat</li>
+              <li>Buat konten blog yang bermanfaat untuk pelanggan</li>
+            </ul>
+
+            <h3 class="text-xl font-semibold text-gray-800 mb-3">3. Email Marketing</h3>
+            <p class="text-gray-700 mb-4">
+              Email marketing masih menjadi salah satu channel digital marketing dengan ROI tertinggi. 
+              Gunakan email untuk membangun relationship dengan pelanggan dan meningkatkan repeat purchase.
+            </p>
+            <ul class="list-disc list-inside text-gray-700 mb-6 space-y-2">
+              <li>Kumpulkan email pelanggan melalui website atau media sosial</li>
+              <li>Kirim newsletter berkala dengan konten yang valuable</li>
+              <li>Berikan penawaran khusus untuk subscriber email</li>
+              <li>Personalisasi email berdasarkan behavior pelanggan</li>
+            </ul>
+
+            <h3 class="text-xl font-semibold text-gray-800 mb-3">4. Content Marketing</h3>
+            <p class="text-gray-700 mb-4">
+              Buat konten yang edukatif dan menghibur untuk membangun trust dengan audience. 
+              Konten yang baik akan membuat pelanggan datang kembali dan merekomendasikan bisnis Anda.
+            </p>
+            <ul class="list-disc list-inside text-gray-700 mb-6 space-y-2">
+              <li>Buat tutorial penggunaan produk</li>
+              <li>Share story behind the brand</li>
+              <li>Tips dan trik yang relevan dengan industri Anda</li>
+              <li>User-generated content dari pelanggan</li>
+            </ul>
+
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">Tools Digital Marketing untuk UMKM</h2>
+            <div class="bg-gray-50 p-6 rounded-lg mb-6">
+              <h4 class="font-semibold text-gray-800 mb-3">Free Tools:</h4>
+              <ul class="list-disc list-inside text-gray-700 space-y-1">
+                <li>Google My Business - untuk local SEO</li>
+                <li>Canva - untuk design konten</li>
+                <li>Buffer/Hootsuite - untuk scheduling social media</li>
+                <li>Google Analytics - untuk tracking website</li>
+              </ul>
+            </div>
+
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">Kesimpulan</h2>
+            <p class="text-gray-700 mb-6">
+              Digital marketing bukan lagi pilihan, tetapi keharusan untuk UMKM yang ingin bertahan 
+              dan berkembang. Mulai dari yang sederhana, konsisten dalam eksekusi, dan terus belajar 
+              dari data dan feedback pelanggan. Dengan strategi yang tepat, UMKM Anda dapat bersaing 
+              dengan bisnis yang lebih besar.
+            </p>
+            
+            <!-- Share Buttons -->
+            <div class="border-t border-gray-200 pt-8 mt-8">
+              <h3 class="text-lg font-semibold text-gray-800 mb-4">Bagikan Artikel Ini</h3>
+              <div class="flex space-x-4">
+                <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition duration-300">
+                  <i class="fab fa-facebook-f mr-2"></i>Facebook
+                </button>
+                <!-- <button class="bg-blue-400 text-white px-4 py-2 rounded-lg hover:bg-blue-500 transition duration-300">
+                  <i class="fab fa-twitter mr-2"></i>Twitter
+                </button>
+                <button class="bg-blue-700 text-white px-4 py-2 rounded-lg hover:bg-blue-800 transition duration-300">
+                  <i class="fab fa-linkedin-in mr-2"></i>LinkedIn
+                </button> -->
+                <button class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition duration-300">
+                  <i class="fab fa-whatsapp mr-2"></i>WhatsApp
+                </button>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+      <div class="container mx-auto px-4">
+        <div class="grid md:grid-cols-4 gap-8">
+          <div>
+            <h3 class="text-xl font-bold mb-4">Sleman Mart</h3>
+            <p class="text-gray-300">
+              Platform e-commerce untuk UMKM di Sleman yang mendukung produk lokal berkualitas.
+            </p>
+          </div>
+          <div>
+            <h4 class="font-semibold mb-4">Link Cepat</h4>
+            <ul class="space-y-2">
+              <li><a href="products.html" class="text-gray-300 hover:text-white">Produk</a></li>
+              <li><a href="marketing.html" class="text-gray-300 hover:text-white">Info Pemasaran</a></li>
+              <li><a href="training.html" class="text-gray-300 hover:text-white">Info Pelatihan</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-semibold mb-4">Bantuan</h4>
+            <ul class="space-y-2">
+              <li><a href="#" class="text-gray-300 hover:text-white">FAQ</a></li>
+              <li><a href="report-issue.html" class="text-gray-300 hover:text-white">Laporkan Masalah</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-semibold mb-4">Hubungi Kami</h4>
+            <p class="text-gray-300 mb-2">Email: info@slemanmart.com</p>
+            <p class="text-gray-300 mb-4">Telepon: (0274) 123-4567</p>
+          </div>
+        </div>
+        <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-300">
+          <p>&copy; 2025 Sleman Mart. Semua hak cipta dilindungi.</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
