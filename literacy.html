@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Literasi UMKM - Sleman Mart</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#E57F39",
+              "primary-dark": "#C86A2B",
+              "primary-light": "#F29C5E",
+            },
+          },
+        },
+      };
+    </script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      .line-clamp-3 {
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-md">
+      <div class="container mx-auto px-4 py-4">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center space-x-2">
+            <i class="fas fa-book-open text-2xl text-primary"></i>
+            <a href="products.html" class="text-2xl font-bold text-primary">
+              Sleman Mart
+            </a>
+          </div>
+
+          <nav class="hidden md:flex space-x-6">
+            <a href="products.html" class="text-gray-600 hover:text-primary"
+              >Produk</a
+            >
+            <a href="orders.html" class="text-gray-600 hover:text-primary"
+              >Pesanan</a
+            >
+            <a href="cart.html" class="text-gray-600 hover:text-primary"
+              >Keranjang</a
+            >
+          </nav>
+
+          <div class="flex items-center space-x-4">
+            <!-- Cart Button -->
+            <a
+              href="cart.html"
+              class="relative text-primary hover:text-primary-dark transition duration-300"
+            >
+              <i class="fas fa-shopping-cart text-xl"></i>
+              <span
+                class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center"
+                >3</span
+              >
+            </a>
+
+            <!-- Profile Dropdown -->
+            <div class="relative group">
+              <button
+                class="flex items-center space-x-2 text-gray-700 hover:text-primary transition duration-200"
+              >
+                <div
+                  class="w-8 h-8 bg-primary rounded-full flex items-center justify-center"
+                >
+                  <i class="fas fa-user text-white text-sm"></i>
+                </div>
+                <span class="font-medium">Kadek Riyan</span>
+                <i class="fas fa-chevron-down text-xs"></i>
+              </button>
+
+              <div
+                class="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50"
+              >
+                <div class="py-2">
+                  <a
+                    href="products.html"
+                    class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100 transition duration-200"
+                  >
+                    <i class="fas fa-home mr-3 text-gray-500"></i>
+                    <span>Beranda</span>
+                  </a>
+                  <a
+                    href="profile.html"
+                    class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100 transition duration-200"
+                  >
+                    <i class="fas fa-user mr-3 text-gray-500"></i>
+                    <span>Profil</span>
+                  </a>
+                  <a
+                    href="orders.html"
+                    class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100 transition duration-200"
+                  >
+                    <i class="fas fa-box mr-3 text-gray-500"></i>
+                    <span>Pesanan Saya</span>
+                  </a>
+                  <a
+                    href="report-status.html"
+                    class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100 transition duration-200"
+                  >
+                    <i
+                      class="fas fa-exclamation-triangle mr-3 text-gray-500"
+                    ></i>
+                    <span>Laporan Masalah</span>
+                  </a>
+                  <hr class="my-2" />
+                  <a
+                    href="index.html"
+                    class="flex items-center px-4 py-2 text-red-600 hover:bg-red-50 transition duration-200"
+                  >
+                    <i class="fas fa-sign-out-alt mr-3"></i>
+                    <span>Keluar</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <nav class="bg-white border-b py-3">
+      <div class="container mx-auto px-4">
+        <ol class="flex items-center space-x-2 text-sm">
+          <li>
+            <a href="products.html" class="text-gray-600 hover:text-primary">
+              <i class="fas fa-home mr-1"></i>Beranda
+            </a>
+          </li>
+          <li class="text-gray-400">/</li>
+          <li class="text-primary font-medium">Literasi UMKM</li>
+        </ol>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section
+      class="py-12 bg-gradient-to-r from-purple-600 to-purple-700 text-white"
+    >
+      <div class="container mx-auto px-4 text-center">
+        <div class="mb-8">
+          <i class="fas fa-book-open text-6xl mb-4"></i>
+          <h1 class="text-4xl font-bold mb-4">Literasi UMKM</h1>
+          <p class="text-xl text-purple-100 max-w-2xl mx-auto">
+            Tingkatkan pengetahuan dan wawasan bisnis melalui artikel, panduan,
+            dan sumber daya edukasi terlengkap untuk UMKM
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="py-6 bg-white border-b">
+      <div class="container mx-auto px-4">
+        <div
+          class="flex flex-col md:flex-row md:items-center md:justify-between space-y-4 md:space-y-0"
+        >
+          <!-- <div class="flex items-center space-x-4">
+            <span class="text-gray-700 font-medium">Filter:</span>
+            <select
+              class="border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
+            >
+              <option>Semua Kategori</option>
+              <option>Panduan Bisnis</option>
+              <option>Tips & Trik</option>
+              <option>Regulasi</option>
+              <option>Teknologi</option>
+              <option>Inspirasi</option>
+            </select>
+            <select
+              class="border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
+            >
+              <option>Semua Level</option>
+              <option>Pemula</option>
+              <option>Menengah</option>
+              <option>Lanjutan</option>
+            </select>
+          </div> -->
+          <div class="flex items-center space-x-4">
+            <span class="text-gray-700 font-medium">Urutkan:</span>
+            <select
+              class="border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
+            >
+              <option>Terbaru</option>
+              <option>Terpopuler</option>
+              <option>Paling Banyak Dibaca</option>
+              <option>A-Z</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Article -->
+    <!-- <section class="py-8 bg-white">
+      <div class="container mx-auto px-4">
+        <h2 class="text-2xl font-bold text-gray-800 mb-6">Artikel Unggulan</h2>
+        <div
+          class="bg-gradient-to-r from-purple-500 to-purple-600 rounded-lg overflow-hidden text-white"
+        >
+          <div class="grid md:grid-cols-2 gap-8 items-center">
+            <div class="p-8">
+              <span
+                class="bg-white text-purple-600 text-sm px-3 py-1 rounded-full"
+                >Panduan Bisnis</span
+              >
+              <h3 class="text-2xl font-bold mt-4 mb-4">
+                Panduan Lengkap Memulai UMKM dari Nol: Dari Ide hingga Eksekusi
+              </h3>
+              <p class="text-purple-100 mb-6">
+                Pelajari langkah-langkah praktis untuk memulai usaha mikro,
+                kecil, dan menengah dari tahap perencanaan hingga implementasi
+                yang sukses.
+              </p>
+              <div
+                class="flex items-center space-x-4 text-sm text-purple-200 mb-6"
+              >
+                <span><i class="fas fa-calendar mr-1"></i>25 Agustus 2025</span>
+                <span><i class="fas fa-eye mr-1"></i>2,534 views</span>
+                <span><i class="fas fa-clock mr-1"></i>15 menit baca</span>
+              </div>
+              <a
+                href="literacy-detail.html?id=1"
+                class="bg-white text-purple-600 px-6 py-3 rounded-lg font-semibold hover:bg-purple-50 transition duration-300"
+              >
+                Baca Selengkapnya
+              </a>
+            </div>
+            <div class="h-64 md:h-auto">
+              <img
+                src="https://via.placeholder.com/600x400/8B5CF6/FFFFFF?text=Featured+Article"
+                alt="Featured Article"
+                class="w-full h-full object-cover"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section> -->
+
+    <!-- Articles Grid -->
+    <section class="py-8">
+      <div class="container mx-auto px-4">
+        <h2 class="text-2xl font-bold text-gray-800 mb-6">Artikel Terbaru</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Article 1 -->
+          <article
+            class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300"
+          >
+            <div class="h-48 bg-gradient-to-br from-blue-500 to-blue-600">
+              <img
+                src="https://via.placeholder.com/400x300/3B82F6/FFFFFF?text=Digital+Transformation"
+                alt="Digital Transformation"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <div class="p-6">
+              <div class="flex items-center justify-between mb-3">
+                <!-- <span
+                  class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full"
+                >
+                  Teknologi
+                </span> -->
+                <span class="text-gray-500 text-sm">5 Sept 2025</span>
+              </div>
+              <h3
+                class="text-xl font-bold text-gray-800 mb-3 hover:text-primary cursor-pointer"
+              >
+                Transformasi Digital untuk UMKM: Langkah Awal yang Tepat
+              </h3>
+              <p class="text-gray-600 mb-4 line-clamp-3">
+                Panduan praktis untuk memulai transformasi digital dalam bisnis
+                UMKM dengan teknologi yang terjangkau dan mudah
+                diimplementasikan.
+              </p>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center text-sm text-gray-500">
+                  <i class="fas fa-clock mr-2"></i>
+                  <span>8 menit baca</span>
+                </div>
+                <a
+                  href="literacy-detail.html?id=2"
+                  class="text-primary hover:text-primary-dark font-medium"
+                >
+                  Baca Selengkapnya →
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Article 2 -->
+          <article
+            class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300"
+          >
+            <div class="h-48 bg-gradient-to-br from-green-500 to-green-600">
+              <img
+                src="https://via.placeholder.com/400x300/10B981/FFFFFF?text=Financial+Planning"
+                alt="Financial Planning"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <div class="p-6">
+              <div class="flex items-center justify-between mb-3">
+                <!-- <span
+                  class="bg-green-100 text-green-800 text-xs px-3 py-1 rounded-full"
+                >
+                  Tips & Trik
+                </span> -->
+                <span class="text-gray-500 text-sm">3 Sept 2025</span>
+              </div>
+              <h3
+                class="text-xl font-bold text-gray-800 mb-3 hover:text-primary cursor-pointer"
+              >
+                5 Tips Mengatur Keuangan UMKM yang Efektif
+              </h3>
+              <p class="text-gray-600 mb-4 line-clamp-3">
+                Strategi jitu untuk mengelola keuangan bisnis kecil agar tetap
+                sehat dan dapat berkembang secara berkelanjutan.
+              </p>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center text-sm text-gray-500">
+                  <i class="fas fa-clock mr-2"></i>
+                  <span>6 menit baca</span>
+                </div>
+                <a
+                  href="literacy-detail.html?id=3"
+                  class="text-primary hover:text-primary-dark font-medium"
+                >
+                  Baca Selengkapnya →
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Article 3 -->
+          <article
+            class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300"
+          >
+            <div class="h-48 bg-gradient-to-br from-red-500 to-red-600">
+              <img
+                src="https://via.placeholder.com/400x300/EF4444/FFFFFF?text=Legal+Guide"
+                alt="Legal Guide"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <div class="p-6">
+              <div class="flex items-center justify-between mb-3">
+                <!-- <span
+                  class="bg-red-100 text-red-800 text-xs px-3 py-1 rounded-full"
+                >
+                  Regulasi
+                </span> -->
+                <span class="text-gray-500 text-sm">1 Sept 2025</span>
+              </div>
+              <h3
+                class="text-xl font-bold text-gray-800 mb-3 hover:text-primary cursor-pointer"
+              >
+                Legalitas UMKM: Dokumen Penting yang Harus Dimiliki
+              </h3>
+              <p class="text-gray-600 mb-4 line-clamp-3">
+                Daftar lengkap dokumen legal yang wajib dan tidak wajib untuk
+                UMKM beserta cara mengurus dan manfaatnya.
+              </p>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center text-sm text-gray-500">
+                  <i class="fas fa-clock mr-2"></i>
+                  <span>10 menit baca</span>
+                </div>
+                <a
+                  href="literacy-detail.html?id=4"
+                  class="text-primary hover:text-primary-dark font-medium"
+                >
+                  Baca Selengkapnya →
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Article 4 -->
+          <article
+            class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300"
+          >
+            <div class="h-48 bg-gradient-to-br from-yellow-500 to-yellow-600">
+              <img
+                src="https://via.placeholder.com/400x300/EAB308/FFFFFF?text=Marketing+Strategy"
+                alt="Marketing Strategy"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <div class="p-6">
+              <div class="flex items-center justify-between mb-3">
+                <!-- <span
+                  class="bg-yellow-100 text-yellow-800 text-xs px-3 py-1 rounded-full"
+                >
+                  Panduan Bisnis
+                </span> -->
+                <span class="text-gray-500 text-sm">28 Agust 2025</span>
+              </div>
+              <h3
+                class="text-xl font-bold text-gray-800 mb-3 hover:text-primary cursor-pointer"
+              >
+                Strategi Pemasaran Low Budget untuk UMKM Pemula
+              </h3>
+              <p class="text-gray-600 mb-4 line-clamp-3">
+                Ide-ide kreatif untuk memasarkan produk dengan modal minimal
+                namun hasil maksimal menggunakan berbagai platform gratis.
+              </p>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center text-sm text-gray-500">
+                  <i class="fas fa-clock mr-2"></i>
+                  <span>12 menit baca</span>
+                </div>
+                <a
+                  href="literacy-detail.html?id=5"
+                  class="text-primary hover:text-primary-dark font-medium"
+                >
+                  Baca Selengkapnya →
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Article 5 -->
+          <article
+            class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300"
+          >
+            <div class="h-48 bg-gradient-to-br from-indigo-500 to-indigo-600">
+              <img
+                src="https://via.placeholder.com/400x300/6366F1/FFFFFF?text=Success+Story"
+                alt="Success Story"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <div class="p-6">
+              <div class="flex items-center justify-between mb-3">
+                <!-- <span
+                  class="bg-indigo-100 text-indigo-800 text-xs px-3 py-1 rounded-full"
+                >
+                  Inspirasi
+                </span> -->
+                <span class="text-gray-500 text-sm">26 Agust 2025</span>
+              </div>
+              <h3
+                class="text-xl font-bold text-gray-800 mb-3 hover:text-primary cursor-pointer"
+              >
+                Kisah Sukses UMKM Lokal: Dari Warung Kecil ke Franchise
+              </h3>
+              <p class="text-gray-600 mb-4 line-clamp-3">
+                Perjalanan inspiratif seorang pengusaha lokal yang berhasil
+                mengembangkan warung kecil menjadi bisnis franchise yang sukses.
+              </p>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center text-sm text-gray-500">
+                  <i class="fas fa-clock mr-2"></i>
+                  <span>7 menit baca</span>
+                </div>
+                <a
+                  href="literacy-detail.html?id=6"
+                  class="text-primary hover:text-primary-dark font-medium"
+                >
+                  Baca Selengkapnya →
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Article 6 -->
+          <article
+            class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300"
+          >
+            <div class="h-48 bg-gradient-to-br from-teal-500 to-teal-600">
+              <img
+                src="https://via.placeholder.com/400x300/14B8A6/FFFFFF?text=E-commerce+Guide"
+                alt="E-commerce Guide"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <div class="p-6">
+              <div class="flex items-center justify-between mb-3">
+                <!-- <span
+                  class="bg-teal-100 text-teal-800 text-xs px-3 py-1 rounded-full"
+                >
+                  Teknologi
+                </span> -->
+                <span class="text-gray-500 text-sm">24 Agust 2025</span>
+              </div>
+              <h3
+                class="text-xl font-bold text-gray-800 mb-3 hover:text-primary cursor-pointer"
+              >
+                Membangun Toko Online yang Menguntungkan untuk UMKM
+              </h3>
+              <p class="text-gray-600 mb-4 line-clamp-3">
+                Langkah demi langkah membuat toko online yang efektif, mulai
+                dari pemilihan platform hingga strategi konversi yang optimal.
+              </p>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center text-sm text-gray-500">
+                  <i class="fas fa-clock mr-2"></i>
+                  <span>14 menit baca</span>
+                </div>
+                <a
+                  href="literacy-detail.html?id=7"
+                  class="text-primary hover:text-primary-dark font-medium"
+                >
+                  Baca Selengkapnya →
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- Pagination -->
+        <div class="flex justify-center mt-12">
+          <div class="flex items-center space-x-2">
+            <button
+              class="px-4 py-2 border border-gray-300 rounded-lg text-gray-600 hover:bg-gray-50"
+            >
+              <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="px-4 py-2 bg-primary text-white rounded-lg">
+              1
+            </button>
+            <button
+              class="px-4 py-2 border border-gray-300 rounded-lg text-gray-600 hover:bg-gray-50"
+            >
+              2
+            </button>
+            <button
+              class="px-4 py-2 border border-gray-300 rounded-lg text-gray-600 hover:bg-gray-50"
+            >
+              3
+            </button>
+            <button
+              class="px-4 py-2 border border-gray-300 rounded-lg text-gray-600 hover:bg-gray-50"
+            >
+              <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <!-- <section class="py-12 bg-purple-600 text-white">
+      <div class="container mx-auto px-4 text-center">
+        <h2 class="text-3xl font-bold mb-4">Dapatkan Update Artikel Terbaru</h2>
+        <p class="text-purple-100 mb-8 max-w-2xl mx-auto">
+          Berlangganan newsletter kami untuk mendapatkan artikel, tips, dan
+          sumber daya terbaru tentang pengembangan UMKM langsung di email Anda.
+        </p>
+        <div class="max-w-md mx-auto flex">
+          <input
+            type="email"
+            placeholder="Masukkan email Anda"
+            class="flex-1 px-4 py-3 rounded-l-lg text-gray-800 focus:outline-none"
+          />
+          <button
+            class="bg-purple-800 px-6 py-3 rounded-r-lg hover:bg-purple-700 transition duration-300"
+          >
+            <i class="fas fa-paper-plane"></i>
+          </button>
+        </div>
+      </div>
+    </section> -->
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12 mt-16">
+      <div class="container mx-auto px-4">
+        <div class="grid md:grid-cols-4 gap-8">
+          <div>
+            <h3 class="text-xl font-bold mb-4">Sleman Mart</h3>
+            <p class="text-gray-300">
+              Platform e-commerce untuk UMKM di Sleman yang mendukung produk
+              lokal berkualitas.
+            </p>
+          </div>
+          <div>
+            <h4 class="font-semibold mb-4">Link Cepat</h4>
+            <ul class="space-y-2">
+              <li>
+                <a href="products.html" class="text-gray-300 hover:text-white"
+                  >Produk</a
+                >
+              </li>
+              <li>
+                <a href="marketing.html" class="text-gray-300 hover:text-white"
+                  >Info Pemasaran</a
+                >
+              </li>
+              <li>
+                <a href="training.html" class="text-gray-300 hover:text-white"
+                  >Info Pelatihan</a
+                >
+              </li>
+              <li>
+                <a href="literacy.html" class="text-gray-300 hover:text-white"
+                  >Literasi UMKM</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-semibold mb-4">Bantuan</h4>
+            <ul class="space-y-2">
+              <li>
+                <a href="#" class="text-gray-300 hover:text-white">FAQ</a>
+              </li>
+              <li>
+                <a
+                  href="report-issue.html"
+                  class="text-gray-300 hover:text-white"
+                  >Laporkan Masalah</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-semibold mb-4">Hubungi Kami</h4>
+            <p class="text-gray-300 mb-2">Email: info@slemanmart.com</p>
+            <p class="text-gray-300 mb-4">Telepon: (0274) 123-4567</p>
+          </div>
+        </div>
+        <div
+          class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-300"
+        >
+          <p>&copy; 2025 Sleman Mart. Semua hak cipta dilindungi.</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
