@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Toko Cemilan Sleman - Detail Toko</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#E57F39",
+              "primary-dark": "#C86A2B",
+              "primary-light": "#F29C5E",
+            },
+          },
+        },
+      };
+    </script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-40">
+      <div class="container mx-auto px-4 py-3">
+        <div class="flex items-center justify-between">
+          <!-- Logo -->
+          <div class="flex items-center space-x-2">
+            <i class="fas fa-store text-2xl text-primary"></i>
+            <a href="products.html" class="text-2xl font-bold text-primary"
+              >Sleman Mart</a
+            >
+          </div>
+
+          <!-- Navigation -->
+          <nav class="hidden md:flex space-x-6">
+            <a href="products.html" class="text-gray-600 hover:text-primary"
+              >Produk</a
+            >
+            <a href="orders.html" class="text-gray-600 hover:text-primary"
+              >Pesanan</a
+            >
+            <a href="cart.html" class="text-gray-600 hover:text-primary"
+              >Keranjang</a
+            >
+          </nav>
+
+          <!-- User Profile -->
+          <div class="flex items-center space-x-4">
+            <!-- Cart Button -->
+            <a
+              href="cart.html"
+              class="relative text-primary hover:text-primary-dark transition duration-300"
+            >
+              <i class="fas fa-shopping-cart text-xl"></i>
+              <span
+                class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center"
+                >3</span
+              >
+            </a>
+
+            <!-- Profile Dropdown -->
+            <div class="relative group">
+              <button
+                class="flex items-center space-x-2 text-gray-700 hover:text-primary transition duration-200"
+              >
+                <div
+                  class="w-8 h-8 bg-primary rounded-full flex items-center justify-center"
+                >
+                  <i class="fas fa-user text-white text-sm"></i>
+                </div>
+                <span class="font-medium">John Doe</span>
+                <i class="fas fa-chevron-down text-xs"></i>
+              </button>
+
+              <div
+                class="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50"
+              >
+                <div class="py-2">
+                  <a
+                    href="products.html"
+                    class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100 transition duration-200"
+                  >
+                    <i class="fas fa-home mr-3 text-gray-500"></i>
+                    <span>Beranda</span>
+                  </a>
+                  <a
+                    href="profile.html"
+                    class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100 transition duration-200"
+                  >
+                    <i class="fas fa-user mr-3 text-gray-500"></i>
+                    <span>Profil</span>
+                  </a>
+                  <a
+                    href="orders.html"
+                    class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100 transition duration-200"
+                  >
+                    <i class="fas fa-box mr-3 text-gray-500"></i>
+                    <span>Pesanan Saya</span>
+                  </a>
+                  <a
+                    href="report-status.html"
+                    class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100 transition duration-200"
+                  >
+                    <i
+                      class="fas fa-exclamation-triangle mr-3 text-gray-500"
+                    ></i>
+                    <span>Laporan Masalah</span>
+                  </a>
+                  <hr class="my-2" />
+                  <a
+                    href="index.html"
+                    class="flex items-center px-4 py-2 text-red-600 hover:bg-red-50 transition duration-200"
+                  >
+                    <i class="fas fa-sign-out-alt mr-3"></i>
+                    <span>Keluar</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <nav class="bg-white border-b py-3">
+      <div class="container mx-auto px-4">
+        <ol class="flex items-center space-x-2 text-sm">
+          <li>
+            <a href="products.html" class="text-gray-600 hover:text-primary">
+              <i class="fas fa-home mr-1"></i>Beranda
+            </a>
+          </li>
+          <li class="text-gray-400">/</li>
+          <li>
+            <a href="directory.html" class="text-gray-600 hover:text-primary">
+              Direktori UMKM
+            </a>
+          </li>
+          <li class="text-gray-400">/</li>
+          <li class="text-primary font-medium">Toko Cemilan Sleman</li>
+        </ol>
+      </div>
+    </nav>
+
+    <!-- Store Header -->
+    <section class="py-8 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <!-- Store Image -->
+          <div class="lg:col-span-1">
+            <div class="bg-gray-200 rounded-lg overflow-hidden aspect-square">
+              <img
+                src="https://via.placeholder.com/400x400/E5E7EB/6B7280?text=Toko+Cemilan+Sleman"
+                alt="Toko Cemilan Sleman"
+                class="w-full h-full object-cover"
+              />
+            </div>
+          </div>
+
+          <!-- Store Info -->
+          <div class="lg:col-span-2">
+            <div class="flex flex-col h-full">
+              <!-- Store Basic Info -->
+              <div class="flex-1">
+                <div class="flex items-start justify-between mb-4">
+                  <div>
+                    <h1 class="text-3xl font-bold text-gray-800 mb-2">
+                      Toko Cemilan Sleman
+                    </h1>
+                    <!-- <div class="flex items-center space-x-4 mb-3">
+                      <div class="flex items-center text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <span class="text-gray-600 ml-2 font-medium">4.5</span>
+                        <span class="text-gray-500 ml-1">(128 ulasan)</span>
+                      </div>
+                    </div> -->
+                    <div class="flex items-center space-x-1 mb-3">
+                      <span
+                        class="bg-green-100 text-green-800 text-sm px-3 py-1 rounded-full font-medium"
+                      >
+                        <i class="fas fa-check-circle mr-1"></i>Toko Resmi
+                      </span>
+                      <span
+                        class="bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full font-medium"
+                      >
+                        <i class="fas fa-shield-alt mr-1"></i>Terverifikasi
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Store Description -->
+                <p class="text-gray-700 leading-relaxed mb-6">
+                  Toko Cemilan Sleman adalah toko yang menyediakan berbagai
+                  macam cemilan tradisional dan modern khas Sleman. Kami
+                  berkomitmen menyajikan produk berkualitas tinggi dengan cita
+                  rasa autentik yang telah dipercaya pelanggan sejak tahun 2018.
+                </p>
+
+                <!-- Store Stats -->
+                <div class="grid grid-cols-3 gap-6 mb-6">
+                  <div class="text-center">
+                    <div class="text-2xl font-bold text-primary">25</div>
+                    <div class="text-sm text-gray-600">Produk</div>
+                  </div>
+                  <div class="text-center">
+                    <div class="text-2xl font-bold text-primary">98%</div>
+                    <div class="text-sm text-gray-600">Rating Positif</div>
+                  </div>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="space-y-3">
+                  <div class="flex items-center text-gray-700">
+                    <i class="fas fa-map-marker-alt text-primary w-5"></i>
+                    <span class="ml-3"
+                      >Jl. Magelang KM 5, Tridadi, Sleman, Yogyakarta</span
+                    >
+                  </div>
+                  <!-- <div class="flex items-center text-gray-700">
+                    <i class="fas fa-phone text-primary w-5"></i>
+                    <span class="ml-3">+62 274 123-4567</span>
+                  </div>
+                  <div class="flex items-center text-gray-700">
+                    <i class="fas fa-clock text-primary w-5"></i>
+                    <span class="ml-3">Buka: Senin - Sabtu, 08:00 - 17:00</span>
+                  </div> -->
+                </div>
+              </div>
+
+              <!-- Action Buttons -->
+              <div class="flex space-x-4 mt-6">
+                <button
+                  class="flex-1 bg-green-600 text-white py-3 px-6 rounded-lg hover:bg-green-700 transition duration-300"
+                >
+                  <i class="fab fa-whatsapp mr-2"></i>Chat WhatsApp
+                </button>
+                <!-- <button
+                  class="flex-1 border border-primary text-primary py-3 px-6 rounded-lg hover:bg-primary hover:text-white transition duration-300"
+                >
+                  <i class="fas fa-directions mr-2"></i>Lihat Lokasi
+                </button> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Store Navigation -->
+    <section class="bg-white border-b sticky top-[73px] z-30">
+      <div class="container mx-auto px-4">
+        <nav class="flex space-x-8">
+          <button
+            class="store-nav-btn py-4 border-b-2 border-primary text-primary font-medium active"
+            data-tab="products"
+          >
+            Produk (25)
+          </button>
+          <!-- <button
+            class="store-nav-btn py-4 border-b-2 border-transparent text-gray-600 hover:text-primary font-medium"
+            data-tab="about"
+          >
+            Tentang Toko
+          </button>
+          <button
+            class="store-nav-btn py-4 border-b-2 border-transparent text-gray-600 hover:text-primary font-medium"
+            data-tab="reviews"
+          >
+            Ulasan (128)
+          </button> -->
+        </nav>
+      </div>
+    </section>
+
+    <!-- Tab Content -->
+    <section class="py-8">
+      <div class="container mx-auto px-4">
+        <!-- Products Tab -->
+        <div id="products-tab" class="tab-content">
+          <!-- Product Filters -->
+          <!-- <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+            <div
+              class="flex flex-col md:flex-row md:items-center md:justify-between space-y-4 md:space-y-0"
+            >
+              <div class="flex items-center space-x-4">
+                <span class="text-gray-700 font-medium">Filter:</span>
+                <select
+                  class="border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
+                >
+                  <option>Semua Kategori</option>
+                  <option>Cemilan Manis</option>
+                  <option>Cemilan Asin</option>
+                  <option>Minuman</option>
+                  <option>Makanan Ringan</option>
+                </select>
+              </div>
+              <div class="flex items-center space-x-4">
+                <span class="text-gray-700 font-medium">Urutkan:</span>
+                <select
+                  class="border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
+                >
+                  <option>Terbaru</option>
+                  <option>Harga Terendah</option>
+                  <option>Harga Tertinggi</option>
+                  <option>Rating Tertinggi</option>
+                  <option>Terlaris</option>
+                </select>
+              </div>
+            </div>
+          </div> -->
+
+          <!-- Products Grid -->
+          <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <!-- Product 1 -->
+            <a href="product-detail.html" class="block">
+              <div
+                class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300 group"
+              >
+                <div
+                  class="bg-gray-200 h-48 flex items-center justify-center relative"
+                >
+                  <img
+                    src="https://via.placeholder.com/300x200/F3F4F6/6B7280?text=Keripik+Pisang"
+                    alt="Keripik Pisang Original"
+                    class="w-full h-full object-cover"
+                  />
+                  <!-- <div class="absolute top-2 left-2">
+                    <span
+                      class="bg-red-500 text-white text-xs px-2 py-1 rounded-full"
+                      >Terlaris</span
+                    >
+                  </div> -->
+                </div>
+                <div class="p-4">
+                  <h3
+                    class="font-bold text-gray-800 mb-2 group-hover:text-primary transition duration-300"
+                  >
+                    Keripik Pisang Original
+                  </h3>
+                  <div class="flex items-center mb-2">
+                    <div class="flex items-center text-yellow-400 mr-2">
+                      <i class="fas fa-star text-xs"></i>
+                      <span class="text-gray-600 text-xs ml-1">4.8</span>
+                    </div>
+                    <span class="text-gray-500 text-xs">Terjual 150+</span>
+                  </div>
+                  <div class="flex items-center justify-between">
+                    <div>
+                      <span class="text-primary font-bold text-lg"
+                        >Rp 15.000</span
+                      >
+                      <p class="text-xs text-gray-500">Stok: 50</p>
+                    </div>
+                    <button
+                      class="bg-primary text-white p-2 rounded-lg hover:bg-primary-dark transition duration-300"
+                    >
+                      <i class="fas fa-shopping-cart text-sm"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </a>
+
+            <!-- Product 2 -->
+            <div
+              class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300 group"
+            >
+              <div class="bg-gray-200 h-48 flex items-center justify-center">
+                <img
+                  src="https://via.placeholder.com/300x200/F3F4F6/6B7280?text=Rempeyek+Kacang"
+                  alt="Rempeyek Kacang Gurih"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <div class="p-4">
+                <h3
+                  class="font-bold text-gray-800 mb-2 group-hover:text-primary transition duration-300"
+                >
+                  Rempeyek Kacang Gurih
+                </h3>
+                <div class="flex items-center mb-2">
+                  <div class="flex items-center text-yellow-400 mr-2">
+                    <i class="fas fa-star text-xs"></i>
+                    <span class="text-gray-600 text-xs ml-1">4.6</span>
+                  </div>
+                  <span class="text-gray-500 text-xs">Terjual 89</span>
+                </div>
+                <div class="flex items-center justify-between">
+                  <div>
+                    <span class="text-primary font-bold text-lg"
+                      >Rp 12.000</span
+                    >
+                    <p class="text-xs text-gray-500">Stok: 35</p>
+                  </div>
+                  <button
+                    class="bg-primary text-white p-2 rounded-lg hover:bg-primary-dark transition duration-300"
+                  >
+                    <i class="fas fa-shopping-cart text-sm"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div
+              class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300 group"
+            >
+              <div class="bg-gray-200 h-48 flex items-center justify-center">
+                <img
+                  src="https://via.placeholder.com/300x200/F3F4F6/6B7280?text=Kue+Apem"
+                  alt="Kue Apem Gula Merah"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <div class="p-4">
+                <h3
+                  class="font-bold text-gray-800 mb-2 group-hover:text-primary transition duration-300"
+                >
+                  Kue Apem Gula Merah
+                </h3>
+                <div class="flex items-center mb-2">
+                  <div class="flex items-center text-yellow-400 mr-2">
+                    <i class="fas fa-star text-xs"></i>
+                    <span class="text-gray-600 text-xs ml-1">4.7</span>
+                  </div>
+                  <span class="text-gray-500 text-xs">Terjual 76</span>
+                </div>
+                <div class="flex items-center justify-between">
+                  <div>
+                    <span class="text-primary font-bold text-lg">Rp 8.000</span>
+                    <p class="text-xs text-gray-500">Stok: 25</p>
+                  </div>
+                  <button
+                    class="bg-primary text-white p-2 rounded-lg hover:bg-primary-dark transition duration-300"
+                  >
+                    <i class="fas fa-shopping-cart text-sm"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Product 4 -->
+            <div
+              class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300 group"
+            >
+              <div class="bg-gray-200 h-48 flex items-center justify-center">
+                <img
+                  src="https://via.placeholder.com/300x200/F3F4F6/6B7280?text=Es+Dawet"
+                  alt="Es Dawet Ayu"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <div class="p-4">
+                <h3
+                  class="font-bold text-gray-800 mb-2 group-hover:text-primary transition duration-300"
+                >
+                  Es Dawet Ayu
+                </h3>
+                <div class="flex items-center mb-2">
+                  <div class="flex items-center text-yellow-400 mr-2">
+                    <i class="fas fa-star text-xs"></i>
+                    <span class="text-gray-600 text-xs ml-1">4.9</span>
+                  </div>
+                  <span class="text-gray-500 text-xs">Terjual 120+</span>
+                </div>
+                <div class="flex items-center justify-between">
+                  <div>
+                    <span class="text-primary font-bold text-lg">Rp 7.000</span>
+                    <p class="text-xs text-gray-500">Stok: 40</p>
+                  </div>
+                  <button
+                    class="bg-primary text-white p-2 rounded-lg hover:bg-primary-dark transition duration-300"
+                  >
+                    <i class="fas fa-shopping-cart text-sm"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Product 5 -->
+            <div
+              class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300 group"
+            >
+              <div class="bg-gray-200 h-48 flex items-center justify-center">
+                <img
+                  src="https://via.placeholder.com/300x200/F3F4F6/6B7280?text=Getuk+Lindri"
+                  alt="Getuk Lindri Warna-warni"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <div class="p-4">
+                <h3
+                  class="font-bold text-gray-800 mb-2 group-hover:text-primary transition duration-300"
+                >
+                  Getuk Lindri Warna-warni
+                </h3>
+                <div class="flex items-center mb-2">
+                  <div class="flex items-center text-yellow-400 mr-2">
+                    <i class="fas fa-star text-xs"></i>
+                    <span class="text-gray-600 text-xs ml-1">4.5</span>
+                  </div>
+                  <span class="text-gray-500 text-xs">Terjual 65</span>
+                </div>
+                <div class="flex items-center justify-between">
+                  <div>
+                    <span class="text-primary font-bold text-lg"
+                      >Rp 10.000</span
+                    >
+                    <p class="text-xs text-gray-500">Stok: 30</p>
+                  </div>
+                  <button
+                    class="bg-primary text-white p-2 rounded-lg hover:bg-primary-dark transition duration-300"
+                  >
+                    <i class="fas fa-shopping-cart text-sm"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Product 6 -->
+            <div
+              class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300 group"
+            >
+              <div class="bg-gray-200 h-48 flex items-center justify-center">
+                <img
+                  src="https://via.placeholder.com/300x200/F3F4F6/6B7280?text=Gudeg+Kaleng"
+                  alt="Gudeg Kaleng Siap Saji"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <div class="p-4">
+                <h3
+                  class="font-bold text-gray-800 mb-2 group-hover:text-primary transition duration-300"
+                >
+                  Gudeg Kaleng Siap Saji
+                </h3>
+                <div class="flex items-center mb-2">
+                  <div class="flex items-center text-yellow-400 mr-2">
+                    <i class="fas fa-star text-xs"></i>
+                    <span class="text-gray-600 text-xs ml-1">4.4</span>
+                  </div>
+                  <span class="text-gray-500 text-xs">Terjual 45</span>
+                </div>
+                <div class="flex items-center justify-between">
+                  <div>
+                    <span class="text-primary font-bold text-lg"
+                      >Rp 25.000</span
+                    >
+                    <p class="text-xs text-gray-500">Stok: 20</p>
+                  </div>
+                  <button
+                    class="bg-primary text-white p-2 rounded-lg hover:bg-primary-dark transition duration-300"
+                  >
+                    <i class="fas fa-shopping-cart text-sm"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Product 7 -->
+            <div
+              class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300 group"
+            >
+              <div class="bg-gray-200 h-48 flex items-center justify-center">
+                <img
+                  src="https://via.placeholder.com/300x200/F3F4F6/6B7280?text=Bakpia+Pathok"
+                  alt="Bakpia Pathok Kacang Hijau"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <div class="p-4">
+                <h3
+                  class="font-bold text-gray-800 mb-2 group-hover:text-primary transition duration-300"
+                >
+                  Bakpia Pathok Kacang Hijau
+                </h3>
+                <div class="flex items-center mb-2">
+                  <div class="flex items-center text-yellow-400 mr-2">
+                    <i class="fas fa-star text-xs"></i>
+                    <span class="text-gray-600 text-xs ml-1">4.8</span>
+                  </div>
+                  <span class="text-gray-500 text-xs">Terjual 98</span>
+                </div>
+                <div class="flex items-center justify-between">
+                  <div>
+                    <span class="text-primary font-bold text-lg"
+                      >Rp 18.000</span
+                    >
+                    <p class="text-xs text-gray-500">Stok: 45</p>
+                  </div>
+                  <button
+                    class="bg-primary text-white p-2 rounded-lg hover:bg-primary-dark transition duration-300"
+                  >
+                    <i class="fas fa-shopping-cart text-sm"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Product 8 -->
+            <div
+              class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300 group"
+            >
+              <div class="bg-gray-200 h-48 flex items-center justify-center">
+                <img
+                  src="https://via.placeholder.com/300x200/F3F4F6/6B7280?text=Jenang+Kudus"
+                  alt="Jenang Kudus Original"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <div class="p-4">
+                <h3
+                  class="font-bold text-gray-800 mb-2 group-hover:text-primary transition duration-300"
+                >
+                  Jenang Kudus Original
+                </h3>
+                <div class="flex items-center mb-2">
+                  <div class="flex items-center text-yellow-400 mr-2">
+                    <i class="fas fa-star text-xs"></i>
+                    <span class="text-gray-600 text-xs ml-1">4.3</span>
+                  </div>
+                  <span class="text-gray-500 text-xs">Terjual 32</span>
+                </div>
+                <div class="flex items-center justify-between">
+                  <div>
+                    <span class="text-primary font-bold text-lg"
+                      >Rp 14.000</span
+                    >
+                    <p class="text-xs text-gray-500">Stok: 28</p>
+                  </div>
+                  <button
+                    class="bg-primary text-white p-2 rounded-lg hover:bg-primary-dark transition duration-300"
+                  >
+                    <i class="fas fa-shopping-cart text-sm"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pagination -->
+          <div class="flex justify-center mt-8">
+            <div class="flex items-center space-x-2">
+              <button
+                class="px-4 py-2 border border-gray-300 rounded-lg text-gray-600 hover:bg-gray-50"
+              >
+                <i class="fas fa-chevron-left"></i>
+              </button>
+              <button class="px-4 py-2 bg-primary text-white rounded-lg">
+                1
+              </button>
+              <button
+                class="px-4 py-2 border border-gray-300 rounded-lg text-gray-600 hover:bg-gray-50"
+              >
+                2
+              </button>
+              <button
+                class="px-4 py-2 border border-gray-300 rounded-lg text-gray-600 hover:bg-gray-50"
+              >
+                3
+              </button>
+              <button
+                class="px-4 py-2 border border-gray-300 rounded-lg text-gray-600 hover:bg-gray-50"
+              >
+                <i class="fas fa-chevron-right"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- About Tab -->
+        <div id="about-tab" class="tab-content hidden">
+          <div class="bg-white rounded-lg shadow-md p-6">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6">
+              Tentang Toko Cemilan Sleman
+            </h2>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              <div>
+                <h3 class="text-xl font-semibold text-gray-800 mb-4">
+                  Sejarah Toko
+                </h3>
+                <p class="text-gray-700 leading-relaxed mb-6">
+                  Toko Cemilan Sleman didirikan pada tahun 2018 oleh Ibu Sari
+                  dengan visi untuk melestarikan dan memperkenalkan cemilan
+                  tradisional khas Yogyakarta kepada generasi muda. Dimulai dari
+                  usaha rumahan yang menjual keripik pisang dan rempeyek, kini
+                  kami telah berkembang menjadi toko yang menyediakan lebih dari
+                  25 jenis cemilan dan makanan tradisional.
+                </p>
+
+                <h3 class="text-xl font-semibold text-gray-800 mb-4">
+                  Komitmen Kualitas
+                </h3>
+                <p class="text-gray-700 leading-relaxed">
+                  Kami berkomitmen menggunakan bahan-bahan berkualitas tinggi
+                  dan resep turun-temurun yang telah terbukti memberikan cita
+                  rasa autentik. Setiap produk dibuat dengan penuh perhatian
+                  terhadap kebersihan dan keamanan pangan.
+                </p>
+              </div>
+
+              <div>
+                <h3 class="text-xl font-semibold text-gray-800 mb-4">
+                  Spesialisasi
+                </h3>
+                <ul class="space-y-3 mb-6">
+                  <li class="flex items-center">
+                    <i class="fas fa-check-circle text-primary mr-3"></i>
+                    <span>Cemilan Tradisional Yogyakarta</span>
+                  </li>
+                  <li class="flex items-center">
+                    <i class="fas fa-check-circle text-primary mr-3"></i>
+                    <span>Makanan Ringan Sehat</span>
+                  </li>
+                  <li class="flex items-center">
+                    <i class="fas fa-check-circle text-primary mr-3"></i>
+                    <span>Minuman Tradisional</span>
+                  </li>
+                  <li class="flex items-center">
+                    <i class="fas fa-check-circle text-primary mr-3"></i>
+                    <span>Makanan Siap Saji</span>
+                  </li>
+                </ul>
+
+                <h3 class="text-xl font-semibold text-gray-800 mb-4">
+                  Sertifikasi
+                </h3>
+                <div class="space-y-2">
+                  <div class="flex items-center">
+                    <i class="fas fa-certificate text-green-600 mr-3"></i>
+                    <span>Sertifikat Halal MUI</span>
+                  </div>
+                  <div class="flex items-center">
+                    <i class="fas fa-certificate text-blue-600 mr-3"></i>
+                    <span>PIRT Dinkes Sleman</span>
+                  </div>
+                  <div class="flex items-center">
+                    <i class="fas fa-certificate text-purple-600 mr-3"></i>
+                    <span>ISO 22000 Food Safety</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Reviews Tab -->
+        <div id="reviews-tab" class="tab-content hidden">
+          <div class="bg-white rounded-lg shadow-md p-6">
+            <div class="flex items-center justify-between mb-6">
+              <h2 class="text-2xl font-bold text-gray-800">Ulasan Pelanggan</h2>
+              <div class="flex items-center space-x-4">
+                <div class="text-center">
+                  <div class="text-3xl font-bold text-primary">4.5</div>
+                  <div class="flex items-center text-yellow-400 justify-center">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                  </div>
+                  <div class="text-sm text-gray-600">dari 128 ulasan</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Rating Breakdown -->
+            <div class="mb-8">
+              <div class="space-y-2">
+                <div class="flex items-center">
+                  <span class="w-12 text-sm">5 ⭐</span>
+                  <div class="flex-1 bg-gray-200 rounded-full h-2 mx-3">
+                    <div
+                      class="bg-yellow-400 h-2 rounded-full"
+                      style="width: 65%"
+                    ></div>
+                  </div>
+                  <span class="text-sm text-gray-600">83</span>
+                </div>
+                <div class="flex items-center">
+                  <span class="w-12 text-sm">4 ⭐</span>
+                  <div class="flex-1 bg-gray-200 rounded-full h-2 mx-3">
+                    <div
+                      class="bg-yellow-400 h-2 rounded-full"
+                      style="width: 25%"
+                    ></div>
+                  </div>
+                  <span class="text-sm text-gray-600">32</span>
+                </div>
+                <div class="flex items-center">
+                  <span class="w-12 text-sm">3 ⭐</span>
+                  <div class="flex-1 bg-gray-200 rounded-full h-2 mx-3">
+                    <div
+                      class="bg-yellow-400 h-2 rounded-full"
+                      style="width: 8%"
+                    ></div>
+                  </div>
+                  <span class="text-sm text-gray-600">10</span>
+                </div>
+                <div class="flex items-center">
+                  <span class="w-12 text-sm">2 ⭐</span>
+                  <div class="flex-1 bg-gray-200 rounded-full h-2 mx-3">
+                    <div
+                      class="bg-yellow-400 h-2 rounded-full"
+                      style="width: 2%"
+                    ></div>
+                  </div>
+                  <span class="text-sm text-gray-600">2</span>
+                </div>
+                <div class="flex items-center">
+                  <span class="w-12 text-sm">1 ⭐</span>
+                  <div class="flex-1 bg-gray-200 rounded-full h-2 mx-3">
+                    <div
+                      class="bg-yellow-400 h-2 rounded-full"
+                      style="width: 1%"
+                    ></div>
+                  </div>
+                  <span class="text-sm text-gray-600">1</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Individual Reviews -->
+            <div class="space-y-6">
+              <!-- Review 1 -->
+              <div class="border-b border-gray-200 pb-6">
+                <div class="flex items-start space-x-4">
+                  <div
+                    class="w-10 h-10 bg-primary rounded-full flex items-center justify-center"
+                  >
+                    <span class="text-white font-medium">A</span>
+                  </div>
+                  <div class="flex-1">
+                    <div class="flex items-center justify-between mb-2">
+                      <div>
+                        <h4 class="font-medium text-gray-800">Ahmad Wijaya</h4>
+                        <div class="flex items-center text-yellow-400">
+                          <i class="fas fa-star text-xs"></i>
+                          <i class="fas fa-star text-xs"></i>
+                          <i class="fas fa-star text-xs"></i>
+                          <i class="fas fa-star text-xs"></i>
+                          <i class="fas fa-star text-xs"></i>
+                        </div>
+                      </div>
+                      <span class="text-sm text-gray-500">2 minggu lalu</span>
+                    </div>
+                    <p class="text-gray-700 mb-2">
+                      Keripik pisangnya enak banget! Renyah dan tidak terlalu
+                      berminyak. Packaging juga rapi dan pengiriman cepat.
+                      Recommended!
+                    </p>
+                    <div class="flex items-center text-sm text-gray-500">
+                      <span>Produk: Keripik Pisang Original</span>
+                      <span class="mx-2">•</span>
+                      <span>Varian: Original</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Review 2 -->
+              <div class="border-b border-gray-200 pb-6">
+                <div class="flex items-start space-x-4">
+                  <div
+                    class="w-10 h-10 bg-pink-500 rounded-full flex items-center justify-center"
+                  >
+                    <span class="text-white font-medium">S</span>
+                  </div>
+                  <div class="flex-1">
+                    <div class="flex items-center justify-between mb-2">
+                      <div>
+                        <h4 class="font-medium text-gray-800">
+                          Siti Nurhaliza
+                        </h4>
+                        <div class="flex items-center text-yellow-400">
+                          <i class="fas fa-star text-xs"></i>
+                          <i class="fas fa-star text-xs"></i>
+                          <i class="fas fa-star text-xs"></i>
+                          <i class="fas fa-star text-xs"></i>
+                          <i class="fas fa-star text-xs"></i>
+                        </div>
+                      </div>
+                      <span class="text-sm text-gray-500">1 bulan lalu</span>
+                    </div>
+                    <p class="text-gray-700 mb-2">
+                      Es dawetnya segar banget! Santan kentalnya pas dan tidak
+                      terlalu manis. Cocok untuk cuaca panas. Pelayanan ramah
+                      dan harga terjangkau.
+                    </p>
+                    <div class="flex items-center text-sm text-gray-500">
+                      <span>Produk: Es Dawet Ayu</span>
+                      <span class="mx-2">•</span>
+                      <span>Porsi: Regular</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Review 3 -->
+              <div class="border-b border-gray-200 pb-6">
+                <div class="flex items-start space-x-4">
+                  <div
+                    class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center"
+                  >
+                    <span class="text-white font-medium">B</span>
+                  </div>
+                  <div class="flex-1">
+                    <div class="flex items-center justify-between mb-2">
+                      <div>
+                        <h4 class="font-medium text-gray-800">Budi Santoso</h4>
+                        <div class="flex items-center text-yellow-400">
+                          <i class="fas fa-star text-xs"></i>
+                          <i class="fas fa-star text-xs"></i>
+                          <i class="fas fa-star text-xs"></i>
+                          <i class="fas fa-star text-xs"></i>
+                          <i class="far fa-star text-xs"></i>
+                        </div>
+                      </div>
+                      <span class="text-sm text-gray-500">3 minggu lalu</span>
+                    </div>
+                    <p class="text-gray-700 mb-2">
+                      Gudeg kalengnya praktis dan rasanya lumayan authentic.
+                      Cocok untuk oleh-oleh atau stok makanan di rumah. Mungkin
+                      bisa lebih pedas lagi.
+                    </p>
+                    <div class="flex items-center text-sm text-gray-500">
+                      <span>Produk: Gudeg Kaleng Siap Saji</span>
+                      <span class="mx-2">•</span>
+                      <span>Rasa: Original</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Load More Reviews -->
+            <div class="text-center mt-6">
+              <button
+                class="border border-primary text-primary px-6 py-2 rounded-lg hover:bg-primary hover:text-white transition duration-300"
+              >
+                Lihat Lebih Banyak Ulasan
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12 mt-16">
+      <div class="container mx-auto px-4">
+        <div class="grid md:grid-cols-4 gap-8">
+          <div>
+            <h3 class="text-xl font-bold mb-4">Sleman Mart</h3>
+            <p class="text-gray-300">
+              Platform e-commerce untuk UMKM di Sleman yang mendukung produk
+              lokal berkualitas.
+            </p>
+          </div>
+          <div>
+            <h4 class="font-semibold mb-4">Link Cepat</h4>
+            <ul class="space-y-2">
+              <li>
+                <a href="products.html" class="text-gray-300 hover:text-white"
+                  >Produk</a
+                >
+              </li>
+              <li>
+                <a href="directory.html" class="text-gray-300 hover:text-white"
+                  >Direktori UMKM</a
+                >
+              </li>
+              <li>
+                <a href="orders.html" class="text-gray-300 hover:text-white"
+                  >Pesanan</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-semibold mb-4">Bantuan</h4>
+            <ul class="space-y-2">
+              <li>
+                <a href="#" class="text-gray-300 hover:text-white">FAQ</a>
+              </li>
+              <li>
+                <a
+                  href="report-issue.html"
+                  class="text-gray-300 hover:text-white"
+                  >Laporkan Masalah</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-semibold mb-4">Hubungi Kami</h4>
+            <p class="text-gray-300 mb-2">Email: info@slemanmart.com</p>
+            <p class="text-gray-300 mb-4">Telepon: (0274) 123-4567</p>
+          </div>
+        </div>
+        <div
+          class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-300"
+        >
+          <p>&copy; 2025 Sleman Mart. Semua hak cipta dilindungi.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Tab Navigation
+      document.addEventListener("DOMContentLoaded", function () {
+        const tabButtons = document.querySelectorAll(".store-nav-btn");
+        const tabContents = document.querySelectorAll(".tab-content");
+
+        tabButtons.forEach((button) => {
+          button.addEventListener("click", function () {
+            const tabName = this.getAttribute("data-tab");
+
+            // Remove active class from all buttons
+            tabButtons.forEach((btn) => {
+              btn.classList.remove("border-primary", "text-primary", "active");
+              btn.classList.add("border-transparent", "text-gray-600");
+            });
+
+            // Add active class to clicked button
+            this.classList.add("border-primary", "text-primary", "active");
+            this.classList.remove("border-transparent", "text-gray-600");
+
+            // Hide all tab contents
+            tabContents.forEach((content) => {
+              content.classList.add("hidden");
+            });
+
+            // Show selected tab content
+            document
+              .getElementById(tabName + "-tab")
+              .classList.remove("hidden");
+          });
+        });
+      });
+
+      // Get store ID from URL parameters
+      const urlParams = new URLSearchParams(window.location.search);
+      const storeId = urlParams.get("store");
+
+      if (storeId) {
+        // Load store data based on ID
+        console.log("Loading store:", storeId);
+      }
+
+      // Follow/Unfollow store
+      //   function toggleFollow() {
+      //     const followBtn = document.querySelector("[data-follow]");
+      //     const isFollowing = followBtn.getAttribute("data-follow") === "true";
+
+      //     if (isFollowing) {
+      //       followBtn.innerHTML = '<i class="fas fa-heart mr-2"></i>Ikuti Toko';
+      //       followBtn.setAttribute("data-follow", "false");
+      //       followBtn.classList.remove("bg-green-600", "hover:bg-green-700");
+      //       followBtn.classList.add("bg-primary", "hover:bg-primary-dark");
+      //     } else {
+      //       followBtn.innerHTML = '<i class="fas fa-heart mr-2"></i>Mengikuti';
+      //       followBtn.setAttribute("data-follow", "true");
+      //       followBtn.classList.remove("bg-primary", "hover:bg-primary-dark");
+      //       followBtn.classList.add("bg-green-600", "hover:bg-green-700");
+      //     }
+      //   }
+    </script>
+  </body>
+</html>
