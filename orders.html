@@ -162,11 +162,15 @@
                 class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
               >
                 <option value="">Semua Status</option>
-                <option value="pending">Menunggu Konfirmasi</option>
+                <option value="unpaid">Belum Dibayar</option>
+                <option value="payment_pending">Menunggu Verifikasi</option>
+                <option value="payment_rejected">Pembayaran Ditolak</option>
+                <option value="paid">Pembayaran Berhasil</option>
                 <option value="processing">Diproses</option>
                 <option value="packed">Dikemas</option>
                 <option value="shipped">Dikirim</option>
                 <option value="completed">Selesai</option>
+                <option value="refunded">Dana Dikembalikan</option>
                 <option value="cancelled">Dibatalkan</option>
               </select>
             </div>
@@ -228,24 +232,34 @@
                   Semua
                   <span
                     class="hidden sm:inline bg-primary text-white px-2 py-1 rounded-full text-xs ml-2"
-                    >12</span
+                    >8</span
                   >
                 </button>
                 <button
-                  onclick="filterByStatus('pending')"
+                  onclick="filterByStatus('unpaid')"
                   class="tab-button border-b-2 border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 py-3 sm:py-4 px-1 text-xs sm:text-sm font-medium whitespace-nowrap"
                 >
-                  Menunggu
+                  Belum Bayar
                   <span
                     class="hidden sm:inline bg-gray-200 text-gray-700 px-2 py-1 rounded-full text-xs ml-2"
-                    >2</span
+                    >1</span
                   >
                 </button>
                 <button
-                  onclick="filterByStatus('processing')"
+                  onclick="filterByStatus('payment_pending')"
                   class="tab-button border-b-2 border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 py-3 sm:py-4 px-1 text-xs sm:text-sm font-medium whitespace-nowrap"
                 >
-                  Diproses
+                  Verifikasi
+                  <span
+                    class="hidden sm:inline bg-gray-200 text-gray-700 px-2 py-1 rounded-full text-xs ml-2"
+                    >1</span
+                  >
+                </button>
+                <button
+                  onclick="filterByStatus('payment_rejected')"
+                  class="tab-button border-b-2 border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 py-3 sm:py-4 px-1 text-xs sm:text-sm font-medium whitespace-nowrap"
+                >
+                  Ditolak
                   <span
                     class="hidden sm:inline bg-gray-200 text-gray-700 px-2 py-1 rounded-full text-xs ml-2"
                     >1</span
@@ -258,7 +272,7 @@
                   Dikirim
                   <span
                     class="hidden sm:inline bg-gray-200 text-gray-700 px-2 py-1 rounded-full text-xs ml-2"
-                    >3</span
+                    >1</span
                   >
                 </button>
                 <button
@@ -268,7 +282,7 @@
                   Selesai
                   <span
                     class="hidden sm:inline bg-gray-200 text-gray-700 px-2 py-1 rounded-full text-xs ml-2"
-                    >6</span
+                    >1</span
                   >
                 </button>
               </nav>
@@ -331,16 +345,70 @@
       </div>
     </div>
 
+    <!-- Review Items Modal -->
+    <div
+      id="reviewItemsModal"
+      class="fixed inset-0 bg-black bg-opacity-50 hidden z-50"
+    >
+      <div class="flex items-center justify-center min-h-screen p-4">
+        <div
+          class="bg-white rounded-lg max-w-2xl w-full mx-4 max-h-screen overflow-y-auto"
+        >
+          <div class="p-4 sm:p-6">
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="text-base sm:text-lg font-semibold">
+                Pilih Produk untuk Diulas
+              </h3>
+              <button
+                onclick="closeReviewItemsModal()"
+                class="text-gray-500 hover:text-gray-700"
+              >
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+
+            <div class="mb-4">
+              <p class="text-sm text-gray-600">
+                Pesanan
+                <span
+                  id="reviewOrderId"
+                  class="font-medium text-primary"
+                ></span>
+              </p>
+            </div>
+
+            <!-- Items List -->
+            <div id="reviewItemsList" class="space-y-3 mb-6">
+              <!-- Items will be populated by JavaScript -->
+            </div>
+
+            <div class="flex justify-end">
+              <button
+                onclick="closeReviewItemsModal()"
+                class="bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-600 transition duration-300"
+              >
+                Tutup
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Review Modal -->
     <div
       id="reviewModal"
       class="fixed inset-0 bg-black bg-opacity-50 hidden z-50"
     >
       <div class="flex items-center justify-center min-h-screen p-4">
-        <div class="bg-white rounded-lg max-w-md w-full mx-4">
+        <div
+          class="bg-white rounded-lg max-w-lg w-full mx-4 max-h-screen overflow-y-auto"
+        >
           <div class="p-4 sm:p-6">
             <div class="flex items-center justify-between mb-4">
-              <h3 class="text-base sm:text-lg font-semibold">Beri Ulasan</h3>
+              <h3 class="text-base sm:text-lg font-semibold">
+                Beri Ulasan Produk
+              </h3>
               <button
                 onclick="closeReviewModal()"
                 class="text-gray-500 hover:text-gray-700"
@@ -349,10 +417,15 @@
               </button>
             </div>
 
+            <!-- Product Info -->
+            <div id="reviewProductInfo" class="bg-gray-50 rounded-lg p-4 mb-4">
+              <!-- Product info will be populated by JavaScript -->
+            </div>
+
             <form id="reviewForm">
               <div class="mb-4">
                 <label class="block text-sm font-medium text-gray-700 mb-2"
-                  >Rating</label
+                  >Rating Produk</label
                 >
                 <div class="flex space-x-1">
                   <i
@@ -376,11 +449,14 @@
                     data-rating="5"
                   ></i>
                 </div>
+                <p class="text-xs text-gray-500 mt-1">
+                  Klik bintang untuk memberikan rating
+                </p>
               </div>
 
               <div class="mb-4">
                 <label class="block text-sm font-medium text-gray-700 mb-2"
-                  >Komentar</label
+                  >Ulasan Anda</label
                 >
                 <textarea
                   id="reviewComment"
@@ -392,7 +468,7 @@
 
               <div class="mb-6">
                 <label class="block text-sm font-medium text-gray-700 mb-2"
-                  >Foto/Video (Opsional)</label
+                  >Foto Produk (Opsional)</label
                 >
                 <div
                   class="border-2 border-dashed border-gray-300 rounded-lg p-4 text-center"
@@ -400,7 +476,7 @@
                   <input
                     type="file"
                     id="reviewMedia"
-                    accept="image/*,video/*"
+                    accept="image/*"
                     multiple
                     class="hidden"
                   />
@@ -409,10 +485,10 @@
                       class="fas fa-camera text-xl sm:text-2xl text-gray-400 mb-2"
                     ></i>
                     <p class="text-sm text-gray-600">
-                      Klik untuk upload foto/video
+                      Upload foto produk yang Anda terima
                     </p>
                     <p class="text-xs text-gray-500">
-                      Max 5 file, 10MB per file
+                      Max 5 foto, 10MB per file
                     </p>
                   </label>
                 </div>
@@ -436,6 +512,89 @@
                 </button>
               </div>
             </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- View Review Modal -->
+    <div
+      id="viewReviewModal"
+      class="fixed inset-0 bg-black bg-opacity-50 hidden z-50"
+    >
+      <div class="flex items-center justify-center min-h-screen p-4">
+        <div
+          class="bg-white rounded-lg max-w-lg w-full mx-4 max-h-screen overflow-y-auto"
+        >
+          <div class="p-4 sm:p-6">
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="text-base sm:text-lg font-semibold">Ulasan Produk</h3>
+              <button
+                onclick="closeViewReviewModal()"
+                class="text-gray-500 hover:text-gray-700"
+              >
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+
+            <!-- Product Info -->
+            <div
+              id="viewReviewProductInfo"
+              class="bg-gray-50 rounded-lg p-4 mb-4"
+            >
+              <!-- Product info will be populated by JavaScript -->
+            </div>
+
+            <!-- Review Details -->
+            <div class="space-y-4">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2"
+                  >Rating Anda</label
+                >
+                <div id="viewReviewRating" class="flex space-x-1">
+                  <!-- Stars will be populated by JavaScript -->
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2"
+                  >Ulasan Anda</label
+                >
+                <div
+                  id="viewReviewComment"
+                  class="bg-gray-50 rounded-lg p-3 text-sm text-gray-700 min-h-[60px]"
+                >
+                  <!-- Comment will be populated by JavaScript -->
+                </div>
+              </div>
+
+              <div id="viewReviewMediaSection" class="hidden">
+                <label class="block text-sm font-medium text-gray-700 mb-2"
+                  >Foto/Video</label
+                >
+                <div id="viewReviewMedia" class="grid grid-cols-2 gap-2">
+                  <!-- Media will be populated by JavaScript -->
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2"
+                  >Tanggal Ulasan</label
+                >
+                <p id="viewReviewDate" class="text-sm text-gray-600">
+                  <!-- Date will be populated by JavaScript -->
+                </p>
+              </div>
+            </div>
+
+            <div class="mt-6">
+              <button
+                onclick="closeViewReviewModal()"
+                class="w-full bg-gray-200 text-gray-700 py-2 px-4 rounded-md hover:bg-gray-300 text-sm sm:text-base"
+              >
+                Tutup
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -507,20 +666,43 @@
       let currentFilter = "";
       let selectedRating = 0;
       let currentReviewOrderId = null;
+      let currentReviewItem = null;
 
-      // Sample orders data
+      // Sample orders data - Updated with payment status flow
       const orders = [
         {
-          id: "SLM240001",
-          date: "2025-01-15",
-          status: "shipped",
-          statusText: "Dikirim",
-          statusClass: "bg-blue-100 text-blue-800",
+          id: "SLM240005",
+          date: "2025-09-01",
+          status: "unpaid",
+          statusText: "Belum Dibayar",
+          statusClass: "bg-red-100 text-red-800",
+          paymentStatus: "unpaid",
           items: [
             {
-              name: "Keripik Tempe Original",
-              seller: "Toko Cemilan Sleman",
+              name: "Kue Lapis Tradisional",
+              seller: "Toko Kue Bu Sari",
               price: 15000,
+              quantity: 2,
+              image: "placeholder",
+            },
+            {
+              name: "Es Teh Manis",
+              seller: "Warung Minuman Segar",
+              price: 5000,
+              quantity: 1,
+              image: "placeholder",
+            },
+            {
+              name: "Keripik Singkong Pedas",
+              seller: "Toko Kue Bu Sari",
+              price: 12000,
+              quantity: 3,
+              image: "placeholder",
+            },
+            {
+              name: "Bandrek Jahe Hangat",
+              seller: "Warung Minuman Segar",
+              price: 8000,
               quantity: 2,
               image: "placeholder",
             },
@@ -529,20 +711,34 @@
             address: "Jl. Kaliurang KM 5, Sleman",
             cost: 10000,
           },
-          total: 40000,
-          trackingNumber: "JNE123456789",
+          total: 77000,
         },
         {
-          id: "SLM239998",
-          date: "2025-01-10",
-          status: "completed",
-          statusText: "Selesai",
-          statusClass: "bg-green-100 text-green-800",
+          id: "SLM240004",
+          date: "2025-08-31",
+          status: "payment_pending",
+          statusText: "Menunggu Verifikasi",
+          statusClass: "bg-yellow-100 text-yellow-800",
+          paymentStatus: "pending",
           items: [
             {
-              name: "Batik Jumputan",
+              name: "Batik Jumputan Premium",
               seller: "Batik Sleman Asri",
               price: 125000,
+              quantity: 1,
+              image: "placeholder",
+            },
+            {
+              name: "Kain Lurik Motif Klasik",
+              seller: "Batik Sleman Asri",
+              price: 85000,
+              quantity: 2,
+              image: "placeholder",
+            },
+            {
+              name: "Tas Anyaman Pandan",
+              seller: "Kerajinan Lokal Sleman",
+              price: 45000,
               quantity: 1,
               image: "placeholder",
             },
@@ -551,15 +747,18 @@
             address: "Jl. Magelang KM 3, Sleman",
             cost: 15000,
           },
-          total: 140000,
-          canReview: true,
+          total: 355000,
+          paymentProofUploaded: true,
         },
         {
-          id: "SLM239995",
-          date: "2025-01-08",
-          status: "processing",
-          statusText: "Diproses",
-          statusClass: "bg-yellow-100 text-yellow-800",
+          id: "SLM240003",
+          date: "2025-08-30",
+          status: "payment_rejected",
+          statusText: "Pembayaran Ditolak",
+          statusClass: "bg-red-100 text-red-800",
+          paymentStatus: "rejected",
+          rejectionReason:
+            "Bukti pembayaran tidak jelas. Nominal yang tertera tidak sesuai dengan total pesanan.",
           items: [
             {
               name: "Gula Aren Organik",
@@ -568,19 +767,41 @@
               quantity: 3,
               image: "placeholder",
             },
+            {
+              name: "Madu Kelengkeng Asli",
+              seller: "Aren Murni Sleman",
+              price: 45000,
+              quantity: 2,
+              image: "placeholder",
+            },
+            {
+              name: "Sirup Temulawak",
+              seller: "Herbal Sleman Sehat",
+              price: 18000,
+              quantity: 2,
+              image: "placeholder",
+            },
+            {
+              name: "Jahe Merah Bubuk",
+              seller: "Herbal Sleman Sehat",
+              price: 22000,
+              quantity: 1,
+              image: "placeholder",
+            },
           ],
           shipping: {
             address: "Jl. Solo KM 10, Sleman",
-            cost: 10000,
+            cost: 12000,
           },
-          total: 85000,
+          total: 189000,
         },
         {
-          id: "SLM239990",
-          date: "2025-01-05",
-          status: "pending",
-          statusText: "Menunggu Konfirmasi",
-          statusClass: "bg-gray-100 text-gray-800",
+          id: "SLM240002",
+          date: "2025-08-29",
+          status: "paid",
+          statusText: "Pembayaran Berhasil",
+          statusClass: "bg-green-100 text-green-800",
+          paymentStatus: "paid",
           items: [
             {
               name: "Madu Hutan Murni",
@@ -590,18 +811,158 @@
               image: "placeholder",
             },
             {
-              name: "Dodol Nangka",
-              seller: "Dodol Tradisional",
-              price: 18000,
-              quantity: 2,
+              name: "Propolis Cair Premium",
+              seller: "Madu Asli Sleman",
+              price: 95000,
+              quantity: 1,
+              image: "placeholder",
+            },
+            {
+              name: "Royal Jelly Kapsul",
+              seller: "Madu Asli Sleman",
+              price: 125000,
+              quantity: 1,
               image: "placeholder",
             },
           ],
           shipping: {
             address: "Jl. Godean KM 7, Sleman",
+            cost: 15000,
+          },
+          total: 320000,
+        },
+        {
+          id: "SLM240001",
+          date: "2025-08-28",
+          status: "shipped",
+          statusText: "Dikirim",
+          statusClass: "bg-blue-100 text-blue-800",
+          paymentStatus: "paid",
+          items: [
+            {
+              name: "Keripik Tempe Original",
+              seller: "Toko Cemilan Sleman",
+              price: 15000,
+              quantity: 2,
+              image: "placeholder",
+            },
+            {
+              name: "Keripik Tahu Crispy",
+              seller: "Toko Cemilan Sleman",
+              price: 12000,
+              quantity: 3,
+              image: "placeholder",
+            },
+            {
+              name: "Rempeyek Kacang",
+              seller: "Toko Cemilan Sleman",
+              price: 10000,
+              quantity: 4,
+              image: "placeholder",
+            },
+            {
+              name: "Kripik Pisang Manis",
+              seller: "Camilan Tradisional",
+              price: 14000,
+              quantity: 2,
+              image: "placeholder",
+            },
+            {
+              name: "Opak Singkong",
+              seller: "Camilan Tradisional",
+              price: 8000,
+              quantity: 3,
+              image: "placeholder",
+            },
+          ],
+          shipping: {
+            address: "Jl. Kaliurang KM 5, Sleman",
             cost: 12000,
           },
-          total: 133000,
+          total: 146000,
+          trackingNumber: "JNE123456789",
+        },
+        {
+          id: "SLM239999",
+          date: "2025-08-25",
+          status: "completed",
+          statusText: "Selesai",
+          statusClass: "bg-green-100 text-green-800",
+          paymentStatus: "paid",
+          items: [
+            {
+              name: "Batik Jumputan",
+              seller: "Batik Sleman Asri",
+              price: 125000,
+              quantity: 1,
+              image: "placeholder",
+            },
+            {
+              name: "Blangkon Yogya Asli",
+              seller: "Batik Sleman Asri",
+              price: 75000,
+              quantity: 1,
+              image: "placeholder",
+            },
+            {
+              name: "Kaos Motif Gudeg",
+              seller: "Fashion Lokal Jogja",
+              price: 65000,
+              quantity: 2,
+              image: "placeholder",
+            },
+            {
+              name: "Sandal Kulit Magetan",
+              seller: "Kerajinan Kulit Sleman",
+              price: 95000,
+              quantity: 1,
+              image: "placeholder",
+            },
+          ],
+          shipping: {
+            address: "Jl. Magelang KM 3, Sleman",
+            cost: 15000,
+          },
+          total: 440000,
+          canReview: true,
+          reviewedItems: [0, 2], // Some items already reviewed
+        },
+        {
+          id: "SLM239998",
+          date: "2025-08-20",
+          status: "refunded",
+          statusText: "Dana Dikembalikan",
+          statusClass: "bg-blue-100 text-blue-800",
+          paymentStatus: "refunded",
+          refundReason: "Produk tidak tersedia",
+          items: [
+            {
+              name: "Dodol Nangka Special",
+              seller: "Dodol Tradisional",
+              price: 35000,
+              quantity: 2,
+              image: "placeholder",
+            },
+            {
+              name: "Wajik Gula Merah",
+              seller: "Dodol Tradisional",
+              price: 25000,
+              quantity: 3,
+              image: "placeholder",
+            },
+            {
+              name: "Lapis Legit Mini",
+              seller: "Kue Tradisional Sleman",
+              price: 40000,
+              quantity: 2,
+              image: "placeholder",
+            },
+          ],
+          shipping: {
+            address: "Jl. Godean KM 5, Sleman",
+            cost: 12000,
+          },
+          total: 227000,
         },
       ];
 
@@ -670,7 +1031,7 @@
                     <div class="space-y-3 mb-4">
                         ${order.items
                           .map(
-                            (item) => `
+                            (item, itemIndex) => `
                             <div class="flex items-center space-x-3">
                                 <div class="bg-gray-300 w-10 h-10 sm:w-12 sm:h-12 rounded-lg flex items-center justify-center flex-shrink-0">
                                     <i class="fas fa-image text-gray-500 text-xs sm:text-sm"></i>
@@ -686,6 +1047,30 @@
                                       item.price
                                     )} x ${item.quantity}</p>
                                 </div>
+                                ${
+                                  order.canReview
+                                    ? `
+                                    <div class="flex-shrink-0">
+                                        ${
+                                          order.reviewedItems &&
+                                          order.reviewedItems.includes(
+                                            itemIndex
+                                          )
+                                            ? `
+                                            <button onclick="viewExistingReview('${order.id}', ${itemIndex})" class="text-green-600 text-xs font-medium hover:text-green-700 transition duration-300">
+                                                <i class="fas fa-check-circle mr-1"></i>Diulas
+                                            </button>
+                                        `
+                                            : `
+                                            <button onclick="openDirectItemReview('${order.id}', ${itemIndex})" class="bg-primary text-white px-2 py-1 rounded text-xs hover:bg-primary-dark transition duration-300">
+                                                <i class="fas fa-star mr-1"></i>Ulas
+                                            </button>
+                                        `
+                                        }
+                                    </div>
+                                `
+                                    : ""
+                                }
                             </div>
                         `
                           )
@@ -712,6 +1097,38 @@
                             </button>
                             
                             ${
+                              order.status === "unpaid"
+                                ? `
+                                <button onclick="goToPayment('${order.id}')" class="bg-primary text-white px-3 sm:px-4 py-2 rounded-md hover:bg-primary-dark text-xs sm:text-sm flex items-center">
+                                    <i class="fas fa-credit-card mr-1 text-xs"></i>Bayar
+                                </button>
+                            `
+                                : ""
+                            }
+                            
+                            ${
+                              order.status === "payment_pending" ||
+                              order.status === "payment_rejected" ||
+                              order.status === "paid"
+                                ? `
+                                <button onclick="viewPaymentStatus('${order.id}')" class="bg-blue-500 text-white px-3 sm:px-4 py-2 rounded-md hover:bg-blue-600 text-xs sm:text-sm flex items-center">
+                                    <i class="fas fa-receipt mr-1 text-xs"></i>Status Bayar
+                                </button>
+                            `
+                                : ""
+                            }
+                            
+                            ${
+                              order.status === "payment_rejected"
+                                ? `
+                                <button onclick="uploadNewProof('${order.id}')" class="bg-orange-500 text-white px-3 sm:px-4 py-2 rounded-md hover:bg-orange-600 text-xs sm:text-sm flex items-center">
+                                    <i class="fas fa-upload mr-1 text-xs"></i>Upload Ulang
+                                </button>
+                            `
+                                : ""
+                            }
+                            
+                            ${
                               order.status === "shipped"
                                 ? `
                                 <button onclick="trackOrder('${order.id}')" class="bg-blue-500 text-white px-3 sm:px-4 py-2 rounded-md hover:bg-blue-600 text-xs sm:text-sm flex items-center">
@@ -732,7 +1149,7 @@
                             }
                             
                             ${
-                              order.status === "pending"
+                              order.status === "unpaid"
                                 ? `
                                 <button onclick="cancelOrder('${order.id}')" class="bg-red-500 text-white px-3 sm:px-4 py-2 rounded-md hover:bg-red-600 text-xs sm:text-sm flex items-center">
                                     <i class="fas fa-times mr-1 text-xs"></i>Batal
@@ -931,6 +1348,43 @@
         }
       }
 
+      function goToPayment(orderId) {
+        // Store order data for payment page
+        const order = orders.find((o) => o.id === orderId);
+        if (order) {
+          localStorage.setItem(
+            "orderData",
+            JSON.stringify({
+              orderId: order.id,
+              total: order.total,
+              items: order.items,
+            })
+          );
+          window.location.href = "payment.html";
+        }
+      }
+
+      function viewPaymentStatus(orderId) {
+        const order = orders.find((o) => o.id === orderId);
+        if (order) {
+          let status = "unpaid";
+          if (order.paymentStatus === "pending") status = "pending";
+          else if (order.paymentStatus === "rejected") status = "rejected";
+          else if (order.paymentStatus === "paid") status = "paid";
+          else if (order.paymentStatus === "refunded") status = "refunded";
+
+          window.location.href = `payment-status.html?status=${status}&order=${encodeURIComponent(
+            order.id
+          )}`;
+        }
+      }
+
+      function uploadNewProof(orderId) {
+        window.location.href = `payment-reupload.html?order=${encodeURIComponent(
+          orderId
+        )}`;
+      }
+
       function confirmReceived(orderId) {
         if (confirm("Apakah Anda sudah menerima pesanan ini?")) {
           const orderIndex = orders.findIndex((o) => o.id === orderId);
@@ -958,9 +1412,127 @@
         }
       }
 
+      function openDirectItemReview(orderId, itemIndex) {
+        currentReviewOrderId = orderId;
+        const order = orders.find((o) => o.id === orderId);
+        if (!order) return;
+
+        currentReviewItem = {
+          orderIndex: orders.indexOf(order),
+          itemIndex: itemIndex,
+        };
+        const item = order.items[itemIndex];
+
+        // Populate product info
+        document.getElementById("reviewProductInfo").innerHTML = `
+          <div class="flex items-center space-x-3">
+            <div class="bg-gray-300 w-16 h-16 rounded-lg flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-image text-gray-500 text-xl"></i>
+            </div>
+            <div class="flex-1">
+              <h4 class="font-semibold text-gray-800">${item.name}</h4>
+              <p class="text-sm text-gray-600 mb-1">${item.seller}</p>
+              <p class="text-primary font-medium">${formatPrice(
+                item.price
+              )} x ${item.quantity}</p>
+            </div>
+          </div>
+        `;
+
+        // Open review modal directly
+        document.getElementById("reviewModal").classList.remove("hidden");
+      }
+
       function openReviewModal(orderId) {
         currentReviewOrderId = orderId;
+        const order = orders.find((o) => o.id === orderId);
+        if (!order) return;
+
+        // Show items selection modal first
+        document.getElementById("reviewOrderId").textContent = `#${orderId}`;
+
+        const itemsList = document.getElementById("reviewItemsList");
+        itemsList.innerHTML = "";
+
+        order.items.forEach((item, index) => {
+          const isReviewed =
+            order.reviewedItems && order.reviewedItems.includes(index);
+
+          const itemDiv = document.createElement("div");
+          itemDiv.className = `flex items-center justify-between p-4 border rounded-lg ${
+            isReviewed
+              ? "bg-green-50 border-green-200"
+              : "bg-white border-gray-200"
+          }`;
+
+          itemDiv.innerHTML = `
+            <div class="flex items-center space-x-3">
+              <div class="bg-gray-300 w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0">
+                <i class="fas fa-image text-gray-500"></i>
+              </div>
+              <div class="flex-1">
+                <h4 class="font-medium text-gray-800">${item.name}</h4>
+                <p class="text-sm text-gray-600">${item.seller}</p>
+                <p class="text-sm text-primary font-medium">${formatPrice(
+                  item.price
+                )} x ${item.quantity}</p>
+              </div>
+            </div>
+            <div>
+              ${
+                isReviewed
+                  ? `<span class="text-green-600 text-sm font-medium">
+                     <i class="fas fa-check-circle mr-1"></i>Sudah diulas
+                   </span>`
+                  : `<button 
+                     onclick="openItemReviewModal(${index})" 
+                     class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-dark transition duration-300 text-sm"
+                   >
+                     <i class="fas fa-star mr-1"></i>Beri Ulasan
+                   </button>`
+              }
+            </div>
+          `;
+
+          itemsList.appendChild(itemDiv);
+        });
+
+        document.getElementById("reviewItemsModal").classList.remove("hidden");
+      }
+
+      function openItemReviewModal(itemIndex) {
+        const order = orders.find((o) => o.id === currentReviewOrderId);
+        if (!order) return;
+
+        currentReviewItem = {
+          orderIndex: orders.indexOf(order),
+          itemIndex: itemIndex,
+        };
+        const item = order.items[itemIndex];
+
+        // Populate product info
+        document.getElementById("reviewProductInfo").innerHTML = `
+          <div class="flex items-center space-x-3">
+            <div class="bg-gray-300 w-16 h-16 rounded-lg flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-image text-gray-500 text-xl"></i>
+            </div>
+            <div class="flex-1">
+              <h4 class="font-semibold text-gray-800">${item.name}</h4>
+              <p class="text-sm text-gray-600 mb-1">${item.seller}</p>
+              <p class="text-primary font-medium">${formatPrice(
+                item.price
+              )} x ${item.quantity}</p>
+            </div>
+          </div>
+        `;
+
+        // Close items modal and open review modal
+        document.getElementById("reviewItemsModal").classList.add("hidden");
         document.getElementById("reviewModal").classList.remove("hidden");
+      }
+
+      function closeReviewItemsModal() {
+        document.getElementById("reviewItemsModal").classList.add("hidden");
       }
 
       function closeOrderModal() {
@@ -970,12 +1542,20 @@
       function closeReviewModal() {
         document.getElementById("reviewModal").classList.add("hidden");
         selectedRating = 0;
+        currentReviewItem = null;
         document.querySelectorAll(".rating-star").forEach((star) => {
           star.className =
-            "fas fa-star text-gray-300 text-2xl cursor-pointer rating-star";
+            "fas fa-star text-gray-300 text-xl sm:text-2xl cursor-pointer rating-star";
         });
         document.getElementById("reviewComment").value = "";
         document.getElementById("reviewMedia").value = "";
+
+        // Clear checkboxes
+        document
+          .querySelectorAll('#reviewForm input[type="checkbox"]')
+          .forEach((checkbox) => {
+            checkbox.checked = false;
+          });
       }
 
       function loadMoreOrders() {
@@ -998,8 +1578,65 @@
         }, 3000);
       }
 
+      // Initialize dummy review data
+      function initializeDummyReviews() {
+        // Add dummy reviews for the completed order (SLM239999)
+        const dummyReviews = [
+          {
+            key: "review_SLM239999_0",
+            data: {
+              orderId: "SLM239999",
+              itemIndex: 0,
+              rating: 5,
+              comment:
+                "Batik jumputan sangat berkualitas! Warnanya cantik dan bahan sangat halus. Pengiriman juga cepat. Sangat puas dengan pembelian ini.",
+              date: "25 Agustus 2025",
+              media: [
+                {
+                  type: "image",
+                  url: "https://via.placeholder.com/300x300/4F46E5/FFFFFF?text=Batik+Foto+1",
+                  name: "batik_foto_1.jpg",
+                },
+                {
+                  type: "image",
+                  url: "https://via.placeholder.com/300x300/7C3AED/FFFFFF?text=Batik+Foto+2",
+                  name: "batik_foto_2.jpg",
+                },
+              ],
+            },
+          },
+          {
+            key: "review_SLM239999_2",
+            data: {
+              orderId: "SLM239999",
+              itemIndex: 2,
+              rating: 4,
+              comment:
+                "Kaos motif gudeg lucu dan unik! Bahan nyaman dipakai. Hanya saja ukurannya sedikit kecil dari yang diharapkan.",
+              date: "25 Agustus 2025",
+              media: [
+                {
+                  type: "image",
+                  url: "https://via.placeholder.com/300x300/10B981/FFFFFF?text=Kaos+Foto",
+                  name: "kaos_foto.jpg",
+                },
+              ],
+            },
+          },
+        ];
+
+        // Store dummy reviews in localStorage
+        dummyReviews.forEach((review) => {
+          // Always overwrite to ensure latest dummy data is used
+          localStorage.setItem(review.key, JSON.stringify(review.data));
+        });
+      }
+
       // Initialize
       document.addEventListener("DOMContentLoaded", function () {
+        // Initialize dummy review data
+        initializeDummyReviews();
+
         renderOrders();
 
         // Rating stars interaction
@@ -1019,11 +1656,212 @@
           });
         });
 
+        // View existing review function
+        window.viewExistingReview = function (orderId, itemIndex) {
+          const order = orders.find((o) => o.id === orderId);
+          if (!order) return;
+
+          const item = order.items[itemIndex];
+          const reviewKey = `review_${orderId}_${itemIndex}`;
+          const reviewData = localStorage.getItem(reviewKey);
+
+          if (!reviewData) {
+            // If no stored review, show a default reviewed message
+            showMessage("Ulasan telah dikirim sebelumnya", "success");
+            return;
+          }
+
+          const review = JSON.parse(reviewData);
+
+          console.log("Review data loaded:", review); // Debug log
+
+          // Populate product info
+          const productInfo = document.getElementById("viewReviewProductInfo");
+          productInfo.innerHTML = `
+            <div class="flex items-center space-x-3">
+              <div class="bg-gray-300 w-16 h-16 rounded-lg flex items-center justify-center flex-shrink-0">
+                <i class="fas fa-image text-gray-500 text-xl"></i>
+              </div>
+              <div class="flex-1">
+                <h4 class="font-semibold text-gray-800">${item.name}</h4>
+                <p class="text-sm text-gray-600 mb-1">${item.seller}</p>
+                <p class="text-primary font-medium">${formatPrice(
+                  item.price
+                )} x ${item.quantity}</p>
+              </div>
+            </div>
+          `;
+
+          // Populate rating
+          const ratingDiv = document.getElementById("viewReviewRating");
+          let starsHtml = "";
+          for (let i = 1; i <= 5; i++) {
+            if (i <= review.rating) {
+              starsHtml +=
+                '<i class="fas fa-star text-yellow-400 text-xl"></i>';
+            } else {
+              starsHtml += '<i class="far fa-star text-gray-300 text-xl"></i>';
+            }
+          }
+          ratingDiv.innerHTML = starsHtml;
+
+          // Populate comment
+          document.getElementById("viewReviewComment").textContent =
+            review.comment || "Tidak ada komentar";
+
+          // Populate media
+          const mediaSection = document.getElementById(
+            "viewReviewMediaSection"
+          );
+          const mediaContainer = document.getElementById("viewReviewMedia");
+
+          console.log("Media data:", review.media); // Debug log
+
+          if (review.media && review.media.length > 0) {
+            console.log("Showing media section"); // Debug log
+            mediaSection.classList.remove("hidden");
+            mediaContainer.innerHTML = "";
+
+            review.media.forEach((media, index) => {
+              const mediaElement = document.createElement("div");
+              mediaElement.className = "relative group cursor-pointer";
+
+              if (media.type === "image") {
+                mediaElement.innerHTML = `
+                  <img 
+                    src="${media.url}" 
+                    alt="Review Media ${index + 1}"
+                    class="w-full h-24 object-cover rounded-lg border border-gray-200 hover:opacity-75 transition duration-300"
+                    onclick="openMediaViewer('${media.url}', 'image')"
+                  />
+                  <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 rounded-lg transition duration-300 flex items-center justify-center">
+                    <i class="fas fa-expand text-white opacity-0 group-hover:opacity-100 transition duration-300"></i>
+                  </div>
+                `;
+              } else if (media.type === "video") {
+                mediaElement.innerHTML = `
+                  <div class="relative">
+                    <video 
+                      class="w-full h-24 object-cover rounded-lg border border-gray-200"
+                      onclick="openMediaViewer('${media.url}', 'video')"
+                    >
+                      <source src="${media.url}" type="video/mp4">
+                      Browser Anda tidak mendukung video.
+                    </video>
+                    <div class="absolute inset-0 bg-black bg-opacity-30 rounded-lg flex items-center justify-center">
+                      <i class="fas fa-play text-white text-xl"></i>
+                    </div>
+                  </div>
+                `;
+              }
+
+              mediaContainer.appendChild(mediaElement);
+            });
+          } else {
+            mediaSection.classList.add("hidden");
+          }
+
+          // Populate date
+          document.getElementById("viewReviewDate").textContent = review.date;
+
+          // Show modal
+          document.getElementById("viewReviewModal").classList.remove("hidden");
+        };
+
+        window.closeViewReviewModal = function () {
+          document.getElementById("viewReviewModal").classList.add("hidden");
+        };
+
+        // Media viewer functions
+        window.openMediaViewer = function (url, type) {
+          const viewer = document.createElement("div");
+          viewer.className =
+            "fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-4";
+          viewer.onclick = function (e) {
+            if (e.target === viewer) {
+              document.body.removeChild(viewer);
+            }
+          };
+
+          let mediaContent = "";
+          if (type === "image") {
+            mediaContent = `
+              <div class="relative max-w-4xl max-h-full">
+                <img src="${url}" alt="Review Media" class="max-w-full max-h-full object-contain rounded-lg" />
+                <button 
+                  onclick="document.body.removeChild(this.closest('.fixed'))"
+                  class="absolute top-4 right-4 text-white bg-black bg-opacity-50 rounded-full w-10 h-10 flex items-center justify-center hover:bg-opacity-75 transition duration-300"
+                >
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            `;
+          } else if (type === "video") {
+            mediaContent = `
+              <div class="relative max-w-4xl max-h-full">
+                <video controls class="max-w-full max-h-full rounded-lg" autoplay>
+                  <source src="${url}" type="video/mp4">
+                  Browser Anda tidak mendukung video.
+                </video>
+                <button 
+                  onclick="document.body.removeChild(this.closest('.fixed'))"
+                  class="absolute top-4 right-4 text-white bg-black bg-opacity-50 rounded-full w-10 h-10 flex items-center justify-center hover:bg-opacity-75 transition duration-300"
+                >
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            `;
+          }
+
+          viewer.innerHTML = mediaContent;
+          document.body.appendChild(viewer);
+        };
+
+        // Store review data function
+        function storeReviewData(orderId, itemIndex, rating, comment) {
+          const reviewKey = `review_${orderId}_${itemIndex}`;
+
+          // Get uploaded media files
+          const mediaFiles = [];
+          const fileInput = document.getElementById("reviewMedia");
+          if (fileInput && fileInput.files.length > 0) {
+            for (let i = 0; i < fileInput.files.length; i++) {
+              const file = fileInput.files[i];
+              // In a real app, you would upload these files to a server
+              // For demo purposes, we'll create placeholder URLs
+              mediaFiles.push({
+                type: file.type.startsWith("image/") ? "image" : "video",
+                url: URL.createObjectURL(file),
+                name: file.name,
+              });
+            }
+          }
+
+          const reviewData = {
+            orderId,
+            itemIndex,
+            rating,
+            comment,
+            media: mediaFiles,
+            date: new Date().toLocaleDateString("id-ID", {
+              day: "numeric",
+              month: "long",
+              year: "numeric",
+            }),
+          };
+          localStorage.setItem(reviewKey, JSON.stringify(reviewData));
+        }
+
         // Review form submission
         document
           .getElementById("reviewForm")
           .addEventListener("submit", function (e) {
             e.preventDefault();
+
+            if (!currentReviewItem) {
+              showMessage("Terjadi kesalahan. Silakan coba lagi.", "error");
+              return;
+            }
 
             if (selectedRating === 0) {
               showMessage("Harap pilih rating terlebih dahulu!", "error");
@@ -1036,22 +1874,51 @@
               return;
             }
 
+            // Get selected improvement reasons
+            const selectedReasons = [];
+            document
+              .querySelectorAll('#reviewForm input[type="checkbox"]:checked')
+              .forEach((checkbox) => {
+                selectedReasons.push(checkbox.value);
+              });
+
+            // Get the order and item being reviewed
+            const order = orders[currentReviewItem.orderIndex];
+            const item = order.items[currentReviewItem.itemIndex];
+
             // Simulate review submission
+            console.log("Review submitted for item:", item.name);
+            console.log("Rating:", selectedRating);
+            console.log("Comment:", comment);
+            console.log("Improvement suggestions:", selectedReasons);
+
+            // Mark item as reviewed
+            if (!order.reviewedItems) {
+              order.reviewedItems = [];
+            }
+            if (!order.reviewedItems.includes(currentReviewItem.itemIndex)) {
+              order.reviewedItems.push(currentReviewItem.itemIndex);
+            }
+
+            // Store review data for later viewing
+            storeReviewData(
+              order.id,
+              currentReviewItem.itemIndex,
+              selectedRating,
+              comment
+            );
+
+            // Show success message
             showMessage(
-              "Ulasan berhasil dikirim! Terima kasih atas feedback Anda.",
+              `Terima kasih! Ulasan untuk ${item.name} telah berhasil dikirim.`,
               "success"
             );
 
-            // Update order status
-            const orderIndex = orders.findIndex(
-              (o) => o.id === currentReviewOrderId
-            );
-            if (orderIndex !== -1) {
-              orders[orderIndex].canReview = false;
-              renderOrders(orders);
-            }
-
+            // Close modal and refresh
             closeReviewModal();
+
+            // Re-render orders to show updated review status
+            renderOrders(orders);
           });
 
         // Filter event listeners
@@ -1083,6 +1950,14 @@
         .addEventListener("click", function (e) {
           if (e.target === this) {
             closeReviewModal();
+          }
+        });
+
+      document
+        .getElementById("viewReviewModal")
+        .addEventListener("click", function (e) {
+          if (e.target === this) {
+            closeViewReviewModal();
           }
         });
     </script>
