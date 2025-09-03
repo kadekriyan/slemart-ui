@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Status Pembayaran - Sleman Mart</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#E57F39",
+              "primary-dark": "#C86A2B",
+              "primary-light": "#F29C5E",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+
+  <body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-40">
+      <div class="container mx-auto px-4">
+        <div class="flex items-center justify-between h-16">
+          <!-- Logo -->
+          <div class="flex items-center">
+            <a href="products.html" class="text-2xl font-bold text-primary">
+              <i class="fas fa-store mr-2"></i>Sleman Mart
+            </a>
+          </div>
+
+          <!-- Navigation -->
+          <nav class="hidden md:flex space-x-6">
+            <a href="products.html" class="text-gray-600 hover:text-primary"
+              >Produk</a
+            >
+            <a href="orders.html" class="text-gray-600 hover:text-primary"
+              >Pesanan</a
+            >
+            <a href="cart.html" class="text-gray-600 hover:text-primary"
+              >Keranjang</a
+            >
+          </nav>
+
+          <!-- Profile Dropdown -->
+          <div class="relative group">
+            <button
+              class="flex items-center space-x-2 text-gray-700 hover:text-primary transition duration-200"
+            >
+              <div
+                class="w-8 h-8 bg-primary rounded-full flex items-center justify-center"
+              >
+                <i class="fas fa-user text-white text-sm"></i>
+              </div>
+              <span class="font-medium">Kadek Riyan</span>
+              <i class="fas fa-chevron-down text-xs"></i>
+            </button>
+
+            <div
+              class="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50"
+            >
+              <div class="py-2">
+                <a
+                  href="products.html"
+                  class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100 transition duration-200"
+                >
+                  <i class="fas fa-home mr-3 text-gray-500"></i>
+                  <span>Beranda</span>
+                </a>
+                <a
+                  href="profile.html"
+                  class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100 transition duration-200"
+                >
+                  <i class="fas fa-user mr-3 text-gray-500"></i>
+                  <span>Profil</span>
+                </a>
+                <a
+                  href="orders.html"
+                  class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100 transition duration-200"
+                >
+                  <i class="fas fa-box mr-3 text-gray-500"></i>
+                  <span>Pesanan Saya</span>
+                </a>
+                <hr class="my-2" />
+                <a
+                  href="index.html"
+                  class="flex items-center px-4 py-2 text-red-600 hover:bg-red-50 transition duration-200"
+                >
+                  <i class="fas fa-sign-out-alt mr-3"></i>
+                  <span>Keluar</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <nav class="bg-white border-b py-3">
+      <div class="container mx-auto px-4">
+        <ol class="flex items-center space-x-2 text-sm">
+          <li>
+            <a href="products.html" class="text-gray-600 hover:text-primary">
+              <i class="fas fa-home mr-1"></i>Beranda
+            </a>
+          </li>
+          <li class="text-gray-400">/</li>
+          <li>
+            <a href="orders.html" class="text-gray-600 hover:text-primary"
+              >Pesanan</a
+            >
+          </li>
+          <li class="text-gray-400">/</li>
+          <li class="text-primary font-medium">Status Pembayaran</li>
+        </ol>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 py-8">
+      <div class="max-w-4xl mx-auto">
+        <!-- Order Header -->
+        <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+          <div
+            class="flex flex-col md:flex-row md:items-center md:justify-between"
+          >
+            <div>
+              <h1 class="text-2xl font-bold text-gray-800 mb-2">
+                Status Pembayaran
+              </h1>
+              <p class="text-gray-600">
+                Pesanan
+                <span id="orderNumber" class="font-medium text-primary"
+                  >#SLM-2025-001</span
+                >
+              </p>
+            </div>
+            <div class="mt-4 md:mt-0">
+              <span id="orderDate" class="text-sm text-gray-500"
+                >1 September 2025</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Payment Status Card -->
+        <div id="paymentStatusCard" class="bg-white rounded-lg shadow-md mb-6">
+          <!-- Status will be dynamically loaded here -->
+        </div>
+
+        <!-- Payment Timeline -->
+        <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+          <h3 class="text-lg font-bold text-gray-800 mb-4">
+            Timeline Pembayaran
+          </h3>
+          <div id="paymentTimeline" class="space-y-4">
+            <!-- Timeline items will be dynamically loaded here -->
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div id="actionButtons" class="flex flex-col sm:flex-row gap-4">
+          <!-- Buttons will be dynamically loaded based on status -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Rejection Modal -->
+    <div
+      id="rejectionModal"
+      class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50"
+    >
+      <div class="bg-white rounded-lg p-6 m-4 max-w-md w-full">
+        <div class="flex items-center justify-between mb-4">
+          <h3 class="text-lg font-bold text-gray-800">Alasan Penolakan</h3>
+          <button
+            onclick="closeRejectionModal()"
+            class="text-gray-400 hover:text-gray-600"
+          >
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div id="rejectionReason" class="mb-4">
+          <!-- Rejection reason will be loaded here -->
+        </div>
+        <div class="flex gap-3">
+          <button
+            onclick="closeRejectionModal()"
+            class="flex-1 bg-gray-500 text-white py-2 px-4 rounded-lg hover:bg-gray-600 transition duration-300"
+          >
+            Tutup
+          </button>
+          <button
+            onclick="uploadNewProof()"
+            class="flex-1 bg-primary text-white py-2 px-4 rounded-lg hover:bg-primary-dark transition duration-300"
+          >
+            Upload Ulang
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8 mt-16">
+      <div class="container mx-auto px-4">
+        <div class="text-center">
+          <h3 class="text-xl font-bold mb-2">Sleman Mart</h3>
+          <p class="text-gray-400">Platform UMKM Digital Kabupaten Sleman</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Payment status data simulation
+      const paymentStatuses = {
+        unpaid: {
+          title: "Belum Dibayar",
+          description: "Pesanan Anda menunggu pembayaran",
+          color: "red",
+          icon: "fas fa-exclamation-circle",
+          timeline: [
+            {
+              time: "10:30",
+              date: "1 Sep 2025",
+              title: "Pesanan dibuat",
+              description: "Pesanan berhasil dibuat dan menunggu pembayaran",
+              status: "completed",
+            },
+            {
+              time: "-",
+              date: "-",
+              title: "Menunggu pembayaran",
+              description:
+                "Silakan lakukan pembayaran untuk melanjutkan pesanan",
+              status: "pending",
+            },
+          ],
+          actions: [
+            {
+              text: "Bayar Sekarang",
+              class: "bg-primary hover:bg-primary-dark",
+              onclick: "goToPayment()",
+            },
+            {
+              text: "Batalkan Pesanan",
+              class: "bg-red-500 hover:bg-red-600",
+              onclick: "cancelOrder()",
+            },
+          ],
+        },
+        pending: {
+          title: "Menunggu Verifikasi",
+          description: "Bukti pembayaran sedang diverifikasi oleh penjual",
+          color: "yellow",
+          icon: "fas fa-clock",
+          timeline: [
+            {
+              time: "10:30",
+              date: "1 Sep 2025",
+              title: "Pesanan dibuat",
+              description: "Pesanan berhasil dibuat",
+              status: "completed",
+            },
+            {
+              time: "11:15",
+              date: "1 Sep 2025",
+              title: "Bukti pembayaran diunggah",
+              description: "Menunggu verifikasi dari penjual",
+              status: "completed",
+            },
+            {
+              time: "-",
+              date: "-",
+              title: "Sedang diverifikasi",
+              description: "Penjual sedang memverifikasi pembayaran Anda",
+              status: "pending",
+            },
+          ],
+          actions: [
+            {
+              text: "Lihat Bukti Pembayaran",
+              class: "bg-blue-500 hover:bg-blue-600",
+              onclick: "viewProof()",
+            },
+          ],
+        },
+        rejected: {
+          title: "Pembayaran Ditolak",
+          description: "Bukti pembayaran ditolak oleh penjual",
+          color: "red",
+          icon: "fas fa-times-circle",
+          rejectionReason:
+            "Bukti pembayaran tidak jelas. Nominal yang tertera tidak sesuai dengan total pesanan. Mohon upload ulang bukti pembayaran yang lebih jelas.",
+          timeline: [
+            {
+              time: "10:30",
+              date: "1 Sep 2025",
+              title: "Pesanan dibuat",
+              description: "Pesanan berhasil dibuat",
+              status: "completed",
+            },
+            {
+              time: "11:15",
+              date: "1 Sep 2025",
+              title: "Bukti pembayaran diunggah",
+              description: "Bukti pembayaran pertama diunggah",
+              status: "completed",
+            },
+            {
+              time: "14:20",
+              date: "1 Sep 2025",
+              title: "Pembayaran ditolak",
+              description: "Penjual menolak bukti pembayaran",
+              status: "rejected",
+            },
+            {
+              time: "-",
+              date: "-",
+              title: "Menunggu bukti baru",
+              description: "Silakan upload bukti pembayaran yang baru",
+              status: "pending",
+            },
+          ],
+          actions: [
+            {
+              text: "Lihat Alasan Penolakan",
+              class: "bg-red-500 hover:bg-red-600",
+              onclick: "showRejectionModal()",
+            },
+            {
+              text: "Upload Bukti Baru",
+              class: "bg-primary hover:bg-primary-dark",
+              onclick: "uploadNewProof()",
+            },
+            {
+              text: "Tunda Pembayaran",
+              class: "bg-gray-500 hover:bg-gray-600",
+              onclick: "postponePayment()",
+            },
+          ],
+        },
+        paid: {
+          title: "Pembayaran Berhasil",
+          description:
+            "Pembayaran telah dikonfirmasi dan pesanan sedang diproses",
+          color: "green",
+          icon: "fas fa-check-circle",
+          timeline: [
+            {
+              time: "10:30",
+              date: "1 Sep 2025",
+              title: "Pesanan dibuat",
+              description: "Pesanan berhasil dibuat",
+              status: "completed",
+            },
+            {
+              time: "11:15",
+              date: "1 Sep 2025",
+              title: "Bukti pembayaran diunggah",
+              description: "Bukti pembayaran diunggah",
+              status: "completed",
+            },
+            {
+              time: "14:45",
+              date: "1 Sep 2025",
+              title: "Pembayaran dikonfirmasi",
+              description: "Penjual mengkonfirmasi pembayaran",
+              status: "completed",
+            },
+            {
+              time: "-",
+              date: "-",
+              title: "Pesanan diproses",
+              description: "Pesanan sedang disiapkan untuk dikirim",
+              status: "pending",
+            },
+          ],
+          actions: [
+            {
+              text: "Lihat Detail Pesanan",
+              class: "bg-primary hover:bg-primary-dark",
+              onclick: "viewOrderDetails()",
+            },
+          ],
+        },
+        refunded: {
+          title: "Dana Dikembalikan",
+          description: "Pembayaran telah dikembalikan ke rekening Anda",
+          color: "blue",
+          icon: "fas fa-undo",
+          timeline: [
+            {
+              time: "10:30",
+              date: "1 Sep 2025",
+              title: "Pesanan dibuat",
+              description: "Pesanan berhasil dibuat",
+              status: "completed",
+            },
+            {
+              time: "11:15",
+              date: "1 Sep 2025",
+              title: "Pembayaran dikonfirmasi",
+              description: "Pembayaran berhasil dikonfirmasi",
+              status: "completed",
+            },
+            {
+              time: "15:20",
+              date: "2 Sep 2025",
+              title: "Pesanan dibatalkan",
+              description: "Pesanan dibatalkan karena stok habis",
+              status: "completed",
+            },
+            {
+              time: "16:00",
+              date: "2 Sep 2025",
+              title: "Dana dikembalikan",
+              description: "Dana telah dikembalikan ke rekening Anda",
+              status: "completed",
+            },
+          ],
+          actions: [
+            {
+              text: "Belanja Lagi",
+              class: "bg-primary hover:bg-primary-dark",
+              onclick: "goToProducts()",
+            },
+          ],
+        },
+      };
+
+      // Get status from URL parameter or default to 'unpaid'
+      const urlParams = new URLSearchParams(window.location.search);
+      const currentStatus = urlParams.get("status") || "unpaid";
+
+      // Load payment status on page load
+      document.addEventListener("DOMContentLoaded", function () {
+        loadPaymentStatus(currentStatus);
+      });
+
+      function loadPaymentStatus(status) {
+        const statusData = paymentStatuses[status];
+        if (!statusData) return;
+
+        // Update status card
+        const statusCard = document.getElementById("paymentStatusCard");
+        statusCard.innerHTML = `
+          <div class="p-6">
+            <div class="flex items-center mb-4">
+              <div class="w-12 h-12 bg-${statusData.color}-100 rounded-full flex items-center justify-center mr-4">
+                <i class="${statusData.icon} text-${statusData.color}-500 text-xl"></i>
+              </div>
+              <div>
+                <h2 class="text-xl font-bold text-gray-800">${statusData.title}</h2>
+                <p class="text-gray-600">${statusData.description}</p>
+              </div>
+            </div>
+            
+            <!-- Order Summary -->
+            <div class="bg-gray-50 rounded-lg p-4">
+              <h4 class="font-medium text-gray-800 mb-2">Ringkasan Pesanan</h4>
+              <div class="flex justify-between items-center mb-1">
+                <span class="text-gray-600">Kue Lapis (2x)</span>
+                <span class="text-gray-800">Rp 30.000</span>
+              </div>
+              <div class="flex justify-between items-center mb-1">
+                <span class="text-gray-600">Es Teh Manis (1x)</span>
+                <span class="text-gray-800">Rp 5.000</span>
+              </div>
+              <div class="flex justify-between items-center mb-1">
+                <span class="text-gray-600">Ongkos Kirim</span>
+                <span class="text-gray-800">Rp 10.000</span>
+              </div>
+              <hr class="my-2">
+              <div class="flex justify-between items-center font-bold">
+                <span class="text-gray-800">Total</span>
+                <span class="text-primary">Rp 45.000</span>
+              </div>
+            </div>
+          </div>
+        `;
+
+        // Update timeline
+        const timeline = document.getElementById("paymentTimeline");
+        timeline.innerHTML = statusData.timeline
+          .map((item) => {
+            let statusClass = "";
+            let statusIcon = "";
+
+            if (item.status === "completed") {
+              statusClass = "bg-green-500";
+              statusIcon = "fas fa-check";
+            } else if (item.status === "pending") {
+              statusClass = "bg-yellow-500";
+              statusIcon = "fas fa-clock";
+            } else if (item.status === "rejected") {
+              statusClass = "bg-red-500";
+              statusIcon = "fas fa-times";
+            }
+
+            return `
+            <div class="flex items-start">
+              <div class="w-8 h-8 ${statusClass} rounded-full flex items-center justify-center mr-4 mt-1">
+                <i class="${statusIcon} text-white text-sm"></i>
+              </div>
+              <div class="flex-1">
+                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between">
+                  <h4 class="font-medium text-gray-800">${item.title}</h4>
+                  <span class="text-sm text-gray-500">${item.time} - ${item.date}</span>
+                </div>
+                <p class="text-gray-600 text-sm mt-1">${item.description}</p>
+              </div>
+            </div>
+          `;
+          })
+          .join("");
+
+        // Update action buttons
+        const actionButtons = document.getElementById("actionButtons");
+        actionButtons.innerHTML = statusData.actions
+          .map(
+            (action) =>
+              `<button onclick="${action.onclick}" class="${action.class} text-white py-3 px-6 rounded-lg font-medium transition duration-300">
+            ${action.text}
+          </button>`
+          )
+          .join("");
+      }
+
+      // Action functions
+      function goToPayment() {
+        window.location.href = "payment.html";
+      }
+
+      function cancelOrder() {
+        if (confirm("Apakah Anda yakin ingin membatalkan pesanan ini?")) {
+          alert("Pesanan berhasil dibatalkan");
+          window.location.href = "orders.html";
+        }
+      }
+
+      function viewProof() {
+        alert("Fitur melihat bukti pembayaran akan segera tersedia");
+      }
+
+      function showRejectionModal() {
+        const statusData = paymentStatuses["rejected"];
+        document.getElementById("rejectionReason").innerHTML = `
+          <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+            <div class="flex items-start">
+              <i class="fas fa-exclamation-triangle text-red-500 mr-3 mt-1"></i>
+              <div>
+                <h4 class="font-medium text-red-800 mb-2">Alasan Penolakan:</h4>
+                <p class="text-red-700 text-sm">${statusData.rejectionReason}</p>
+              </div>
+            </div>
+          </div>
+        `;
+        document.getElementById("rejectionModal").classList.remove("hidden");
+        document.getElementById("rejectionModal").classList.add("flex");
+      }
+
+      function closeRejectionModal() {
+        document.getElementById("rejectionModal").classList.add("hidden");
+        document.getElementById("rejectionModal").classList.remove("flex");
+      }
+
+      function uploadNewProof() {
+        closeRejectionModal();
+        window.location.href =
+          "payment-reupload.html?order=" +
+          encodeURIComponent(
+            document.getElementById("orderNumber").textContent
+          );
+      }
+
+      function postponePayment() {
+        if (
+          confirm(
+            "Apakah Anda ingin menunda pembayaran? Pesanan akan tetap tersimpan dan Anda dapat melanjutkan pembayaran nanti."
+          )
+        ) {
+          alert(
+            "Pembayaran berhasil ditunda. Anda dapat melanjutkan dari halaman pesanan."
+          );
+          window.location.href = "orders.html";
+        }
+      }
+
+      function viewOrderDetails() {
+        window.location.href =
+          "order-detail.html?id=" +
+          encodeURIComponent(
+            document.getElementById("orderNumber").textContent
+          );
+      }
+
+      function goToProducts() {
+        window.location.href = "products.html";
+      }
+
+      // Status change simulation (for demo purposes)
+      function changeStatus(newStatus) {
+        const newUrl = new URL(window.location);
+        newUrl.searchParams.set("status", newStatus);
+        window.location.href = newUrl.toString();
+      }
+    </script>
+  </body>
+</html>

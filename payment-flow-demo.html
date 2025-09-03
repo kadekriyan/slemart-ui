@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Demo Payment Flow - Sleman Mart</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#E57F39",
+              "primary-dark": "#C86A2B",
+              "primary-light": "#F29C5E",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+
+  <body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-md">
+      <div class="container mx-auto px-4 py-4">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center space-x-2">
+            <i class="fas fa-store text-2xl text-primary"></i>
+            <a href="products.html" class="text-2xl font-bold text-primary">
+              Sleman Mart
+            </a>
+          </div>
+          <div class="text-gray-600">
+            <i class="fas fa-cog mr-2"></i>Demo Payment Flow
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 py-8">
+      <div class="max-w-6xl mx-auto">
+        <!-- Page Header -->
+        <div class="text-center mb-8">
+          <h1 class="text-3xl font-bold text-gray-800 mb-4">
+            Demo Payment Flow System
+          </h1>
+          <p class="text-gray-600">
+            Demonstrasi sistem pembayaran dengan berbagai status: Unpaid →
+            Pending → Paid/Rejected → Refunded
+          </p>
+        </div>
+
+        <!-- Payment Flow Diagram -->
+        <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+          <h2 class="text-xl font-bold text-gray-800 mb-6">Alur Pembayaran</h2>
+          <div class="flex flex-wrap items-center justify-center gap-4">
+            <!-- Unpaid -->
+            <div class="flex flex-col items-center">
+              <div
+                class="w-16 h-16 bg-red-500 rounded-full flex items-center justify-center text-white mb-2"
+              >
+                <i class="fas fa-exclamation-circle text-xl"></i>
+              </div>
+              <span class="text-sm font-medium text-red-600"
+                >Belum Dibayar</span
+              >
+              <span class="text-xs text-gray-500">Unpaid</span>
+            </div>
+
+            <i class="fas fa-arrow-right text-gray-400"></i>
+
+            <!-- Pending -->
+            <div class="flex flex-col items-center">
+              <div
+                class="w-16 h-16 bg-yellow-500 rounded-full flex items-center justify-center text-white mb-2"
+              >
+                <i class="fas fa-clock text-xl"></i>
+              </div>
+              <span class="text-sm font-medium text-yellow-600"
+                >Menunggu Verifikasi</span
+              >
+              <span class="text-xs text-gray-500">Pending</span>
+            </div>
+
+            <i class="fas fa-arrow-right text-gray-400"></i>
+
+            <!-- Paid/Rejected -->
+            <div class="flex flex-col items-center">
+              <div class="flex gap-2 mb-2">
+                <div
+                  class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-white"
+                >
+                  <i class="fas fa-check text-sm"></i>
+                </div>
+                <span class="text-gray-400 mt-4">/</span>
+                <div
+                  class="w-12 h-12 bg-red-500 rounded-full flex items-center justify-center text-white"
+                >
+                  <i class="fas fa-times text-sm"></i>
+                </div>
+              </div>
+              <span class="text-sm font-medium text-gray-700"
+                >Diterima / Ditolak</span
+              >
+              <span class="text-xs text-gray-500">Paid / Rejected</span>
+            </div>
+
+            <i class="fas fa-arrow-right text-gray-400"></i>
+
+            <!-- Refunded -->
+            <div class="flex flex-col items-center">
+              <div
+                class="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center text-white mb-2"
+              >
+                <i class="fas fa-undo text-xl"></i>
+              </div>
+              <span class="text-sm font-medium text-blue-600"
+                >Dana Dikembalikan</span
+              >
+              <span class="text-xs text-gray-500">Refunded</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Demo Cards -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Unpaid Status -->
+          <div class="bg-white rounded-lg shadow-md overflow-hidden">
+            <div class="bg-red-500 text-white p-4">
+              <div class="flex items-center">
+                <i class="fas fa-exclamation-circle text-2xl mr-3"></i>
+                <div>
+                  <h3 class="text-lg font-bold">Status: Belum Dibayar</h3>
+                  <p class="text-sm opacity-90">Pesanan menunggu pembayaran</p>
+                </div>
+              </div>
+            </div>
+            <div class="p-6">
+              <h4 class="font-semibold mb-3">Fitur yang tersedia:</h4>
+              <ul class="text-sm space-y-2 mb-4">
+                <li class="flex items-center">
+                  <i class="fas fa-check text-green-500 mr-2"></i>Bayar sekarang
+                </li>
+                <li class="flex items-center">
+                  <i class="fas fa-check text-green-500 mr-2"></i>Batalkan
+                  pesanan
+                </li>
+                <li class="flex items-center">
+                  <i class="fas fa-check text-green-500 mr-2"></i>Lihat detail
+                  pesanan
+                </li>
+              </ul>
+              <a
+                href="payment-status.html?status=unpaid"
+                class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition duration-300 block text-center"
+              >
+                <i class="fas fa-eye mr-2"></i>Lihat Demo
+              </a>
+            </div>
+          </div>
+
+          <!-- Pending Status -->
+          <div class="bg-white rounded-lg shadow-md overflow-hidden">
+            <div class="bg-yellow-500 text-white p-4">
+              <div class="flex items-center">
+                <i class="fas fa-clock text-2xl mr-3"></i>
+                <div>
+                  <h3 class="text-lg font-bold">Status: Menunggu Verifikasi</h3>
+                  <p class="text-sm opacity-90">
+                    Bukti pembayaran sedang diverifikasi
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="p-6">
+              <h4 class="font-semibold mb-3">Fitur yang tersedia:</h4>
+              <ul class="text-sm space-y-2 mb-4">
+                <li class="flex items-center">
+                  <i class="fas fa-check text-green-500 mr-2"></i>Lihat bukti
+                  pembayaran
+                </li>
+                <li class="flex items-center">
+                  <i class="fas fa-check text-green-500 mr-2"></i>Timeline
+                  proses
+                </li>
+                <li class="flex items-center">
+                  <i class="fas fa-check text-green-500 mr-2"></i>Informasi
+                  status real-time
+                </li>
+              </ul>
+              <a
+                href="payment-status.html?status=pending"
+                class="bg-yellow-500 text-white px-4 py-2 rounded-lg hover:bg-yellow-600 transition duration-300 block text-center"
+              >
+                <i class="fas fa-eye mr-2"></i>Lihat Demo
+              </a>
+            </div>
+          </div>
+
+          <!-- Rejected Status -->
+          <div class="bg-white rounded-lg shadow-md overflow-hidden">
+            <div class="bg-red-500 text-white p-4">
+              <div class="flex items-center">
+                <i class="fas fa-times-circle text-2xl mr-3"></i>
+                <div>
+                  <h3 class="text-lg font-bold">Status: Pembayaran Ditolak</h3>
+                  <p class="text-sm opacity-90">Bukti pembayaran tidak valid</p>
+                </div>
+              </div>
+            </div>
+            <div class="p-6">
+              <h4 class="font-semibold mb-3">Fitur yang tersedia:</h4>
+              <ul class="text-sm space-y-2 mb-4">
+                <li class="flex items-center">
+                  <i class="fas fa-check text-green-500 mr-2"></i>Lihat alasan
+                  penolakan
+                </li>
+                <li class="flex items-center">
+                  <i class="fas fa-check text-green-500 mr-2"></i>Upload bukti
+                  baru
+                </li>
+                <li class="flex items-center">
+                  <i class="fas fa-check text-green-500 mr-2"></i>Tunda
+                  pembayaran
+                </li>
+              </ul>
+              <a
+                href="payment-status.html?status=rejected"
+                class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition duration-300 block text-center"
+              >
+                <i class="fas fa-eye mr-2"></i>Lihat Demo
+              </a>
+            </div>
+          </div>
+
+          <!-- Paid Status -->
+          <div class="bg-white rounded-lg shadow-md overflow-hidden">
+            <div class="bg-green-500 text-white p-4">
+              <div class="flex items-center">
+                <i class="fas fa-check-circle text-2xl mr-3"></i>
+                <div>
+                  <h3 class="text-lg font-bold">Status: Pembayaran Berhasil</h3>
+                  <p class="text-sm opacity-90">
+                    Pembayaran dikonfirmasi penjual
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="p-6">
+              <h4 class="font-semibold mb-3">Fitur yang tersedia:</h4>
+              <ul class="text-sm space-y-2 mb-4">
+                <li class="flex items-center">
+                  <i class="fas fa-check text-green-500 mr-2"></i>Lihat detail
+                  konfirmasi
+                </li>
+                <li class="flex items-center">
+                  <i class="fas fa-check text-green-500 mr-2"></i>Timeline
+                  lengkap
+                </li>
+                <li class="flex items-center">
+                  <i class="fas fa-check text-green-500 mr-2"></i>Status
+                  pengiriman
+                </li>
+              </ul>
+              <a
+                href="payment-status.html?status=paid"
+                class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition duration-300 block text-center"
+              >
+                <i class="fas fa-eye mr-2"></i>Lihat Demo
+              </a>
+            </div>
+          </div>
+
+          <!-- Refunded Status -->
+          <div class="bg-white rounded-lg shadow-md overflow-hidden">
+            <div class="bg-blue-500 text-white p-4">
+              <div class="flex items-center">
+                <i class="fas fa-undo text-2xl mr-3"></i>
+                <div>
+                  <h3 class="text-lg font-bold">Status: Dana Dikembalikan</h3>
+                  <p class="text-sm opacity-90">Pembayaran telah di-refund</p>
+                </div>
+              </div>
+            </div>
+            <div class="p-6">
+              <h4 class="font-semibold mb-3">Fitur yang tersedia:</h4>
+              <ul class="text-sm space-y-2 mb-4">
+                <li class="flex items-center">
+                  <i class="fas fa-check text-green-500 mr-2"></i>Detail refund
+                </li>
+                <li class="flex items-center">
+                  <i class="fas fa-check text-green-500 mr-2"></i>Alasan refund
+                </li>
+                <li class="flex items-center">
+                  <i class="fas fa-check text-green-500 mr-2"></i>Timeline
+                  proses
+                </li>
+              </ul>
+              <a
+                href="payment-status.html?status=refunded"
+                class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition duration-300 block text-center"
+              >
+                <i class="fas fa-eye mr-2"></i>Lihat Demo
+              </a>
+            </div>
+          </div>
+
+          <!-- Upload Reupload Demo -->
+          <div class="bg-white rounded-lg shadow-md overflow-hidden">
+            <div class="bg-orange-500 text-white p-4">
+              <div class="flex items-center">
+                <i class="fas fa-upload text-2xl mr-3"></i>
+                <div>
+                  <h3 class="text-lg font-bold">Upload Ulang Bukti</h3>
+                  <p class="text-sm opacity-90">
+                    Form upload bukti pembayaran baru
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="p-6">
+              <h4 class="font-semibold mb-3">Fitur yang tersedia:</h4>
+              <ul class="text-sm space-y-2 mb-4">
+                <li class="flex items-center">
+                  <i class="fas fa-check text-green-500 mr-2"></i>Panduan upload
+                </li>
+                <li class="flex items-center">
+                  <i class="fas fa-check text-green-500 mr-2"></i>Validasi file
+                </li>
+                <li class="flex items-center">
+                  <i class="fas fa-check text-green-500 mr-2"></i>Form lengkap
+                  data pembayaran
+                </li>
+              </ul>
+              <a
+                href="payment-reupload.html?order=#SLM-2025-001"
+                class="bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600 transition duration-300 block text-center"
+              >
+                <i class="fas fa-eye mr-2"></i>Lihat Demo
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Additional Info -->
+        <div class="bg-white rounded-lg shadow-md p-6 mt-8">
+          <h2 class="text-xl font-bold text-gray-800 mb-4">Penjelasan Fitur</h2>
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <h3 class="font-semibold mb-2 text-primary">Untuk Pelanggan:</h3>
+              <ul class="text-sm space-y-1 text-gray-600">
+                <li>• Upload bukti pembayaran dengan mudah</li>
+                <li>• Tracking status pembayaran real-time</li>
+                <li>• Notifikasi saat status berubah</li>
+                <li>• Upload ulang jika ditolak dengan panduan</li>
+                <li>• Timeline lengkap proses pembayaran</li>
+                <li>• Opsi tunda pembayaran</li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="font-semibold mb-2 text-primary">
+                Untuk Penjual (Dashboard):
+              </h3>
+              <ul class="text-sm space-y-1 text-gray-600">
+                <li>• Verifikasi bukti pembayaran</li>
+                <li>• Terima atau tolak pembayaran</li>
+                <li>• Berikan alasan penolakan yang jelas</li>
+                <li>• Monitor semua transaksi</li>
+                <li>• Proses refund jika diperlukan</li>
+                <li>• Laporan pembayaran</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="text-center mt-8">
+          <a
+            href="orders.html"
+            class="bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary-dark transition duration-300 inline-block mr-4"
+          >
+            <i class="fas fa-list mr-2"></i>Lihat Halaman Pesanan
+          </a>
+          <a
+            href="products.html"
+            class="bg-gray-600 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition duration-300 inline-block"
+          >
+            <i class="fas fa-home mr-2"></i>Kembali ke Beranda
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8 mt-16">
+      <div class="container mx-auto px-4">
+        <div class="text-center">
+          <h3 class="text-xl font-bold mb-2">Sleman Mart</h3>
+          <p class="text-gray-400">Platform UMKM Digital Kabupaten Sleman</p>
+          <p class="text-gray-500 text-sm mt-2">Demo Payment Flow System</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
