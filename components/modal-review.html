@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modal Review - Sleman Mart</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#E57F39",
+              "primary-dark": "#D16A26",
+            },
+          },
+        },
+      };
+    </script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <style>
+      /* Custom animations */
+      .modal-enter {
+        animation: modalEnter 0.3s ease-out forwards;
+      }
+
+      .modal-exit {
+        animation: modalExit 0.3s ease-in forwards;
+      }
+
+      @keyframes modalEnter {
+        from {
+          opacity: 0;
+          transform: scale(0.9) translateY(-20px);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1) translateY(0);
+        }
+      }
+
+      @keyframes modalExit {
+        from {
+          opacity: 1;
+          transform: scale(1) translateY(0);
+        }
+        to {
+          opacity: 0;
+          transform: scale(0.9) translateY(-20px);
+        }
+      }
+
+      /* Star rating hover effects */
+      .star-rating {
+        transition: all 0.2s ease;
+      }
+
+      .star-rating:hover {
+        transform: scale(1.1);
+      }
+
+      /* Upload area hover effects */
+      .upload-area {
+        transition: all 0.3s ease;
+      }
+
+      .upload-area:hover {
+        border-color: #e57f39;
+        background-color: #fef7f0;
+      }
+
+      /* Focus styles */
+      .focus-ring:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px rgba(229, 127, 57, 0.5);
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50">
+    <!-- Modal Ulasan Item -->
+    <div id="reviewModal" class="fixed inset-0 bg-black bg-opacity-50 z-50">
+      <div class="flex items-center justify-center min-h-screen p-4">
+        <div class="bg-white rounded-lg shadow-xl w-full max-w-md modal-enter">
+          <!-- Header -->
+          <div class="flex items-center justify-between p-4 border-b">
+            <h3 class="text-lg font-semibold">Beri Ulasan</h3>
+            <button
+              onclick="closeModal('reviewModal')"
+              class="text-gray-400 hover:text-gray-600"
+            >
+              <i class="fas fa-times text-xl"></i>
+            </button>
+          </div>
+
+          <!-- Content -->
+          <div class="p-4">
+            <!-- Product Info -->
+            <div class="flex items-center space-x-3 mb-4">
+              <div
+                class="bg-gray-300 w-16 h-16 rounded-lg flex items-center justify-center flex-shrink-0"
+              >
+                <i class="fas fa-image text-gray-500"></i>
+              </div>
+              <div>
+                <h4 class="font-medium">Kue Lapis Tradisional</h4>
+                <p class="text-sm text-gray-600">Rp 15.000</p>
+              </div>
+            </div>
+
+            <!-- Rating -->
+            <div class="mb-4">
+              <label class="block text-sm font-medium mb-2">Rating</label>
+              <div class="flex space-x-1 mb-2">
+                <button
+                  class="star-rating text-2xl text-gray-300 hover:text-yellow-400"
+                  data-rating="1"
+                >
+                  <i class="fas fa-star"></i>
+                </button>
+                <button
+                  class="star-rating text-2xl text-gray-300 hover:text-yellow-400"
+                  data-rating="2"
+                >
+                  <i class="fas fa-star"></i>
+                </button>
+                <button
+                  class="star-rating text-2xl text-gray-300 hover:text-yellow-400"
+                  data-rating="3"
+                >
+                  <i class="fas fa-star"></i>
+                </button>
+                <button
+                  class="star-rating text-2xl text-gray-300 hover:text-yellow-400"
+                  data-rating="4"
+                >
+                  <i class="fas fa-star"></i>
+                </button>
+                <button
+                  class="star-rating text-2xl text-gray-300 hover:text-yellow-400"
+                  data-rating="5"
+                >
+                  <i class="fas fa-star"></i>
+                </button>
+              </div>
+              <p class="text-sm text-gray-500">Klik untuk memberi rating</p>
+            </div>
+
+            <!-- Review Text -->
+            <div class="mb-4">
+              <label class="block text-sm font-medium mb-2">Ulasan</label>
+              <textarea
+                placeholder="Bagikan pengalaman Anda tentang produk ini..."
+                class="w-full border border-gray-300 rounded-lg p-3 h-24 resize-none focus-ring transition duration-300"
+              ></textarea>
+            </div>
+
+            <!-- Photo/Video Upload -->
+            <div class="mb-6">
+              <label class="block text-sm font-medium mb-2"
+                >Foto/Video (Opsional)</label
+              >
+              <div
+                class="border-2 border-dashed border-gray-300 rounded-lg p-4 text-center upload-area cursor-pointer"
+              >
+                <i class="fas fa-camera text-2xl text-gray-400 mb-2"></i>
+                <p class="text-sm text-gray-500 mb-2">
+                  Upload foto atau video produk
+                </p>
+                <button
+                  class="text-primary text-sm hover:underline font-medium"
+                >
+                  Pilih File
+                </button>
+                <p class="text-xs text-gray-400 mt-1">
+                  Maksimal 5MB • JPG, PNG, MP4
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Footer -->
+          <div class="flex space-x-3 p-4 border-t">
+            <button
+              onclick="closeModal('reviewModal')"
+              class="flex-1 bg-gray-100 text-gray-700 py-2 px-4 rounded-lg font-medium hover:bg-gray-200 transition duration-300"
+            >
+              Batal
+            </button>
+            <button
+              class="flex-1 bg-primary text-white py-2 px-4 rounded-lg font-medium hover:bg-primary-dark transition duration-300"
+            >
+              Kirim Ulasan
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Star rating functionality
+      document.addEventListener("DOMContentLoaded", function () {
+        const stars = document.querySelectorAll(".star-rating");
+        let currentRating = 0;
+
+        stars.forEach((star, index) => {
+          star.addEventListener("click", function () {
+            currentRating = index + 1;
+            updateStars();
+          });
+
+          star.addEventListener("mouseenter", function () {
+            highlightStars(index + 1);
+          });
+        });
+
+        document
+          .querySelector("#reviewModal")
+          .addEventListener("mouseleave", function () {
+            updateStars();
+          });
+
+        function updateStars() {
+          stars.forEach((star, index) => {
+            if (index < currentRating) {
+              star.classList.remove("text-gray-300");
+              star.classList.add("text-yellow-400");
+            } else {
+              star.classList.remove("text-yellow-400");
+              star.classList.add("text-gray-300");
+            }
+          });
+        }
+
+        function highlightStars(rating) {
+          stars.forEach((star, index) => {
+            if (index < rating) {
+              star.classList.remove("text-gray-300");
+              star.classList.add("text-yellow-400");
+            } else {
+              star.classList.remove("text-yellow-400");
+              star.classList.add("text-gray-300");
+            }
+          });
+        }
+      });
+
+      function closeModal(modalId) {
+        const modal = document.getElementById(modalId);
+        const modalContent = modal.querySelector(".modal-enter");
+
+        if (modalContent) {
+          modalContent.classList.remove("modal-enter");
+          modalContent.classList.add("modal-exit");
+
+          setTimeout(() => {
+            modal.classList.add("hidden");
+            modalContent.classList.remove("modal-exit");
+            modalContent.classList.add("modal-enter");
+          }, 300);
+        } else {
+          modal.classList.add("hidden");
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,41 @@
+{
+  "maintenance": false,
+  "message": "Sleman Mart sedang dalam perbaikan sistem",
+  "estimated_duration": "2 jam",
+  "start_time": "2025-09-14T10:00:00Z",
+  "end_time": "2025-09-14T12:00:00Z",
+  "allowed_ips": ["127.0.0.1", "::1"],
+  "contact": {
+    "whatsapp": "6281234567890",
+    "email": "support@slemanmart.com",
+    "phone": "+6281234567890"
+  },
+  "social_media": {
+    "facebook": "https://facebook.com/slemanmart",
+    "instagram": "https://instagram.com/slemanmart",
+    "twitter": "https://twitter.com/slemanmart",
+    "tiktok": "https://tiktok.com/@slemanmart"
+  },
+  "features_updating": [
+    {
+      "name": "Sistem Keranjang",
+      "icon": "fas fa-shopping-cart",
+      "status": "in_progress"
+    },
+    {
+      "name": "Gateway Pembayaran",
+      "icon": "fas fa-credit-card",
+      "status": "completed"
+    },
+    {
+      "name": "Profil Pengguna",
+      "icon": "fas fa-user",
+      "status": "pending"
+    },
+    {
+      "name": "Sistem Review",
+      "icon": "fas fa-star",
+      "status": "in_progress"
+    }
+  ]
+}

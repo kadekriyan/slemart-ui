@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pesanan Pembayaran Berhasil - Sleman Mart</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#E57F39",
+              "primary-dark": "#D16A26",
+            },
+          },
+        },
+      };
+    </script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body class="bg-gray-50">
+    <!-- Order Card - Pembayaran Berhasil -->
+    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+      <div class="p-4 sm:p-6">
+        <div class="flex items-center justify-between mb-4">
+          <div>
+            <h3 class="font-semibold text-gray-800 text-sm sm:text-base">
+              #SLM240002
+            </h3>
+            <p class="text-xs sm:text-sm text-gray-600">29 Agustus 2025</p>
+          </div>
+          <span
+            class="bg-green-100 text-green-800 px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-medium"
+          >
+            Pembayaran Berhasil
+          </span>
+        </div>
+
+        <div class="space-y-3 mb-4">
+          <div class="flex items-center space-x-3">
+            <div
+              class="bg-gray-300 w-10 h-10 sm:w-12 sm:h-12 rounded-lg flex items-center justify-center flex-shrink-0"
+            >
+              <i class="fas fa-image text-gray-500 text-xs sm:text-sm"></i>
+            </div>
+            <div class="flex-1 min-w-0">
+              <h4 class="font-medium text-gray-800 text-xs sm:text-sm truncate">
+                Madu Hutan Murni
+              </h4>
+              <p class="text-xs text-gray-600 truncate">Madu Asli Sleman</p>
+              <p class="text-xs sm:text-sm text-primary font-medium">
+                Rp 85.000 x 1
+              </p>
+            </div>
+          </div>
+          <div class="flex items-center space-x-3">
+            <div
+              class="bg-gray-300 w-10 h-10 sm:w-12 sm:h-12 rounded-lg flex items-center justify-center flex-shrink-0"
+            >
+              <i class="fas fa-image text-gray-500 text-xs sm:text-sm"></i>
+            </div>
+            <div class="flex-1 min-w-0">
+              <h4 class="font-medium text-gray-800 text-xs sm:text-sm truncate">
+                Propolis Cair Premium
+              </h4>
+              <p class="text-xs text-gray-600 truncate">Madu Asli Sleman</p>
+              <p class="text-xs sm:text-sm text-primary font-medium">
+                Rp 95.000 x 1
+              </p>
+            </div>
+          </div>
+          <div class="flex items-center space-x-3">
+            <div
+              class="bg-gray-300 w-10 h-10 sm:w-12 sm:h-12 rounded-lg flex items-center justify-center flex-shrink-0"
+            >
+              <i class="fas fa-image text-gray-500 text-xs sm:text-sm"></i>
+            </div>
+            <div class="flex-1 min-w-0">
+              <h4 class="font-medium text-gray-800 text-xs sm:text-sm truncate">
+                Royal Jelly Kapsul
+              </h4>
+              <p class="text-xs text-gray-600 truncate">Madu Asli Sleman</p>
+              <p class="text-xs sm:text-sm text-primary font-medium">
+                Rp 125.000 x 1
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-gray-50 rounded-lg p-2 sm:p-3 mb-4">
+          <div class="flex justify-between text-xs sm:text-sm">
+            <span class="text-gray-600">3 item • Pembayaran Berhasil</span>
+            <span class="font-semibold text-gray-800">Total: Rp 320.000</span>
+          </div>
+        </div>
+
+        <!-- Payment Success Indicator -->
+        <div class="bg-green-50 border border-green-200 rounded-lg p-3 mb-4">
+          <div class="flex items-center">
+            <i class="fas fa-check-circle text-green-600 mr-2"></i>
+            <span class="text-green-800 text-sm font-medium"
+              >Pembayaran telah dikonfirmasi</span
+            >
+          </div>
+          <p class="text-green-700 text-xs mt-1">
+            Pesanan sedang diproses untuk dikirim
+          </p>
+        </div>
+
+        <div
+          class="flex flex-col sm:flex-row items-start sm:items-center justify-between space-y-2 sm:space-y-0"
+        >
+          <div class="flex flex-wrap gap-2 w-full sm:w-auto">
+            <button
+              class="bg-gray-200 text-gray-700 px-3 sm:px-4 py-2 rounded-md hover:bg-gray-300 text-xs sm:text-sm flex items-center"
+            >
+              <i class="fas fa-eye mr-1 text-xs"></i>Detail
+            </button>
+            <button
+              class="bg-blue-500 text-white px-3 sm:px-4 py-2 rounded-md hover:bg-blue-600 text-xs sm:text-sm flex items-center"
+            >
+              <i class="fas fa-receipt mr-1 text-xs"></i>Status Bayar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

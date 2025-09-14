@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Komponen Sleman Mart - Demo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#E57F39",
+              "primary-dark": "#D16A26",
+            },
+          },
+        },
+      };
+    </script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body class="bg-gray-50">
+    <div class="container mx-auto px-4 py-8">
+      <h1 class="text-3xl font-bold text-center mb-8 text-gray-800">
+        Komponen Sleman Mart
+      </h1>
+
+      <!-- Navigation -->
+      <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+        <h2 class="text-xl font-semibold mb-4">Daftar Komponen</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <!-- Order Status Components -->
+          <div class="bg-gray-50 p-4 rounded-lg">
+            <h3 class="font-medium mb-3 text-gray-800">Status Pesanan</h3>
+            <div class="space-y-2">
+              <a
+                href="order-status-unpaid.html"
+                class="block text-sm text-blue-600 hover:text-blue-800"
+              >
+                <i class="fas fa-clock mr-2"></i>Belum Dibayar
+              </a>
+              <a
+                href="order-status-pending.html"
+                class="block text-sm text-blue-600 hover:text-blue-800"
+              >
+                <i class="fas fa-hourglass-half mr-2"></i>Menunggu Verifikasi
+              </a>
+              <a
+                href="order-status-rejected.html"
+                class="block text-sm text-blue-600 hover:text-blue-800"
+              >
+                <i class="fas fa-times-circle mr-2"></i>Pembayaran Ditolak
+              </a>
+              <a
+                href="order-status-paid.html"
+                class="block text-sm text-blue-600 hover:text-blue-800"
+              >
+                <i class="fas fa-check-circle mr-2"></i>Pembayaran Berhasil
+              </a>
+              <a
+                href="order-status-shipped.html"
+                class="block text-sm text-blue-600 hover:text-blue-800"
+              >
+                <i class="fas fa-truck mr-2"></i>Dikirim
+              </a>
+              <a
+                href="order-status-completed.html"
+                class="block text-sm text-blue-600 hover:text-blue-800"
+              >
+                <i class="fas fa-star mr-2"></i>Selesai
+              </a>
+            </div>
+          </div>
+
+          <!-- Action Pages -->
+          <div class="bg-gray-50 p-4 rounded-lg">
+            <h3 class="font-medium mb-3 text-gray-800">Halaman Aksi</h3>
+            <div class="space-y-2">
+              <a
+                href="page-payment.html"
+                class="block text-sm text-blue-600 hover:text-blue-800"
+              >
+                <i class="fas fa-credit-card mr-2"></i>Halaman Pembayaran
+              </a>
+              <a
+                href="page-payment-status.html"
+                class="block text-sm text-blue-600 hover:text-blue-800"
+              >
+                <i class="fas fa-info-circle mr-2"></i>Status Pembayaran
+              </a>
+              <a
+                href="page-upload-payment.html"
+                class="block text-sm text-blue-600 hover:text-blue-800"
+              >
+                <i class="fas fa-upload mr-2"></i>Upload Ulang
+              </a>
+            </div>
+          </div>
+
+          <!-- Modal Components -->
+          <div class="bg-gray-50 p-4 rounded-lg">
+            <h3 class="font-medium mb-3 text-gray-800">Modal Komponen</h3>
+            <div class="space-y-2">
+              <button
+                onclick="loadModal('modal-order-detail.html')"
+                class="block text-sm text-blue-600 hover:text-blue-800 text-left"
+              >
+                <i class="fas fa-list mr-2"></i>Detail Pesanan
+              </button>
+              <button
+                onclick="loadModal('modal-review.html')"
+                class="block text-sm text-blue-600 hover:text-blue-800 text-left"
+              >
+                <i class="fas fa-star mr-2"></i>Beri Ulasan
+              </button>
+              <button
+                onclick="loadModal('modal-view-review.html')"
+                class="block text-sm text-blue-600 hover:text-blue-800 text-left"
+              >
+                <i class="fas fa-eye mr-2"></i>Lihat Ulasan
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Component Preview Area -->
+      <div class="bg-white rounded-lg shadow-md p-6">
+        <h2 class="text-xl font-semibold mb-4">Preview Komponen</h2>
+        <div
+          id="componentPreview"
+          class="min-h-64 border-2 border-dashed border-gray-300 rounded-lg flex items-center justify-center"
+        >
+          <p class="text-gray-500">
+            Klik pada komponen di atas untuk melihat preview
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Container for dynamic loading -->
+    <div id="modalContainer"></div>
+
+    <script>
+      // Global function to show modals
+      function showModal(modalId) {
+        const modal = document.getElementById(modalId);
+        if (modal) {
+          modal.classList.remove("hidden");
+        }
+      }
+
+      function loadModal(componentFile) {
+        fetch(componentFile)
+          .then((response) => response.text())
+          .then((html) => {
+            document.getElementById("modalContainer").innerHTML = html;
+            // Show the modal after loading
+            setTimeout(() => {
+              const modalId = getModalIdFromFile(componentFile);
+              if (modalId) {
+                showModal(modalId);
+              }
+            }, 100);
+          })
+          .catch((error) => {
+            console.error("Error loading modal:", error);
+            alert("Error loading component");
+          });
+      }
+
+      function getModalIdFromFile(filename) {
+        const modalIds = {
+          "modal-order-detail.html": "orderDetailModal",
+          "modal-review.html": "reviewModal",
+          "modal-view-review.html": "viewReviewModal",
+        };
+        return modalIds[filename];
+      }
+
+      // Function to preview order status components
+      function previewComponent(componentFile) {
+        fetch(componentFile)
+          .then((response) => response.text())
+          .then((html) => {
+            // Extract body content for preview
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, "text/html");
+            const bodyContent = doc.body.innerHTML;
+
+            document.getElementById("componentPreview").innerHTML = bodyContent;
+          })
+          .catch((error) => {
+            console.error("Error loading component:", error);
+            document.getElementById("componentPreview").innerHTML =
+              '<p class="text-red-500">Error loading component</p>';
+          });
+      }
+
+      // Add click handlers for order status links
+      document.addEventListener("DOMContentLoaded", function () {
+        const orderStatusLinks = document.querySelectorAll(
+          'a[href*="order-status"]'
+        );
+        orderStatusLinks.forEach((link) => {
+          link.addEventListener("click", function (e) {
+            e.preventDefault();
+            previewComponent(this.getAttribute("href"));
+          });
+        });
+
+        const pageLinks = document.querySelectorAll('a[href*="page-"]');
+        pageLinks.forEach((link) => {
+          link.addEventListener("click", function (e) {
+            e.preventDefault();
+            window.open(this.getAttribute("href"), "_blank");
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

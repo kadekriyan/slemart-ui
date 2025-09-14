@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Upload Ulang Bukti Pembayaran - Sleman Mart</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#E57F39",
+              "primary-dark": "#D16A26",
+            },
+          },
+        },
+      };
+    </script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body class="bg-gray-50">
+    <div class="container mx-auto px-4 py-8">
+      <!-- Header -->
+      <div class="mb-6">
+        <div class="flex items-center mb-4">
+          <button class="text-gray-500 hover:text-gray-700 mr-4">
+            <i class="fas fa-arrow-left text-lg"></i>
+          </button>
+          <h1 class="text-xl sm:text-2xl font-bold text-gray-800">
+            Upload Ulang Bukti Pembayaran
+          </h1>
+        </div>
+      </div>
+
+      <!-- Status Notice -->
+      <div class="bg-red-50 border border-red-200 rounded-lg p-4 mb-6">
+        <div class="flex items-center mb-2">
+          <i class="fas fa-exclamation-triangle text-red-600 mr-2"></i>
+          <span class="font-semibold text-red-800">Pembayaran Ditolak</span>
+        </div>
+        <p class="text-red-700 text-sm">Pesanan #SLM240005</p>
+        <div class="mt-3 p-3 bg-red-100 rounded border">
+          <p class="text-red-800 text-sm font-medium">Alasan penolakan:</p>
+          <p class="text-red-700 text-sm">
+            Bukti transfer tidak jelas / nominal tidak sesuai. Silakan upload
+            ulang bukti pembayaran yang jelas dengan nominal Rp 77.000
+          </p>
+        </div>
+      </div>
+
+      <div class="grid lg:grid-cols-3 gap-6">
+        <!-- Upload Form -->
+        <div class="lg:col-span-2">
+          <div class="bg-white rounded-lg shadow-md p-6">
+            <h2 class="text-lg font-semibold mb-4">
+              Upload Bukti Pembayaran Baru
+            </h2>
+
+            <!-- Payment Info -->
+            <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
+              <h3 class="font-semibold mb-3">Informasi Pembayaran</h3>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
+                <div>
+                  <p class="text-gray-600">Bank Tujuan:</p>
+                  <p class="font-semibold">BCA - 8850123456</p>
+                </div>
+                <div>
+                  <p class="text-gray-600">Atas Nama:</p>
+                  <p class="font-semibold">Sleman Mart</p>
+                </div>
+                <div>
+                  <p class="text-gray-600">Jumlah Transfer:</p>
+                  <p class="font-semibold text-primary">Rp 77.000</p>
+                </div>
+                <div>
+                  <p class="text-gray-600">Batas Waktu:</p>
+                  <p class="font-semibold text-red-600">2 Sep 2025, 23:59</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Upload Area -->
+            <div
+              class="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-primary transition duration-300"
+            >
+              <div class="mb-4">
+                <i class="fas fa-cloud-upload-alt text-4xl text-gray-400"></i>
+              </div>
+              <h3 class="text-lg font-medium text-gray-700 mb-2">
+                Upload Bukti Pembayaran
+              </h3>
+              <p class="text-gray-500 text-sm mb-4">
+                Drag & drop file atau klik untuk memilih
+              </p>
+              <button
+                class="bg-primary text-white px-6 py-2 rounded-lg hover:bg-primary-dark transition duration-300"
+              >
+                Pilih File
+              </button>
+              <p class="text-xs text-gray-400 mt-2">
+                Maksimal 5MB • Format: JPG, PNG, PDF
+              </p>
+            </div>
+
+            <!-- Guidelines -->
+            <div
+              class="mt-6 bg-yellow-50 border border-yellow-200 rounded-lg p-4"
+            >
+              <h4 class="font-semibold text-yellow-800 mb-2">
+                <i class="fas fa-lightbulb mr-2"></i>
+                Tips Upload Bukti Pembayaran
+              </h4>
+              <ul class="text-yellow-700 text-sm space-y-1">
+                <li>• Pastikan foto jelas dan tidak buram</li>
+                <li>
+                  • Nominal transfer harus sesuai: <strong>Rp 77.000</strong>
+                </li>
+                <li>• Tampilkan tanggal dan waktu transfer</li>
+                <li>• Sertakan nama penerima: <strong>Sleman Mart</strong></li>
+                <li>• Screenshot dari aplikasi banking resmi</li>
+              </ul>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="mt-6 flex flex-col sm:flex-row gap-3">
+              <button
+                class="flex-1 bg-primary text-white py-3 px-4 rounded-lg font-medium hover:bg-primary-dark transition duration-300"
+              >
+                <i class="fas fa-paper-plane mr-2"></i>
+                Kirim Bukti Pembayaran
+              </button>
+              <button
+                class="flex-1 bg-gray-100 text-gray-700 py-3 px-4 rounded-lg font-medium hover:bg-gray-200 transition duration-300"
+              >
+                <i class="fas fa-credit-card mr-2"></i>
+                Ubah Metode Bayar
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Order Summary -->
+        <div class="lg:col-span-1">
+          <div class="bg-white rounded-lg shadow-md p-6 sticky top-4">
+            <h3 class="font-semibold mb-4">Detail Pesanan</h3>
+
+            <div class="space-y-3 mb-4">
+              <div class="flex items-center space-x-3">
+                <div
+                  class="bg-gray-300 w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0"
+                >
+                  <i class="fas fa-image text-gray-500"></i>
+                </div>
+                <div class="flex-1">
+                  <h4 class="font-medium text-sm">Kue Lapis Tradisional</h4>
+                  <p class="text-xs text-gray-600">2x Rp 15.000</p>
+                </div>
+              </div>
+              <div class="flex items-center space-x-3">
+                <div
+                  class="bg-gray-300 w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0"
+                >
+                  <i class="fas fa-image text-gray-500"></i>
+                </div>
+                <div class="flex-1">
+                  <h4 class="font-medium text-sm">Es Teh Manis</h4>
+                  <p class="text-xs text-gray-600">1x Rp 5.000</p>
+                </div>
+              </div>
+              <div class="text-center text-gray-500 text-sm">
+                + 2 item lainnya
+              </div>
+            </div>
+
+            <div class="border-t pt-4 space-y-2 text-sm">
+              <div class="flex justify-between">
+                <span>Subtotal (4 item)</span>
+                <span>Rp 67.000</span>
+              </div>
+              <div class="flex justify-between">
+                <span>Ongkos Kirim</span>
+                <span>Rp 10.000</span>
+              </div>
+              <div
+                class="flex justify-between font-semibold text-base border-t pt-2"
+              >
+                <span>Total</span>
+                <span class="text-primary">Rp 77.000</span>
+              </div>
+            </div>
+
+            <!-- Contact Support -->
+            <div class="mt-6 p-4 bg-gray-50 rounded-lg">
+              <h4 class="font-medium text-gray-800 mb-2">Butuh Bantuan?</h4>
+              <p class="text-sm text-gray-600 mb-3">
+                Hubungi customer service kami
+              </p>
+              <button
+                class="w-full bg-green-500 text-white py-2 px-4 rounded-lg text-sm hover:bg-green-600 transition duration-300"
+              >
+                <i class="fab fa-whatsapp mr-2"></i>
+                Chat WhatsApp
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
