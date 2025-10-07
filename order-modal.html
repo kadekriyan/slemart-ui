@@ -1,0 +1,187 @@
+<!-- Modal Detail Pesanan (Order Detail Modal) - Data statik contoh order 'shipped' -->
+<div
+  id="orderModal"
+  class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+>
+  <div class="flex items-center justify-center min-h-screen p-4 w-full">
+    <div
+      class="bg-white rounded-lg w-full max-w-2xl max-h-screen overflow-y-auto shadow-lg"
+    >
+      <div class="relative">
+        <button
+          onclick="document.getElementById('orderModal').style.display='none'"
+          class="absolute top-2 right-2 sm:top-4 sm:right-4 text-gray-500 hover:text-gray-700 z-10 p-2"
+        >
+          <i class="fas fa-times text-lg sm:text-2xl"></i>
+        </button>
+        <div class="p-4 sm:p-6 border-b border-gray-200">
+          <div class="flex items-center justify-between">
+            <h2 class="text-lg sm:text-2xl font-bold">#SLM240001</h2>
+            <span
+              class="bg-blue-100 text-blue-800 px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-medium"
+              >Dikirim</span
+            >
+          </div>
+          <div class="text-xs text-gray-500 mt-1">Tanggal: 28 Agustus 2025</div>
+        </div>
+        <div class="p-4 sm:p-6">
+          <h3 class="font-semibold mb-4 text-sm sm:text-base">Item Pesanan</h3>
+          <div class="space-y-4 mb-6">
+            <div class="flex items-center space-x-3">
+              <div
+                class="bg-gray-300 w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0"
+              >
+                <i class="fas fa-image text-gray-500 text-xl"></i>
+              </div>
+              <div class="flex-1">
+                <h4 class="font-semibold text-gray-800">
+                  Keripik Tempe Original
+                </h4>
+                <p class="text-sm text-gray-600 mb-1">Toko Cemilan Sleman</p>
+                <p class="text-primary font-medium">Rp15.000 x 2</p>
+              </div>
+            </div>
+            <div class="flex items-center space-x-3">
+              <div
+                class="bg-gray-300 w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0"
+              >
+                <i class="fas fa-image text-gray-500 text-xl"></i>
+              </div>
+              <div class="flex-1">
+                <h4 class="font-semibold text-gray-800">Keripik Tahu Crispy</h4>
+                <p class="text-sm text-gray-600 mb-1">Toko Cemilan Sleman</p>
+                <p class="text-primary font-medium">Rp12.000 x 3</p>
+              </div>
+            </div>
+            <div class="flex items-center space-x-3">
+              <div
+                class="bg-gray-300 w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0"
+              >
+                <i class="fas fa-image text-gray-500 text-xl"></i>
+              </div>
+              <div class="flex-1">
+                <h4 class="font-semibold text-gray-800">Rempeyek Kacang</h4>
+                <p class="text-sm text-gray-600 mb-1">Toko Cemilan Sleman</p>
+                <p class="text-primary font-medium">Rp10.000 x 4</p>
+              </div>
+            </div>
+            <div class="flex items-center space-x-3">
+              <div
+                class="bg-gray-300 w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0"
+              >
+                <i class="fas fa-image text-gray-500 text-xl"></i>
+              </div>
+              <div class="flex-1">
+                <h4 class="font-semibold text-gray-800">Kripik Pisang Manis</h4>
+                <p class="text-sm text-gray-600 mb-1">Camilan Tradisional</p>
+                <p class="text-primary font-medium">Rp14.000 x 2</p>
+              </div>
+            </div>
+            <div class="flex items-center space-x-3">
+              <div
+                class="bg-gray-300 w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0"
+              >
+                <i class="fas fa-image text-gray-500 text-xl"></i>
+              </div>
+              <div class="flex-1">
+                <h4 class="font-semibold text-gray-800">Opak Singkong</h4>
+                <p class="text-sm text-gray-600 mb-1">Camilan Tradisional</p>
+                <p class="text-primary font-medium">Rp8.000 x 3</p>
+              </div>
+            </div>
+          </div>
+          <h3 class="font-semibold mb-4 text-sm sm:text-base">
+            Alamat Pengiriman
+          </h3>
+          <div class="bg-gray-50 rounded-lg p-3 sm:p-4 mb-6">
+            <div class="text-sm text-gray-700">Jl. Kaliurang KM 5, Sleman</div>
+          </div>
+          <h3 class="font-semibold mb-4 text-sm sm:text-base">
+            Ringkasan Pembayaran
+          </h3>
+          <div class="space-y-2 text-sm sm:text-base mb-6">
+            <div>
+              Total: <span class="font-semibold text-gray-800">Rp146.000</span>
+            </div>
+            <div>Ongkir: <span class="text-gray-700">Rp12.000</span></div>
+          </div>
+          <!-- Bukti Pengiriman & Catatan -->
+          <div class="mb-6">
+            <h4 class="text-base font-semibold text-gray-800 mb-2">
+              Bukti Pengiriman
+            </h4>
+            <div class="flex space-x-3 mb-2">
+              <div class="relative">
+                <img
+                  src="images/packing.jpg"
+                  alt="Bukti Pengiriman 1"
+                  class="rounded-lg w-28 h-28 object-cover border"
+                />
+                <span
+                  class="absolute top-2 right-2 bg-orange-400 text-white text-xs px-2 py-1 rounded"
+                  >Foto 1</span
+                >
+              </div>
+              <div class="relative">
+                <img
+                  src="images/pack.jpg"
+                  alt="Bukti Pengiriman 2"
+                  class="rounded-lg w-28 h-28 object-cover border"
+                />
+                <span
+                  class="absolute top-2 right-2 bg-orange-400 text-white text-xs px-2 py-1 rounded"
+                  >Foto 2</span
+                >
+              </div>
+              <div class="relative">
+                <img
+                  src="images/terpacking.jpg"
+                  alt="Bukti Pengiriman 3"
+                  class="rounded-lg w-28 h-28 object-cover border"
+                />
+                <span
+                  class="absolute top-2 right-2 bg-orange-400 text-white text-xs px-2 py-1 rounded"
+                  >Foto 3</span
+                >
+              </div>
+            </div>
+            <div class="bg-gray-50 rounded-lg p-3 mt-2">
+              <span class="font-semibold text-gray-700 block mb-1"
+                >Catatan Pengiriman:</span
+              >
+              <span class="text-gray-600 text-sm"
+                >sudahhh yaaa kak, terimakasih</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Tailwind CSS & Font Awesome -->
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Modal Detail Pesanan - Sleman Mart</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: "#E57F39",
+            "primary-dark": "#C86A2B",
+            "primary-light": "#F29C5E",
+          },
+        },
+      },
+    };
+  </script>
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    rel="stylesheet"
+  />
+</head>
+<body class="bg-gray-50"></body>
